@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IHC Quality Controls — Precision Cellular Immunology</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='6' stroke-dasharray='3 1'/><circle cx='12' cy='12' r='3.5' fill='%232563eb'/><circle cx='12' cy='3.5' r='1.5' fill='%232563eb'/><circle cx='5' cy='8.5' r='1.5' fill='%232563eb'/><circle cx='19' cy='8.5' r='1.5' fill='%232563eb'/><circle cx='7.5' cy='18' r='1.5' fill='%232563eb'/><circle cx='16.5' cy='18' r='1.5' fill='%232563eb'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-600 antialiased font-sans">
+
+  <!-- HEADER NAVIGATION -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="nav-logo">
+          <img src="pcilogo1.png" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          <img src="FONT2.png" id="nav-logo-text" alt="PCI" class="h-8 md:h-9 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="index.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-home">Home</a>
+          <a href="products.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-products">Products</a>
+          <a href="controls.html" class="nav-link active text-white text-sm font-semibold transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-white" id="link-controls">IHC Controls</a>
+          <a href="ai.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-ai">AI & Viewer</a>
+          <a href="education.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-education">Education</a>
+          <a href="about.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-about">About</a>
+          <a href="contact.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-contact">Contact</a>
+          <a href="viewer.html" class="bg-transparent hover:bg-white hover:text-black text-white text-xs font-semibold px-4 py-2 rounded-lg border border-white/40 transition-all duration-150 flex items-center gap-1.5" id="btn-viewer-launch">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Slide Viewer
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" class="text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 top-20 bg-white z-40 flex flex-col px-6 py-8 space-y-6 overflow-y-auto animate-fade-in border-t border-gray-100">
+      <a href="index.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Home</a>
+      <a href="products.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Products</a>
+      <a href="controls.html" class="text-pci-blue text-base font-bold border-b border-gray-100 pb-2">IHC Controls</a>
+      <a href="ai.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">AI & Viewer</a>
+      <a href="education.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Education</a>
+      <a href="about.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">About</a>
+      <a href="contact.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Contact</a>
+      <a href="viewer.html" class="bg-pci-blue text-white text-center py-3 rounded-lg font-bold" id="btn-mobile-viewer-launch">Launch Digital Viewer</a>
+    </div>
+  </header>
+
+  <!-- CONTROLS HERO -->
+  <section class="bg-navy pt-32 pb-20 relative overflow-hidden" id="controls-hero">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(37,99,235,0.08),transparent_50%)]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl space-y-4">
+        <span class="badge-pci badge-blue">Reference Standards</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight leading-tight">
+          Cell Line IHC Quality Controls
+        </h1>
+        <p class="text-gray-300 text-base sm:text-lg lg:text-xl font-light leading-relaxed">
+          Why settle for unpredictable surgical residuals? Deploy molecularly characterized cell lines to establish consistent stain calibration of primary pathology runs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: WHY IHC QC MATTERS -->
+  <section class="py-24 bg-white" id="why-qc-matters">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Visual Callout -->
+        <div class="lg:col-span-5 reveal">
+          <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col justify-between space-y-6 relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-rose-500/5 rounded-full"></div>
+            <div>
+              <div class="inline-flex items-center gap-1.5 text-xs text-rose-500 font-bold uppercase tracking-wider font-mono mb-4">
+                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                Clinical Patient Risk
+              </div>
+              <h3 class="text-xl font-heading font-bold text-gray-900 mb-2">The Danger of False Negatives</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-light">
+                Histology workflows involve over 20 manually prepared chemical reagents. If antigen retrieval or primary antibody concentrations drift even slightly:
+              </p>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-gray-100 space-y-3">
+              <div class="flex justify-between text-xs font-mono">
+                <span class="text-gray-500">Uncontrolled Drift Risk</span>
+                <span class="text-rose-500 font-bold">Unvalidated Failure</span>
+              </div>
+              <div class="w-full bg-gray-100 rounded-full h-2">
+                <div class="bg-rose-500 h-2 rounded-full" style="width: 85%;"></div>
+              </div>
+              <p class="text-[11px] text-gray-400 italic">
+                Result: A pathologist might incorrectly score a patient as protein expression negative, denying critical therapeutic eligibility.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narrative -->
+        <div class="lg:col-span-7 space-y-6 reveal" style="transition-delay: 100ms;">
+          <h2 class="text-3xl font-heading font-bold text-gray-900 tracking-tight">
+            Protect Patient Care with Calibrated Standards
+          </h2>
+          <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+            In modern immunohistochemistry (IHC), staining accuracy is paramount. Clinicians rely on biomarker scores like HER2 expression, MMR mismatch deficiencies, and PD-L1 thresholds to determine targeted immunotherapy candidates.
+          </p>
+          <p class="text-gray-600 leading-relaxed text-sm">
+            Yet, historically, pathology laboratories verified runs using leftover tissue scraps from surgical resections. These residual tissues suffer from massive biologial variance, unknown molecular thresholds, and rapid cell degradation. By standardizing runs against uniform cloned cell plugs, laboratories establish baseline controls, validating workflow integrity and protecting patient safety.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: WHAT MAKES PCI UNIQUE -->
+  <section class="py-24 bg-gray-50 border-y border-gray-100" id="unique-value">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">Our Innovation</span>
+        <h2 class="text-3xl font-heading font-bold text-gray-900">
+          Engineered Clones vs. Resection Residuals
+        </h2>
+        <p class="text-gray-600 mt-2 leading-relaxed">
+          Why clinical pathology centers are adopting our synthetic reference standards.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Traditional scrap -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-200 space-y-4 reveal">
+          <div class="text-rose-500">
+            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">Traditional Scrap Tissue Controls</h3>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-start gap-2">
+              <span class="text-rose-500 font-bold shrink-0">✕</span>
+              <span>Highly variable tissue architecture and thickness boundaries.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-rose-500 font-bold shrink-0">✕</span>
+              <span>Unstable molecular profiles with high batch-to-batch variation.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-rose-500 font-bold shrink-0">✕</span>
+              <span>Lacks zero-expression (absolute NULL) baseline references.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-rose-500 font-bold shrink-0">✕</span>
+              <span>Incompatible with high-throughput quantitative machine learning.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- PCI cell lines -->
+        <div class="bg-white p-8 rounded-2xl border-2 border-pci-blue space-y-4 reveal" style="transition-delay: 150ms;">
+          <div class="text-pci-blue">
+            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">PCI Cell Line Reference Plugs</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-start gap-2">
+              <span class="text-pci-green font-bold shrink-0">✓</span>
+              <span>Surgically consistent cell densities and homogeneous distribution.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-pci-green font-bold shrink-0">✓</span>
+              <span>Clonally sequenced genomes carrying precise expression spectrums.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-pci-green font-bold shrink-0">✓</span>
+              <span>Guaranteed negative (NULL) and overexpression (3+) standards on one block.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-pci-green font-bold shrink-0">✓</span>
+              <span>Calibrated specifically for digital AI scanners and automated scoring.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: PRODUCT FORMAT SPLITTER -->
+  <section class="py-24 bg-white" id="format-explainer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">Material Formats</span>
+        <h2 class="text-3xl font-heading font-bold text-gray-900">
+          Tailored for Every Validation Workflow
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Choose between primary blocks or pre-cut slides to match your throughput.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- FFPE Block -->
+        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col justify-between reveal">
+          <div class="space-y-4">
+            <div class="text-xs font-mono text-pci-blue font-bold tracking-widest uppercase">Format A</div>
+            <h3 class="text-xl font-heading font-bold text-gray-900">FFPE Blocks</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Formalin-Fixed Paraffin-Embedded cellular block containing homogeneous cell plugs spanning the entire block depth. Highly scalable for high-volume pathology institutions.
+            </p>
+            <ul class="space-y-1.5 text-xs text-gray-500 font-mono">
+              <li>• Yields 150 - 200 cuts per block</li>
+              <li>• Cut at 4-5 microns per lab's microtome</li>
+              <li>• Excellent for custom antibody development</li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-gray-200">
+            <p class="text-xs font-bold text-gray-400 mb-1">BEST FOR:</p>
+            <p class="text-sm font-semibold text-gray-900">Validation, customized assays, high volume runs.</p>
+          </div>
+        </div>
+
+        <!-- Slide cut -->
+        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col justify-between reveal" style="transition-delay: 150ms;">
+          <div class="space-y-4">
+            <div class="text-xs font-mono text-pci-blue font-bold tracking-widest uppercase">Format B</div>
+            <h3 class="text-xl font-heading font-bold text-gray-900">Pre-Cut Slides</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Pre-mounted 4-micron thick cellular cuts placed on charged silicate adhesive glass. Placed on the bottom section of grease-free glass, leaving the rest free for immediate local placement of patient resections.
+            </p>
+            <ul class="space-y-1.5 text-xs text-gray-500 font-mono">
+              <li>• Pre-baked, direct stain ready</li>
+              <li>• 18 months room-temperature shelf-life</li>
+              <li>• No microtome cuts equipment needed</li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-gray-200">
+            <p class="text-xs font-bold text-gray-400 mb-1">BEST FOR:</p>
+            <p class="text-sm font-semibold text-gray-900">Routine run validations, quality reviews, training classes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: CONTROL TYPE EXPLAINER (CSS Spectrums Diagram) -->
+  <section class="py-24 bg-gray-50 border-t border-gray-150" id="spectrum-diagram">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">Calibration Layouts</span>
+        <h2 class="text-3xl font-heading font-bold text-gray-900">
+          The Molecular Gradient Spectrum
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Our products organize distinct cell plugs next to each other, creating visual and quantitative density steps.
+        </p>
+      </div>
+
+      <!-- Live CSS Spectrum diagram representing block cell plugs -->
+      <div class="bg-white p-8 rounded-2xl border border-gray-200 max-w-3xl mx-auto reveal">
+        <h3 class="text-base font-semibold text-color-gray-900 mb-6 text-center font-mono uppercase tracking-wide">
+          TriControl™ Staining Thresholds Spectrum (p53 Example)
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+          <!-- Connective line -->
+          <div class="absolute top-12 left-1/6 right-1/6 h-[2px] bg-gray-100 -z-10 hidden md:block"></div>
+
+          <!-- Compartment 1: Null -->
+          <div class="flex flex-col items-center space-y-4">
+            <div class="w-20 h-20 rounded-full bg-slate-50 border-4 border-gray-200 shadow-inner flex items-center justify-center relative">
+              <span class="text-xs font-mono text-gray-400 uppercase font-bold">NULL</span>
+              <!-- Circular cell grid replica -->
+              <div class="absolute inset-2 rounded-full border border-gray-100 border-dotted"></div>
+            </div>
+            <div class="text-center">
+              <p class="text-sm font-semibold text-gray-900">Pellet A: mutated</p>
+              <p class="text-xs text-gray-400 font-mono uppercase mt-0.5">Stain Score: 0 (Negative)</p>
+            </div>
+          </div>
+
+          <!-- Compartment 2: Wildtype -->
+          <div class="flex flex-col items-center space-y-4">
+            <div class="w-20 h-20 rounded-full bg-sky-200/50 border-4 border-sky-400 shadow-inner flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-radial from-violet-400/30 to-sky-300/30"></div>
+              <span class="text-xs font-mono text-sky-700 uppercase font-bold">WT</span>
+              <div class="absolute inset-2 rounded-full border border-sky-300 border-dashed"></div>
+            </div>
+            <div class="text-center">
+              <p class="text-sm font-semibold text-gray-900">Pellet B: Wildtype</p>
+              <p class="text-xs text-sky-600 font-mono uppercase mt-0.5">Stain Score: 1-2+ (Hetero)</p>
+            </div>
+          </div>
+
+          <!-- Compartment 3: Overexpressed -->
+          <div class="flex flex-col items-center space-y-4">
+            <div class="w-20 h-20 rounded-full bg-amber-100/90 border-4 border-amber-600 shadow-md flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-radial from-amber-600/60 via-amber-700/35 to-amber-950"></div>
+              <span class="text-xs font-mono text-white uppercase font-bold">HIGH</span>
+              <div class="absolute inset-2 rounded-full border border-amber-500"></div>
+            </div>
+            <div class="text-center">
+              <p class="text-sm font-semibold text-gray-900">Pellet C: Mutant</p>
+              <p class="text-xs text-amber-700 font-mono uppercase mt-0.5">Stain Score: 3+ (Overexpressed)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-100 mt-8 pt-6">
+          <p class="text-xs text-center text-gray-500 max-w-lg mx-auto font-light">
+            Each plug contains a dense sequence-characterized population. Pathologists and computer systems (QuPath extension/AI engines) look at this sequence of plugs to verify the dynamic range.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: BIOMARKER TABLE -->
+  <section class="py-24 bg-white" id="biomarker-table-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">Regulatory Reference</span>
+        <h2 class="text-3xl font-heading font-bold text-gray-900">
+          Supported Diagnostic Biomarkers
+        </h2>
+        <p class="text-gray-600 mt-2">
+          A map of the clinical pathways and corresponding PCI quality products.
+        </p>
+      </div>
+
+      <!-- Table Scroll wrapper -->
+      <div class="overflow-x-auto border border-gray-150 rounded-xl shadow-sm reveal">
+        <table class="w-full text-left border-collapse bg-white">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-100 text-[10px] font-mono text-gray-500 uppercase tracking-wider">
+              <th class="px-6 py-4 font-semibold">Biomarker</th>
+              <th class="px-6 py-4 font-semibold">Diagnostic Path / Clinic Relevance</th>
+              <th class="px-6 py-4 font-semibold">Positive Target Patterns</th>
+              <th class="px-6 py-4 font-semibold">Target Catalog Codes</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 text-sm font-light text-gray-600">
+            <!-- Row p53 -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">p53</td>
+              <td class="px-6 py-4">High mutation rate biomarker in ovarian, colon, and breast carcinomas.</td>
+              <td class="px-6 py-4">Nuclear translocation, extreme wildtype patchy stains.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-P53 | PCI-SLD-P53</td>
+            </tr>
+            <!-- Row MMR -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">MMR Panel</td>
+              <td class="px-6 py-4">Mismatch proteins MLH1, MSH2, MSH6, PMS2 for Lynch syndrome detection.</td>
+              <td class="px-6 py-4">Intact nucleolar structures vs complete target gene loss.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-MMRQ | PCI-SLD-MMRQ</td>
+            </tr>
+            <!-- Row PDL1 -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">PD-L1</td>
+              <td class="px-6 py-4">Immunotherapy eligibility threshold validation across lung cancers.</td>
+              <td class="px-6 py-4">Uniform circular cellular membrane staining.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-PDL1H | PCI-SLD-PDL1H</td>
+            </tr>
+            <!-- Row HER2 -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">HER2</td>
+              <td class="px-6 py-4">Companion score testing for anti-HER2 therapies in breast tumours.</td>
+              <td class="px-6 py-4">Strong circular circumferential membrane borders.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-HER2 | PCI-SLD-HER2-AMP</td>
+            </tr>
+            <!-- Row p16 -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">p16</td>
+              <td class="px-6 py-4">HPV infection indicator used high specificity uterine cervix biopsy scores.</td>
+              <td class="px-6 py-4">Block nuclear cytoplasmic staining profiles.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-P16 | PCI-SLD-P16</td>
+            </tr>
+            <!-- Row PTEN -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">PTEN</td>
+              <td class="px-6 py-4">Tumor suppressor loss detection used breast, renal and prostate cancer logs.</td>
+              <td class="px-6 py-4">Cytoplasmic retention vs total genomic signal deletion.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-PTEN</td>
+            </tr>
+            <!-- Row BRAF -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">BRAFV600E</td>
+              <td class="px-6 py-4">Melanoma mutations screening validations in somatic biopsies.</td>
+              <td class="px-6 py-4">Localized cytoplasmic VE600 mutant immunostains.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-BRAF</td>
+            </tr>
+            <!-- Row MYC -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">MYC</td>
+              <td class="px-6 py-4">Burkitt and High Grade B-cell Lymphoma nuclear oncogene monitors.</td>
+              <td class="px-6 py-4">Absolute nuclear structural expression peaks.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-MYC</td>
+            </tr>
+            <!-- Row PR -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">PR</td>
+              <td class="px-6 py-4">Progesterone steroid receptor expression maps for breast cancers.</td>
+              <td class="px-6 py-4">Stable nuclear binding markers.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-PR</td>
+            </tr>
+            <!-- Row RB & FOLR1 -->
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900 font-mono">RB / FOLR1</td>
+              <td class="px-6 py-4">Ovarian carcinomas targets and lung endocrine loss evaluations.</td>
+              <td class="px-6 py-4">Dynamic membrane receptor profiles and suppression grids.</td>
+              <td class="px-6 py-4 text-xs font-mono text-pci-blue">PCI-FFPE-RB | PCI-FFPE-FOLR1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: CTA -->
+  <section class="py-16 bg-navy text-center relative overflow-hidden" id="explore-cta">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 relative z-10">
+      <h3 class="text-2xl font-heading font-bold text-white">Access High-Throughput Standards Today</h3>
+      <p class="text-gray-300 text-sm max-w-lg mx-auto font-light">
+        Deploy sequence-characterized validation blocks and Slides in your primary IHC staining queues.
+      </p>
+      <div class="pt-4">
+        <a href="products.html" class="bg-pci-blue hover:bg-pci-blue-light text-white font-semibold px-8 py-3.5 rounded-lg inline-flex items-center gap-2 shadow-lg transition-all hover-lift">
+          Browse Product Selection
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy border-t border-white/5 text-gray-400 py-16 relative z-10" id="main-global-footer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        
+        <!-- Col 1: Brand details -->
+        <div class="md:col-span-5 space-y-4">
+          <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="footer-logo">
+            <img src="pcilogo1.png" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+            <img src="FONT2.png" alt="PCI" class="h-8 md:h-9 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          </a>
+          <p class="text-sm font-light leading-relaxed max-w-sm">
+            "Precision IHC Controls. AI-Powered Assessment." <br>
+            Standardizing histology stains through reproducible cell line plugs.
+          </p>
+          <div class="text-xs space-y-1 font-mono text-gray-500 pt-2">
+            <div>📍 Helix Park, Houston, Texas 77030</div>
+            <div>✉ support@pcibio.com</div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="md:col-span-3 space-y-4">
+          <h4 class="text-white font-heading font-semibold text-xs tracking-widest uppercase">Quick Links</h4>
+          <nav class="flex flex-col space-y-2.5 text-sm">
+            <a href="index.html" class="hover:text-pci-blue-light transition-colors">Home</a>
+            <a href="products.html" class="hover:text-pci-blue-light transition-colors">Product Catalog</a>
+            <a href="controls.html" class="hover:text-pci-blue-light transition-colors">IHC QC Controls</a>
+            <a href="ai.html" class="hover:text-pci-blue-light transition-colors">AI & Viewer</a>
+            <a href="education.html" class="hover:text-pci-blue-light transition-colors">Digital Pathology Education</a>
+            <a href="about.html" class="hover:text-pci-blue-light transition-colors">About PCI & Team</a>
+            <a href="contact.html" class="hover:text-pci-blue-light transition-colors">Contact US</a>
+          </nav>
+        </div>
+
+        <!-- Col 3: Product Platform callout -->
+        <div class="md:col-span-4 space-y-4">
+          <h4 class="text-white font-heading font-semibold text-xs tracking-widest uppercase">Our Platform</h4>
+          <p class="text-sm font-light leading-relaxed">
+            New: Digital Slide Viewer is launching soon for external beta cohorts at <strong class="text-gray-200">pcibio.ai</strong>.
+          </p>
+          <div class="pt-2">
+            <a href="viewer.html" class="inline-flex items-center gap-1.5 bg-pci-blue hover:bg-pci-blue-light text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all" id="btn-footer-launch">
+              <span>Launch Slider Demo</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
+        <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
+        <div class="flex gap-4 mt-4 sm:mt-0">
+          <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+          <span>|</span>
+          <a href="#" class="hover:text-gray-400">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

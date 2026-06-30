@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — Precision Cellular Immunology</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='6' stroke-dasharray='3 1'/><circle cx='12' cy='12' r='3.5' fill='%2310b981'/><circle cx='12' cy='3.5' r='1.5' fill='%2310b981'/><circle cx='5' cy='8.5' r='1.5' fill='%2310b981'/><circle cx='19' cy='8.5' r='1.5' fill='%2310b981'/><circle cx='7.5' cy='18' r='1.5' fill='%2310b981'/><circle cx='16.5' cy='18' r='1.5' fill='%2310b981'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-50/50 text-gray-700 antialiased font-sans">
+
+  <!-- HEADER NAVIGATION -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="nav-logo">
+          <img src="pcilogo1.png" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          <img src="FONT2.png" id="nav-logo-text" alt="PCI" class="h-8 md:h-9 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="index.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-home">Home</a>
+          <a href="products.html" class="nav-link active text-white text-sm font-semibold transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-white" id="link-products">Products</a>
+          <a href="controls.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-controls">IHC Controls</a>
+          <a href="ai.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-ai">AI & Viewer</a>
+          <a href="education.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-education">Education</a>
+          <a href="about.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-about">About</a>
+          <a href="contact.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-contact">Contact</a>
+          
+          <!-- Shopping Cart Header Icon -->
+          <button id="cart-toggle-btn" class="relative text-white/85 hover:text-white transition-colors p-2 flex items-center">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span id="cart-badge" class="hidden absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full min-w-[16px] text-center border border-emerald-600 shadow-sm animate-pulse">0</span>
+          </button>
+
+          <a href="viewer.html" class="bg-transparent hover:bg-white hover:text-black text-white text-xs font-semibold px-4 py-2 rounded-lg border border-white/40 transition-all duration-150 flex items-center gap-1.5" id="btn-viewer-launch">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Slide Viewer
+          </a>
+        </nav>
+
+        <!-- Mobile Header Icons -->
+        <div class="flex items-center lg:hidden gap-2">
+          <!-- Mobile Shopping Cart Icon -->
+          <button id="cart-toggle-btn-mobile" class="relative text-white hover:text-emerald-400 transition-colors p-2 flex items-center">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span id="cart-badge-mobile" class="hidden absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full min-w-[16px] text-center shadow-sm">0</span>
+          </button>
+          
+          <button id="mobile-menu-btn" class="text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 top-20 bg-white z-40 flex flex-col px-6 py-8 space-y-6 overflow-y-auto animate-fade-in border-t border-gray-100">
+      <a href="index.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Home</a>
+      <a href="products.html" class="text-pci-blue text-base font-bold border-b border-gray-100 pb-2">Products</a>
+      <a href="controls.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">IHC Controls</a>
+      <a href="ai.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">AI & Viewer</a>
+      <a href="education.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Education</a>
+      <a href="about.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">About</a>
+      <a href="contact.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Contact</a>
+      <a href="viewer.html" class="bg-pci-blue text-white text-center py-3 rounded-lg font-bold" id="btn-mobile-viewer-launch">Launch Digital Viewer</a>
+    </div>
+  </header>
+
+  <!-- SMALL TOP ACCENT SECTION -->
+  <section class="bg-navy pt-28 pb-4 relative overflow-hidden" id="details-hero-section">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(37,99,235,0.06),transparent_50%)]"></div>
+  </section>
+
+  <!-- BREADCRUMBS BAR -->
+  <div class="bg-slate-100 border-b border-slate-200 py-3 relative z-10" id="breadcrumbs-bar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center space-x-2 text-xs font-medium text-slate-500">
+        <a href="products.html" class="hover:text-emerald-600 transition-colors">PCI Products</a>
+        <span>›</span>
+        <span class="text-slate-800" id="breadcrumb-current-product">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN PRODUCT CONTAINER -->
+  <section class="py-12 relative z-10" id="product-detail-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Back Link -->
+      <a href="products.html" class="inline-flex items-center text-xs font-semibold text-emerald-700 hover:text-emerald-600 mb-8 gap-1.5 transition-colors group">
+        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Products Catalog
+      </a>
+
+      <!-- Error State / Loader (hidden by default) -->
+      <div id="product-loading-state" class="hidden text-center py-20 bg-white rounded-3xl border border-slate-200 shadow-sm">
+        <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+        <p class="text-slate-500 text-sm">Retrieving product laboratory specifications...</p>
+      </div>
+
+      <div id="product-error-state" class="hidden text-center py-20 bg-white rounded-3xl border border-slate-200 shadow-sm px-4">
+        <svg class="w-12 h-12 text-rose-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <h3 class="text-lg font-bold text-slate-800 mb-2">Product Not Found</h3>
+        <p class="text-slate-500 text-sm max-w-md mx-auto mb-6">We could not find a product with the provided code. It might have been updated or discontinued in our recent laboratory inventory run.</p>
+        <a href="products.html" class="bg-pci-blue hover:bg-pci-blue-light text-white text-xs font-semibold px-5 py-2.5 rounded-lg transition-colors">Return to Catalog</a>
+      </div>
+
+      <!-- Main Layout Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12" id="product-content-grid">
+        
+        <!-- Left Thumbnail Bar + Center Image Box -->
+        <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-12 gap-4">
+          
+          <!-- Vertical Thumbnails Sidebar (Left in desktop) -->
+          <div class="md:col-span-2 order-2 md:order-1 flex md:flex-col gap-3 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0" id="product-gallery-thumbnails">
+            <!-- Dynamic thumbnails filled by JavaScript -->
+          </div>
+
+          <!-- Main Gallery Slider Box (Right/Center) -->
+          <div class="md:col-span-10 order-1 md:order-2 bg-white rounded-3xl border border-slate-200/80 shadow-sm p-6 flex items-center justify-center relative group min-h-[400px]">
+            <!-- Prev Arrow -->
+            <button id="gallery-prev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/10 hover:bg-slate-900/35 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 active:scale-95 focus:outline-none backdrop-blur-sm z-10">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            
+            <!-- Main Product Image Display -->
+            <div class="w-full h-full flex items-center justify-center max-h-[450px]">
+              <img id="main-product-image" src="" alt="PCI Lab Standard Product Photo" class="max-w-full max-h-[420px] object-contain rounded-xl select-none animate-fade-in" referrerPolicy="no-referrer" />
+            </div>
+
+            <!-- Next Arrow -->
+            <button id="gallery-next" class="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/10 hover:bg-slate-900/35 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 active:scale-95 focus:outline-none backdrop-blur-sm z-10">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Details, Description, Order Selector -->
+        <div class="lg:col-span-5 space-y-8 flex flex-col justify-between">
+          
+          <div class="space-y-4">
+            <!-- Product Badges & Metadata -->
+            <div class="flex flex-wrap gap-2 items-center">
+              <span id="product-type-badge" class="badge-pci bg-indigo-50 text-indigo-600 font-mono text-[9px] uppercase tracking-wider">Loading...</span>
+              <span id="product-media-badge" class="badge-pci bg-slate-100 text-slate-600 font-mono text-[9px] uppercase tracking-wider">Loading...</span>
+            </div>
+
+            <!-- Product Title -->
+            <h1 id="product-title" class="text-3xl lg:text-4xl font-heading font-bold text-gray-900 tracking-tight leading-none">Loading Product...</h1>
+            
+            <!-- Product Code -->
+            <p id="product-code" class="text-xs text-slate-400 font-mono">CODE: LOADING...</p>
+            
+            <!-- Product Price -->
+            <div id="product-price" class="text-2xl font-bold font-mono text-slate-900 pt-2">$0.00</div>
+
+            <div class="border-t border-slate-200/60 my-6"></div>
+
+            <!-- Short Description -->
+            <h3 id="product-short-desc" class="text-base font-semibold text-slate-800 leading-relaxed">Loading...</h3>
+            
+            <!-- Long Description -->
+            <p id="product-long-desc" class="text-sm text-slate-500 leading-relaxed">Loading descriptive pathology details...</p>
+          </div>
+
+          <div class="space-y-6 pt-6">
+            <!-- Interactive Quantity Selector + Add to Cart -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <!-- Selector -->
+              <div class="flex items-center justify-between border border-slate-300 rounded-xl px-4 py-3 bg-white max-w-[150px] shadow-sm">
+                <button id="qty-minus" class="text-slate-400 hover:text-slate-800 text-lg font-bold px-1 transition-colors select-none focus:outline-none">-</button>
+                <span id="qty-display" class="font-bold font-mono text-slate-800 text-sm select-none">1</span>
+                <button id="qty-plus" class="text-slate-400 hover:text-slate-800 text-lg font-bold px-1 transition-colors select-none focus:outline-none">+</button>
+              </div>
+              
+              <!-- Add to Cart Button -->
+              <button id="add-to-cart-btn" class="flex-1 bg-slate-800 hover:bg-slate-950 text-white text-xs font-bold px-8 py-4 rounded-xl transition-all shadow-md active:scale-[0.98] focus:outline-none flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                Add To Cart
+              </button>
+            </div>
+
+            <!-- Added Notification Toast (inline, hidden) -->
+            <div id="cart-toast" class="hidden bg-emerald-50 text-emerald-800 p-3 rounded-xl border border-emerald-100 flex items-center gap-2.5 text-xs animate-fade-in font-medium">
+              <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Product successfully added to your cart! Click the cart icon in the navigation to checkout.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BOTTOM SECTION: SPECIFICATIONS & VERIFICATION QR -->
+      <div class="mt-20 border-t border-slate-200 pt-16 grid grid-cols-1 lg:grid-cols-12 gap-12" id="specifications-section">
+        
+        <!-- Specification Metadata Table (Left) -->
+        <div class="lg:col-span-8 space-y-6">
+          <h2 class="text-xl font-heading font-semibold text-slate-900 flex items-center gap-2">
+            <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
+            Laboratory Quality Control Specifications
+          </h2>
+          <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+            <table class="w-full text-left border-collapse text-xs md:text-sm">
+              <tbody>
+                <tr class="border-b border-slate-100 bg-slate-50/50">
+                  <td class="p-4 font-semibold text-slate-500 w-1/3">Target BioMarker</td>
+                  <td id="spec-biomarker" class="p-4 font-mono font-bold text-slate-800">Loading...</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="p-4 font-semibold text-slate-500">IHC Control Media</td>
+                  <td id="spec-media" class="p-4 font-medium text-slate-800">Loading...</td>
+                </tr>
+                <tr class="border-b border-slate-100 bg-slate-50/50">
+                  <td class="p-4 font-semibold text-slate-500">Control Type</td>
+                  <td id="spec-type" class="p-4 font-semibold text-indigo-600">Loading...</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="p-4 font-semibold text-slate-500">Validated Cell Lines</td>
+                  <td id="spec-cell-lines" class="p-4 font-mono text-slate-800">Loading...</td>
+                </tr>
+                <tr class="border-b border-slate-100 bg-slate-50/50">
+                  <td class="p-4 font-semibold text-slate-500">Inventory Product Code</td>
+                  <td id="spec-code" class="p-4 font-mono text-slate-800">Loading...</td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-semibold text-slate-500">Official Squarespace Store Link</td>
+                  <td class="p-4">
+                    <a id="spec-external-url" href="" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:text-emerald-600 font-semibold inline-flex items-center gap-1">
+                      <span>View on pcibio.com Shop</span>
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Verification QR Code (Right) -->
+        <div class="lg:col-span-4 bg-emerald-950/5 text-slate-800 border border-emerald-900/10 rounded-2xl p-6 flex flex-col items-center text-center justify-between shadow-sm">
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold tracking-wider text-emerald-900 uppercase font-mono">Scan for Laboratory Verification</h3>
+            <p class="text-xs text-slate-500 leading-relaxed max-w-xs">Scan this QR code using a mobile device to visit this product's direct scientific quality validation page on our web portal.</p>
+          </div>
+          
+          <div class="my-4 bg-white p-3 rounded-xl shadow-sm border border-slate-200">
+            <img id="product-qr-code" src="" alt="PCI Product QR Code Verification" class="w-36 h-36 select-none" referrerPolicy="no-referrer" />
+          </div>
+
+          <p id="qr-caption-code" class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">PCI-FFPE-P53</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS CAROUSEL -->
+  <section class="py-16 bg-slate-50 border-t border-slate-200" id="related-products-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-xl font-heading font-semibold text-slate-900 mb-8 flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+        Related Reference Controls
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="related-products-grid">
+        <!-- Dynamic cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[101] transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between">
+    <!-- Cart Header -->
+    <div class="p-6 border-b border-slate-100 flex items-center justify-between">
+      <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+        Your Laboratory Order Cart
+      </h3>
+      <button id="cart-close-btn" class="text-slate-400 hover:text-slate-800 p-2 rounded-lg hover:bg-slate-50 transition-all focus:outline-none">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <!-- Cart Body / Items List -->
+    <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+      <!-- Dynamic cart items -->
+      <div id="cart-empty-state" class="text-center py-16 space-y-4">
+        <svg class="w-16 h-16 text-slate-300 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <p class="text-sm font-semibold text-slate-700">Your cart is currently empty</p>
+        <p class="text-xs text-slate-400 max-w-xs mx-auto">Select histological controls and slides from our catalog to build your laboratory validation kit.</p>
+        <div class="pt-4">
+          <button id="btn-cart-continue" class="bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-colors">Browse Catalog</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Footer / Summary -->
+    <div id="cart-footer" class="p-6 border-t border-slate-100 bg-slate-50 space-y-4">
+      <div class="flex items-center justify-between text-sm">
+        <span class="font-semibold text-slate-500">Subtotal</span>
+        <span id="cart-subtotal" class="font-mono font-bold text-slate-800 text-lg">$0.00</span>
+      </div>
+      <p class="text-[10px] text-slate-400 leading-relaxed">Tax and institutional clinical shipping calculations will be resolved during final validation check.</p>
+      
+      <button id="cart-checkout-btn" class="w-full bg-slate-800 hover:bg-slate-950 text-white text-xs font-bold py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+        Proceed to Checkout
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT SUCCESS MODAL (INLINE, HIDDEN) -->
+  <div id="checkout-modal-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-md z-[110] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center justify-center px-4">
+    <div id="checkout-modal" class="bg-white rounded-3xl max-w-md w-full p-8 border border-slate-200/80 shadow-2xl space-y-6 text-center transform scale-95 transition-all duration-300">
+      <div class="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto border border-emerald-100">
+        <svg class="w-8 h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-heading font-bold text-slate-900">Laboratory Order Proposed</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Your order proposal has been compiled. Our clinical coordination team in Houston, Texas will contact you shortly at your institutional address to resolve purchasing terms.</p>
+      </div>
+      <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl text-left text-xs font-mono text-slate-600 space-y-1">
+        <div>📍 Helix Park, Houston, Texas</div>
+        <div>✉ support@pcibio.com</div>
+      </div>
+      <button id="checkout-modal-close-btn" class="w-full bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold py-3 rounded-xl transition-colors">Continue Browsing</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy border-t border-white/5 text-gray-400 py-16 relative z-10" id="main-global-footer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        
+        <!-- Col 1: Brand details -->
+        <div class="md:col-span-5 space-y-4">
+          <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="footer-logo">
+            <img src="pcilogo1.png" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+            <img src="FONT2.png" alt="PCI" class="h-8 md:h-9 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          </a>
+          <p class="text-sm font-light leading-relaxed max-w-sm">
+            "Precision IHC Controls. AI-Powered Assessment." <br>
+            Standardizing histology stains through reproducible cell line plugs.
+          </p>
+          <div class="text-xs space-y-1 font-mono text-gray-500 pt-2">
+            <div>📍 Helix Park, Houston, Texas 77030</div>
+            <div>✉ support@pcibio.com</div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="md:col-span-3 space-y-4">
+          <h4 class="text-white font-heading font-semibold text-xs tracking-widest uppercase">Quick Links</h4>
+          <nav class="flex flex-col space-y-2.5 text-sm">
+            <a href="index.html" class="hover:text-pci-blue-light transition-colors">Home</a>
+            <a href="products.html" class="hover:text-pci-blue-light transition-colors">Product Catalog</a>
+            <a href="controls.html" class="hover:text-pci-blue-light transition-colors">IHC QC Controls</a>
+            <a href="ai.html" class="hover:text-pci-blue-light transition-colors">AI & Viewer</a>
+            <a href="education.html" class="hover:text-pci-blue-light transition-colors">Digital Pathology Education</a>
+            <a href="about.html" class="hover:text-pci-blue-light transition-colors">About PCI & Team</a>
+            <a href="contact.html" class="hover:text-pci-blue-light transition-colors">Contact Us</a>
+          </nav>
+        </div>
+
+        <!-- Col 3: Product Platform callout -->
+        <div class="md:col-span-4 space-y-4">
+          <h4 class="text-white font-heading font-semibold text-xs tracking-widest uppercase">Our Platform</h4>
+          <p class="text-sm font-light leading-relaxed">
+            New: Digital Slide Viewer is launching soon for external beta cohorts at <strong class="text-gray-200">pcibio.ai</strong>.
+          </p>
+          <div class="pt-2">
+            <a href="viewer.html" class="inline-flex items-center gap-1.5 bg-pci-blue hover:bg-pci-blue-light text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all" id="btn-footer-launch">
+              <span>Launch Slider Demo</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
+        <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
+        <div class="flex gap-4 mt-4 sm:mt-0">
+          <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+          <span>|</span>
+          <a href="#" class="hover:text-gray-400">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Loaded global product catalog -->
+  <script src="js/products.js"></script>
+  <!-- Dedicated product view controller script -->
+  <script src="js/product.js"></script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Slide Viewer — Precision Cellular Immunology</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='6' stroke-dasharray='3 1'/><circle cx='12' cy='12' r='3.5' fill='%232563eb'/><circle cx='12' cy='3.5' r='1.5' fill='%232563eb'/><circle cx='5' cy='8.5' r='1.5' fill='%232563eb'/><circle cx='19' cy='8.5' r='1.5' fill='%232563eb'/><circle cx='7.5' cy='18' r='1.5' fill='%232563eb'/><circle cx='16.5' cy='18' r='1.5' fill='%232563eb'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-600 antialiased font-sans">
+
+  <!-- HEADER NAVIGATION -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="nav-logo">
+          <img src="pcilogo1.png" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          <img src="FONT2.png" id="nav-logo-text" alt="PCI" class="h-8 md:h-9 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="index.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-home">Home</a>
+          <a href="products.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-products">Products</a>
+          <a href="controls.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-controls">IHC Controls</a>
+          <a href="ai.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-ai">AI & Viewer</a>
+          <a href="education.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-education">Education</a>
+          <a href="about.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-about">About</a>
+          <a href="contact.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-contact">Contact</a>
+          <a href="viewer.html" class="bg-transparent hover:bg-white hover:text-black text-white text-xs font-semibold px-4 py-2 rounded-lg border border-white/40 transition-all duration-150 flex items-center gap-1.5" id="btn-viewer-launch">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Slide Viewer
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" class="text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 top-20 bg-white z-40 flex flex-col px-6 py-8 space-y-6 overflow-y-auto animate-fade-in border-t border-gray-100">
+      <a href="index.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Home</a>
+      <a href="products.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Products</a>
+      <a href="controls.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">IHC Controls</a>
+      <a href="ai.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">AI & Viewer</a>
+      <a href="education.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Education</a>
+      <a href="about.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">About</a>
+      <a href="contact.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Contact</a>
+      <a href="viewer.html" class="bg-pci-blue text-white text-center py-3 rounded-lg font-bold" id="btn-mobile-viewer-launch">Launch Digital Viewer</a>
+    </div>
+  </header>
+
+  <!-- VIEWER HERO -->
+  <section class="bg-navy pt-32 pb-16 relative overflow-hidden" id="viewer-hero-section">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(37,99,235,0.06),transparent_50%)]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
+      <span class="badge-pci badge-blue">WSI Sandbox Preview</span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight">
+        PCI Digital Slide Viewer
+      </h1>
+      <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
+        Test our high-performance tiling engine. View whole-slide clinical scans at up to 40x resolution, toggle scoring overlays, and simulate local file uploads.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURES ROW (3 columns) -->
+  <section class="py-12 bg-gray-50 border-y border-gray-150" id="viewer-features">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+        <div class="space-y-2">
+          <h3 class="text-base font-bold text-gray-900 flex items-center justify-center md:justify-start gap-2">
+            <svg class="h-5 w-5 text-pci-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m4-3H6" /></svg>
+            40x Instant Magnification
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed max-w-sm">
+            View whole slide macro imagery down to sub-micron cell granules with optimized zoom configurations.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-base font-bold text-gray-900 flex items-center justify-center md:justify-start gap-2">
+            <svg class="h-5 w-5 text-pci-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+            Universal Format Decoder
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed max-w-sm">
+            Supports professional scanner formats (Aperio SVS, Hamamatsu NDPI, 3DHISTECH MRXS) seamlessly.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-base font-bold text-gray-900 flex items-center justify-center md:justify-start gap-2">
+            <svg class="h-5 w-5 text-pci-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364.364l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+            Interactive ML Mask Overlay
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed max-w-sm">
+            Toggle automated cell nuclei and tissue area overlays for rapid expression calculations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE VIEWER MOCKUP BOARD -->
+  <section class="py-20 bg-white" id="live-interactive-sandbox-preview">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- MAIN WORKSPACE BOX -->
+      <div class="bg-gray-950 rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col h-[520px] w-full relative z-20">
+        
+        <!-- TOOLBAR TOP -->
+        <div class="bg-slate-900 border-b border-white/10 px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4 z-30">
+          <!-- Zoom steps -->
+          <div class="flex flex-wrap gap-1.5 justify-center">
+            <button class="zoom-ctrl-btn bg-pci-blue text-white px-3 py-1.5 rounded text-xs font-mono font-bold hover:scale-[1.02]" data-zoom-scale="1" data-zoom-text="1x">1x</button>
+            <button class="zoom-ctrl-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-3 py-1.5 rounded text-xs font-mono font-bold hover:scale-[1.02]" data-zoom-scale="2" data-zoom-text="5x">5x</button>
+            <button class="zoom-ctrl-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-3 py-1.5 rounded text-xs font-mono font-bold hover:scale-[1.02]" data-zoom-scale="3.5" data-zoom-text="10x">10x</button>
+            <button class="zoom-ctrl-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-3 py-1.5 rounded text-xs font-mono font-bold hover:scale-[1.02]" data-zoom-scale="5" data-zoom-text="20x">20x</button>
+            <button class="zoom-ctrl-btn bg-gray-800 text-gray-300 hover:bg-gray-700 px-3 py-1.5 rounded text-xs font-mono font-bold hover:scale-[1.02]" data-zoom-scale="7.5" data-zoom-text="40x">40x</button>
+          </div>
+
+          <!-- Tool states & toggles -->
+          <div class="flex items-center space-x-6">
+            <!-- Overlay toggle switch slider -->
+            <label class="inline-flex items-center cursor-pointer text-xs text-gray-300 font-mono">
+              <input type="checkbox" id="ai-overlay-toggle" checked class="sr-only peer">
+              <div class="relative w-9 h-5 bg-gray-700 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pci-blue"></div>
+              <span class="ms-2">AI Overlay Mask</span>
+            </label>
+
+            <!-- Separator -->
+            <span class="text-white/10 hidden sm:inline">|</span>
+
+            <!-- Action buttons -->
+            <div class="flex items-center space-x-2">
+              <button class="text-gray-300 p-2 hover:bg-white/5 rounded focus:outline-none" title="Drag Pan Tool">
+                <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0V12m-3 .5V12m3 .5V11m3 .5V9a1.5 1.5 0 113 0v4.5m-3-1.5V12m0-3.5V6a1.5 1.5 0 113 0v10M14 12V9a1.5 1.5 0 013 0v11a4 4 0 01-4 4h-3a5 5 0 01-5-5v-1.5" /></svg>
+              </button>
+              <button class="text-gray-300 p-2 hover:bg-white/5 rounded focus:outline-none" title="Fit Screen Bounds">
+                <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CANVAS MAIN (Interactive, draggable, zoomable) -->
+        <div id="slide-viewer-viewport" class="flex-1 overflow-hidden relative flex items-center justify-center bg-zinc-950 cursor-grab vignette select-none z-10 transition-colors duration-300">
+          
+          <!-- Outer wrapping container for slide canvas positioning -->
+          <div id="slide-canvas" class="w-[600px] h-[600px] absolute transition-transform duration-300 ease-out origin-center shrink-0 pointer-events-auto cursor-grab" style="background: url('https://images.unsplash.com/photo-1579165466511-71012166551b?auto=format&fit=crop&q=80&w=1000') no-repeat center; background-size: cover;">
+            
+            <!-- Real time cellular overlay grids representing stained tumor targets -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <!-- AI score tracking overlays -->
+              <div class="ai-detection-cell absolute top-[20%] left-[25%] border border-emerald-500/50 bg-emerald-500/10 rounded-full w-28 h-28 flex flex-col items-center justify-center text-center text-white pointer-events-none transition-opacity duration-300">
+                <span class="text-[9px] font-mono text-emerald-300-light font-bold">CELLULAR MATRIX A</span>
+                <span class="text-xs font-mono font-bold text-white">DAB: 91.5%</span>
+              </div>
+
+              <div class="ai-detection-cell absolute bottom-[25%] right-[20%] border border-amber-500/50 bg-amber-500/10 rounded-full w-24 h-24 flex flex-col items-center justify-center text-center text-white pointer-events-none transition-opacity duration-300">
+                <span class="text-[9px] font-mono text-amber-300 font-bold">MUTANT GROUP B</span>
+                <span class="text-xs font-mono font-bold text-white">DAB: 41.2%</span>
+              </div>
+              
+              <div class="ai-detection-cell absolute top-[45%] right-[35%] border border-rose-500/40 bg-rose-500/5 rounded-full w-14 h-14 flex items-center justify-center text-center pointer-events-none transition-opacity duration-300">
+                <span class="text-[8px] font-mono text-rose-300 font-bold">BACKGROUND</span>
+              </div>
+            </div>
+
+            <!-- Standard slide physical template design -->
+            <div class="absolute inset-0 border border-white/5 rounded"></div>
+            
+            <!-- Reticule grids -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+              <div class="absolute w-[400px] h-[400px] rounded-full border border-white"></div>
+              <div class="absolute w-[200px] h-[200px] rounded-full border border-white"></div>
+            </div>
+          </div>
+
+          <!-- COMPASS HUD COORDINATES ON BACKGROUND -->
+          <div class="absolute top-4 left-4 bg-gray-950/85 backdrop-blur-md px-3.5 py-2.5 rounded-lg border border-white/10 text-[10px] font-mono text-gray-400 space-y-1 select-none z-45">
+            <div class="text-pci-blue-light font-semibold uppercase">OpenSlide Live-Telemetry</div>
+            <div>STATUS: <span class="text-emerald-400">SERVER ONLINE</span></div>
+            <div>COORDINATES: X: [<span id="coord-x" class="text-white">52140</span>] | Y: [<span id="coord-y" class="text-white">28400</span>]</div>
+            <div>MAGNIFICATION: <span id="mag-value" class="text-white font-bold">1x</span></div>
+          </div>
+
+          <!-- MINI HUD COMPASS Compass visual (minimap) -->
+          <div class="absolute top-4 right-4 w-16 h-16 bg-gray-900 border border-white/15 rounded overflow-hidden select-none z-45">
+            <div class="w-full h-full opacity-40 bg-cover" style="background: url('https://images.unsplash.com/photo-1579165466511-71012166551b?auto=format&fit=crop&q=80&w=200') no-repeat center;"></div>
+            <!-- Indicator red tracking camera box -->
+            <div id="minimap-indicator" class="absolute w-8 h-8 border border-red-500 scale-75 transition-all duration-150" style="top: 32px; left: 32px; transform: translate(-50%, -50%);"></div>
+          </div>
+
+          <!-- FLOATING RESET TIP INDICATOR -->
+          <div class="absolute bottom-4 left-4 text-[10px] font-mono text-gray-500 max-w-xs leading-relaxed lowercase z-45">
+            * drag visual canvas above or scroll zoom buttons to simulate whole slide navigation.
+          </div>
+        </div>
+
+        <!-- BOTTOM CONTROLLER BAR -->
+        <div class="bg-slate-900 border-t border-white/10 p-4 flex flex-col md:flex-row items-center justify-between gap-4 z-30">
+          <!-- Slide file metadata -->
+          <div class="flex items-center space-x-3">
+            <div class="w-2.5 h-2.5 rounded-full bg-pci-blue animate-pulse"></div>
+            <span class="text-xs text-gray-300 font-mono">ACTIVE FILE: <strong class="text-white">PDL1-BREAST-SAMPLE-4012.svs</strong> (4.21 GB)</span>
+          </div>
+
+          <!-- Drag and Drop local simulation -->
+          <div class="flex items-center w-full md:w-auto">
+            <div id="dropzone-area" class="flex-1 md:flex-none border border-dashed border-white/20 hover:border-pci-blue hover:bg-white/5 rounded-xl px-4 py-2 text-center cursor-pointer transition-all duration-150 flex items-center justify-center gap-2">
+              <input type="file" id="slide-file-selector" class="hidden" accept=".svs,.ndpi,.mrxs,.scn,.tiff,.png,.jpg">
+              <span id="uploader-status-text" class="text-xs text-gray-450 font-mono flex items-center gap-2">
+                <svg class="h-4.5 w-4.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                Drop whole-slide file to simulate parsing
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTAL BUTTON BELOW -->
+      <div class="mt-8 text-center reveal">
+        <a href="https://pcibio.ai" target="_blank" class="bg-pci-blue hover:bg-pci-blue-light hover-lift text-white font-bold px-8 py-4 rounded-xl shadow-lg inline-flex items-center gap-2.5 transition-all text-sm">
+          <span>Launch Full Production Tool at pcibio.ai</span>
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: HOW TO USE SECTION -->
+  <section class="py-24 bg-gray-50 border-y border-gray-150" id="viewer-execution-steps">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">Operator Guide</span>
+        <h2 class="text-3xl font-heading font-bold text-gray-900">
+          How to Navigate Your Slide runs
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Verify, digitize, and review staining profiles in three simple steps.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- step 1 -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-200 text-center space-y-4 reveal flex flex-col items-center">
+          <div class="w-12 h-12 bg-blue-50 text-pci-blue rounded-full flex items-center justify-center font-bold font-mono text-sm shadow-sm">01</div>
+          <h3 class="text-lg font-bold text-gray-900">Configure Local Runs</h3>
+          <p class="text-sm text-gray-600 leading-relaxed max-w-xs">
+            Insert a PCI slide carrying sequence-characterized cells in your routine pathology automated staining run.
+          </p>
+        </div>
+
+        <!-- step 2 -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-200 text-center space-y-4 reveal flex flex-col items-center" style="transition-delay: 150ms;">
+          <div class="w-12 h-12 bg-blue-50 text-pci-blue rounded-full flex items-center justify-center font-bold font-mono text-sm shadow-sm">02</div>
+          <h3 class="text-lg font-bold text-gray-900">Scan and Upload</h3>
+          <p class="text-sm text-gray-600 leading-relaxed max-w-xs">
+            Export the high-res virtual slide (SVS/NDPI) from your micro-scanner and drop it directly in our cloud portal.
+          </p>
+        </div>
+
+        <!-- step 3 -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-200 text-center space-y-4 reveal flex flex-col items-center" style="transition-delay: 300ms;">
+          <div class="w-12 h-12 bg-pci-blue text-white rounded-full flex items-center justify-center font-bold font-mono text-sm shadow-sm">03</div>
+          <h3 class="text-lg font-bold text-gray-900">Review AI overlays</h3>
+          <p class="text-sm text-gray-600 leading-relaxed max-w-xs">
+            Evaluate stain separations, read calculated scoring TPS ranges, and compare results to standard controls.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: SUPPORTED FORMATS TABLE -->
+  <section class="py-24 bg-white" id="compatibility-formats-table">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">Compatibility</span>
+        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-gray-900 tracking-tight">
+          Supported Imaging Formats
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Our OpenSlide engine is compatible with globally utilized scanner systems.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto border border-gray-150 rounded-xl shadow-sm reveal">
+        <table class="w-full text-left border-collapse bg-white text-sm font-light text-gray-650">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-100 font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+              <th class="px-6 py-4 font-semibold">Format</th>
+              <th class="px-6 py-4 font-semibold">Manufacturer Scanner</th>
+              <th class="px-6 py-4 font-semibold">Decodes</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 font-sans">
+            <tr>
+              <td class="px-6 py-4 font-mono font-bold text-gray-900">.SVS</td>
+              <td class="px-6 py-4">Aperio Technologies (Leica Biosystems)</td>
+              <td class="px-6 py-4 text-emerald-500 font-semibold font-mono tracking-wide">✓ FULL SUPPORT</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-mono font-bold text-gray-900">.NDPI</td>
+              <td class="px-6 py-4">Hamamatsu Photonics</td>
+              <td class="px-6 py-4 text-emerald-500 font-semibold font-mono tracking-wide">✓ FULL SUPPORT</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-mono font-bold text-gray-900">.MRXS</td>
+              <td class="px-6 py-4">3DHISTECH (Pannoramic Scanners)</td>
+              <td class="px-6 py-4 text-emerald-500 font-semibold font-mono tracking-wide">✓ FULL SUPPORT</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-mono font-bold text-gray-900">.SCN</td>
+              <td class="px-6 py-4">Leica Biosystems</td>
+              <td class="px-6 py-4 text-emerald-500 font-semibold font-mono tracking-wide">✓ FULL SUPPORT</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-mono font-bold text-gray-900">.TIFF / .PNG / .JPG</td>
+              <td class="px-6 py-4">Standard Static Flat Imagery</td>
+              <td class="px-6 py-4 text-emerald-500 font-semibold font-mono tracking-wide">✓ FULL SUPPORT</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: FAQ ACCORDION -->
+  <section class="py-24 bg-gray-50 border-t border-gray-150" id="faq-accordions-catalog">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">FAQ</span>
+        <h2 class="text-3xl font-heading font-bold text-gray-900">
+          Frequently Answered Inquiries
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Technical specifications regarding security and image rendering.
+        </p>
+      </div>
+
+      <!-- Accordion Grid -->
+      <div class="space-y-4" id="faq-accordions-container">
+        
+        <!-- Item 1 -->
+        <div class="faq-item bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300">
+          <button class="faq-header w-full px-6 py-5 text-left font-serif font-bold text-gray-900 flex justify-between items-center focus:outline-none select-none">
+            <span class="font-heading text-sm sm:text-base font-semibold">What file sizes are supported?</span>
+            <svg class="faq-icon h-5 w-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed font-light">
+              Our cloud-hosted OpenSlide engine supports gigapixel whole slide images (WSI) exceeding 40 Gigabytes. For extremely massive files, our secure uploader uses segmented AWS multipart uploads, preventing browser crashes and connection drops.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="faq-item bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300">
+          <button class="faq-header w-full px-6 py-5 text-left font-serif font-bold text-gray-900 flex justify-between items-center focus:outline-none select-none">
+            <span class="font-heading text-sm sm:text-base font-semibold">Is my clinical patient data secure?</span>
+            <svg class="faq-icon h-5 w-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed font-light">
+              Absolutely. Our platform complies fully with HIPAA data security parameters. Uploaded slides are decoded entirely within memory tiles using sandboxed virtual machines—no metadata records or patient identity links are ever retained within the temporary S3 bucket.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq-item bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300">
+          <button class="faq-header w-full px-6 py-5 text-left font-serif font-bold text-gray-900 flex justify-between items-center focus:outline-none select-none">
+            <span class="font-heading text-sm sm:text-base font-semibold">What browsers are compatible?</span>
+            <svg class="faq-icon h-5 w-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed font-light">
+              The PCI Digital slide viewer is optimized for standard modern web browsers that support hardware WebGL rendering. This includes Google Chrome, Microsoft Edge, Safari, and Firefox. No desktop software downloads are required.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq-item bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300">
+          <button class="faq-header w-full px-6 py-5 text-left font-serif font-bold text-gray-900 flex justify-between items-center focus:outline-none select-none">
+            <span class="font-heading text-sm sm:text-base font-semibold">How does the AI scoring work?</span>
+            <svg class="faq-icon h-5 w-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed font-light">
+              Our neural network separates stained colors mathematically to isolate cell nuclei from biomarker protein expression (DAB). The system then segments individual cells, measures brown pigment intensity per cell, and calculates Tumor Proportion Scores calibrated against standard reference cell plugs.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy border-t border-white/5 text-gray-400 py-16 relative z-10" id="main-global-footer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <!-- Col 1: Brand details -->
+        <div class="md:col-span-12 lg:col-span-5 space-y-4">
+          <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="footer-logo">
+            <img src="pcilogo1.png" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+            <img src="FONT2.png" alt="PCI" class="h-8 md:h-9 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          </a>
+          <p class="text-sm font-light leading-relaxed max-w-sm">
+            "Precision IHC Controls. AI-Powered Assessment." <br>
+            Standardizing histology stains through reproducible cell line plugs.
+          </p>
+          <div class="text-xs space-y-1 font-mono text-gray-500 pt-2">
+            <div>📍 Helix Park, Houston, Texas 77030</div>
+            <div>✉ support@pcibio.com</div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="md:col-span-3 space-y-4">
+          <h4 class="text-white font-heading font-semibold text-xs tracking-widest uppercase">Quick Links</h4>
+          <nav class="flex flex-col space-y-2.5 text-sm">
+            <a href="index.html" class="hover:text-pci-blue-light transition-colors">Home</a>
+            <a href="products.html" class="hover:text-pci-blue-light transition-colors">Product Catalog</a>
+            <a href="controls.html" class="hover:text-pci-blue-light transition-colors">IHC QC Controls</a>
+            <a href="ai.html" class="hover:text-pci-blue-light transition-colors">AI & Viewer</a>
+            <a href="education.html" class="hover:text-pci-blue-light transition-colors">Digital Pathology Education</a>
+            <a href="about.html" class="hover:text-pci-blue-light transition-colors">About PCI & Team</a>
+            <a href="contact.html" class="hover:text-pci-blue-light transition-colors">Contact US</a>
+          </nav>
+        </div>
+
+        <!-- Col 3: Product Platform callout -->
+        <div class="md:col-span-4 space-y-4">
+          <h4 class="text-white font-heading font-semibold text-xs tracking-widest uppercase">Our Platform</h4>
+          <p class="text-sm font-light leading-relaxed">
+            New: Digital Slide Viewer is launching soon for external beta cohorts at <strong class="text-gray-200">pcibio.ai</strong>.
+          </p>
+          <div class="pt-2">
+            <a href="viewer.html" class="inline-flex items-center gap-1.5 bg-pci-blue hover:bg-pci-blue-light text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all" id="btn-footer-launch">
+              <span>Launch Slider Demo</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
+        <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
+        <div class="flex gap-4 mt-4 sm:mt-0">
+          <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+          <span>|</span>
+          <a href="#" class="hover:text-gray-400">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

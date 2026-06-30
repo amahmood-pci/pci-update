@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precision Cellular Immunology — Precision IHC Controls</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='6' stroke-dasharray='3 1'/><circle cx='12' cy='12' r='3.5' fill='%232563eb'/><circle cx='12' cy='3.5' r='1.5' fill='%232563eb'/><circle cx='5' cy='8.5' r='1.5' fill='%232563eb'/><circle cx='19' cy='8.5' r='1.5' fill='%232563eb'/><circle cx='7.5' cy='18' r='1.5' fill='%232563eb'/><circle cx='16.5' cy='18' r='1.5' fill='%232563eb'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-600 antialiased font-sans">
+
+  <!-- HEADER NAVIGATION -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="nav-logo">
+          <img src="pcilogo1.png" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          <img src="FONT2.png" id="nav-logo-text" alt="PCI" class="h-8 md:h-9 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="index.html" class="nav-link active text-white text-sm font-semibold transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-white" id="link-home">Home</a>
+          <a href="products.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-products">Products</a>
+          <a href="controls.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-controls">IHC Controls</a>
+          <a href="ai.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-ai">AI & Viewer</a>
+          <a href="education.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-education">Education</a>
+          <a href="about.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-about">About</a>
+          <a href="contact.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white" id="link-contact">Contact</a>
+          <a href="viewer.html" class="bg-transparent hover:bg-white hover:text-black text-white text-xs font-semibold px-4 py-2 rounded-lg border border-white/40 transition-all duration-150 flex items-center gap-1.5" id="btn-viewer-launch">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Slide Viewer
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" class="text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 top-20 bg-white z-40 flex flex-col px-6 py-8 space-y-6 overflow-y-auto animate-fade-in border-t border-gray-100">
+      <a href="index.html" class="text-pci-blue text-base font-bold border-b border-gray-100 pb-2">Home</a>
+      <a href="products.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Products</a>
+      <a href="controls.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">IHC Controls</a>
+      <a href="ai.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">AI & Viewer</a>
+      <a href="education.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Education</a>
+      <a href="about.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">About</a>
+      <a href="contact.html" class="text-gray-600 text-base font-semibold border-b border-gray-100 pb-2 hover:text-pci-blue">Contact</a>
+      <a href="viewer.html" class="bg-pci-blue text-white text-center py-3 rounded-lg font-bold" id="btn-mobile-viewer-launch">Launch Digital Viewer</a>
+    </div>
+  </header>
+
+  <!-- SECTION 1: HERO -->
+  <section class="relative bg-navy pt-32 pb-24 sm:pt-40 sm:pb-32 overflow-hidden" id="homepage-hero">
+    <!-- Geometric decorative background particles -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(37,99,235,0.08),transparent_50%)]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Copy Content -->
+        <div class="lg:col-span-7 space-y-6 animate-fade-in">
+          <div class="inline-flex items-center gap-2 bg-pci-blue/10 border border-pci-blue/20 px-3.5 py-1.5 rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-pci-blue animate-pulse"></span>
+            <span class="text-xs text-pci-blue-light font-semibold tracking-wide uppercase font-mono">Texas Medical Center Startup</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white tracking-tight leading-tight">
+            Precision IHC Controls. <br class="hidden sm:inline"><span class="text-pci-blue-light">AI-Powered Assessment.</span>
+          </h1>
+          <p class="text-gray-300 text-lg sm:text-xl max-w-2xl font-light">
+            Improving pathologist accuracy and clinical efficiency through characterized cell line quality controls and automated AI biomarker analysis.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <a href="products.html" class="bg-pci-blue hover:bg-pci-blue-light text-white text-center font-semibold px-8 py-4 rounded-lg shadow-lg hover-lift transition-all duration-150 flex items-center justify-center gap-2" id="cta-hero-products">
+              Browse Products
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+            <a href="viewer.html" class="bg-white/5 hover:bg-white/10 text-white text-center font-semibold px-8 py-4 rounded-lg border border-white/15 hover-lift transition-all duration-150 flex items-center justify-center gap-2" id="cta-hero-viewer">
+              Try the AI Viewer
+            </a>
+          </div>
+        </div>
+
+        <!-- CSS Only Microscopy Lens Viewport Simulation -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end animate-fade-in" style="animation-delay: 200ms;">
+          <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+            <div class="w-full h-full rounded-full microscopy-lens flex items-center justify-center relative">
+              <!-- Simulated slide coordinates -->
+              <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-navy-light/80 px-2.5 py-1 rounded text-[10px] font-mono text-gray-400 tracking-wide border border-white/5">
+                FIELD OF VIEW — 40x
+              </div>
+              
+              <!-- Stained tissue circular patterns -->
+              <div class="absolute w-44 h-44 rounded-full stained-tissue-blue -top-4 -left-4 animate-pulse-slow"></div>
+              <div class="absolute w-48 h-48 rounded-full stained-tissue-brown bottom-8 right-4"></div>
+              <!-- Individual Mock Tumors or Cell Plugs -->
+              <div class="absolute w-12 h-12 rounded-full border border-orange-500/30 bg-orange-800/20 flex items-center justify-center top-1/4 left-1/3">
+                <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
+              </div>
+              <div class="absolute w-8 h-8 rounded-full border border-blue-500/30 bg-blue-800/10 top-1/2 left-2/3"></div>
+              <div class="absolute w-16 h-16 rounded-full border border-amber-600/30 bg-amber-900/10 bottom-1/4 left-1/4"></div>
+
+              <!-- Microscope Crosshair Overlay -->
+              <div class="absolute w-full h-[1px] bg-white/10"></div>
+              <div class="absolute h-full w-[1px] bg-white/10"></div>
+              <div class="absolute w-12 h-12 rounded-full border border-white/10"></div>
+            </div>
+
+            <!-- Score Tag overlay (placed OUTSIDE microscopy-lens to prevent border clipping, with z-10 index) -->
+            <div class="absolute bottom-6 right-6 bg-navy/95 backdrop-blur-md border border-emerald-500/40 p-2.5 rounded-lg flex items-center gap-2.5 shadow-lg z-10">
+              <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+              <div class="flex flex-col">
+                <span class="text-[9px] text-emerald-400 font-mono uppercase tracking-wider font-semibold">PD-L1 Expression</span>
+                <span class="text-sm font-bold text-white font-mono">92.4% (HIGH)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: STATS BAR -->
+  <section class="stats-section bg-slate-50 py-12 border-y border-slate-200/80 relative z-25" id="stats-banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
+        <div class="pt-4 md:pt-0">
+          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold text-blue-600 font-mono counter" data-target="10" data-prefix="" data-suffix="+">10+</p>
+          <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mt-1.5">Biomarkers Supported</p>
+        </div>
+        <div class="pt-4 md:pt-0">
+          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold text-slate-800 font-mono counter" data-target="40" data-prefix="" data-suffix="x">40x</p>
+          <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mt-1.5">Total Magnification</p>
+        </div>
+        <div class="pt-4 md:pt-0">
+          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold text-emerald-600 font-mono">PENDING</p>
+          <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mt-1.5">Patent-Pending Technology</p>
+        </div>
+        <div class="pt-4 md:pt-0">
+          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold text-slate-800 font-mono counter" data-target="10" data-prefix="&lt;" data-suffix=" min">&lt;10 min</p>
+          <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mt-1.5">AI Assessment Speed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FEATURE CARDS (Bento layout) -->
+  <section class="py-24 bg-gray-50 flex items-center relative" id="features-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">Our Offerings</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold tracking-tight text-gray-900">
+          Engineered for Pathological Precision
+        </h2>
+        <p class="text-gray-600 mt-4 leading-relaxed">
+          Reimagining quality validation and clinical image workflows using our physical controls and machine-learning software tools.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Feature 1: Controls -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover-lift reveal" id="card-feature-controls">
+          <div class="w-12 h-12 bg-blue-50 text-pci-blue rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Cell Line IHC Controls</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Physical FFPE cells plugs arranged strategically. Built to standardize validation protocols and avoid staining failure pitfalls.
+          </p>
+          <a href="controls.html" class="text-pci-blue hover:text-pci-blue-light font-medium inline-flex items-center gap-1.5 focus:outline-none">
+            Deep dive into Controls <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+
+        <!-- Feature 2: AI assessment -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover-lift reveal" style="transition-delay: 100ms;" id="card-feature-ai">
+          <div class="w-12 h-12 bg-blue-50 text-pci-blue rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364.364l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">AI Biomarker Assessment</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Automated image recognition scoring calibrated against characterized reference plug standards. Eliminates manual cognitive fatigue.
+          </p>
+          <a href="ai.html" class="text-pci-blue hover:text-pci-blue-light font-medium inline-flex items-center gap-1.5 focus:outline-none">
+            Explore AI Algorithms <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+
+        <!-- Feature 3: Digital Pathology Education -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover-lift reveal" style="transition-delay: 200ms;" id="card-feature-education">
+          <div class="w-12 h-12 bg-blue-50 text-pci-blue rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Digital Pathology Education</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            A rich teaching compilation curated for pathologists, histologists, and research trainees to learn whole slide quantitative metrics.
+          </p>
+          <a href="education.html" class="text-pci-blue hover:text-pci-blue-light font-medium inline-flex items-center gap-1.5 focus:outline-none">
+            Open Resource Library <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+
+        <!-- Feature 4: Slide Viewer -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover-lift reveal" style="transition-delay: 300ms;" id="card-feature-viewer">
+          <div class="w-12 h-12 bg-blue-50 text-pci-blue rounded-xl flex items-center justify-center mb-6 relative">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            <span class="absolute -top-1.5 -right-1.5 rounded-full bg-emerald-500 text-white font-mono text-[8px] font-bold px-1.5 py-0.5 uppercase tracking-wide">New</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Digital Slide Viewer</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Open-source OpenSlide engine optimized for multi-gigabyte virtual slides. Interactive zooming and real-time canvas rendering.
+          </p>
+          <a href="viewer.html" class="text-pci-blue hover:text-pci-blue-light font-medium inline-flex items-center gap-1.5 focus:outline-none">
+            View Live Mockup <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: SLIDE VIEWER PREVIEW -->
+  <section class="py-24 bg-white relative overflow-hidden" id="viewer-onboarding">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text details -->
+        <div class="lg:col-span-5 space-y-6 reveal">
+          <span class="badge-pci badge-green">LAUNCHING AT PCIBIO.AI</span>
+          <h2 class="text-3xl sm:text-4xl font-heading font-bold text-gray-900 tracking-tight leading-tight">
+            Introducing the PCI Digital Slide Viewer
+          </h2>
+          <p class="text-gray-600 leading-relaxed text-base">
+            Pathology slides are massive files containing multiple gigabytes of image tile data. Our custom high-performance engine decodes scans instantly inside your browser without causing desktop lag.
+          </p>
+          <ul class="space-y-3.5 pt-2 text-sm text-gray-700">
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>Instant tiled parsing of high-resolution files (SVS, NDPI, MRXS).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>Smooth pan navigation and zoom scaling up to 40x.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>AI score validation overlay toggle.</span>
+            </li>
+          </ul>
+          <div class="pt-4">
+            <a href="viewer.html" class="bg-pci-blue hover:bg-pci-blue-light text-white font-semibold px-6 py-3.5 rounded-lg shadow-md inline-flex items-center gap-2 hover-lift transition-all" id="btn-hero-launch-viewer">
+              <span>Launch Virtual Viewer Demo</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Realistic Browser Mockup -->
+        <div class="lg:col-span-7 reveal" style="transition-delay: 150ms;" id="viewer-ui-preview">
+          <div class="bg-navy-light rounded-xl border border-white/10 shadow-2xl overflow-hidden flex flex-col h-[380px] w-full relative">
+            
+            <!-- Browser header -->
+            <div class="bg-gray-950 px-4 py-3 border-b border-white/5 flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                <span class="text-[11px] text-gray-400 font-mono pl-3">pcibio.ai/viewer</span>
+              </div>
+              <div class="flex items-center space-x-2 text-xs text-gray-400 bg-gray-900 border border-white/5 px-2.5 py-0.5 rounded font-mono">
+                <span>ZOOM Status: 40x</span>
+              </div>
+            </div>
+
+            <!-- Slide Canvas Simulation representing WSI tile -->
+            <div class="flex-1 bg-black overflow-hidden relative flex items-center justify-center vignette">
+              <div class="w-[500px] h-[500px] shrink-0 pointer-events-none opacity-80" style="background: url('https://images.unsplash.com/photo-1579165466511-71012166551b?auto=format&fit=crop&q=80&w=1000') no-repeat center; background-size: cover;"></div>
+              
+              <!-- Crosshair -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-35 pointer-events-none">
+                <div class="absolute w-24 h-24 rounded-full border border-dotted border-white"></div>
+                <div class="absolute w-full h-[1px] bg-white"></div>
+                <div class="absolute h-full w-[1px] bg-white"></div>
+              </div>
+
+              <!-- Top Left Stats overlay -->
+              <div class="absolute top-4 left-4 bg-gray-950/80 backdrop-blur-md p-3 rounded-lg border border-white/10 text-[10px] font-mono text-gray-300 space-y-1">
+                <div class="text-blue-400 font-semibold">CASE_ID: #40129</div>
+                <div>SCANNER: APERIO GT450</div>
+                <div>MAGNIFICATION: <span class="text-white">40x (Oil)</span></div>
+                <div>X: <span class="text-emerald-400">54201</span> | Y: <span class="text-emerald-400">29014</span></div>
+              </div>
+
+              <!-- Top-right minimap -->
+              <div class="absolute top-4 right-4 w-16 h-16 bg-gray-900 border border-white/15 rounded overflow-hidden">
+                <div class="w-full h-full opacity-60 bg-cover" style="background: url('https://images.unsplash.com/photo-1579165466511-71012166551b?auto=format&fit=crop&q=80&w=200') no-repeat center;"></div>
+                <div class="absolute top-1/4 left-1/4 w-8 h-8 border border-red-500 scale-75"></div>
+              </div>
+
+              <!-- Zoom selector indicator mockup -->
+              <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-gray-950/95 backdrop-blur border border-white/15 px-3 py-1.5 rounded-full flex gap-3 text-xs font-mono text-gray-300">
+                <span>1x</span> <span class="text-gray-600">|</span> <span>5x</span> <span class="text-gray-600">|</span> <span>10x</span> <span class="text-gray-600">|</span> <span>20x</span> <span class="text-gray-600">|</span> <span class="text-pci-blue-light font-bold">40x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: PRODUCT SPOTLIGHT -->
+  <section class="py-24 bg-gray-50 overflow-hidden" id="product-spotlight">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 reveal">
+        <div class="max-w-2xl">
+          <span class="badge-pci badge-blue mb-3">Featured Controls</span>
+          <h2 class="text-3xl sm:text-4xl font-heading font-bold text-gray-900">
+            Engineered Reference Plugs
+          </h2>
+          <p class="text-gray-600 mt-2">
+            Standardized biomarker configurations arranged in dual, tri, and quad-staining blocks.
+          </p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="products.html" class="inline-flex items-center gap-1.5 text-pci-blue hover:text-pci-blue-light font-semibold outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pci-blue rounded">
+            View complete catalog <span class="text-lg">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Spotlight cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between hover-lift reveal">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="badge-pci bg-indigo-50 text-indigo-600 font-mono text-[9px] uppercase">TriControl™</span>
+              <span class="text-xs text-gray-400 font-mono uppercase">FFPE Block</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">p53 TriControl™</h3>
+            <p class="text-xs text-gray-400 mb-3 font-mono">CODE: PCI-FFPE-P53</p>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Consists of three cell plugs: NULL (mutant), WT (wildtype), and Overexpressed.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-gray-50 mt-6 flex items-center justify-between">
+            <span class="text-lg font-bold text-gray-900 font-mono">$1,500</span>
+            <a href="products.html" class="bg-gray-50 hover:bg-pci-blue hover:text-white text-gray-700 text-xs font-semibold px-4 py-2.5 rounded-lg transition-all duration-150">
+              View Product
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between hover-lift reveal" style="transition-delay: 100ms;">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="badge-pci bg-amber-50 text-amber-600 font-mono text-[9px] uppercase">DualControl™</span>
+              <span class="text-xs text-gray-400 font-mono uppercase">FFPE Block</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">MSH6 DualControl™</h3>
+            <p class="text-xs text-gray-400 mb-3 font-mono">CODE: PCI-FFPE-MSH6</p>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Two-element calibration standard: wildtype (staining positive) and knockout mismatch repair cell lines.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-gray-50 mt-6 flex items-center justify-between">
+            <span class="text-lg font-bold text-gray-900 font-mono">$900</span>
+            <a href="products.html" class="bg-gray-50 hover:bg-pci-blue hover:text-white text-gray-700 text-xs font-semibold px-4 py-2.5 rounded-lg transition-all duration-150">
+              View Product
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between hover-lift reveal" style="transition-delay: 200ms;">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="badge-pci bg-amber-50 text-amber-600 font-mono text-[9px] uppercase">DualControl™</span>
+              <span class="text-xs text-gray-400 font-mono uppercase">FFPE Block</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">PDL1 HIGH Dual</h3>
+            <p class="text-xs text-gray-400 mb-3 font-mono">CODE: PCI-FFPE-PDL1H</p>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              DAB-calibrated standard plugs presenting highly distinct visual stain thresholds representing clinical cutoffs.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-gray-50 mt-6 flex items-center justify-between">
+            <span class="text-lg font-bold text-gray-900 font-mono">$900</span>
+            <a href="products.html" class="bg-gray-50 hover:bg-pci-blue hover:text-white text-gray-700 text-xs font-semibold px-4 py-2.5 rounded-lg transition-all duration-150">
+              View Product
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between hover-lift reveal" style="transition-delay: 300ms;">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="badge-pci bg-emerald-50 text-emerald-600 font-mono text-[9px] uppercase">QuadControl™</span>
+              <span class="text-xs text-gray-400 font-mono uppercase">FFPE Block</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">MMR QuadControl™</h3>
+            <p class="text-xs text-gray-400 mb-3 font-mono">CODE: PCI-FFPE-MMRQ</p>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Consolidates MLH1, MSH2, MSH6, and PMS2 mismatch proteins in a single, high-throughput FFPE block.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-gray-50 mt-6 flex items-center justify-between">
+            <span class="text-lg font-bold text-gray-900 font-mono">$2,000</span>
+            <a href="products.html" class="bg-gray-50 hover:bg-pci-blue hover:text-white text-gray-700 text-xs font-semibold px-4 py-2.5 rounded-lg transition-all duration-150">
+              View Product
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: HOW IT WORKS (3 steps horizontal) -->
+  <section class="py-24 bg-white relative stripe-bg" id="method-timeline">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="badge-pci badge-blue mb-3">Workflow Workflow</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-gray-900">
+          Pathology Staining to AI Score
+        </h2>
+        <p class="text-gray-600 mt-2 leading-relaxed">
+          Standardize, digitize, and interpret without any disruptive pipeline friction.
+        </p>
+      </div>
+
+      <!-- Horizontal pipeline steps connections -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+        <!-- Connecting Line background -->
+        <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-gray-100 -z-10"></div>
+        
+        <!-- Step 1 -->
+        <div class="text-center space-y-4 reveal flex flex-col items-center">
+          <div class="w-16 h-16 rounded-full bg-navy text-white text-lg font-bold flex items-center justify-center border-4 border-blue-50/50 shadow">
+            1
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900">Run Control IHC Staining</h3>
+          <p class="text-sm text-gray-600 leading-relaxed max-w-xs">
+            Insert a PCI slide carrying our characterized cell line plug during your routine patient run to serve as a benchmark.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="text-center space-y-4 reveal flex flex-col items-center" style="transition-delay: 150ms;">
+          <div class="w-16 h-16 rounded-full bg-navy text-white text-lg font-bold flex items-center justify-center border-4 border-blue-50/50 shadow">
+            2
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900">Upload Whole Slide Image</h3>
+          <p class="text-sm text-gray-600 leading-relaxed max-w-xs">
+            Export the high-res scanner output (SVS/NDPI) and drop it into the secure, tiled PCI Digital Viewer.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="text-center space-y-4 reveal flex flex-col items-center" style="transition-delay: 300ms;">
+          <div class="w-16 h-16 rounded-full bg-pci-blue text-white text-lg font-bold flex items-center justify-center border-4 border-blue-50/50 shadow">
+            3
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900">Receive Objective Score</h3>
+          <p class="text-sm text-gray-600 leading-relaxed max-w-xs">
+            Our machine learning algorithm measures DAB expression and separation compared to reference cells, preparing outputs in minutes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: TRUST / CREDIBILITY BAR -->
+  <section class="py-12 bg-gray-950 border-t border-white/5 relative z-10" id="credibility-footer-bar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-12 text-center text-xs tracking-widest text-gray-500 font-mono uppercase">
+        <span>Patent Pending Technology</span>
+        <span class="hidden sm:inline">|</span>
+        <span>Texas Medical Center Ecosystem</span>
+        <span class="hidden sm:inline">|</span>
+        <span>Helix Park Houston</span>
+        <span class="hidden sm:inline">|</span>
+        <span>Pathographer-Centered UX</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: CTA BANNER -->
+  <section class="py-20 bg-navy relative overflow-hidden" id="bottom-banner-cta">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(37,99,235,0.1),transparent_50%)]"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6 reveal">
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white tracking-tight">
+        Ready to Improve Your IHC Assessment Staining?
+      </h2>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto font-light">
+        Achieve higher reproducibility, secure patient sample verification, and access seamless automated scoring algorithms.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+        <a href="products.html" class="bg-pci-blue hover:bg-pci-blue-light text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover-lift transition-all">
+          Shop Control Products
+        </a>
+        <a href="contact.html" class="bg-white/5 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-lg border border-white/10 hover-lift transition-all">
+          Contact Our Labs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy border-t border-white/5 text-gray-400 py-16 relative z-10" id="main-global-footer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        
+        <!-- Col 1: Brand details -->
+        <div class="md:col-span-5 space-y-4">
+          <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="footer-logo">
+            <img src="pcilogo1.png" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+            <img src="FONT2.png" alt="PCI" class="h-8 md:h-9 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          </a>
+          <p class="text-sm font-light leading-relaxed max-w-sm">
+            "Precision IHC Controls. AI-Powered Assessment." <br>
+            Standardizing histology stains through reproducible cell line plugs.
+          </p>
+          <div class="text-xs space-y-1 font-mono text-gray-500 pt-2">
+            <div>📍 Helix Park, Houston, Texas 77030</div>
+            <div>✉ support@pcibio.com</div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="md:col-span-3 space-y-4">
+          <h4 class="text-white font-heading font-semibold text-xs tracking-widest uppercase">Quick Links</h4>
+          <nav class="flex flex-col space-y-2.5 text-sm">
+            <a href="index.html" class="hover:text-pci-blue-light transition-colors">Home</a>
+            <a href="products.html" class="hover:text-pci-blue-light transition-colors">Product Catalog</a>
+            <a href="controls.html" class="hover:text-pci-blue-light transition-colors">IHC QC Controls</a>
+            <a href="ai.html" class="hover:text-pci-blue-light transition-colors">AI & Viewer</a>
+            <a href="education.html" class="hover:text-pci-blue-light transition-colors">Digital Pathology Education</a>
+            <a href="about.html" class="hover:text-pci-blue-light transition-colors">About PCI & Team</a>
+            <a href="contact.html" class="hover:text-pci-blue-light transition-colors">Contact US</a>
+          </nav>
+        </div>
+
+        <!-- Col 3: Product Platform callout -->
+        <div class="md:col-span-4 space-y-4">
+          <h4 class="text-white font-heading font-semibold text-xs tracking-widest uppercase">Our Platform</h4>
+          <p class="text-sm font-light leading-relaxed">
+            New: Digital Slide Viewer is launching soon for external beta cohorts at <strong class="text-gray-200">pcibio.ai</strong>.
+          </p>
+          <div class="pt-2">
+            <a href="viewer.html" class="inline-flex items-center gap-1.5 bg-pci-blue hover:bg-pci-blue-light text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all" id="btn-footer-launch">
+              <span>Launch Slider Demo</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
+        <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
+        <div class="flex gap-4 mt-4 sm:mt-0">
+          <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+          <span>|</span>
+          <a href="#" class="hover:text-gray-400">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
