@@ -22,6 +22,7 @@ export default defineConfig(() => {
         input: {
           main: resolve(__dirname, 'index.html'),
           products: resolve(__dirname, 'products.html'),
+          product: resolve(__dirname, 'product.html'),
           controls: resolve(__dirname, 'controls.html'),
           ai: resolve(__dirname, 'ai.html'),
           education: resolve(__dirname, 'education.html'),
