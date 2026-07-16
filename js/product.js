@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const barcodeCheckImgUrl = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><rect width='600' height='600' rx='24' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='4'/><rect x='120' y='140' width='360' height='180' rx='8' fill='%23ffffff' stroke='%23cbd5e1' stroke-width='3'/><rect x='150' y='170' width='10' height='120' fill='%231e293b'/><rect x='170' y='170' width='20' height='120' fill='%231e293b'/><rect x='200' y='170' width='5' height='120' fill='%231e293b'/><rect x='215' y='170' width='15' height='120' fill='%231e293b'/><rect x='240' y='170' width='30' height='120' fill='%231e293b'/><rect x='280' y='170' width='10' height='120' fill='%231e293b'/><rect x='300' y='170' width='5' height='120' fill='%231e293b'/><rect x='315' y='170' width='25' height='120' fill='%231e293b'/><rect x='350' y='170' width='15' height='120' fill='%231e293b'/><rect x='375' y='170' width='20' height='120' fill='%231e293b'/><rect x='405' y='170' width='5' height='120' fill='%231e293b'/><rect x='420' y='170' width='30' height='120' fill='%231e293b'/><text x='300' y='340' font-family='monospace' font-size='18' font-weight='bold' fill='%231e293b' text-anchor='middle'>LIMS SECURE BARCODE</text><text x='300' y='470' font-family='sans-serif' font-size='20' font-weight='bold' fill='%231e293b' text-anchor='middle'>FULL PATHOLOGY TRACEABILITY</text><text x='300' y='505' font-family='monospace' font-size='14' fill='%2364748b' text-anchor='middle'>INSTITUTIONAL BIOREPOSITORY RECORDS</text></svg>";
 
-  const baseImg = product.imageType === "block" ? blockImgUrl : slideImgUrl;
+  const baseImg = product.image ? product.image : (product.imageType === "block" ? blockImgUrl : slideImgUrl);
 
   // Create four views for gallery slide list
   const galleryImages = [
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const itemEl = document.createElement('div');
       itemEl.className = "flex items-start gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 relative animate-fade-in";
       
-      const thumbSrc = item.imageType === 'block' ? blockImgUrl : slideImgUrl;
+      const thumbSrc = item.image ? item.image : (item.imageType === 'block' ? blockImgUrl : slideImgUrl);
 
       itemEl.innerHTML = `
         <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer">
@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = "bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:scale-[1.02] hover:shadow-md transition-all";
       
       const badgeColor = item.type.includes('Tri') ? 'bg-indigo-50 text-indigo-600' : 'bg-amber-50 text-amber-600';
-      const thumbSrc = item.imageType === 'block' ? blockImgUrl : slideImgUrl;
+      const thumbSrc = item.image ? item.image : (item.imageType === 'block' ? blockImgUrl : slideImgUrl);
 
       card.innerHTML = `
         <div>

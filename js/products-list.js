@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ? 'bg-emerald-50 text-emerald-600'
             : 'bg-slate-100 text-slate-700';
 
-      const thumbSrc = item.imageType === 'block' ? blockImgUrl : slideImgUrl;
+      const thumbSrc = item.image ? item.image : (item.imageType === 'block' ? blockImgUrl : slideImgUrl);
 
       card.innerHTML = `
         <div>
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const itemEl = document.createElement('div');
       itemEl.className = "flex items-start gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 relative animate-fade-in";
       
-      const thumbSrc = item.imageType === 'block' ? blockImgUrl : slideImgUrl;
+      const thumbSrc = item.image ? item.image : (item.imageType === 'block' ? blockImgUrl : slideImgUrl);
 
       itemEl.innerHTML = `
         <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer">
