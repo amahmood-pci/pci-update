@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.className = "fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-gray-200/80 shadow-md h-20";
       
       if (logoText) {
-        logoText.src = "FONT1.png";
+        logoText.classList.remove("text-white"); logoText.classList.add("text-gray-900");
       }
 
       navLinks.forEach(link => {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.className = "fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20";
       
       if (logoText) {
-        logoText.src = "FONT2.png";
+        logoText.classList.remove("text-gray-900"); logoText.classList.add("text-white");
       }
 
       navLinks.forEach(link => {

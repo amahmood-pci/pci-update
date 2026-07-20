@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Roboto+Slab:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Roboto+Slab:wght@700;800;900&family=Zilla+Slab:wght@600;700&display=swap');
 @import "tailwindcss";
 
 @font-face {
@@ -143,7 +143,7 @@ header .text-white, footer .text-white {
   color: #ffffff !important;
 }
 
-#nav-logo span, #footer-logo span {
+#footer-logo span {
   color: #ffffff !important;
 }
 
