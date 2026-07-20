@@ -341,3 +341,43 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
   border: 1px solid #e2e8f0 !important;
   border-radius: 1rem;
 }
+
+/* ============================================================
+   Houston Biotech community — auto-scrolling logo marquee
+   ============================================================ */
+.mq {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+.mq-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: mq-scroll 40s linear infinite;
+}
+.mq:hover .mq-track { animation-play-state: paused; }
+@keyframes mq-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.mq-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  height: 68px;
+  padding: 0 48px;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.mq-item:hover { filter: grayscale(0); opacity: 1; }
+.mq-ic { width: 38px; height: 38px; flex: 0 0 auto; }
+.mq-word   { font-family: var(--font-heading); font-weight: 800; font-size: 22px; letter-spacing: -0.5px; color: #0f172a; white-space: nowrap; }
+.mq-tmc    { font-family: var(--font-heading); font-weight: 800; font-size: 30px; letter-spacing: -1px; color: #0f2c4d; }
+.mq-div    { width: 2px; height: 34px; background: #1f6f8b; display: inline-block; border-radius: 2px; }
+.mq-tmc-sub{ font-family: var(--font-heading); font-weight: 700; font-size: 10px; line-height: 1.05; letter-spacing: 0.5px; color: #0f2c4d; text-align: left; }
+.mq-portal { font-family: var(--font-heading); font-weight: 600; font-size: 22px; color: #171717; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } }
