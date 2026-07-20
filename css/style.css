@@ -446,12 +446,28 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
   color: #f8fafc;
 }
 
-/* Translucent CTA — full brand green with visible hex pattern overlay */
-.cta-translucent {
-  background-color: transparent;
-  background-image:
-    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='42' viewBox='0 0 24 42'%3E%3Cpath d='M12 0 L24 7 L24 21 L12 28 L0 21 L0 7 Z M12 28 L12 42' fill='none' stroke='%23ffffff' stroke-width='0.7' stroke-opacity='0.35'/%3E%3C/svg%3E"),
-    linear-gradient(135deg, rgba(1, 43, 26, 0.88) 0%, rgba(4, 78, 53, 0.82) 100%);
-  background-size: 60px 105px, auto;
-  background-repeat: repeat, no-repeat;
+/* CTA — black -> kelly-lime green gradient, top to bottom (opaque, no hex) */
+.cta-dna {
+  background: linear-gradient(180deg,
+    #030905 0%,
+    #062418 22%,
+    #0d4a2b 48%,
+    #1d8842 72%,
+    #4CBB17 92%,
+    #6CD531 100%);
+}
+.dna-swirl {
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
+.dna-track {
+  animation: dna-flow 22s linear infinite;
+  transform-origin: 0 0;
+}
+@keyframes dna-flow {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-200px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dna-track { animation: none; }
 }

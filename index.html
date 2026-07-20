@@ -125,24 +125,24 @@
   </section>
 
   <!-- SECTION 2: STATS BAR -->
-  <section class="stats-section deep-blue-panel py-14 relative z-25" id="stats-banner">
+  <section class="stats-section py-14 relative z-25 bg-white border-y border-gray-200" id="stats-banner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
         <div class="pt-4 md:pt-0">
-          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold stat-blue font-mono counter" data-target="10" data-prefix="" data-suffix="+">10+</p>
-          <p class="text-xs stat-label uppercase tracking-widest font-semibold mt-1.5">Biomarkers Supported</p>
+          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold text-emerald-500 font-mono counter" data-target="10" data-prefix="" data-suffix="+">10+</p>
+          <p class="text-xs text-gray-900 uppercase tracking-widest font-semibold mt-1.5">Biomarkers Supported</p>
         </div>
         <div class="pt-4 md:pt-0">
-          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold stat-white font-mono counter" data-target="40" data-prefix="" data-suffix="x">40x</p>
-          <p class="text-xs stat-label uppercase tracking-widest font-semibold mt-1.5">Total Magnification</p>
+          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold text-emerald-500 font-mono counter" data-target="40" data-prefix="" data-suffix="x">40x</p>
+          <p class="text-xs text-gray-900 uppercase tracking-widest font-semibold mt-1.5">Total Magnification</p>
         </div>
         <div class="pt-4 md:pt-0">
-          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold stat-accent font-mono">PENDING</p>
-          <p class="text-xs stat-label uppercase tracking-widest font-semibold mt-1.5">Patent-Pending Technology</p>
+          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold text-emerald-500 font-mono">PENDING</p>
+          <p class="text-xs text-gray-900 uppercase tracking-widest font-semibold mt-1.5">Patent-Pending Technology</p>
         </div>
         <div class="pt-4 md:pt-0">
-          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold stat-white font-mono counter" data-target="10" data-prefix="&lt;" data-suffix=" min">&lt;10 min</p>
-          <p class="text-xs stat-label uppercase tracking-widest font-semibold mt-1.5">AI Assessment Speed</p>
+          <p class="text-3.5xl sm:text-4.5xl font-heading font-extrabold text-emerald-500 font-mono counter" data-target="10" data-prefix="&lt;" data-suffix=" min">&lt;10 min</p>
+          <p class="text-xs text-gray-900 uppercase tracking-widest font-semibold mt-1.5">AI Assessment Speed</p>
         </div>
       </div>
     </div>
@@ -474,7 +474,7 @@
   <!-- SECTION 7: TRUST / CREDIBILITY BAR -->
   <section class="py-12 bg-gray-950 border-t border-white/5 relative z-10" id="credibility-footer-bar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-12 text-center text-xs tracking-widest text-white font-mono uppercase">
+      <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-12 text-center text-xs tracking-widest text-blue-300 font-mono uppercase">
         <span>Patent Pending Technology</span>
         <span class="hidden sm:inline">|</span>
         <span>Texas Medical Center Ecosystem</span>
@@ -486,9 +486,55 @@
     </div>
   </section>
 
-  <!-- SECTION 8: CTA BANNER (translucent, hex texture bleeds through) -->
-  <section class="py-20 relative overflow-hidden border-y border-white/25 cta-translucent" id="bottom-banner-cta">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(37,99,235,0.08),transparent_50%)] pointer-events-none"></div>
+  <!-- SECTION 8: CTA BANNER — black->kelly-lime gradient with animated DNA swirls -->
+  <section class="py-24 relative overflow-hidden border-y border-white/25 cta-dna" id="bottom-banner-cta">
+    <svg class="dna-swirl absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="dnaA" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="rgba(255,255,255,0)"/>
+          <stop offset="0.15" stop-color="rgba(255,255,255,0.55)"/>
+          <stop offset="0.85" stop-color="rgba(255,255,255,0.55)"/>
+          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+        </linearGradient>
+        <linearGradient id="dnaB" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="rgba(52,211,153,0)"/>
+          <stop offset="0.15" stop-color="rgba(52,211,153,0.65)"/>
+          <stop offset="0.85" stop-color="rgba(52,211,153,0.65)"/>
+          <stop offset="1" stop-color="rgba(52,211,153,0)"/>
+        </linearGradient>
+      </defs>
+      <g class="dna-track">
+        <path d="M-400,200 C-300,60 -200,340 -100,200 C0,60 100,340 200,200 C300,60 400,340 500,200 C600,60 700,340 800,200 C900,60 1000,340 1100,200 C1200,60 1300,340 1400,200 C1500,60 1600,340 1700,200 C1800,60 1900,340 2000,200" stroke="url(#dnaA)" stroke-width="2.5" fill="none"/>
+        <path d="M-400,200 C-300,340 -200,60 -100,200 C0,340 100,60 200,200 C300,340 400,60 500,200 C600,340 700,60 800,200 C900,340 1000,60 1100,200 C1200,340 1300,60 1400,200 C1500,340 1600,60 1700,200 C1800,340 1900,60 2000,200" stroke="url(#dnaB)" stroke-width="2.5" fill="none"/>
+        <g stroke="rgba(255,255,255,0.20)" stroke-width="1.5" stroke-linecap="round">
+          <line x1="-400" y1="200" x2="-400" y2="200"/>
+          <line x1="-350" y1="140" x2="-350" y2="260"/>
+          <line x1="-250" y1="140" x2="-250" y2="260"/>
+          <line x1="-150" y1="140" x2="-150" y2="260"/>
+          <line x1="-50" y1="140" x2="-50" y2="260"/>
+          <line x1="50" y1="140" x2="50" y2="260"/>
+          <line x1="150" y1="140" x2="150" y2="260"/>
+          <line x1="250" y1="140" x2="250" y2="260"/>
+          <line x1="350" y1="140" x2="350" y2="260"/>
+          <line x1="450" y1="140" x2="450" y2="260"/>
+          <line x1="550" y1="140" x2="550" y2="260"/>
+          <line x1="650" y1="140" x2="650" y2="260"/>
+          <line x1="750" y1="140" x2="750" y2="260"/>
+          <line x1="850" y1="140" x2="850" y2="260"/>
+          <line x1="950" y1="140" x2="950" y2="260"/>
+          <line x1="1050" y1="140" x2="1050" y2="260"/>
+          <line x1="1150" y1="140" x2="1150" y2="260"/>
+          <line x1="1250" y1="140" x2="1250" y2="260"/>
+          <line x1="1350" y1="140" x2="1350" y2="260"/>
+          <line x1="1450" y1="140" x2="1450" y2="260"/>
+          <line x1="1550" y1="140" x2="1550" y2="260"/>
+          <line x1="1650" y1="140" x2="1650" y2="260"/>
+          <line x1="1750" y1="140" x2="1750" y2="260"/>
+          <line x1="1850" y1="140" x2="1850" y2="260"/>
+          <line x1="1950" y1="140" x2="1950" y2="260"/>
+        </g>
+      </g>
+    </svg>
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6 reveal">
       <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white tracking-tight">
         Ready to Improve Your IHC Assessment Staining?
