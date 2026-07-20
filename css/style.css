@@ -431,3 +431,15 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
 .mq-logo-tmc { height: 48px; }
 
 .mq-item { text-decoration: none; }
+
+/* Frosted-glass CTA panel — sits on top of the body's hex pattern */
+.glass-cta {
+  background: rgba(1, 43, 26, 0.55);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 20px 60px -20px rgba(1, 43, 26, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+}
