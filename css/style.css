@@ -317,10 +317,23 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(135deg, rgba(16, 185, 129, 0.01) 25%, transparent 25%, transparent 50%, rgba(16, 185, 129, 0.01) 50%, rgba(16, 185, 129, 0.01) 75%, transparent 75%, transparent);
-  background-size: 30px 30px;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='42' viewBox='0 0 24 42'%3E%3Cpath d='M12 0 L24 7 L24 21 L12 28 L0 21 L0 7 Z M12 28 L12 42' fill='none' stroke='%2310b981' stroke-width='0.6' stroke-opacity='0.10'/%3E%3C/svg%3E");
+  background-size: 60px 105px;
+  background-repeat: repeat;
   z-index: 0;
   pointer-events: none;
+}
+
+/* Step-circle gradients — one continuous green → blue journey split across 3 circles.
+   End color of each matches the start color of the next so the transition reads as linear. */
+.step-circle-1 {
+  background-image: linear-gradient(135deg, #10b981 0%, #14c1c4 100%);
+}
+.step-circle-2 {
+  background-image: linear-gradient(135deg, #14c1c4 0%, #38b6f6 100%);
+}
+.step-circle-3 {
+  background-image: linear-gradient(135deg, #38b6f6 0%, #60a5fa 100%);
 }
 
 /* Solid slide viewer custom shadows */
