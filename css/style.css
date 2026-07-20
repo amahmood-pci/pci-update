@@ -84,16 +84,34 @@ html {
   color: #334155;
 }
 
+/* Dark-blue accent token — used for select back-panels only */
+.deep-blue-panel {
+  background-color: #0b1e3a;
+  background-image:
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='96' viewBox='0 0 84 96'%3E%3Cg fill='none' stroke='%2360a5fa' stroke-width='1' stroke-opacity='0.16'%3E%3Cpath d='M21 0 L63 0 L84 24 L63 48 L21 48 L0 24 Z'/%3E%3Cpath d='M63 48 L84 72 L63 96 L21 96 L0 72 L21 48'/%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(circle at 20% 20%, rgba(59,130,246,0.15) 0%, transparent 55%),
+    linear-gradient(135deg, #0b1e3a 0%, #0f2a52 100%);
+  background-size: 84px 96px, auto, auto;
+  color: #e2e8f0;
+}
+.deep-blue-panel .stat-num,
+.deep-blue-panel .stat-blue { color: #93c5fd !important; }
+.deep-blue-panel .stat-white { color: #ffffff !important; }
+.deep-blue-panel .stat-label { color: #94a3b8 !important; }
+.deep-blue-panel .stat-accent { color: #34d399 !important; }
+.deep-blue-panel .divide-slate-200 > * + * { border-color: rgba(148,163,184,0.25) !important; }
+
 body {
   background-color: #f4fbf7;
   color: #334155;
   overflow-x: hidden;
   /* Beautiful premium grainy texture paired with high-end visible molecular node networks as requested */
   background-image: 
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='700' viewBox='0 0 1000 700'%3E%3Cpath d='M100,750 L350,350' stroke='rgba(16,185,129,0.14)' stroke-width='3' stroke-linecap='round' stroke-dasharray='0 18'/%3E%3Cpath d='M600,650 L850,250' stroke='rgba(16,185,129,0.16)' stroke-width='3' stroke-linecap='round' stroke-dasharray='0 18'/%3E%3Cpath d='M150,150 L210,115 L270,150 L270,220 L210,255 L150,220 Z' fill='none' stroke='rgba(16,185,129,0.15)' stroke-width='1.5'/%3E%3Ccircle cx='150' cy='150' r='6' fill='rgba(16,185,129,0.3)' stroke='rgba(52,211,153,0.2)' stroke-width='4'/%3E%3Ccircle cx='210' cy='115' r='6' fill='rgba(16,185,129,0.3)' stroke='rgba(52,211,153,0.2)' stroke-width='4'/%3E%3Ccircle cx='270' cy='150' r='6' fill='rgba(16,185,129,0.3)' stroke='rgba(52,211,153,0.2)' stroke-width='4'/%3E%3Ccircle cx='270' cy='220' r='6' fill='rgba(16,185,129,0.3)' stroke='rgba(52,211,153,0.2)' stroke-width='4'/%3E%3Ccircle cx='210' cy='255' r='6' fill='rgba(16,185,129,0.3)' stroke='rgba(52,211,153,0.2)' stroke-width='4'/%3E%3Ccircle cx='150' cy='220' r='6' fill='rgba(16,185,129,0.3)' stroke='rgba(52,211,153,0.2)' stroke-width='4'/%3E%3Cline x1='270' y1='150' x2='340' y2='110' stroke='rgba(16,185,129,0.15)' stroke-width='1.5'/%3E%3Ccircle cx='340' cy='110' r='8' fill='rgba(16,185,129,0.35)' stroke='rgba(52,211,153,0.25)' stroke-width='4'/%3E%3Cline x1='340' y1='110' x2='410' y2='150' stroke='rgba(16,185,129,0.15)' stroke-width='1.5'/%3E%3Ccircle cx='410' cy='150' r='5' fill='rgba(16,185,129,0.25)'/%3E%3Cline x1='150' y1='220' x2='90' y2='255' stroke='rgba(16,185,129,0.15)' stroke-width='1.5'/%3E%3Ccircle cx='90' cy='255' r='5' fill='rgba(16,185,129,0.25)'/%3E%3Cpath d='M480,80 L520,55 L560,80 L560,120 L520,145 L480,120 Z' fill='none' stroke='rgba(16,185,129,0.1)' stroke-width='1.2'/%3E%3Ccircle cx='480' cy='80' r='4' fill='rgba(16,185,129,0.2)' stroke='rgba(52,211,153,0.15)' stroke-width='3'/%3E%3Ccircle cx='520' cy='55' r='4' fill='rgba(16,185,129,0.2)' stroke='rgba(52,211,153,0.15)' stroke-width='3'/%3E%3Ccircle cx='560' cy='80' r='4' fill='rgba(16,185,129,0.2)' stroke='rgba(52,211,153,0.15)' stroke-width='3'/%3E%3Ccircle cx='560' cy='120' r='4' fill='rgba(16,185,129,0.2)' stroke='rgba(52,211,153,0.15)' stroke-width='3'/%3E%3Ccircle cx='520' cy='145' r='4' fill='rgba(16,185,129,0.2)' stroke='rgba(52,211,153,0.15)' stroke-width='3'/%3E%3Ccircle cx='480' cy='120' r='4' fill='rgba(16,185,129,0.2)' stroke='rgba(52,211,153,0.15)' stroke-width='3'/%3E%3Cline x1='560' y1='80' x2='620' y2='60' stroke='rgba(16,185,129,0.1)' stroke-width='1.2'/%3E%3Ccircle cx='620' cy='60' r='5' fill='rgba(16,185,129,0.2)'/%3E%3Cpath d='M750,480 L810,445 L870,480 L870,550 L810,585 L750,550 Z' fill='none' stroke='rgba(16,185,129,0.18)' stroke-width='1.8'/%3E%3Ccircle cx='750' cy='480' r='8' fill='rgba(16,185,129,0.38)' stroke='rgba(52,211,153,0.3)' stroke-width='5'/%3E%3Ccircle cx='810' cy='445' r='8' fill='rgba(16,185,129,0.38)' stroke='rgba(52,211,153,0.3)' stroke-width='5'/%3E%3Ccircle cx='870' cy='480' r='8' fill='rgba(16,185,129,0.38)' stroke='rgba(52,211,153,0.3)' stroke-width='5'/%3E%3Ccircle cx='870' cy='550' r='8' fill='rgba(16,185,129,0.38)' stroke='rgba(52,211,153,0.3)' stroke-width='5'/%3E%3Ccircle cx='810' cy='585' r='8' fill='rgba(16,185,129,0.38)' stroke='rgba(52,211,153,0.3)' stroke-width='5'/%3E%3Ccircle cx='750' cy='550' r='8' fill='rgba(16,185,129,0.38)' stroke='rgba(52,211,153,0.3)' stroke-width='5'/%3E%3Cline x1='750' y1='480' x2='680' y2='445' stroke='rgba(16,185,129,0.18)' stroke-width='1.8'/%3E%3Ccircle cx='680' cy='445' r='9' fill='rgba(16,185,129,0.42)' stroke='rgba(52,211,153,0.3)' stroke-width='5'/%3E%3Cline x1='680' y1='445' x2='620' y2='490' stroke='rgba(16,185,129,0.18)' stroke-width='1.8'/%3E%3Ccircle cx='620' cy='490' r='7' fill='rgba(16,185,129,0.35)' stroke='rgba(52,211,153,0.25)' stroke-width='4'/%3E%3Cline x1='680' y1='445' x2='630' y2='390' stroke='rgba(16,185,129,0.18)' stroke-width='1.8'/%3E%3Ccircle cx='630' cy='390' r='6' fill='rgba(16,185,129,0.28)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='96' viewBox='0 0 84 96'%3E%3Cg fill='none' stroke='%2310b981' stroke-width='1.1' stroke-opacity='0.4'%3E%3Cpath d='M21 0 L63 0 L84 24 L63 48 L21 48 L0 24 Z'/%3E%3Cpath d='M63 48 L84 72 L63 96 L21 96 L0 72 L21 48'/%3E%3C/g%3E%3C/svg%3E"),
     linear-gradient(135deg, #f9fdfb 0%, #f0fbf5 35%, #dcfce7 70%, #bbf7d0 100%);
-  background-size: auto, 1000px 700px, auto;
+  background-size: 240px 240px, 84px 96px, auto;
+  background-repeat: repeat, repeat, no-repeat;
   background-attachment: fixed;
 }
 
