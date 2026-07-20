@@ -381,3 +381,16 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
 .mq-tmc-sub{ font-family: var(--font-heading); font-weight: 700; font-size: 10px; line-height: 1.05; letter-spacing: 0.5px; color: #0f2c4d; text-align: left; }
 .mq-portal { font-family: var(--font-heading); font-weight: 600; font-size: 22px; color: #171717; white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } }
+
+/* Houston marquee — refined logo sizing */
+.mq-ic { height: 40px; width: auto; }
+.mq-ic-portal { height: 38px; }
+.mq-tmc-bars { height: 36px; width: auto; flex: 0 0 auto; margin: 0 3px; }
+.mq-portal { font-weight: 500; }
+.mq-portal-b { font-weight: 800; }
+
+/* Houston marquee — PNG logo overrides */
+.mq-logo { height: 46px; width: auto; display: block; max-width: 260px; object-fit: contain; }
+.mq-logo-tmc { height: 48px; }
+
+.mq-item { text-decoration: none; }
