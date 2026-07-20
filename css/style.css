@@ -107,9 +107,9 @@ body {
   /* Beautiful premium grainy texture paired with high-end visible molecular node networks as requested */
   background-image: 
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='98' viewBox='0 0 28 49'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z' fill='%23ffffff' fill-opacity='0.20' fill-rule='evenodd'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='42' viewBox='0 0 24 42'%3E%3Cpath d='M12 0 L24 7 L24 21 L12 28 L0 21 L0 7 Z M12 28 L12 42' fill='none' stroke='%23ffffff' stroke-width='0.6' stroke-opacity='0.10'/%3E%3C/svg%3E"),
     linear-gradient(135deg, #f9fdfb 0%, #f0fbf5 35%, #dcfce7 70%, #bbf7d0 100%);
-  background-size: 240px 240px, 56px 98px, auto;
+  background-size: 240px 240px, 60px 105px, auto;
   background-repeat: repeat, repeat, no-repeat;
   background-attachment: fixed;
 }
@@ -127,13 +127,13 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #010a08 !important;
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilterDark'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilterDark)' opacity='0.05'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='98' viewBox='0 0 28 49'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z' fill='%23ffffff' fill-opacity='0.20' fill-rule='evenodd'/%3E%3C/svg%3E"),
     radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.18) 0%, transparent 55%),
     radial-gradient(circle at 15% 75%, rgba(236, 72, 153, 0.1) 0%, transparent 45%),
     radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.12) 0%, transparent 60%),
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='42' viewBox='0 0 24 42'%3E%3Cpath d='M12 0 L24 7 L24 21 L12 28 L0 21 L0 7 Z M12 28 L12 42' fill='none' stroke='%23ffffff' stroke-width='0.6' stroke-opacity='0.10'/%3E%3C/svg%3E"),
     linear-gradient(135deg, #010a08 0%, #022318 45%, #043e2b 75%, #010b08 100%) !important;
-  background-size: 240px 240px, 56px 98px, auto, auto, auto, auto;
-  background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 240px 240px, auto, auto, auto, 60px 105px, auto;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
   color: #cbd5e1;
   overflow: hidden;
 }
@@ -143,12 +143,12 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #010e0b !important;
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilterNavyLight'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilterNavyLight)' opacity='0.05'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='98' viewBox='0 0 28 49'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z' fill='%23ffffff' fill-opacity='0.20' fill-rule='evenodd'/%3E%3C/svg%3E"),
     radial-gradient(circle at 75% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 25% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 40%),
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='42' viewBox='0 0 24 42'%3E%3Cpath d='M12 0 L24 7 L24 21 L12 28 L0 21 L0 7 Z M12 28 L12 42' fill='none' stroke='%23ffffff' stroke-width='0.6' stroke-opacity='0.10'/%3E%3C/svg%3E"),
     linear-gradient(135deg, #010e0b 0%, #033322 100%) !important;
-  background-size: 240px 240px, 56px 98px, auto, auto, auto;
-  background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 240px 240px, auto, auto, 60px 105px, auto;
+  background-repeat: repeat, no-repeat, no-repeat, repeat, no-repeat;
   color: #cbd5e1;
   overflow: hidden;
 }
