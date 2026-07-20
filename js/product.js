@@ -482,8 +482,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="badge-pci ${badgeColor} font-mono text-[9px] uppercase">${item.type}</span>
             <span class="badge-pci bg-slate-50 text-slate-600 font-mono text-[9px] uppercase">${item.media}</span>
           </div>
-          <div class="aspect-video w-full flex items-center justify-center p-3 border border-slate-100 rounded-xl bg-slate-50/50 mb-4">
-            <img src="${thumbSrc}" alt="${item.name}" class="max-h-full object-contain max-w-full" referrerPolicy="no-referrer">
+          <div class="aspect-[4/3] w-full rounded-2xl border border-slate-200 bg-slate-100 mb-4 overflow-hidden group">
+            <img src="${thumbSrc}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerPolicy="no-referrer">
           </div>
           <h3 class="text-sm font-bold text-gray-900 mb-1 leading-snug">${item.name}</h3>
           <p class="text-[10px] text-gray-400 mb-2 font-mono">${item.code}</p>

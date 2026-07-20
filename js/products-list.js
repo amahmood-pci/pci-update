@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           
           <!-- Image Box -->
-          <a href="product.html?code=${item.code}" class="block aspect-video w-full flex items-center justify-center p-3 border border-slate-100 rounded-xl bg-slate-50/50 mb-4 group overflow-hidden">
-            <img src="${thumbSrc}" alt="${item.name}" class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-110" referrerPolicy="no-referrer">
+          <a href="product.html?code=${item.code}" class="block aspect-[4/3] w-full rounded-2xl border border-slate-200 bg-slate-100 mb-4 group overflow-hidden">
+            <img src="${thumbSrc}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerPolicy="no-referrer">
           </a>
 
           <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight hover:text-emerald-700 transition-colors">
