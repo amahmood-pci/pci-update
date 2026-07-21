@@ -11,7 +11,6 @@
   <style>
     :root {
       --forest: #012b1a;
-      --forest-light: #044e35;
       --emerald: #10b981;
       --emerald-light: #34d399;
       --page: #f4fbf7;
@@ -58,23 +57,49 @@
       margin-bottom: 16px;
     }
 
-    /* Logo pair rows */
+    /* Logo pair rows — strict alignment */
     .logo-pair { display: grid; grid-template-columns: 200px 1fr; align-items: center; gap: 26px; padding: 22px 0; border-top: 1px solid var(--hairline); }
     .logo-pair:first-child { border-top: 0; padding-top: 6px; }
     .logo-meta .lbl { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--emerald); }
     .logo-meta h3 { font-family: "Sora", sans-serif; font-size: 17px; font-weight: 600; color: var(--forest); margin: 6px 0 4px; }
     .logo-meta p { font-size: 13px; color: var(--ink-soft); margin: 0; }
-    .logo-showcase { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .logo-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .lockup-cell {
-      display: flex; align-items: center; gap: 14px;
-      padding: 20px 26px; border-radius: 10px; min-height: 120px;
+      display: flex; align-items: center; justify-content: center; gap: 18px;
+      padding: 24px; border-radius: 10px; min-height: 128px;
     }
     .lockup-cell.light { background: #fff; border: 1px solid var(--hairline); }
-    .lockup-cell.dark  { background: linear-gradient(135deg,#0A0F1E,#16213E); }
-    .lockup-cell img, .lockup-cell svg { height: 56px; width: auto; }
-    .lockup-cell .wm { font-size: 40px; font-weight: 700; line-height: 1; }
+    .lockup-cell.dark  { background: #000; }
+    .lockup-cell.bw-light { background: #fff; border: 1px solid var(--hairline); }
+    .lockup-cell.bw-dark  { background: #000; }
+
+    /* Uniform mark box so every mark centers in the same footprint */
+    .mark-box { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .mark-box img, .mark-box svg { width: 100%; height: 100%; object-fit: contain; }
+
+    .wm {
+      font-size: 40px; font-weight: 700; line-height: 1;
+      font-family: "IBM Plex Sans", sans-serif;
+    }
+    .wm-zilla { font-family: "Zilla Slab", serif; font-weight: 700; }
     .lockup-cell.light .wm { color: var(--org-navy); }
     .lockup-cell.dark  .wm { color: #fff; }
+    .lockup-cell.bw-light .wm { color: #000; }
+    .lockup-cell.bw-dark  .wm { color: #fff; }
+    .cell-caption {
+      position: absolute;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+    .cell-wrapper { position: relative; }
+    .cell-wrapper .cap {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-soft);
+      display: block; text-align: center; margin-top: 6px;
+    }
 
     /* Business cards */
     .biz-family { margin-top: 6px; }
@@ -99,19 +124,16 @@
       pointer-events: none;
     }
     .biz > * { position: relative; z-index: 1; }
-
     .biz.mine-dark  { background: linear-gradient(135deg,#010a08 0%,#022318 45%,#043e2b 78%,#010b08 100%); color: #e2f5ea; }
     .biz.mine-dark::after  { color: #34d399; }
     .biz.mine-light { background: #fff; border: 1px solid var(--hairline); color: var(--forest); }
     .biz.mine-light::after { color: #10b981; }
-
     .biz.org-dark  { background: linear-gradient(135deg,#0A0F1E 0%,#0B2E5F 55%,#0F3460 100%); color: #d5e0f5; font-family: "IBM Plex Sans", sans-serif; }
     .biz.org-dark::after  { color: #2ECC9A; }
     .biz.org-light { background: #fff; border: 1px solid rgba(11,46,95,0.15); color: var(--org-navy); font-family: "IBM Plex Sans", sans-serif; }
     .biz.org-light::after { color: #1B4FD8; }
-
     .biz .biz-top { display: flex; align-items: center; gap: 10px; }
-    .biz .biz-top img, .biz .biz-top svg { height: 40px; width: auto; }
+    .biz .biz-top .mark-box { width: 40px; height: 40px; }
     .biz .biz-top .wm { font-family: "Zilla Slab", serif; font-weight: 700; font-size: 30px; line-height: 1; }
     .biz .biz-top .wm-org { font-family: "IBM Plex Sans", sans-serif; font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: -0.02em; }
     .biz.mine-dark .wm, .biz.mine-dark .name { color: #fff; }
@@ -155,32 +177,42 @@
     <div class="wrap">
       <div class="eyebrow">Precision Cellular Immunology, LLC</div>
       <h1>Logo &amp; Branding</h1>
-      <p>Lockups available, business cards, and the two brand palettes side by side.</p>
+      <p>PCI logos available, PCI-AI logos available, business cards, and the two brand palettes side by side.</p>
     </div>
   </header>
 
-  <!-- LOCKUPS AVAILABLE -->
-  <section id="lockups">
+  <!-- PCI LOGOS AVAILABLE -->
+  <section id="pci-logos">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">01</span><h2>Lockups available</h2></div>
-      <p class="sec-sub">Each mark shown colored on white and white on dark. Font: IBM Plex Sans 600 unless noted.</p>
+      <div class="sec-head"><span class="sec-num">01</span><h2>PCI Logos Available</h2></div>
+      <p class="sec-sub">Each mark shown colored (left) and black &amp; white (right). Font: IBM Plex Sans 600 unless noted.</p>
 
       <div class="card">
-        <!-- Option A — logo.svg (current site) -->
+
+        <!-- Option A — Pathology (logo.svg) -->
         <div class="logo-pair">
           <div class="logo-meta">
             <span class="lbl">Option A</span>
-            <h3>logo.svg</h3>
-            <p>Gradient aperture with violet nucleus. Font: <b>Zilla Slab 700</b>.</p>
+            <h3>Pathology</h3>
+            <p>Current site mark — gradient aperture with violet nucleus. Font: <b>Zilla Slab 700</b>.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
-              <img src="logo.svg" alt="PCI mark" />
-              <span class="wm" style="font-family:'Zilla Slab',serif;color:var(--forest);">PCI</span>
+              <div class="mark-box"><img src="logo.svg" alt="Pathology mark" /></div>
+              <span class="wm wm-zilla">PCI</span>
             </div>
-            <div class="lockup-cell dark">
-              <img src="logo.svg" alt="PCI mark" />
-              <span class="wm" style="font-family:'Zilla Slab',serif;">PCI</span>
+            <div class="lockup-cell bw-light">
+              <div class="mark-box">
+                <!-- B/W recreation of logo.svg: black aperture ring + black nucleus, no gradient -->
+                <svg viewBox="162 110 780 780">
+                  <path fill="#000" fill-rule="evenodd" d="M 470,204 A 296,296 0 1 0 470,796 A 296,296 0 1 0 470,204 Z M 470,260 A 240,240 0 1 1 470,740 A 240,240 0 1 1 470,260 Z"/>
+                  <path fill="#000" d="M 606.6,237.4 C 654.6,239.3 676.2,211.6 691.4,192.3 A 42 42 0 1 1 715.0,210.8 C 697.7,232.9 676.1,260.5 691.7,303.9 A 296 296 0 0 1 606.6,237.4 Z"/>
+                  <path fill="#000" d="M 761.0,446.0 C 789.1,485.0 824.2,485.0 848.8,485.0 A 42 42 0 1 1 848.8,515.0 C 820.7,515.0 785.6,515.0 761.0,554.0 A 296 296 0 0 1 761.0,446.0 Z"/>
+                  <path fill="#000" d="M 691.7,696.1 C 678.3,742.2 699.9,769.9 715.0,789.2 A 42 42 0 1 1 691.4,807.7 C 674.1,785.6 652.5,757.9 606.6,762.6 A 296 296 0 0 1 691.7,696.1 Z"/>
+                  <circle cx="470" cy="500" r="86" fill="#000"/>
+                </svg>
+              </div>
+              <span class="wm wm-zilla">PCI</span>
             </div>
           </div>
         </div>
@@ -190,60 +222,75 @@
           <div class="logo-meta">
             <span class="lbl">Option B</span>
             <h3>Aperture</h3>
-            <p>Microscope field of view; three control arcs around a nucleus. Font: <b>IBM Plex Sans 600</b>.</p>
+            <p>Microscope field of view; three control arcs around a nucleus.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
-              <!-- Aperture: outer ring with 3 arcs + inner dot -->
-              <svg viewBox="0 0 60 60" style="height:56px;width:56px;">
-                <circle cx="30" cy="30" r="26" fill="none" stroke="#0B2E5F" stroke-width="3.5"/>
-                <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <circle cx="30" cy="30" r="7" fill="#1B4FD8"/>
-              </svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+              <div class="mark-box">
+                <svg viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="26" fill="none" stroke="#0B2E5F" stroke-width="3.5"/>
+                  <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <circle cx="30" cy="30" r="7" fill="#1B4FD8"/>
+                </svg>
+              </div>
+              <span class="wm">PCI</span>
             </div>
-            <div class="lockup-cell dark">
-              <svg viewBox="0 0 60 60" style="height:56px;width:56px;">
-                <circle cx="30" cy="30" r="26" fill="none" stroke="#fff" stroke-width="3.5" stroke-opacity="0.3"/>
-                <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <circle cx="30" cy="30" r="7" fill="#2ECC9A"/>
-              </svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
+            <div class="lockup-cell bw-light">
+              <div class="mark-box">
+                <svg viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="26" fill="none" stroke="#000" stroke-width="3.5"/>
+                  <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
+                  <circle cx="30" cy="30" r="7" fill="#000"/>
+                </svg>
+              </div>
+              <span class="wm">PCI</span>
             </div>
           </div>
         </div>
 
-        <!-- Option C — Slide -->
+        <!-- Option C — Slide (actual microscope slide) -->
         <div class="logo-pair">
           <div class="logo-meta">
             <span class="lbl">Option C</span>
             <h3>Slide</h3>
-            <p>A microscope slide with a tissue section. Instantly reads "pathology." Font: <b>IBM Plex Sans 600</b>.</p>
+            <p>A microscope slide (75×25mm proportions) with frosted label and tissue section. Instantly reads "pathology."</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
-              <svg viewBox="0 0 48 60" style="height:56px;width:45px;">
-                <rect x="10" y="2" width="28" height="56" rx="4" fill="none" stroke="#0B2E5F" stroke-width="3"/>
-                <rect x="16" y="20" width="16" height="22" rx="2" fill="#2ECC9A" opacity="0.25"/>
-                <circle cx="24" cy="31" r="6" fill="#2ECC9A"/>
-                <circle cx="24" cy="31" r="2.5" fill="#1B4FD8"/>
-                <rect x="18" y="6" width="12" height="3" rx="1.5" fill="#0B2E5F" opacity="0.3"/>
-              </svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+              <div class="mark-box">
+                <!-- Microscope slide: 3:1 aspect, sharp corners, frosted label left, tissue mid-right -->
+                <svg viewBox="0 0 90 60">
+                  <!-- glass slide (horizontal, sharp corners) -->
+                  <rect x="4" y="24" width="82" height="12" fill="#fff" stroke="#0B2E5F" stroke-width="1.4"/>
+                  <!-- frosted label (left end) -->
+                  <rect x="4" y="24" width="20" height="12" fill="#0B2E5F" opacity="0.12"/>
+                  <line x1="8" y1="28" x2="20" y2="28" stroke="#0B2E5F" stroke-width="0.6" opacity="0.5"/>
+                  <line x1="8" y1="31" x2="20" y2="31" stroke="#0B2E5F" stroke-width="0.6" opacity="0.5"/>
+                  <!-- coverslip + tissue section -->
+                  <rect x="42" y="26" width="34" height="8" fill="#2ECC9A" opacity="0.18" stroke="#2ECC9A" stroke-width="0.6"/>
+                  <ellipse cx="55" cy="30" rx="6" ry="3" fill="#1B4FD8" opacity="0.7"/>
+                  <ellipse cx="65" cy="30" rx="4" ry="2.5" fill="#2ECC9A"/>
+                </svg>
+              </div>
+              <span class="wm">PCI</span>
             </div>
-            <div class="lockup-cell dark">
-              <svg viewBox="0 0 48 60" style="height:56px;width:45px;">
-                <rect x="10" y="2" width="28" height="56" rx="4" fill="none" stroke="#fff" stroke-width="3" stroke-opacity="0.5"/>
-                <rect x="16" y="20" width="16" height="22" rx="2" fill="#2ECC9A" opacity="0.2"/>
-                <circle cx="24" cy="31" r="6" fill="#2ECC9A"/>
-                <circle cx="24" cy="31" r="2.5" fill="#fff"/>
-                <rect x="18" y="6" width="12" height="3" rx="1.5" fill="#fff" opacity="0.3"/>
-              </svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
+            <div class="lockup-cell bw-light">
+              <div class="mark-box">
+                <svg viewBox="0 0 90 60">
+                  <rect x="4" y="24" width="82" height="12" fill="#fff" stroke="#000" stroke-width="1.4"/>
+                  <rect x="4" y="24" width="20" height="12" fill="#000" opacity="0.18"/>
+                  <line x1="8" y1="28" x2="20" y2="28" stroke="#000" stroke-width="0.6" opacity="0.6"/>
+                  <line x1="8" y1="31" x2="20" y2="31" stroke="#000" stroke-width="0.6" opacity="0.6"/>
+                  <rect x="42" y="26" width="34" height="8" fill="none" stroke="#000" stroke-width="0.6"/>
+                  <ellipse cx="55" cy="30" rx="6" ry="3" fill="#000" opacity="0.65"/>
+                  <ellipse cx="65" cy="30" rx="4" ry="2.5" fill="#000"/>
+                </svg>
+              </div>
+              <span class="wm">PCI</span>
             </div>
           </div>
         </div>
@@ -253,24 +300,28 @@
           <div class="logo-meta">
             <span class="lbl">Option D</span>
             <h3>TriControl Ladder</h3>
-            <p>OE · WT · NULL as a rising calibration scale. Directly maps to the flagship product. Font: <b>IBM Plex Sans 600</b>.</p>
+            <p>OE · WT · NULL as a rising calibration scale. Directly maps to the flagship product.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
-              <svg viewBox="0 0 50 60" style="height:56px;width:47px;">
-                <rect x="4" y="38" width="12" height="20" rx="2" fill="#94a3b8"/>
-                <rect x="19" y="22" width="12" height="36" rx="2" fill="#1B4FD8"/>
-                <rect x="34" y="6" width="12" height="52" rx="2" fill="#2ECC9A"/>
-              </svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+              <div class="mark-box">
+                <svg viewBox="0 0 60 60">
+                  <rect x="8" y="38" width="12" height="18" rx="1.5" fill="#94a3b8"/>
+                  <rect x="24" y="24" width="12" height="32" rx="1.5" fill="#1B4FD8"/>
+                  <rect x="40" y="8" width="12" height="48" rx="1.5" fill="#2ECC9A"/>
+                </svg>
+              </div>
+              <span class="wm">PCI</span>
             </div>
-            <div class="lockup-cell dark">
-              <svg viewBox="0 0 50 60" style="height:56px;width:47px;">
-                <rect x="4" y="38" width="12" height="20" rx="2" fill="#94a3b8" opacity="0.6"/>
-                <rect x="19" y="22" width="12" height="36" rx="2" fill="#1B4FD8"/>
-                <rect x="34" y="6" width="12" height="52" rx="2" fill="#2ECC9A"/>
-              </svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
+            <div class="lockup-cell bw-light">
+              <div class="mark-box">
+                <svg viewBox="0 0 60 60">
+                  <rect x="8" y="38" width="12" height="18" rx="1.5" fill="#000" opacity="0.35"/>
+                  <rect x="24" y="24" width="12" height="32" rx="1.5" fill="#000" opacity="0.65"/>
+                  <rect x="40" y="8" width="12" height="48" rx="1.5" fill="#000"/>
+                </svg>
+              </div>
+              <span class="wm">PCI</span>
             </div>
           </div>
         </div>
@@ -280,32 +331,95 @@
           <div class="logo-meta">
             <span class="lbl">Option E</span>
             <h3>AI Detection</h3>
-            <p>Detection brackets framing a cell nucleus. Font: <b>IBM Plex Sans 600</b>.</p>
+            <p>Detection brackets framing a cell nucleus.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
-              <svg viewBox="0 0 60 60" style="height:56px;width:56px;">
-                <!-- Corner brackets -->
-                <path d="M6 18 L6 6 L18 6" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M42 6 L54 6 L54 18" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M54 42 L54 54 L42 54" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M18 54 L6 54 L6 42" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <!-- Crosshair -->
-                <circle cx="30" cy="30" r="10" fill="none" stroke="#2ECC9A" stroke-width="2.5"/>
-                <circle cx="30" cy="30" r="4" fill="#1B4FD8"/>
-              </svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+              <div class="mark-box">
+                <svg viewBox="0 0 60 60">
+                  <path d="M6 18 L6 6 L18 6" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M42 6 L54 6 L54 18" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M54 42 L54 54 L42 54" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M18 54 L6 54 L6 42" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="30" cy="30" r="10" fill="none" stroke="#2ECC9A" stroke-width="2.5"/>
+                  <circle cx="30" cy="30" r="4" fill="#1B4FD8"/>
+                </svg>
+              </div>
+              <span class="wm">PCI</span>
             </div>
-            <div class="lockup-cell dark">
-              <svg viewBox="0 0 60 60" style="height:56px;width:56px;">
-                <path d="M6 18 L6 6 L18 6" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
-                <path d="M42 6 L54 6 L54 18" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
-                <path d="M54 42 L54 54 L42 54" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
-                <path d="M18 54 L6 54 L6 42" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
-                <circle cx="30" cy="30" r="10" fill="none" stroke="#2ECC9A" stroke-width="2.5"/>
-                <circle cx="30" cy="30" r="4" fill="#2ECC9A"/>
-              </svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
+            <div class="lockup-cell bw-light">
+              <div class="mark-box">
+                <svg viewBox="0 0 60 60">
+                  <path d="M6 18 L6 6 L18 6" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M42 6 L54 6 L54 18" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M54 42 L54 54 L42 54" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M18 54 L6 54 L6 42" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="30" cy="30" r="10" fill="none" stroke="#000" stroke-width="2.5"/>
+                  <circle cx="30" cy="30" r="4" fill="#000"/>
+                </svg>
+              </div>
+              <span class="wm">PCI</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PCI-AI LOGOS AVAILABLE -->
+  <section id="pciai-logos">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>PCI-AI Logos Available</h2></div>
+      <p class="sec-sub">Regenerated from pcibio.ai — the cancer-cell mark with a "PCI-AI" wordmark. Shown colored and black &amp; white.</p>
+
+      <div class="card">
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Live</span>
+            <h3>Cancer-cell mark</h3>
+            <p>Irregular cell boundary, dark nucleus, teal chromatin dots. From pcibio.ai.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <div class="mark-box">
+                <svg viewBox="0 0 200 200" fill="none">
+                  <path d="M 100,30 C 125,12 168,30 168,65 C 168,88 185,100 172,124 C 160,148 160,168 136,168 C 118,168 108,185 88,175 C 68,165 45,172 35,152 C 22,130 18,108 32,88 C 42,68 25,45 48,35 C 65,22 85,44 100,30 Z"
+                    fill="rgba(168,196,245,0.60)" stroke="rgba(168,196,245,0.90)" stroke-width="2.5" stroke-linejoin="round"/>
+                  <ellipse cx="100" cy="104" rx="45" ry="40" fill="rgba(11,46,95,0.60)" transform="rotate(-12, 100, 104)"/>
+                  <ellipse cx="88"  cy="95"  rx="8"   ry="5.5" fill="#2ECC9A" transform="rotate(22,88,95)"/>
+                  <circle  cx="112" cy="100" r="5.5"  fill="#2ECC9A"/>
+                  <ellipse cx="94"  cy="116" rx="5.5" ry="4"   fill="#2ECC9A" transform="rotate(-18,94,116)"/>
+                  <circle  cx="78"  cy="110" r="4.5"  fill="#2ECC9A"/>
+                  <circle  cx="110" cy="116" r="4"    fill="#2ECC9A"/>
+                  <ellipse cx="104" cy="88"  rx="5"   ry="3.5" fill="#2ECC9A" transform="rotate(12,104,88)"/>
+                  <circle  cx="82"  cy="97"  r="3.5"  fill="#2ECC9A"/>
+                  <ellipse cx="116" cy="107" rx="3.5" ry="5.5" fill="#2ECC9A" transform="rotate(38,116,107)"/>
+                  <circle  cx="91"  cy="124" r="3"    fill="#2ECC9A"/>
+                  <circle  cx="100" cy="102" r="2.5"  fill="#2ECC9A"/>
+                </svg>
+              </div>
+              <span class="wm" style="color:var(--org-navy);">PCI-AI</span>
+            </div>
+            <div class="lockup-cell bw-light">
+              <div class="mark-box">
+                <svg viewBox="0 0 200 200" fill="none">
+                  <path d="M 100,30 C 125,12 168,30 168,65 C 168,88 185,100 172,124 C 160,148 160,168 136,168 C 118,168 108,185 88,175 C 68,165 45,172 35,152 C 22,130 18,108 32,88 C 42,68 25,45 48,35 C 65,22 85,44 100,30 Z"
+                    fill="rgba(0,0,0,0.10)" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+                  <ellipse cx="100" cy="104" rx="45" ry="40" fill="rgba(0,0,0,0.70)" transform="rotate(-12, 100, 104)"/>
+                  <ellipse cx="88"  cy="95"  rx="8"   ry="5.5" fill="#000" transform="rotate(22,88,95)"/>
+                  <circle  cx="112" cy="100" r="5.5"  fill="#000"/>
+                  <ellipse cx="94"  cy="116" rx="5.5" ry="4"   fill="#000" transform="rotate(-18,94,116)"/>
+                  <circle  cx="78"  cy="110" r="4.5"  fill="#000"/>
+                  <circle  cx="110" cy="116" r="4"    fill="#000"/>
+                  <ellipse cx="104" cy="88"  rx="5"   ry="3.5" fill="#000" transform="rotate(12,104,88)"/>
+                  <circle  cx="82"  cy="97"  r="3.5"  fill="#000"/>
+                  <ellipse cx="116" cy="107" rx="3.5" ry="5.5" fill="#000" transform="rotate(38,116,107)"/>
+                  <circle  cx="91"  cy="124" r="3"    fill="#000"/>
+                  <circle  cx="100" cy="102" r="2.5"  fill="#000"/>
+                </svg>
+              </div>
+              <span class="wm">PCI-AI</span>
             </div>
           </div>
         </div>
@@ -316,16 +430,16 @@
   <!-- BUSINESS CARDS -->
   <section id="cards">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">02</span><h2>Business cards</h2></div>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Business cards</h2></div>
       <p class="sec-sub">3.5″ × 2″ preview. A fading hexagonal pattern anchors the right edge on both variants.</p>
 
       <div class="biz-family">
-        <h3>Current website — logo.svg + Zilla Slab</h3>
+        <h3>Current website — Pathology mark + Zilla Slab</h3>
         <div class="sub">Forest / Emerald palette</div>
         <div class="cards-row">
           <div class="biz mine-dark">
             <span class="accent-bar"></span>
-            <div class="biz-top"><img src="logo.svg" alt="PCI" /><span class="wm">PCI</span></div>
+            <div class="biz-top"><div class="mark-box"><img src="logo.svg" alt="PCI" /></div><span class="wm">PCI</span></div>
             <div>
               <div class="name">John D. Andersen, DO, MBA</div>
               <div class="role">Founder / CEO</div>
@@ -338,7 +452,7 @@
           </div>
           <div class="biz mine-light">
             <span class="accent-bar"></span>
-            <div class="biz-top"><img src="logo.svg" alt="PCI" /><span class="wm">PCI</span></div>
+            <div class="biz-top"><div class="mark-box"><img src="logo.svg" alt="PCI" /></div><span class="wm">PCI</span></div>
             <div>
               <div class="name">John D. Andersen, DO, MBA</div>
               <div class="role">Founder / CEO</div>
@@ -359,13 +473,15 @@
           <div class="biz org-dark">
             <span class="accent-bar"></span>
             <div class="biz-top">
-              <svg viewBox="0 0 60 60" style="height:40px;width:40px;">
-                <circle cx="30" cy="30" r="26" fill="none" stroke="#fff" stroke-width="3.5" stroke-opacity="0.3"/>
-                <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <circle cx="30" cy="30" r="7" fill="#2ECC9A"/>
-              </svg>
+              <div class="mark-box">
+                <svg viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="26" fill="none" stroke="#fff" stroke-width="3.5" stroke-opacity="0.3"/>
+                  <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <circle cx="30" cy="30" r="7" fill="#2ECC9A"/>
+                </svg>
+              </div>
               <span class="wm-org">PCI</span>
             </div>
             <div>
@@ -381,13 +497,15 @@
           <div class="biz org-light">
             <span class="accent-bar"></span>
             <div class="biz-top">
-              <svg viewBox="0 0 60 60" style="height:40px;width:40px;">
-                <circle cx="30" cy="30" r="26" fill="none" stroke="#0B2E5F" stroke-width="3.5"/>
-                <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                <circle cx="30" cy="30" r="7" fill="#1B4FD8"/>
-              </svg>
+              <div class="mark-box">
+                <svg viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="26" fill="none" stroke="#0B2E5F" stroke-width="3.5"/>
+                  <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                  <circle cx="30" cy="30" r="7" fill="#1B4FD8"/>
+                </svg>
+              </div>
               <span class="wm-org">PCI</span>
             </div>
             <div>
@@ -408,7 +526,7 @@
   <!-- PALETTES -->
   <section id="palettes">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">03</span><h2>Brand palettes · side by side</h2></div>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Brand palettes · side by side</h2></div>
       <p class="sec-sub">Left: what the live website uses. Right: the available alternative palette.</p>
 
       <div class="palette-grid">
