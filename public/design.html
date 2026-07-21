@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Zilla+Slab:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      /* MY palette (website) */
       --forest: #012b1a;
       --forest-light: #044e35;
       --emerald: #10b981;
@@ -19,7 +18,6 @@
       --ink: #334155;
       --ink-soft: #64748b;
       --hairline: rgba(1,43,26,0.10);
-      /* ORG palette */
       --org-navy: #0B2E5F;
       --org-blue: #1B4FD8;
       --org-teal: #2ECC9A;
@@ -59,9 +57,16 @@
       box-shadow: 0 1px 2px rgba(1,43,26,0.05), 0 8px 24px -18px rgba(1,43,26,0.25);
       margin-bottom: 16px;
     }
-    .tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--emerald); }
 
-    /* Logo + wordmark pair rows */
+    /* Primary lockup */
+    .primary-lockup { display: flex; align-items: center; gap: 20px; padding: 20px 0 12px; }
+    .primary-lockup img { height: 72px; width: auto; }
+    .primary-lockup .stack { display: flex; flex-direction: column; }
+    .primary-lockup .stack .wm { font-family: "Zilla Slab", serif; font-weight: 700; font-size: 52px; line-height: 0.95; color: var(--forest); }
+    .primary-lockup .stack .tag-line { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--emerald); margin-top: 6px; }
+    .lockup-caption { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; }
+
+    /* Logo pair rows */
     .logo-pair { display: grid; grid-template-columns: 200px 1fr; align-items: center; gap: 26px; padding: 22px 0; border-top: 1px solid var(--hairline); }
     .logo-pair:first-child { border-top: 0; padding-top: 6px; }
     .logo-meta .lbl { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--emerald); }
@@ -74,12 +79,19 @@
     }
     .lockup-cell.light { background: #fff; border: 1px solid var(--hairline); }
     .lockup-cell.dark  { background: linear-gradient(135deg,#010a08,#043e2b); }
+    .lockup-cell.org-dark { background: linear-gradient(135deg,#0A0F1E,#16213E); }
+    .lockup-cell.mono-light { background: #fff; border: 1px solid var(--hairline); }
+    .lockup-cell.mono-dark  { background: #0a0a0a; }
     .lockup-cell img, .lockup-cell svg { height: 56px; width: auto; }
     .lockup-cell .wm { font-size: 40px; font-weight: 700; line-height: 1; }
     .lockup-cell.light .wm { color: var(--forest); }
-    .lockup-cell.dark  .wm { color: #fff; }
+    .lockup-cell.dark  .wm, .lockup-cell.org-dark .wm, .lockup-cell.mono-dark .wm { color: #fff; }
+    .lockup-cell.mono-light .wm { color: #000; }
 
     /* Business cards */
+    .biz-family { margin-top: 6px; }
+    .biz-family h3 { font-family: "Sora", sans-serif; font-size: 15px; font-weight: 600; color: var(--forest); margin: 0 0 4px; }
+    .biz-family .sub { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 14px; }
     .cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
     .biz {
       aspect-ratio: 1.75 / 1;
@@ -89,22 +101,53 @@
       box-shadow: 0 8px 24px -12px rgba(1,43,26,0.35);
       position: relative; overflow: hidden;
     }
-    .biz.dark  { background: linear-gradient(135deg,#010a08 0%,#022318 45%,#043e2b 78%,#010b08 100%); color: #e2f5ea; }
-    .biz.light { background: #fff; border: 1px solid var(--hairline); color: var(--forest); }
-    .biz .biz-top { display: flex; align-items: center; gap: 10px; }
-    .biz .biz-top img { height: 40px; width: auto; }
-    .biz .biz-top .wm { font-family: "Zilla Slab", serif; font-weight: 700; font-size: 30px; line-height: 1; }
-    .biz.light .wm { color: var(--forest); }
-    .biz.dark  .wm { color: #fff; }
-    .biz .name { font-family: "Sora", sans-serif; font-weight: 600; font-size: 17px; }
-    .biz.light .name { color: var(--forest); }
-    .biz.dark  .name { color: #fff; }
-    .biz .role { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-top: 2px; }
-    .biz .biz-foot { font-family: "JetBrains Mono", monospace; font-size: 11px; line-height: 1.7; }
-    .biz .biz-foot span { display: block; }
-    .biz .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--emerald); }
+    .biz::after {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='42' viewBox='0 0 24 42'%3E%3Cpath d='M12 0 L24 7 L24 21 L12 28 L0 21 L0 7 Z M12 28 L12 42' fill='none' stroke='currentColor' stroke-width='0.7' stroke-opacity='0.4'/%3E%3C/svg%3E");
+      background-size: 26px 45px;
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 62%);
+              mask-image: linear-gradient(to left, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 62%);
+      pointer-events: none;
+    }
+    .biz > * { position: relative; z-index: 1; }
 
-    /* Palette side-by-side */
+    .biz.mine-dark  { background: linear-gradient(135deg,#010a08 0%,#022318 45%,#043e2b 78%,#010b08 100%); color: #e2f5ea; }
+    .biz.mine-dark::after  { color: #34d399; }
+    .biz.mine-light { background: #fff; border: 1px solid var(--hairline); color: var(--forest); }
+    .biz.mine-light::after { color: #10b981; }
+    .biz.mine-dark  .wm  { color: #fff; }
+    .biz.mine-light .wm  { color: var(--forest); }
+    .biz.mine-dark  .name { color: #fff; }
+    .biz.mine-light .name { color: var(--forest); }
+    .biz.mine-dark  .accent-bar,
+    .biz.mine-light .accent-bar { background: var(--emerald); }
+
+    .biz.org-dark  { background: linear-gradient(135deg,#0A0F1E 0%,#0B2E5F 55%,#0F3460 100%); color: #d5e0f5; font-family: "IBM Plex Sans", sans-serif; }
+    .biz.org-dark::after  { color: #2ECC9A; }
+    .biz.org-light { background: #fff; border: 1px solid rgba(11,46,95,0.15); color: var(--org-navy); font-family: "IBM Plex Sans", sans-serif; }
+    .biz.org-light::after { color: #1B4FD8; }
+    .biz.org-dark  .name { color: #fff; }
+    .biz.org-light .name { color: var(--org-navy); }
+    .biz.org-dark  .accent-bar { background: var(--org-teal); }
+    .biz.org-light .accent-bar { background: var(--org-blue); }
+    .biz.org-dark  .wm-org, .biz.org-light .wm-org { font-family: "IBM Plex Sans", sans-serif; font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: -0.02em; }
+    .biz.org-dark  .wm-org { color: #fff; }
+    .biz.org-light .wm-org { color: var(--org-navy); }
+
+    .biz .biz-top { display: flex; align-items: center; gap: 10px; }
+    .biz .biz-top img, .biz .biz-top svg { height: 40px; width: auto; }
+    .biz .biz-top .wm { font-family: "Zilla Slab", serif; font-weight: 700; font-size: 30px; line-height: 1; }
+    .biz .name { font-family: "Sora", sans-serif; font-weight: 600; font-size: 17px; }
+    .biz.org-dark .name, .biz.org-light .name { font-family: "IBM Plex Sans", sans-serif; }
+    .biz .role { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-top: 2px; }
+    .biz.org-dark .role, .biz.org-light .role { font-family: "IBM Plex Mono", monospace; }
+    .biz .biz-foot { font-family: "JetBrains Mono", monospace; font-size: 11px; line-height: 1.7; }
+    .biz.org-dark .biz-foot, .biz.org-light .biz-foot { font-family: "IBM Plex Mono", monospace; }
+    .biz .biz-foot span { display: block; }
+    .biz .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; z-index: 2; }
+
+    /* Palettes */
     .palette-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
     .palette h3 { font-family: "Sora", sans-serif; font-size: 15px; font-weight: 600; color: var(--forest); margin: 0 0 4px; }
     .palette .sub { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 14px; }
@@ -129,18 +172,45 @@
     <div class="wrap">
       <div class="eyebrow">Precision Cellular Immunology, LLC</div>
       <h1>Logo &amp; Branding</h1>
-      <p>Finished logo directions, business cards, and the two brand palettes side by side — mine (green) vs the org file (navy).</p>
+      <p>Primary lockup, finished logo directions, business cards, and the two brand palettes side by side.</p>
     </div>
   </header>
 
-  <!-- FINISHED LOGO DIRECTIONS -->
+  <!-- PRIMARY LOCKUP -->
+  <section id="primary">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Primary lockup</h2></div>
+      <p class="sec-sub">Mark + PCI wordmark (Zilla Slab 700) + Precision Cellular Immunology tagline set in mono caps.</p>
+      <div class="card">
+        <div class="primary-lockup">
+          <img src="logo.svg" alt="PCI mark" />
+          <div class="stack">
+            <span class="wm">PCI</span>
+            <span class="tag-line">Precision Cellular Immunology</span>
+          </div>
+        </div>
+        <div class="lockup-caption">Primary lockup · light</div>
+      </div>
+      <div class="card" style="background:linear-gradient(135deg,#010a08,#043e2b);border-color:rgba(52,211,153,0.2);">
+        <div class="primary-lockup">
+          <img src="logo.svg" alt="PCI mark" />
+          <div class="stack">
+            <span class="wm" style="color:#fff;">PCI</span>
+            <span class="tag-line" style="color:#34d399;">Precision Cellular Immunology</span>
+          </div>
+        </div>
+        <div class="lockup-caption" style="color:#a7c4b5;">Primary lockup · dark</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO DIRECTIONS -->
   <section id="logos">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">01</span><h2>Logo directions</h2></div>
-      <p class="sec-sub">Each mark shown paired with its wordmark font — on light and on dark.</p>
+      <div class="sec-head"><span class="sec-num">02</span><h2>Logo directions</h2></div>
+      <p class="sec-sub">Each mark paired with its wordmark font on light and dark. Mine (Zilla Slab) at top; the org's Aperture (IBM Plex Sans) below, with a monochrome edition for one-color print.</p>
 
       <div class="card">
-        <!-- MINE: current -->
         <div class="logo-pair">
           <div class="logo-meta">
             <span class="lbl">Mine · current</span>
@@ -153,101 +223,41 @@
           </div>
         </div>
 
-        <!-- ORG A: Aperture -->
         <div class="logo-pair">
           <div class="logo-meta">
-            <span class="lbl">Org · Option A</span>
+            <span class="lbl">Org · Aperture</span>
             <h3>Aperture</h3>
-            <p>Field-of-view ring — three control arcs around a nucleus. Wordmark: <b>IBM Plex Sans 600</b>.</p>
+            <p>Field of view — three control arcs around a nucleus. Wordmark: <b>IBM Plex Sans 600</b>.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
               <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#0B2E5F" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#1B4FD8"/></svg>
               <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
             </div>
-            <div class="lockup-cell dark">
+            <div class="lockup-cell org-dark">
               <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#2ECC9A" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#2ECC9A"/></svg>
               <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
             </div>
           </div>
         </div>
 
-        <!-- ORG B: Nucleus -->
         <div class="logo-pair">
           <div class="logo-meta">
-            <span class="lbl">Org · Option B</span>
-            <h3>Nucleus</h3>
-            <p>Cell with its stained nucleus — p53 is a nuclear marker. Wordmark: <b>IBM Plex Sans 600</b>.</p>
+            <span class="lbl">Org · B/W</span>
+            <h3>Aperture · monochrome</h3>
+            <p>Single-color edition for embossing, watermarks, one-color print, report footers.</p>
           </div>
           <div class="logo-showcase">
-            <div class="lockup-cell light">
-              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#e6ecf6" stroke="#0B2E5F" stroke-width="2"/><circle cx="30" cy="30" r="11" fill="#1B4FD8"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            <div class="lockup-cell mono-light">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#000" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#000"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
             </div>
-            <div class="lockup-cell dark">
-              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#16213E" stroke="#2ECC9A" stroke-width="2"/><circle cx="30" cy="30" r="11" fill="#2ECC9A"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
+            <div class="lockup-cell mono-dark">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#fff" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#fff"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
             </div>
           </div>
         </div>
-
-        <!-- ORG C: Slide -->
-        <div class="logo-pair">
-          <div class="logo-meta">
-            <span class="lbl">Org · Option C</span>
-            <h3>Slide</h3>
-            <p>Microscope slide with a tissue section. Wordmark: <b>IBM Plex Sans 600</b>.</p>
-          </div>
-          <div class="logo-showcase">
-            <div class="lockup-cell light">
-              <svg viewBox="0 0 30 60"><rect x="5" y="4" width="20" height="52" rx="2" fill="#fff" stroke="#0B2E5F" stroke-width="2.5"/><ellipse cx="15" cy="30" rx="7" ry="12" fill="#1B4FD8"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
-            </div>
-            <div class="lockup-cell dark">
-              <svg viewBox="0 0 30 60"><rect x="5" y="4" width="20" height="52" rx="2" fill="#16213E" stroke="#2ECC9A" stroke-width="2.5"/><ellipse cx="15" cy="30" rx="7" ry="12" fill="#2ECC9A"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ORG D: TriControl -->
-        <div class="logo-pair">
-          <div class="logo-meta">
-            <span class="lbl">Org · Option D</span>
-            <h3>TriControl ladder</h3>
-            <p>OE · WT · NULL as a rising calibration scale — direct to the flagship. Wordmark: <b>IBM Plex Sans 600</b>.</p>
-          </div>
-          <div class="logo-showcase">
-            <div class="lockup-cell light">
-              <svg viewBox="0 0 60 60"><rect x="8" y="32" width="12" height="22" fill="#2ECC9A"/><rect x="24" y="20" width="12" height="34" fill="#1B4FD8"/><rect x="40" y="6" width="12" height="48" fill="#0B2E5F"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
-            </div>
-            <div class="lockup-cell dark">
-              <svg viewBox="0 0 60 60"><rect x="8" y="32" width="12" height="22" fill="#2ECC9A"/><rect x="24" y="20" width="12" height="34" fill="#1B4FD8"/><rect x="40" y="6" width="12" height="48" fill="#fff"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ORG E: AI detection -->
-        <div class="logo-pair">
-          <div class="logo-meta">
-            <span class="lbl">Org · Option E</span>
-            <h3>AI detection</h3>
-            <p>Detection brackets framing a scored cell — microscopy meets p53AI. Wordmark: <b>IBM Plex Sans 600</b>.</p>
-          </div>
-          <div class="logo-showcase">
-            <div class="lockup-cell light">
-              <svg viewBox="0 0 60 60"><path d="M8 16 V8 H16 M44 8 H52 V16 M52 44 V52 H44 M16 52 H8 V44" stroke="#0B2E5F" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="10" fill="#1B4FD8"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
-            </div>
-            <div class="lockup-cell dark">
-              <svg viewBox="0 0 60 60"><path d="M8 16 V8 H16 M44 8 H52 V16 M52 44 V52 H44 M16 52 H8 V44" stroke="#2ECC9A" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="10" fill="#2ECC9A"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -255,41 +265,77 @@
   <!-- BUSINESS CARDS -->
   <section id="cards">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">02</span><h2>Business cards</h2></div>
-      <p class="sec-sub">Standard 3.5″ × 2″ preview — my logo + Zilla wordmark, on light and on dark.</p>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Business cards</h2></div>
+      <p class="sec-sub">3.5″ × 2″ preview. A fading hexagonal pattern anchors the right edge on both variants.</p>
 
-      <div class="cards-row">
-        <div class="biz dark">
-          <span class="accent-bar"></span>
-          <div class="biz-top">
-            <img src="logo.svg" alt="PCI" />
-            <span class="wm">PCI</span>
+      <div class="biz-family">
+        <h3>Mine — Aperture ring + Zilla Slab</h3>
+        <div class="sub">Forest / Emerald palette</div>
+        <div class="cards-row">
+          <div class="biz mine-dark">
+            <span class="accent-bar"></span>
+            <div class="biz-top"><img src="logo.svg" alt="PCI" /><span class="wm">PCI</span></div>
+            <div>
+              <div class="name">John D. Andersen, DO, MBA</div>
+              <div class="role">Founder / CEO</div>
+            </div>
+            <div class="biz-foot">
+              <span>jandersen@pcibio.com</span>
+              <span>Helix Park · Houston, TX 77030</span>
+              <span>linkedin.com/company/precision-cellular-immunology</span>
+            </div>
           </div>
-          <div>
-            <div class="name">M. Ayan Mahmood</div>
-            <div class="role">Founder</div>
-          </div>
-          <div class="biz-foot">
-            <span>amahmood@pcibio.com</span>
-            <span>Helix Park · Houston, TX 77030</span>
-            <span>linkedin.com/company/precision-cellular-immunology</span>
+          <div class="biz mine-light">
+            <span class="accent-bar"></span>
+            <div class="biz-top"><img src="logo.svg" alt="PCI" /><span class="wm">PCI</span></div>
+            <div>
+              <div class="name">John D. Andersen, DO, MBA</div>
+              <div class="role">Founder / CEO</div>
+            </div>
+            <div class="biz-foot">
+              <span>jandersen@pcibio.com</span>
+              <span>Helix Park · Houston, TX 77030</span>
+              <span>linkedin.com/company/precision-cellular-immunology</span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="biz light">
-          <span class="accent-bar"></span>
-          <div class="biz-top">
-            <img src="logo.svg" alt="PCI" />
-            <span class="wm">PCI</span>
+      <div class="biz-family" style="margin-top:28px;">
+        <h3>Org — Aperture + IBM Plex Sans</h3>
+        <div class="sub">Navy / Action blue / AI teal palette</div>
+        <div class="cards-row">
+          <div class="biz org-dark">
+            <span class="accent-bar"></span>
+            <div class="biz-top">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#2ECC9A" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#2ECC9A"/></svg>
+              <span class="wm-org">PCI</span>
+            </div>
+            <div>
+              <div class="name">John D. Andersen, DO, MBA</div>
+              <div class="role">Founder / CEO</div>
+            </div>
+            <div class="biz-foot">
+              <span>jandersen@pcibio.com</span>
+              <span>Helix Park · Houston, TX 77030</span>
+              <span>linkedin.com/company/precision-cellular-immunology</span>
+            </div>
           </div>
-          <div>
-            <div class="name">M. Ayan Mahmood</div>
-            <div class="role">Founder</div>
-          </div>
-          <div class="biz-foot">
-            <span>amahmood@pcibio.com</span>
-            <span>Helix Park · Houston, TX 77030</span>
-            <span>linkedin.com/company/precision-cellular-immunology</span>
+          <div class="biz org-light">
+            <span class="accent-bar"></span>
+            <div class="biz-top">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#0B2E5F" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#1B4FD8"/></svg>
+              <span class="wm-org">PCI</span>
+            </div>
+            <div>
+              <div class="name">John D. Andersen, DO, MBA</div>
+              <div class="role">Founder / CEO</div>
+            </div>
+            <div class="biz-foot">
+              <span>jandersen@pcibio.com</span>
+              <span>Helix Park · Houston, TX 77030</span>
+              <span>linkedin.com/company/precision-cellular-immunology</span>
+            </div>
           </div>
         </div>
       </div>
@@ -299,8 +345,8 @@
   <!-- PALETTES -->
   <section id="palettes">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">03</span><h2>Brand palettes · side by side</h2></div>
-      <p class="sec-sub">Left: what I use on the live website. Right: what the org design file specifies.</p>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Brand palettes · side by side</h2></div>
+      <p class="sec-sub">Left: what the live website uses. Right: what the org design file specifies.</p>
 
       <div class="palette-grid">
         <div class="card palette">
