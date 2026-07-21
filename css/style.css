@@ -450,36 +450,35 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
 .cta-aurora {
   background: linear-gradient(180deg,
     #030905 0%,
-    #062418 24%,
-    #0d4a2b 52%,
-    #1d8842 78%,
-    #4CBB17 94%,
-    #6CD531 100%);
+    #05170e 30%,
+    #0b3a24 60%,
+    #124e30 82%,
+    #1a7a48 100%);
 }
 .cta-orbs { overflow: hidden; }
 .cta-orbs .orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(38px);
-  opacity: 0.85;
+  filter: blur(55px);
+  opacity: 0.9;
   mix-blend-mode: screen;
   will-change: transform;
 }
-.orb-1 { width: 420px; height: 420px; left: -60px;  top: -120px;
-  background: radial-gradient(circle, rgba(5,120,80,1), transparent 68%);
-  animation: orb-float-a 12s ease-in-out infinite; }
-.orb-2 { width: 340px; height: 340px; right: -40px; top: -80px;
-  background: radial-gradient(circle, rgba(6,95,70,1), transparent 68%);
-  animation: orb-float-b 15s ease-in-out infinite; }
-.orb-3 { width: 320px; height: 320px; left: 28%;   bottom: -150px;
-  background: radial-gradient(circle, rgba(4,120,87,1), transparent 68%);
-  animation: orb-float-c 17s ease-in-out infinite; }
-.orb-4 { width: 260px; height: 260px; left: 58%;   top: 6%;
-  background: radial-gradient(circle, rgba(16,120,90,0.95), transparent 68%);
-  animation: orb-float-b 13s ease-in-out infinite reverse; }
-.orb-5 { width: 240px; height: 240px; right: 20%;  bottom: -70px;
-  background: radial-gradient(circle, rgba(6,78,59,0.95), transparent 68%);
-  animation: orb-float-c 19s ease-in-out infinite reverse; }
+.orb-1 { width: 520px; height: 520px; left: -100px; top: -160px;
+  background: radial-gradient(circle, rgba(5,120,80,1), transparent 70%);
+  animation: orb-float-a 16s ease-in-out infinite; }
+.orb-2 { width: 460px; height: 460px; right: -80px; top: -120px;
+  background: radial-gradient(circle, rgba(6,95,70,1), transparent 70%);
+  animation: orb-float-b 20s ease-in-out infinite; }
+.orb-3 { width: 440px; height: 440px; left: 26%;   bottom: -200px;
+  background: radial-gradient(circle, rgba(4,120,87,1), transparent 70%);
+  animation: orb-float-c 24s ease-in-out infinite; }
+.orb-4 { width: 360px; height: 360px; left: 56%;   top: 2%;
+  background: radial-gradient(circle, rgba(16,120,90,0.95), transparent 70%);
+  animation: orb-float-b 18s ease-in-out infinite reverse; }
+.orb-5 { width: 340px; height: 340px; right: 16%;  bottom: -110px;
+  background: radial-gradient(circle, rgba(6,78,59,0.95), transparent 70%);
+  animation: orb-float-c 27s ease-in-out infinite reverse; }
 @keyframes orb-float-a {
   0%,100% { transform: translate(0, 0) scale(1); }
   33%     { transform: translate(140px, 70px) scale(1.25); }
