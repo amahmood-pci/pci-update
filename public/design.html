@@ -20,6 +20,8 @@
       --org-navy: #0B2E5F;
       --org-blue: #1B4FD8;
       --org-teal: #2ECC9A;
+      --org-salmon: #E88E6C;
+      --org-lilac: #A8C4F5;
     }
     * { box-sizing: border-box; }
     body {
@@ -69,9 +71,7 @@
       padding: 24px; border-radius: 10px; min-height: 128px;
     }
     .lockup-cell.light { background: #fff; border: 1px solid var(--hairline); }
-    .lockup-cell.dark  { background: #000; }
-    .lockup-cell.bw-light { background: #fff; border: 1px solid var(--hairline); }
-    .lockup-cell.bw-dark  { background: #000; }
+    .lockup-cell.bw    { background: #000; }
 
     /* Uniform mark box so every mark centers in the same footprint */
     .mark-box { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -83,23 +83,7 @@
     }
     .wm-zilla { font-family: "Zilla Slab", serif; font-weight: 700; }
     .lockup-cell.light .wm { color: var(--org-navy); }
-    .lockup-cell.dark  .wm { color: #fff; }
-    .lockup-cell.bw-light .wm { color: #000; }
-    .lockup-cell.bw-dark  .wm { color: #fff; }
-    .cell-caption {
-      position: absolute;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-top: 4px;
-    }
-    .cell-wrapper { position: relative; }
-    .cell-wrapper .cap {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-soft);
-      display: block; text-align: center; margin-top: 6px;
-    }
+    .lockup-cell.bw    .wm { color: #fff; }
 
     /* Business cards */
     .biz-family { margin-top: 6px; }
@@ -185,31 +169,54 @@
   <section id="pci-logos">
     <div class="wrap">
       <div class="sec-head"><span class="sec-num">01</span><h2>PCI Logos Available</h2></div>
-      <p class="sec-sub">Each mark shown colored (left) and black &amp; white (right). Font: IBM Plex Sans 600 unless noted.</p>
+      <p class="sec-sub">Each mark shown colored on white (left) and white on black (right). Font: IBM Plex Sans 600 unless noted.</p>
 
       <div class="card">
 
-        <!-- Option A — Pathology (logo.svg) -->
+        <!-- OPTION A — PATHOLOGY -->
         <div class="logo-pair">
           <div class="logo-meta">
             <span class="lbl">Option A</span>
             <h3>Pathology</h3>
-            <p>Current site mark — gradient aperture with violet nucleus. Font: <b>Zilla Slab 700</b>.</p>
+            <p>Current site mark — gradient aperture with violet nucleus and grain-textured cell wedges. Font: <b>Zilla Slab 700</b>.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
               <div class="mark-box"><img src="logo.svg" alt="Pathology mark" /></div>
               <span class="wm wm-zilla">PCI</span>
             </div>
-            <div class="lockup-cell bw-light">
+            <div class="lockup-cell bw">
               <div class="mark-box">
-                <!-- B/W recreation of logo.svg: black aperture ring + black nucleus, no gradient -->
                 <svg viewBox="162 110 780 780">
-                  <path fill="#000" fill-rule="evenodd" d="M 470,204 A 296,296 0 1 0 470,796 A 296,296 0 1 0 470,204 Z M 470,260 A 240,240 0 1 1 470,740 A 240,240 0 1 1 470,260 Z"/>
-                  <path fill="#000" d="M 606.6,237.4 C 654.6,239.3 676.2,211.6 691.4,192.3 A 42 42 0 1 1 715.0,210.8 C 697.7,232.9 676.1,260.5 691.7,303.9 A 296 296 0 0 1 606.6,237.4 Z"/>
-                  <path fill="#000" d="M 761.0,446.0 C 789.1,485.0 824.2,485.0 848.8,485.0 A 42 42 0 1 1 848.8,515.0 C 820.7,515.0 785.6,515.0 761.0,554.0 A 296 296 0 0 1 761.0,446.0 Z"/>
-                  <path fill="#000" d="M 691.7,696.1 C 678.3,742.2 699.9,769.9 715.0,789.2 A 42 42 0 1 1 691.4,807.7 C 674.1,785.6 652.5,757.9 606.6,762.6 A 296 296 0 0 1 691.7,696.1 Z"/>
-                  <circle cx="470" cy="500" r="86" fill="#000"/>
+                  <defs>
+                    <path id="bw-wedge" d="M -13,-102 L -30,-208 Q 0,-220 30,-208 L 13,-102 Q 0,-96 -13,-102 Z"/>
+                  </defs>
+                  <g fill="#fff">
+                    <path fill-rule="evenodd" d="M 470,204 A 296,296 0 1 0 470,796 A 296,296 0 1 0 470,204 Z M 470,260 A 240,240 0 1 1 470,740 A 240,240 0 1 1 470,260 Z"/>
+                    <path d="M 606.6,237.4 C 654.6,239.3 676.2,211.6 691.4,192.3 A 42 42 0 1 1 715.0,210.8 C 697.7,232.9 676.1,260.5 691.7,303.9 A 296 296 0 0 1 606.6,237.4 Z"/>
+                    <path d="M 761.0,446.0 C 789.1,485.0 824.2,485.0 848.8,485.0 A 42 42 0 1 1 848.8,515.0 C 820.7,515.0 785.6,515.0 761.0,554.0 A 296 296 0 0 1 761.0,446.0 Z"/>
+                    <path d="M 691.7,696.1 C 678.3,742.2 699.9,769.9 715.0,789.2 A 42 42 0 1 1 691.4,807.7 C 674.1,785.6 652.5,757.9 606.6,762.6 A 296 296 0 0 1 691.7,696.1 Z"/>
+                  </g>
+                  <circle cx="470" cy="500" r="242" fill="#000"/>
+                  <g transform="translate(470,500)" fill="#fff">
+                    <use href="#bw-wedge"/>
+                    <use href="#bw-wedge" transform="rotate(22.5)"/>
+                    <use href="#bw-wedge" transform="rotate(45)"/>
+                    <use href="#bw-wedge" transform="rotate(67.5)"/>
+                    <use href="#bw-wedge" transform="rotate(90)"/>
+                    <use href="#bw-wedge" transform="rotate(112.5)"/>
+                    <use href="#bw-wedge" transform="rotate(135)"/>
+                    <use href="#bw-wedge" transform="rotate(157.5)"/>
+                    <use href="#bw-wedge" transform="rotate(180)"/>
+                    <use href="#bw-wedge" transform="rotate(202.5)"/>
+                    <use href="#bw-wedge" transform="rotate(225)"/>
+                    <use href="#bw-wedge" transform="rotate(247.5)"/>
+                    <use href="#bw-wedge" transform="rotate(270)"/>
+                    <use href="#bw-wedge" transform="rotate(292.5)"/>
+                    <use href="#bw-wedge" transform="rotate(315)"/>
+                    <use href="#bw-wedge" transform="rotate(337.5)"/>
+                  </g>
+                  <circle cx="470" cy="500" r="86" fill="#fff"/>
                 </svg>
               </div>
               <span class="wm wm-zilla">PCI</span>
@@ -217,34 +224,36 @@
           </div>
         </div>
 
-        <!-- Option B — Aperture -->
+        <!-- OPTION B — APERTURE -->
         <div class="logo-pair">
           <div class="logo-meta">
             <span class="lbl">Option B</span>
             <h3>Aperture</h3>
-            <p>Microscope field of view; three control arcs around a nucleus.</p>
+            <p>Microscope field of view. Solid navy ring with three teal control arcs on its inner circumference; navy nucleus with a teal core.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
               <div class="mark-box">
                 <svg viewBox="0 0 60 60">
-                  <circle cx="30" cy="30" r="26" fill="none" stroke="#0B2E5F" stroke-width="3.5"/>
-                  <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <circle cx="30" cy="30" r="7" fill="#1B4FD8"/>
+                  <path fill-rule="evenodd" fill="#0B2E5F" d="M30 3 A27 27 0 1 1 30 57 A27 27 0 1 1 30 3 Z M30 11 A19 19 0 1 0 30 49 A19 19 0 1 0 30 11 Z"/>
+                  <path d="M 15.5,15.5 A 19 19 0 0 1 44.5,15.5" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M 47,32 A 19 19 0 0 1 36,47.5" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M 24,47.5 A 19 19 0 0 1 13,32" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <circle cx="30" cy="30" r="7" fill="#0B2E5F"/>
+                  <circle cx="30" cy="30" r="3" fill="#2ECC9A"/>
                 </svg>
               </div>
               <span class="wm">PCI</span>
             </div>
-            <div class="lockup-cell bw-light">
+            <div class="lockup-cell bw">
               <div class="mark-box">
                 <svg viewBox="0 0 60 60">
-                  <circle cx="30" cy="30" r="26" fill="none" stroke="#000" stroke-width="3.5"/>
-                  <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
-                  <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
-                  <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
-                  <circle cx="30" cy="30" r="7" fill="#000"/>
+                  <path fill-rule="evenodd" fill="#fff" d="M30 3 A27 27 0 1 1 30 57 A27 27 0 1 1 30 3 Z M30 11 A19 19 0 1 0 30 49 A19 19 0 1 0 30 11 Z"/>
+                  <path d="M 15.5,15.5 A 19 19 0 0 1 44.5,15.5" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M 47,32 A 19 19 0 0 1 36,47.5" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M 24,47.5 A 19 19 0 0 1 13,32" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+                  <circle cx="30" cy="30" r="7" fill="#fff"/>
+                  <circle cx="30" cy="30" r="3" fill="#000"/>
                 </svg>
               </div>
               <span class="wm">PCI</span>
@@ -252,42 +261,32 @@
           </div>
         </div>
 
-        <!-- Option C — Slide (actual microscope slide) -->
+        <!-- OPTION C — SLIDE (tall lab slide, per image 2) -->
         <div class="logo-pair">
           <div class="logo-meta">
             <span class="lbl">Option C</span>
             <h3>Slide</h3>
-            <p>A microscope slide (75×25mm proportions) with frosted label and tissue section. Instantly reads "pathology."</p>
+            <p>Tall navy slide body with a frosted label at the top and a coral tissue section below, marked at center in teal. Instantly reads "pathology."</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
               <div class="mark-box">
-                <!-- Microscope slide: 3:1 aspect, sharp corners, frosted label left, tissue mid-right -->
-                <svg viewBox="0 0 90 60">
-                  <!-- glass slide (horizontal, sharp corners) -->
-                  <rect x="4" y="24" width="82" height="12" fill="#fff" stroke="#0B2E5F" stroke-width="1.4"/>
-                  <!-- frosted label (left end) -->
-                  <rect x="4" y="24" width="20" height="12" fill="#0B2E5F" opacity="0.12"/>
-                  <line x1="8" y1="28" x2="20" y2="28" stroke="#0B2E5F" stroke-width="0.6" opacity="0.5"/>
-                  <line x1="8" y1="31" x2="20" y2="31" stroke="#0B2E5F" stroke-width="0.6" opacity="0.5"/>
-                  <!-- coverslip + tissue section -->
-                  <rect x="42" y="26" width="34" height="8" fill="#2ECC9A" opacity="0.18" stroke="#2ECC9A" stroke-width="0.6"/>
-                  <ellipse cx="55" cy="30" rx="6" ry="3" fill="#1B4FD8" opacity="0.7"/>
-                  <ellipse cx="65" cy="30" rx="4" ry="2.5" fill="#2ECC9A"/>
+                <svg viewBox="0 0 60 60">
+                  <rect x="18" y="4" width="24" height="52" rx="4" ry="4" fill="#0B2E5F"/>
+                  <rect x="21" y="9" width="18" height="12" rx="1.5" ry="1.5" fill="#EEF2F8"/>
+                  <circle cx="30" cy="37" r="7" fill="#E88E6C"/>
+                  <circle cx="30" cy="37" r="2.5" fill="#2ECC9A"/>
                 </svg>
               </div>
               <span class="wm">PCI</span>
             </div>
-            <div class="lockup-cell bw-light">
+            <div class="lockup-cell bw">
               <div class="mark-box">
-                <svg viewBox="0 0 90 60">
-                  <rect x="4" y="24" width="82" height="12" fill="#fff" stroke="#000" stroke-width="1.4"/>
-                  <rect x="4" y="24" width="20" height="12" fill="#000" opacity="0.18"/>
-                  <line x1="8" y1="28" x2="20" y2="28" stroke="#000" stroke-width="0.6" opacity="0.6"/>
-                  <line x1="8" y1="31" x2="20" y2="31" stroke="#000" stroke-width="0.6" opacity="0.6"/>
-                  <rect x="42" y="26" width="34" height="8" fill="none" stroke="#000" stroke-width="0.6"/>
-                  <ellipse cx="55" cy="30" rx="6" ry="3" fill="#000" opacity="0.65"/>
-                  <ellipse cx="65" cy="30" rx="4" ry="2.5" fill="#000"/>
+                <svg viewBox="0 0 60 60">
+                  <rect x="18" y="4" width="24" height="52" rx="4" ry="4" fill="none" stroke="#fff" stroke-width="2"/>
+                  <rect x="21" y="9" width="18" height="12" rx="1.5" ry="1.5" fill="#fff"/>
+                  <circle cx="30" cy="37" r="7" fill="#fff"/>
+                  <circle cx="30" cy="37" r="2.5" fill="#000"/>
                 </svg>
               </div>
               <span class="wm">PCI</span>
@@ -295,7 +294,7 @@
           </div>
         </div>
 
-        <!-- Option D — TriControl Ladder -->
+        <!-- OPTION D — TRICONTROL LADDER -->
         <div class="logo-pair">
           <div class="logo-meta">
             <span class="lbl">Option D</span>
@@ -306,19 +305,19 @@
             <div class="lockup-cell light">
               <div class="mark-box">
                 <svg viewBox="0 0 60 60">
-                  <rect x="8" y="38" width="12" height="18" rx="1.5" fill="#94a3b8"/>
+                  <rect x="8"  y="38" width="12" height="18" rx="1.5" fill="#94A3B8"/>
                   <rect x="24" y="24" width="12" height="32" rx="1.5" fill="#1B4FD8"/>
-                  <rect x="40" y="8" width="12" height="48" rx="1.5" fill="#2ECC9A"/>
+                  <rect x="40" y="8"  width="12" height="48" rx="1.5" fill="#2ECC9A"/>
                 </svg>
               </div>
               <span class="wm">PCI</span>
             </div>
-            <div class="lockup-cell bw-light">
+            <div class="lockup-cell bw">
               <div class="mark-box">
                 <svg viewBox="0 0 60 60">
-                  <rect x="8" y="38" width="12" height="18" rx="1.5" fill="#000" opacity="0.35"/>
-                  <rect x="24" y="24" width="12" height="32" rx="1.5" fill="#000" opacity="0.65"/>
-                  <rect x="40" y="8" width="12" height="48" rx="1.5" fill="#000"/>
+                  <rect x="8"  y="38" width="12" height="18" rx="1.5" fill="#fff" opacity="0.35"/>
+                  <rect x="24" y="24" width="12" height="32" rx="1.5" fill="#fff" opacity="0.65"/>
+                  <rect x="40" y="8"  width="12" height="48" rx="1.5" fill="#fff"/>
                 </svg>
               </div>
               <span class="wm">PCI</span>
@@ -326,7 +325,7 @@
           </div>
         </div>
 
-        <!-- Option E — AI Detection -->
+        <!-- OPTION E — AI DETECTION -->
         <div class="logo-pair">
           <div class="logo-meta">
             <span class="lbl">Option E</span>
@@ -337,7 +336,7 @@
             <div class="lockup-cell light">
               <div class="mark-box">
                 <svg viewBox="0 0 60 60">
-                  <path d="M6 18 L6 6 L18 6" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6 18 L6 6 L18 6"   fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M42 6 L54 6 L54 18" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M54 42 L54 54 L42 54" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M18 54 L6 54 L6 42" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -347,15 +346,15 @@
               </div>
               <span class="wm">PCI</span>
             </div>
-            <div class="lockup-cell bw-light">
+            <div class="lockup-cell bw">
               <div class="mark-box">
                 <svg viewBox="0 0 60 60">
-                  <path d="M6 18 L6 6 L18 6" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M42 6 L54 6 L54 18" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M54 42 L54 54 L42 54" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M18 54 L6 54 L6 42" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="30" cy="30" r="10" fill="none" stroke="#000" stroke-width="2.5"/>
-                  <circle cx="30" cy="30" r="4" fill="#000"/>
+                  <path d="M6 18 L6 6 L18 6"   fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M42 6 L54 6 L54 18" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M54 42 L54 54 L42 54" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M18 54 L6 54 L6 42" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="30" cy="30" r="10" fill="none" stroke="#fff" stroke-width="2.5"/>
+                  <circle cx="30" cy="30" r="4" fill="#fff"/>
                 </svg>
               </div>
               <span class="wm">PCI</span>
@@ -371,14 +370,14 @@
   <section id="pciai-logos">
     <div class="wrap">
       <div class="sec-head"><span class="sec-num">02</span><h2>PCI-AI Logos Available</h2></div>
-      <p class="sec-sub">Regenerated from pcibio.ai — the cancer-cell mark with a "PCI-AI" wordmark. Shown colored and black &amp; white.</p>
+      <p class="sec-sub">Reconstructed from pcibio.ai — cancer-cell mark with a "PCI-AI" wordmark. Shown colored on white and white on black.</p>
 
       <div class="card">
         <div class="logo-pair">
           <div class="logo-meta">
-            <span class="lbl">Live</span>
+            <span class="lbl">From pcibio.ai</span>
             <h3>Cancer-cell mark</h3>
-            <p>Irregular cell boundary, dark nucleus, teal chromatin dots. From pcibio.ai.</p>
+            <p>Irregular lilac cell boundary, dark navy nucleus, teal chromatin dots.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
@@ -401,12 +400,12 @@
               </div>
               <span class="wm" style="color:var(--org-navy);">PCI-AI</span>
             </div>
-            <div class="lockup-cell bw-light">
+            <div class="lockup-cell bw">
               <div class="mark-box">
                 <svg viewBox="0 0 200 200" fill="none">
                   <path d="M 100,30 C 125,12 168,30 168,65 C 168,88 185,100 172,124 C 160,148 160,168 136,168 C 118,168 108,185 88,175 C 68,165 45,172 35,152 C 22,130 18,108 32,88 C 42,68 25,45 48,35 C 65,22 85,44 100,30 Z"
-                    fill="rgba(0,0,0,0.10)" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
-                  <ellipse cx="100" cy="104" rx="45" ry="40" fill="rgba(0,0,0,0.70)" transform="rotate(-12, 100, 104)"/>
+                    fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+                  <ellipse cx="100" cy="104" rx="45" ry="40" fill="#fff" transform="rotate(-12, 100, 104)"/>
                   <ellipse cx="88"  cy="95"  rx="8"   ry="5.5" fill="#000" transform="rotate(22,88,95)"/>
                   <circle  cx="112" cy="100" r="5.5"  fill="#000"/>
                   <ellipse cx="94"  cy="116" rx="5.5" ry="4"   fill="#000" transform="rotate(-18,94,116)"/>
@@ -475,11 +474,12 @@
             <div class="biz-top">
               <div class="mark-box">
                 <svg viewBox="0 0 60 60">
-                  <circle cx="30" cy="30" r="26" fill="none" stroke="#fff" stroke-width="3.5" stroke-opacity="0.3"/>
-                  <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <circle cx="30" cy="30" r="7" fill="#2ECC9A"/>
+                  <path fill-rule="evenodd" fill="#fff" fill-opacity="0.14" d="M30 3 A27 27 0 1 1 30 57 A27 27 0 1 1 30 3 Z M30 11 A19 19 0 1 0 30 49 A19 19 0 1 0 30 11 Z"/>
+                  <path d="M 15.5,15.5 A 19 19 0 0 1 44.5,15.5" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M 47,32 A 19 19 0 0 1 36,47.5" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M 24,47.5 A 19 19 0 0 1 13,32" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <circle cx="30" cy="30" r="7" fill="#fff"/>
+                  <circle cx="30" cy="30" r="3" fill="#2ECC9A"/>
                 </svg>
               </div>
               <span class="wm-org">PCI</span>
@@ -499,11 +499,12 @@
             <div class="biz-top">
               <div class="mark-box">
                 <svg viewBox="0 0 60 60">
-                  <circle cx="30" cy="30" r="26" fill="none" stroke="#0B2E5F" stroke-width="3.5"/>
-                  <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
-                  <circle cx="30" cy="30" r="7" fill="#1B4FD8"/>
+                  <path fill-rule="evenodd" fill="#0B2E5F" d="M30 3 A27 27 0 1 1 30 57 A27 27 0 1 1 30 3 Z M30 11 A19 19 0 1 0 30 49 A19 19 0 1 0 30 11 Z"/>
+                  <path d="M 15.5,15.5 A 19 19 0 0 1 44.5,15.5" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M 47,32 A 19 19 0 0 1 36,47.5" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M 24,47.5 A 19 19 0 0 1 13,32" fill="none" stroke="#2ECC9A" stroke-width="6" stroke-linecap="round"/>
+                  <circle cx="30" cy="30" r="7" fill="#0B2E5F"/>
+                  <circle cx="30" cy="30" r="3" fill="#2ECC9A"/>
                 </svg>
               </div>
               <span class="wm-org">PCI</span>
