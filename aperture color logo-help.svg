@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- dark blue circle outline -->
+  <circle cx="100" cy="100" r="84" fill="none" stroke="#0B2E5F" stroke-width="12"/>
+
+  <!-- upper lens: thin arc hugging the top, split dark (left) / light (right) -->
+  <path d="M 32.34,75.38 A 72 72 0 0 1 100,28"     fill="none" stroke="#0B2E5F" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 100,28 A 72 72 0 0 1 167.66,75.38"    fill="none" stroke="#3E86CB" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- lower lens: thin green arc hugging the bottom -->
+  <path d="M 167.66,124.62 A 72 72 0 0 1 32.34,124.62" fill="none" stroke="#2ECC9A" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- pupil -->
+  <circle cx="100" cy="100" r="19" fill="#0B2E5F"/>
+  <circle cx="100" cy="100" r="8.5" fill="#2ECC9A"/>
+</svg>
