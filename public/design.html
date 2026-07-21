@@ -3,423 +3,332 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PCI Design System</title>
+  <title>PCI Logo & Branding</title>
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Zilla+Slab:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Zilla+Slab:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      /* PCI website (green) variants — the live identity */
-      --forest:        #012b1a;
-      --forest-light:  #044e35;
-      --emerald:       #10b981;
+      /* MY palette (website) */
+      --forest: #012b1a;
+      --forest-light: #044e35;
+      --emerald: #10b981;
       --emerald-light: #34d399;
-      --green:         #22c55e;
-      --page:          #f4fbf7;
-      --ink:           #334155;
-      --ink-soft:      #64748b;
-      --hairline:      rgba(1, 43, 26, 0.10);
-      --card:          #ffffff;
-
-      --font-heading: "Sora", "Inter", sans-serif;
-      --font-body:    "Inter", sans-serif;
-      --font-mono:    "JetBrains Mono", monospace;
-      --font-wordmark:"Zilla Slab", serif;
+      --page: #f4fbf7;
+      --ink: #334155;
+      --ink-soft: #64748b;
+      --hairline: rgba(1,43,26,0.10);
+      /* ORG palette */
+      --org-navy: #0B2E5F;
+      --org-blue: #1B4FD8;
+      --org-teal: #2ECC9A;
     }
-
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: var(--font-body);
+      font-family: "Inter", sans-serif;
       color: var(--ink);
-      background-color: var(--page);
-      background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"),
-        url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='42' viewBox='0 0 24 42'%3E%3Cpath d='M12 0 L24 7 L24 21 L12 28 L0 21 L0 7 Z M12 28 L12 42' fill='none' stroke='%23012b1a' stroke-width='0.6' stroke-opacity='0.08'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #f9fdfb 0%, #f0fbf5 40%, #e4f7ec 100%);
-      background-size: 240px 240px, 36px 63px, auto;
-      background-attachment: fixed;
-      line-height: 1.55;
+      background: var(--page);
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4 { font-family: var(--font-heading); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
-    a { color: var(--emerald); }
-
+    h1, h2 { font-family: "Sora", sans-serif; letter-spacing: -0.02em; margin: 0; color: var(--forest); }
     .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-    /* ---- Masthead ---- */
     header.mast {
-      background-color: #010a08;
-      background-image:
-        radial-gradient(circle at 82% 25%, rgba(16,185,129,0.22) 0%, transparent 55%),
-        radial-gradient(circle at 15% 80%, rgba(6,182,212,0.12) 0%, transparent 55%),
-        linear-gradient(135deg, #010a08 0%, #022318 45%, #043e2b 78%, #010b08 100%);
+      background: linear-gradient(135deg, #010a08 0%, #043e2b 100%);
       color: #cbd5e1;
-      padding: 64px 0 56px;
-      border-bottom: 1px solid rgba(52,211,153,0.18);
+      padding: 52px 0 44px;
     }
-    .mast .lockup { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
-    .mast .lockup img { height: 60px; width: auto; }
-    .mast .lockup .word { font-family: var(--font-wordmark); font-weight: 700; font-size: 52px; color: #fff; line-height: 1; }
-    .mast h1 { color: #fff; font-size: 34px; font-weight: 700; margin-bottom: 10px; }
+    .mast .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--emerald-light); margin-bottom: 10px; }
+    .mast h1 { color: #fff; font-size: 32px; font-weight: 700; margin-bottom: 8px; }
     .mast p { max-width: 62ch; color: #a7c4b5; font-size: 15px; margin: 0; }
-    .mast .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--emerald-light); margin-bottom: 20px; }
 
-    /* ---- Section scaffolding ---- */
-    section { padding: 54px 0; border-bottom: 1px solid var(--hairline); }
+    section { padding: 48px 0; border-bottom: 1px solid var(--hairline); }
     .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
-    .sec-num { font-family: var(--font-mono); font-size: 12px; color: var(--emerald); }
-    .sec-head h2 { font-size: 24px; font-weight: 700; color: var(--forest); }
-    .sec-sub { color: var(--ink-soft); font-size: 14px; margin: 0 0 30px; max-width: 60ch; }
+    .sec-num { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--emerald); }
+    .sec-head h2 { font-size: 22px; font-weight: 700; }
+    .sec-sub { color: var(--ink-soft); font-size: 14px; margin: 0 0 26px; max-width: 62ch; }
 
-    .grid { display: grid; gap: 18px; }
     .card {
-      background: var(--card);
+      background: #fff;
       border: 1px solid var(--hairline);
       border-radius: 12px;
       padding: 22px;
       box-shadow: 0 1px 2px rgba(1,43,26,0.05), 0 8px 24px -18px rgba(1,43,26,0.25);
+      margin-bottom: 16px;
     }
-    .card h3 { font-size: 15px; font-weight: 600; color: var(--forest); margin-bottom: 4px; }
-    .card .desc { font-size: 13px; color: var(--ink-soft); margin: 0 0 16px; }
-    .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--emerald); }
+    .tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--emerald); }
 
-    /* ---- Brand / logo specimens ---- */
-    .logo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .logo-tile { border-radius: 12px; padding: 40px; display: flex; align-items: center; justify-content: center; gap: 16px; min-height: 150px; }
-    .logo-tile img { height: 68px; width: auto; }
-    .logo-tile .word { font-family: var(--font-wordmark); font-weight: 700; font-size: 48px; line-height: 1; }
-    .on-light { background: #ffffff; border: 1px solid var(--hairline); }
-    .on-light .word { color: var(--forest); }
-    .on-dark { background: linear-gradient(135deg, #010a08 0%, #043e2b 100%); }
-    .on-dark .word { color: #ffffff; }
-    .mark-only { display: flex; gap: 34px; align-items: center; flex-wrap: wrap; }
-    .mark-only .swatch-mark { text-align: center; }
-    .mark-only img { display: block; margin: 0 auto 8px; }
+    /* Logo + wordmark pair rows */
+    .logo-pair { display: grid; grid-template-columns: 200px 1fr; align-items: center; gap: 26px; padding: 22px 0; border-top: 1px solid var(--hairline); }
+    .logo-pair:first-child { border-top: 0; padding-top: 6px; }
+    .logo-meta .lbl { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--emerald); }
+    .logo-meta h3 { font-family: "Sora", sans-serif; font-size: 17px; font-weight: 600; color: var(--forest); margin: 6px 0 4px; }
+    .logo-meta p { font-size: 13px; color: var(--ink-soft); margin: 0; }
+    .logo-showcase { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .lockup-cell {
+      display: flex; align-items: center; gap: 14px;
+      padding: 20px 26px; border-radius: 10px; min-height: 120px;
+    }
+    .lockup-cell.light { background: #fff; border: 1px solid var(--hairline); }
+    .lockup-cell.dark  { background: linear-gradient(135deg,#010a08,#043e2b); }
+    .lockup-cell img, .lockup-cell svg { height: 56px; width: auto; }
+    .lockup-cell .wm { font-size: 40px; font-weight: 700; line-height: 1; }
+    .lockup-cell.light .wm { color: var(--forest); }
+    .lockup-cell.dark  .wm { color: #fff; }
 
-    /* ---- Color swatches ---- */
-    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-    .swatch { border: 1px solid var(--hairline); border-radius: 10px; overflow: hidden; background: #fff; }
-    .swatch .chip { height: 76px; }
-    .swatch .meta { padding: 10px 12px; }
-    .swatch .name { font-size: 12.5px; font-weight: 600; color: var(--forest); }
-    .swatch .hex { font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); text-transform: uppercase; }
-    .swatch .role { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+    /* Business cards */
+    .cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .biz {
+      aspect-ratio: 1.75 / 1;
+      border-radius: 12px;
+      padding: 22px 24px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      box-shadow: 0 8px 24px -12px rgba(1,43,26,0.35);
+      position: relative; overflow: hidden;
+    }
+    .biz.dark  { background: linear-gradient(135deg,#010a08 0%,#022318 45%,#043e2b 78%,#010b08 100%); color: #e2f5ea; }
+    .biz.light { background: #fff; border: 1px solid var(--hairline); color: var(--forest); }
+    .biz .biz-top { display: flex; align-items: center; gap: 10px; }
+    .biz .biz-top img { height: 40px; width: auto; }
+    .biz .biz-top .wm { font-family: "Zilla Slab", serif; font-weight: 700; font-size: 30px; line-height: 1; }
+    .biz.light .wm { color: var(--forest); }
+    .biz.dark  .wm { color: #fff; }
+    .biz .name { font-family: "Sora", sans-serif; font-weight: 600; font-size: 17px; }
+    .biz.light .name { color: var(--forest); }
+    .biz.dark  .name { color: #fff; }
+    .biz .role { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-top: 2px; }
+    .biz .biz-foot { font-family: "JetBrains Mono", monospace; font-size: 11px; line-height: 1.7; }
+    .biz .biz-foot span { display: block; }
+    .biz .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--emerald); }
 
-    /* status pills */
-    .pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 999px; letter-spacing: 0.04em; }
-    .pills { display: flex; flex-wrap: wrap; gap: 10px; }
-
-    /* ---- Type specimens ---- */
-    .type-row { padding: 16px 0; border-top: 1px solid var(--hairline); }
-    .type-row:first-child { border-top: 0; }
-    .type-label { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
-    .display-xl { font-family: var(--font-heading); font-weight: 700; font-size: 48px; letter-spacing: -0.02em; color: var(--forest); line-height: 1.05; }
-    .heading { font-family: var(--font-heading); font-weight: 600; font-size: 24px; color: var(--forest); }
-    .body-lg { font-family: var(--font-body); font-weight: 400; font-size: 17px; color: var(--ink); }
-    .body { font-family: var(--font-body); font-weight: 400; font-size: 15px; color: var(--ink); }
-    .mono-spec { font-family: var(--font-mono); font-size: 15px; color: var(--ink); font-variant-numeric: tabular-nums; }
-    .wordmark-spec { font-family: var(--font-wordmark); font-weight: 700; font-size: 40px; color: var(--forest); }
-
-    /* ---- Spacing / radius / elevation ---- */
-    .scale-row { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; }
-    .scale-bar { background: var(--emerald); border-radius: 3px; width: 22px; }
-    .scale-cap { font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); text-align: center; margin-top: 6px; }
-    .radius-demo { display: flex; gap: 18px; flex-wrap: wrap; }
-    .radius-box { width: 84px; height: 66px; background: var(--forest-light); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; }
-    .radius-box span { font-family: var(--font-mono); font-size: 10px; color: #bff3d9; }
-    .elev-demo { display: flex; gap: 22px; flex-wrap: wrap; }
-    .elev-box { width: 110px; height: 76px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); }
-    .elev-sm { box-shadow: 0 1px 2px rgba(1,43,26,0.10); }
-    .elev-md { box-shadow: 0 4px 12px -4px rgba(1,43,26,0.22); }
-    .elev-lg { box-shadow: 0 10px 28px -8px rgba(1,43,26,0.28); }
-    .elev-xl { box-shadow: 0 20px 48px -12px rgba(1,43,26,0.34); }
-
-    /* ---- Component specimens ---- */
-    .btn { font-family: var(--font-heading); font-weight: 600; font-size: 14px; border-radius: 6px; padding: 10px 18px; border: 1px solid transparent; cursor: pointer; transition: filter .15s ease; }
-    .btn:hover { filter: brightness(0.95); }
-    .btn-primary { background: var(--emerald); color: #04241a; }
-    .btn-forest { background: var(--forest); color: #fff; }
-    .btn-outline { background: #fff; border-color: var(--emerald); color: var(--forest-light); }
-    .btn-ghost { background: transparent; color: var(--forest-light); }
-    .btn-danger { background: #C0392B; color: #fff; }
-    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-
-    .field { max-width: 340px; }
-    .field label { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
-    .field input, .field select { width: 100%; font-family: var(--font-body); font-size: 14px; padding: 10px 12px; border: 1px solid #d5e5dc; border-radius: 6px; background: #fff; color: var(--forest); }
-    .field input:focus, .field select:focus { outline: none; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(16,185,129,0.22); }
-
-    .score { display: inline-flex; flex-direction: column; align-items: flex-start; }
-    .score .num { font-family: var(--font-mono); font-weight: 700; font-size: 46px; color: var(--emerald); line-height: 1; font-variant-numeric: tabular-nums; }
-    .score .lab { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; }
-
-    .tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--hairline); }
-    .tab { font-family: var(--font-heading); font-size: 13px; font-weight: 500; padding: 10px 14px; color: var(--ink-soft); border-bottom: 2px solid transparent; cursor: pointer; }
-    .tab.active { color: var(--forest); border-bottom-color: var(--emerald); }
-
-    .sidebar { width: 220px; background: linear-gradient(160deg, #012b1a 0%, #044e35 100%); border-radius: 10px; padding: 16px 10px; color: #cbe8dc; }
-    .sidebar .grp { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #6fae92; padding: 8px 12px 4px; }
-    .sidebar .item { display: flex; align-items: center; justify-content: space-between; font-size: 13.5px; padding: 9px 12px; border-radius: 6px; color: #cbe8dc; }
-    .sidebar .item.active { background: rgba(52,211,153,0.16); color: #fff; font-weight: 600; }
-    .sidebar .count { font-family: var(--font-mono); font-size: 11px; background: rgba(52,211,153,0.22); color: #eafff5; border-radius: 999px; padding: 1px 8px; }
+    /* Palette side-by-side */
+    .palette-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .palette h3 { font-family: "Sora", sans-serif; font-size: 15px; font-weight: 600; color: var(--forest); margin: 0 0 4px; }
+    .palette .sub { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 14px; }
+    .swatches { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .swatch { border: 1px solid var(--hairline); border-radius: 8px; overflow: hidden; background: #fff; }
+    .swatch .chip { height: 56px; }
+    .swatch .meta { padding: 8px 10px; }
+    .swatch .name { font-size: 12px; font-weight: 600; color: var(--forest); }
+    .swatch .hex { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--ink-soft); text-transform: uppercase; }
+    .swatch .role { font-size: 10.5px; color: var(--ink-soft); margin-top: 1px; }
 
     footer { padding: 40px 0 60px; color: var(--ink-soft); font-size: 12.5px; }
-    .cols-2 { grid-template-columns: 1fr 1fr; }
+
     @media (max-width: 760px) {
-      .logo-row, .cols-2 { grid-template-columns: 1fr; }
-      .mast .lockup .word { font-size: 40px; }
+      .logo-pair { grid-template-columns: 1fr; }
+      .cards-row, .palette-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header class="mast">
     <div class="wrap">
-      <div class="lockup">
-        <img src="logo.svg" alt="PCI logo mark" />
-        <span class="word">PCI</span>
-      </div>
       <div class="eyebrow">Precision Cellular Immunology, LLC</div>
-      <h1>Design System</h1>
-      <p>The shared visual language across the pathology platform, slide viewer, and marketing website. This is a working reference — the sections below are the pieces in play; tell me which to keep and which to cut.</p>
+      <h1>Logo &amp; Branding</h1>
+      <p>Finished logo directions, business cards, and the two brand palettes side by side — mine (green) vs the org file (navy).</p>
     </div>
   </header>
 
-  <!-- BRAND -->
-  <section id="brand">
+  <!-- FINISHED LOGO DIRECTIONS -->
+  <section id="logos">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">01</span><h2>Brand</h2></div>
-      <p class="sec-sub">One logo, two grounds. The mark is the gradient aperture ring; the wordmark is "PCI" set in Zilla Slab Bold.</p>
-
-      <div class="logo-row" style="margin-bottom:18px;">
-        <div class="logo-tile on-light">
-          <img src="logo.svg" alt="PCI logo on light" />
-          <span class="word">PCI</span>
-        </div>
-        <div class="logo-tile on-dark">
-          <img src="logo.svg" alt="PCI logo on dark" />
-          <span class="word">PCI</span>
-        </div>
-      </div>
+      <div class="sec-head"><span class="sec-num">01</span><h2>Logo directions</h2></div>
+      <p class="sec-sub">Each mark shown paired with its wordmark font — on light and on dark.</p>
 
       <div class="card">
-        <span class="tag">Mark · sizes</span>
-        <div class="mark-only" style="margin-top:14px;">
-          <div class="swatch-mark"><img src="logo.svg" style="height:64px;" alt="mark 64" /><div class="tag">64</div></div>
-          <div class="swatch-mark"><img src="logo.svg" style="height:44px;" alt="mark 44" /><div class="tag">44</div></div>
-          <div class="swatch-mark"><img src="logo.svg" style="height:28px;" alt="mark 28" /><div class="tag">28</div></div>
-          <div class="swatch-mark"><img src="logo.svg" style="height:20px;" alt="mark 20" /><div class="tag">20 · favicon</div></div>
+        <!-- MINE: current -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Mine · current</span>
+            <h3>Aperture ring</h3>
+            <p>logo.svg — gradient aperture with a violet nucleus. Wordmark: <b>Zilla Slab 700</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light"><img src="logo.svg" alt="PCI mark" /><span class="wm" style="font-family:'Zilla Slab',serif;">PCI</span></div>
+            <div class="lockup-cell dark"><img src="logo.svg" alt="PCI mark" /><span class="wm" style="font-family:'Zilla Slab',serif;">PCI</span></div>
+          </div>
+        </div>
+
+        <!-- ORG A: Aperture -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Org · Option A</span>
+            <h3>Aperture</h3>
+            <p>Field-of-view ring — three control arcs around a nucleus. Wordmark: <b>IBM Plex Sans 600</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#0B2E5F" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#1B4FD8"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#2ECC9A" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#2ECC9A"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORG B: Nucleus -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Org · Option B</span>
+            <h3>Nucleus</h3>
+            <p>Cell with its stained nucleus — p53 is a nuclear marker. Wordmark: <b>IBM Plex Sans 600</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#e6ecf6" stroke="#0B2E5F" stroke-width="2"/><circle cx="30" cy="30" r="11" fill="#1B4FD8"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#16213E" stroke="#2ECC9A" stroke-width="2"/><circle cx="30" cy="30" r="11" fill="#2ECC9A"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORG C: Slide -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Org · Option C</span>
+            <h3>Slide</h3>
+            <p>Microscope slide with a tissue section. Wordmark: <b>IBM Plex Sans 600</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <svg viewBox="0 0 30 60"><rect x="5" y="4" width="20" height="52" rx="2" fill="#fff" stroke="#0B2E5F" stroke-width="2.5"/><ellipse cx="15" cy="30" rx="7" ry="12" fill="#1B4FD8"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 30 60"><rect x="5" y="4" width="20" height="52" rx="2" fill="#16213E" stroke="#2ECC9A" stroke-width="2.5"/><ellipse cx="15" cy="30" rx="7" ry="12" fill="#2ECC9A"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORG D: TriControl -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Org · Option D</span>
+            <h3>TriControl ladder</h3>
+            <p>OE · WT · NULL as a rising calibration scale — direct to the flagship. Wordmark: <b>IBM Plex Sans 600</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <svg viewBox="0 0 60 60"><rect x="8" y="32" width="12" height="22" fill="#2ECC9A"/><rect x="24" y="20" width="12" height="34" fill="#1B4FD8"/><rect x="40" y="6" width="12" height="48" fill="#0B2E5F"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 60 60"><rect x="8" y="32" width="12" height="22" fill="#2ECC9A"/><rect x="24" y="20" width="12" height="34" fill="#1B4FD8"/><rect x="40" y="6" width="12" height="48" fill="#fff"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORG E: AI detection -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Org · Option E</span>
+            <h3>AI detection</h3>
+            <p>Detection brackets framing a scored cell — microscopy meets p53AI. Wordmark: <b>IBM Plex Sans 600</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <svg viewBox="0 0 60 60"><path d="M8 16 V8 H16 M44 8 H52 V16 M52 44 V52 H44 M16 52 H8 V44" stroke="#0B2E5F" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="10" fill="#1B4FD8"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 60 60"><path d="M8 16 V8 H16 M44 8 H52 V16 M52 44 V52 H44 M16 52 H8 V44" stroke="#2ECC9A" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="30" r="10" fill="#2ECC9A"/></svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS CARDS -->
+  <section id="cards">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Business cards</h2></div>
+      <p class="sec-sub">Standard 3.5″ × 2″ preview — my logo + Zilla wordmark, on light and on dark.</p>
+
+      <div class="cards-row">
+        <div class="biz dark">
+          <span class="accent-bar"></span>
+          <div class="biz-top">
+            <img src="logo.svg" alt="PCI" />
+            <span class="wm">PCI</span>
+          </div>
+          <div>
+            <div class="name">M. Ayan Mahmood</div>
+            <div class="role">Founder</div>
+          </div>
+          <div class="biz-foot">
+            <span>amahmood@pcibio.com</span>
+            <span>Helix Park · Houston, TX 77030</span>
+            <span>linkedin.com/company/precision-cellular-immunology</span>
+          </div>
+        </div>
+
+        <div class="biz light">
+          <span class="accent-bar"></span>
+          <div class="biz-top">
+            <img src="logo.svg" alt="PCI" />
+            <span class="wm">PCI</span>
+          </div>
+          <div>
+            <div class="name">M. Ayan Mahmood</div>
+            <div class="role">Founder</div>
+          </div>
+          <div class="biz-foot">
+            <span>amahmood@pcibio.com</span>
+            <span>Helix Park · Houston, TX 77030</span>
+            <span>linkedin.com/company/precision-cellular-immunology</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COLORS -->
-  <section id="colors">
+  <!-- PALETTES -->
+  <section id="palettes">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">02</span><h2>Colors</h2></div>
-      <p class="sec-sub">The website runs an emerald-and-forest identity. The platform and imaging surfaces carry their own sub-palettes; the p53 control colors are semantic and fixed.</p>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Brand palettes · side by side</h2></div>
+      <p class="sec-sub">Left: what I use on the live website. Right: what the org design file specifies.</p>
 
-      <div class="card" style="margin-bottom:18px;">
-        <span class="tag">Website · brand (green)</span>
-        <div class="swatches" style="margin-top:14px;">
-          <div class="swatch"><div class="chip" style="background:#012b1a;"></div><div class="meta"><div class="name">Forest</div><div class="hex">#012B1A</div><div class="role">Dark sections, chrome</div></div></div>
-          <div class="swatch"><div class="chip" style="background:#044e35;"></div><div class="meta"><div class="name">Forest light</div><div class="hex">#044E35</div><div class="role">Panels, sidebar</div></div></div>
-          <div class="swatch"><div class="chip" style="background:#10b981;"></div><div class="meta"><div class="name">Emerald</div><div class="hex">#10B981</div><div class="role">Primary accent</div></div></div>
-          <div class="swatch"><div class="chip" style="background:#34d399;"></div><div class="meta"><div class="name">Emerald light</div><div class="hex">#34D399</div><div class="role">Hover, links on dark</div></div></div>
-          <div class="swatch"><div class="chip" style="background:#22c55e;"></div><div class="meta"><div class="name">Green</div><div class="hex">#22C55E</div><div class="role">Success, highlights</div></div></div>
-          <div class="swatch"><div class="chip" style="background:#f4fbf7;border-bottom:1px solid var(--hairline);"></div><div class="meta"><div class="name">Page</div><div class="hex">#F4FBF7</div><div class="role">Light canvas</div></div></div>
-          <div class="swatch"><div class="chip" style="background:#334155;"></div><div class="meta"><div class="name">Ink</div><div class="hex">#334155</div><div class="role">Body text</div></div></div>
-          <div class="swatch"><div class="chip" style="background:linear-gradient(135deg,#030905,#1a7a48);"></div><div class="meta"><div class="name">CTA aurora</div><div class="hex">#030905→#1A7A48</div><div class="role">CTA gradient</div></div></div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom:18px;">
-        <span class="tag">Platform · brand</span>
-        <div class="swatches" style="margin-top:14px;">
-          <div class="swatch"><div class="chip" style="background:#0B2E5F;"></div><div class="meta"><div class="name">Navy</div><div class="hex">#0B2E5F</div><div class="role">Primary / chrome</div></div></div>
-          <div class="swatch"><div class="chip" style="background:#1B4FD8;"></div><div class="meta"><div class="name">Action blue</div><div class="hex">#1B4FD8</div><div class="role">CTAs, links, active</div></div></div>
-          <div class="swatch"><div class="chip" style="background:#2ECC9A;"></div><div class="meta"><div class="name">AI teal</div><div class="hex">#2ECC9A</div><div class="role">Algorithm / positive</div></div></div>
-        </div>
-      </div>
-
-      <div class="grid cols-2">
-        <div class="card">
-          <span class="tag">p53 control · semantic (fixed)</span>
-          <div class="swatches" style="margin-top:14px;grid-template-columns:1fr 1fr 1fr;">
-            <div class="swatch"><div class="chip" style="background:#C0392B;"></div><div class="meta"><div class="name">OE</div><div class="hex">#C0392B</div><div class="role">Overexpression</div></div></div>
-            <div class="swatch"><div class="chip" style="background:#14A085;"></div><div class="meta"><div class="name">WT</div><div class="hex">#14A085</div><div class="role">Wild-type</div></div></div>
-            <div class="swatch"><div class="chip" style="background:#64748B;"></div><div class="meta"><div class="name">NULL</div><div class="hex">#64748B</div><div class="role">Null</div></div></div>
+      <div class="palette-grid">
+        <div class="card palette">
+          <h3>Mine (website)</h3>
+          <div class="sub">Emerald · Forest</div>
+          <div class="swatches">
+            <div class="swatch"><div class="chip" style="background:#012b1a;"></div><div class="meta"><div class="name">Forest</div><div class="hex">#012B1A</div><div class="role">Dark sections</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#044e35;"></div><div class="meta"><div class="name">Forest light</div><div class="hex">#044E35</div><div class="role">Panels</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#10b981;"></div><div class="meta"><div class="name">Emerald</div><div class="hex">#10B981</div><div class="role">Accent</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#34d399;"></div><div class="meta"><div class="name">Emerald light</div><div class="hex">#34D399</div><div class="role">Hover, on-dark</div></div></div>
           </div>
         </div>
-        <div class="card">
-          <span class="tag">Viewer · dark palette</span>
-          <div class="swatches" style="margin-top:14px;grid-template-columns:1fr 1fr;">
-            <div class="swatch"><div class="chip" style="background:#0A0F1E;"></div><div class="meta"><div class="name">Canvas</div><div class="hex">#0A0F1E</div></div></div>
-            <div class="swatch"><div class="chip" style="background:#16213E;"></div><div class="meta"><div class="name">Panel</div><div class="hex">#16213E</div></div></div>
-            <div class="swatch"><div class="chip" style="background:#0F3460;"></div><div class="meta"><div class="name">Line</div><div class="hex">#0F3460</div></div></div>
-            <div class="swatch"><div class="chip" style="background:#2EE6C0;"></div><div class="meta"><div class="name">Accent</div><div class="hex">#2EE6C0</div></div></div>
+        <div class="card palette">
+          <h3>Org (design file)</h3>
+          <div class="sub">Navy · Action blue · AI teal</div>
+          <div class="swatches">
+            <div class="swatch"><div class="chip" style="background:#0B2E5F;"></div><div class="meta"><div class="name">Navy</div><div class="hex">#0B2E5F</div><div class="role">Primary / chrome</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#1B4FD8;"></div><div class="meta"><div class="name">Action blue</div><div class="hex">#1B4FD8</div><div class="role">CTAs, links</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#2ECC9A;"></div><div class="meta"><div class="name">AI teal</div><div class="hex">#2ECC9A</div><div class="role">Algorithm / positive</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#0A0F1E;"></div><div class="meta"><div class="name">Viewer canvas</div><div class="hex">#0A0F1E</div><div class="role">Whole-slide chrome</div></div></div>
           </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:18px;">
-        <span class="tag">Status · soft bg / saturated fg</span>
-        <div class="pills" style="margin-top:14px;">
-          <span class="pill" style="background:#e0edff;color:#1B4FD8;">● Active</span>
-          <span class="pill" style="background:#fef3d7;color:#b7791f;">● Review</span>
-          <span class="pill" style="background:#efe4fb;color:#7c3aed;">● AI</span>
-          <span class="pill" style="background:#dcfce7;color:#15803d;">● Complete</span>
-          <span class="pill" style="background:#fde2e0;color:#C0392B;">● Critical</span>
-          <span class="pill" style="background:#eef1f4;color:#64748B;">● Pending</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TYPE -->
-  <section id="type">
-    <div class="wrap">
-      <div class="sec-head"><span class="sec-num">03</span><h2>Type</h2></div>
-      <p class="sec-sub">Sora for headings and display, Inter for body and UI, JetBrains Mono for all data and identifiers, Zilla Slab reserved solely for the wordmark.</p>
-      <div class="card">
-        <div class="type-row">
-          <div class="type-label">Display — Sora 700 · −0.02em</div>
-          <div class="display-xl">Quality control, built into every p53 slide.</div>
-        </div>
-        <div class="type-row">
-          <div class="type-label">Heading — Sora 600</div>
-          <div class="heading">Three control cell lines on one slide</div>
-        </div>
-        <div class="type-row">
-          <div class="type-label">Body large — Inter 400 · 17px</div>
-          <div class="body-lg">p53AI scores p53 IHC expression against the embedded OE / WT / NULL controls, giving pathologists a reproducible reference on every case.</div>
-        </div>
-        <div class="type-row">
-          <div class="type-label">Body — Inter 400 · 15px</div>
-          <div class="body">Standardizing histology stains through reproducible cell-line plugs. Investigational decision-support — not a substitute for pathologist interpretation.</div>
-        </div>
-        <div class="type-row">
-          <div class="type-label">Mono — JetBrains Mono · tabular</div>
-          <div class="mono-spec">PCI-2026-00142 · Aperio SVS · 2.1 GB · 87.4% positive nuclei (TPS)</div>
-        </div>
-        <div class="type-row">
-          <div class="type-label">Wordmark — Zilla Slab 700 (wordmark only)</div>
-          <div class="wordmark-spec">PCI</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOUNDATIONS -->
-  <section id="foundations">
-    <div class="wrap">
-      <div class="sec-head"><span class="sec-num">04</span><h2>Space · Radius · Elevation</h2></div>
-      <p class="sec-sub">A 4px base grid, tight corner radii, and soft green-tinted shadows — nothing more rounded or heavier than the values shown.</p>
-      <div class="grid cols-2">
-        <div class="card">
-          <span class="tag">Spacing scale · 4px grid</span>
-          <div class="scale-row" style="margin-top:18px;">
-            <div><div class="scale-bar" style="height:4px;"></div><div class="scale-cap">4</div></div>
-            <div><div class="scale-bar" style="height:8px;"></div><div class="scale-cap">8</div></div>
-            <div><div class="scale-bar" style="height:12px;"></div><div class="scale-cap">12</div></div>
-            <div><div class="scale-bar" style="height:16px;"></div><div class="scale-cap">16</div></div>
-            <div><div class="scale-bar" style="height:24px;"></div><div class="scale-cap">24</div></div>
-            <div><div class="scale-bar" style="height:32px;"></div><div class="scale-cap">32</div></div>
-            <div><div class="scale-bar" style="height:48px;"></div><div class="scale-cap">48</div></div>
-            <div><div class="scale-bar" style="height:64px;"></div><div class="scale-cap">64</div></div>
-          </div>
-        </div>
-        <div class="card">
-          <span class="tag">Corner radii</span>
-          <div class="radius-demo" style="margin-top:18px;">
-            <div class="radius-box" style="border-radius:6px;"><span>6 · button</span></div>
-            <div class="radius-box" style="border-radius:8px;"><span>8 · card</span></div>
-            <div class="radius-box" style="border-radius:12px;"><span>12 · modal</span></div>
-            <div class="radius-box" style="border-radius:999px;width:66px;"><span>pill</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="card" style="margin-top:18px;">
-        <span class="tag">Elevation · green-tinted, never black</span>
-        <div class="elev-demo" style="margin-top:20px;">
-          <div class="elev-box elev-sm">sm</div>
-          <div class="elev-box elev-md">md</div>
-          <div class="elev-box elev-lg">lg</div>
-          <div class="elev-box elev-xl">xl</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPONENTS -->
-  <section id="components">
-    <div class="wrap">
-      <div class="sec-head"><span class="sec-num">05</span><h2>Components</h2></div>
-      <p class="sec-sub">Core and pathology-specific pieces, themed to the website palette.</p>
-
-      <div class="grid cols-2">
-        <div class="card">
-          <span class="tag">Button · variants</span>
-          <div class="btn-row" style="margin-top:16px;">
-            <button class="btn btn-primary">Request a demo</button>
-            <button class="btn btn-forest">Finalize report</button>
-            <button class="btn btn-outline">View cases</button>
-            <button class="btn btn-ghost">Cancel</button>
-            <button class="btn btn-danger">Flag critical</button>
-          </div>
-        </div>
-        <div class="card">
-          <span class="tag">ScoreDisplay · AI readout</span>
-          <div class="score" style="margin-top:14px;">
-            <span class="num">87.4%</span>
-            <span class="lab">Positive nuclei (TPS) · p53AI</span>
-          </div>
-        </div>
-        <div class="card">
-          <span class="tag">Forms · input & select</span>
-          <div class="field" style="margin-top:16px;">
-            <label>Email</label>
-            <input type="email" placeholder="name@pcibio.com" />
-          </div>
-          <div class="field" style="margin-top:14px;">
-            <label>Control panel</label>
-            <select><option>p53 TriControl™</option><option>DualControl™</option><option>QuadControl™</option></select>
-          </div>
-        </div>
-        <div class="card">
-          <span class="tag">Tabs</span>
-          <div class="tabs" style="margin-top:16px;">
-            <div class="tab active">All cases</div>
-            <div class="tab">Pending review</div>
-            <div class="tab">AI scored</div>
-            <div class="tab">Complete</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:18px;">
-        <span class="tag">SidebarNav</span>
-        <div class="sidebar" style="margin-top:16px;">
-          <div class="grp">Main</div>
-          <div class="item">Dashboard</div>
-          <div class="item active">Cases <span class="count">12</span></div>
-          <div class="item">Slide viewer</div>
-          <div class="item">Reports</div>
-          <div class="grp">Admin</div>
-          <div class="item">Team</div>
-          <div class="item">Settings</div>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="wrap">
-      PCI Design System · working reference · logo.svg + Zilla Slab wordmark · emerald/forest website identity
-    </div>
+    <div class="wrap">Logo &amp; branding reference · PCI</div>
   </footer>
 </body>
 </html>
