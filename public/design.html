@@ -58,14 +58,6 @@
       margin-bottom: 16px;
     }
 
-    /* Primary lockup */
-    .primary-lockup { display: flex; align-items: center; gap: 20px; padding: 20px 0 12px; }
-    .primary-lockup img { height: 72px; width: auto; }
-    .primary-lockup .stack { display: flex; flex-direction: column; }
-    .primary-lockup .stack .wm { font-family: "Zilla Slab", serif; font-weight: 700; font-size: 52px; line-height: 0.95; color: var(--forest); }
-    .primary-lockup .stack .tag-line { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--emerald); margin-top: 6px; }
-    .lockup-caption { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; }
-
     /* Logo pair rows */
     .logo-pair { display: grid; grid-template-columns: 200px 1fr; align-items: center; gap: 26px; padding: 22px 0; border-top: 1px solid var(--hairline); }
     .logo-pair:first-child { border-top: 0; padding-top: 6px; }
@@ -78,15 +70,11 @@
       padding: 20px 26px; border-radius: 10px; min-height: 120px;
     }
     .lockup-cell.light { background: #fff; border: 1px solid var(--hairline); }
-    .lockup-cell.dark  { background: linear-gradient(135deg,#010a08,#043e2b); }
-    .lockup-cell.org-dark { background: linear-gradient(135deg,#0A0F1E,#16213E); }
-    .lockup-cell.mono-light { background: #fff; border: 1px solid var(--hairline); }
-    .lockup-cell.mono-dark  { background: #0a0a0a; }
+    .lockup-cell.dark  { background: linear-gradient(135deg,#0A0F1E,#16213E); }
     .lockup-cell img, .lockup-cell svg { height: 56px; width: auto; }
     .lockup-cell .wm { font-size: 40px; font-weight: 700; line-height: 1; }
-    .lockup-cell.light .wm { color: var(--forest); }
-    .lockup-cell.dark  .wm, .lockup-cell.org-dark .wm, .lockup-cell.mono-dark .wm { color: #fff; }
-    .lockup-cell.mono-light .wm { color: #000; }
+    .lockup-cell.light .wm { color: var(--org-navy); }
+    .lockup-cell.dark  .wm { color: #fff; }
 
     /* Business cards */
     .biz-family { margin-top: 6px; }
@@ -116,28 +104,20 @@
     .biz.mine-dark::after  { color: #34d399; }
     .biz.mine-light { background: #fff; border: 1px solid var(--hairline); color: var(--forest); }
     .biz.mine-light::after { color: #10b981; }
-    .biz.mine-dark  .wm  { color: #fff; }
-    .biz.mine-light .wm  { color: var(--forest); }
-    .biz.mine-dark  .name { color: #fff; }
-    .biz.mine-light .name { color: var(--forest); }
-    .biz.mine-dark  .accent-bar,
-    .biz.mine-light .accent-bar { background: var(--emerald); }
 
     .biz.org-dark  { background: linear-gradient(135deg,#0A0F1E 0%,#0B2E5F 55%,#0F3460 100%); color: #d5e0f5; font-family: "IBM Plex Sans", sans-serif; }
     .biz.org-dark::after  { color: #2ECC9A; }
     .biz.org-light { background: #fff; border: 1px solid rgba(11,46,95,0.15); color: var(--org-navy); font-family: "IBM Plex Sans", sans-serif; }
     .biz.org-light::after { color: #1B4FD8; }
-    .biz.org-dark  .name { color: #fff; }
-    .biz.org-light .name { color: var(--org-navy); }
-    .biz.org-dark  .accent-bar { background: var(--org-teal); }
-    .biz.org-light .accent-bar { background: var(--org-blue); }
-    .biz.org-dark  .wm-org, .biz.org-light .wm-org { font-family: "IBM Plex Sans", sans-serif; font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: -0.02em; }
-    .biz.org-dark  .wm-org { color: #fff; }
-    .biz.org-light .wm-org { color: var(--org-navy); }
 
     .biz .biz-top { display: flex; align-items: center; gap: 10px; }
     .biz .biz-top img, .biz .biz-top svg { height: 40px; width: auto; }
     .biz .biz-top .wm { font-family: "Zilla Slab", serif; font-weight: 700; font-size: 30px; line-height: 1; }
+    .biz .biz-top .wm-org { font-family: "IBM Plex Sans", sans-serif; font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: -0.02em; }
+    .biz.mine-dark .wm, .biz.mine-dark .name { color: #fff; }
+    .biz.mine-light .wm, .biz.mine-light .name { color: var(--forest); }
+    .biz.org-dark .wm-org, .biz.org-dark .name { color: #fff; }
+    .biz.org-light .wm-org, .biz.org-light .name { color: var(--org-navy); }
     .biz .name { font-family: "Sora", sans-serif; font-weight: 600; font-size: 17px; }
     .biz.org-dark .name, .biz.org-light .name { font-family: "IBM Plex Sans", sans-serif; }
     .biz .role { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-top: 2px; }
@@ -146,6 +126,9 @@
     .biz.org-dark .biz-foot, .biz.org-light .biz-foot { font-family: "IBM Plex Mono", monospace; }
     .biz .biz-foot span { display: block; }
     .biz .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; z-index: 2; }
+    .biz.mine-dark .accent-bar, .biz.mine-light .accent-bar { background: var(--emerald); }
+    .biz.org-dark .accent-bar { background: var(--org-teal); }
+    .biz.org-light .accent-bar { background: var(--org-blue); }
 
     /* Palettes */
     .palette-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -172,88 +155,156 @@
     <div class="wrap">
       <div class="eyebrow">Precision Cellular Immunology, LLC</div>
       <h1>Logo &amp; Branding</h1>
-      <p>Primary lockup, finished logo directions, business cards, and the two brand palettes side by side.</p>
+      <p>Lockups available, business cards, and the two brand palettes side by side.</p>
     </div>
   </header>
 
-  <!-- PRIMARY LOCKUP -->
-  <section id="primary">
+  <!-- LOCKUPS AVAILABLE -->
+  <section id="lockups">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">01</span><h2>Primary lockup</h2></div>
-      <p class="sec-sub">Mark + PCI wordmark (Zilla Slab 700) + Precision Cellular Immunology tagline set in mono caps.</p>
-      <div class="card">
-        <div class="primary-lockup">
-          <img src="logo.svg" alt="PCI mark" />
-          <div class="stack">
-            <span class="wm">PCI</span>
-            <span class="tag-line">Precision Cellular Immunology</span>
-          </div>
-        </div>
-        <div class="lockup-caption">Primary lockup · light</div>
-      </div>
-      <div class="card" style="background:linear-gradient(135deg,#010a08,#043e2b);border-color:rgba(52,211,153,0.2);">
-        <div class="primary-lockup">
-          <img src="logo.svg" alt="PCI mark" />
-          <div class="stack">
-            <span class="wm" style="color:#fff;">PCI</span>
-            <span class="tag-line" style="color:#34d399;">Precision Cellular Immunology</span>
-          </div>
-        </div>
-        <div class="lockup-caption" style="color:#a7c4b5;">Primary lockup · dark</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOGO DIRECTIONS -->
-  <section id="logos">
-    <div class="wrap">
-      <div class="sec-head"><span class="sec-num">02</span><h2>Logo directions</h2></div>
-      <p class="sec-sub">Each mark paired with its wordmark font on light and dark. Mine (Zilla Slab) at top; the org's Aperture (IBM Plex Sans) below, with a monochrome edition for one-color print.</p>
+      <div class="sec-head"><span class="sec-num">01</span><h2>Lockups available</h2></div>
+      <p class="sec-sub">Each mark shown colored on white and white on dark. Font: IBM Plex Sans 600 unless noted.</p>
 
       <div class="card">
+        <!-- Option A — logo.svg (current site) -->
         <div class="logo-pair">
           <div class="logo-meta">
-            <span class="lbl">Mine · current</span>
-            <h3>Aperture ring</h3>
-            <p>logo.svg — gradient aperture with a violet nucleus. Wordmark: <b>Zilla Slab 700</b>.</p>
-          </div>
-          <div class="logo-showcase">
-            <div class="lockup-cell light"><img src="logo.svg" alt="PCI mark" /><span class="wm" style="font-family:'Zilla Slab',serif;">PCI</span></div>
-            <div class="lockup-cell dark"><img src="logo.svg" alt="PCI mark" /><span class="wm" style="font-family:'Zilla Slab',serif;">PCI</span></div>
-          </div>
-        </div>
-
-        <div class="logo-pair">
-          <div class="logo-meta">
-            <span class="lbl">Org · Aperture</span>
-            <h3>Aperture</h3>
-            <p>Field of view — three control arcs around a nucleus. Wordmark: <b>IBM Plex Sans 600</b>.</p>
+            <span class="lbl">Option A</span>
+            <h3>logo.svg</h3>
+            <p>Gradient aperture with violet nucleus. Font: <b>Zilla Slab 700</b>.</p>
           </div>
           <div class="logo-showcase">
             <div class="lockup-cell light">
-              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#0B2E5F" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#1B4FD8"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+              <img src="logo.svg" alt="PCI mark" />
+              <span class="wm" style="font-family:'Zilla Slab',serif;color:var(--forest);">PCI</span>
             </div>
-            <div class="lockup-cell org-dark">
-              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#2ECC9A" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#2ECC9A"/></svg>
-              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#fff;">PCI</span>
+            <div class="lockup-cell dark">
+              <img src="logo.svg" alt="PCI mark" />
+              <span class="wm" style="font-family:'Zilla Slab',serif;">PCI</span>
             </div>
           </div>
         </div>
 
+        <!-- Option B — Aperture -->
         <div class="logo-pair">
           <div class="logo-meta">
-            <span class="lbl">Org · B/W</span>
-            <h3>Aperture · monochrome</h3>
-            <p>Single-color edition for embossing, watermarks, one-color print, report footers.</p>
+            <span class="lbl">Option B</span>
+            <h3>Aperture</h3>
+            <p>Microscope field of view; three control arcs around a nucleus. Font: <b>IBM Plex Sans 600</b>.</p>
           </div>
           <div class="logo-showcase">
-            <div class="lockup-cell mono-light">
-              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#000" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#000"/></svg>
+            <div class="lockup-cell light">
+              <!-- Aperture: outer ring with 3 arcs + inner dot -->
+              <svg viewBox="0 0 60 60" style="height:56px;width:56px;">
+                <circle cx="30" cy="30" r="26" fill="none" stroke="#0B2E5F" stroke-width="3.5"/>
+                <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="30" cy="30" r="7" fill="#1B4FD8"/>
+              </svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 60 60" style="height:56px;width:56px;">
+                <circle cx="30" cy="30" r="26" fill="none" stroke="#fff" stroke-width="3.5" stroke-opacity="0.3"/>
+                <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="30" cy="30" r="7" fill="#2ECC9A"/>
+              </svg>
               <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
             </div>
-            <div class="lockup-cell mono-dark">
-              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#fff" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#fff"/></svg>
+          </div>
+        </div>
+
+        <!-- Option C — Slide -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Option C</span>
+            <h3>Slide</h3>
+            <p>A microscope slide with a tissue section. Instantly reads "pathology." Font: <b>IBM Plex Sans 600</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <svg viewBox="0 0 48 60" style="height:56px;width:45px;">
+                <rect x="10" y="2" width="28" height="56" rx="4" fill="none" stroke="#0B2E5F" stroke-width="3"/>
+                <rect x="16" y="20" width="16" height="22" rx="2" fill="#2ECC9A" opacity="0.25"/>
+                <circle cx="24" cy="31" r="6" fill="#2ECC9A"/>
+                <circle cx="24" cy="31" r="2.5" fill="#1B4FD8"/>
+                <rect x="18" y="6" width="12" height="3" rx="1.5" fill="#0B2E5F" opacity="0.3"/>
+              </svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 48 60" style="height:56px;width:45px;">
+                <rect x="10" y="2" width="28" height="56" rx="4" fill="none" stroke="#fff" stroke-width="3" stroke-opacity="0.5"/>
+                <rect x="16" y="20" width="16" height="22" rx="2" fill="#2ECC9A" opacity="0.2"/>
+                <circle cx="24" cy="31" r="6" fill="#2ECC9A"/>
+                <circle cx="24" cy="31" r="2.5" fill="#fff"/>
+                <rect x="18" y="6" width="12" height="3" rx="1.5" fill="#fff" opacity="0.3"/>
+              </svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option D — TriControl Ladder -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Option D</span>
+            <h3>TriControl Ladder</h3>
+            <p>OE · WT · NULL as a rising calibration scale. Directly maps to the flagship product. Font: <b>IBM Plex Sans 600</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <svg viewBox="0 0 50 60" style="height:56px;width:47px;">
+                <rect x="4" y="38" width="12" height="20" rx="2" fill="#94a3b8"/>
+                <rect x="19" y="22" width="12" height="36" rx="2" fill="#1B4FD8"/>
+                <rect x="34" y="6" width="12" height="52" rx="2" fill="#2ECC9A"/>
+              </svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 50 60" style="height:56px;width:47px;">
+                <rect x="4" y="38" width="12" height="20" rx="2" fill="#94a3b8" opacity="0.6"/>
+                <rect x="19" y="22" width="12" height="36" rx="2" fill="#1B4FD8"/>
+                <rect x="34" y="6" width="12" height="52" rx="2" fill="#2ECC9A"/>
+              </svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option E — AI Detection -->
+        <div class="logo-pair">
+          <div class="logo-meta">
+            <span class="lbl">Option E</span>
+            <h3>AI Detection</h3>
+            <p>Detection brackets framing a cell nucleus. Font: <b>IBM Plex Sans 600</b>.</p>
+          </div>
+          <div class="logo-showcase">
+            <div class="lockup-cell light">
+              <svg viewBox="0 0 60 60" style="height:56px;width:56px;">
+                <!-- Corner brackets -->
+                <path d="M6 18 L6 6 L18 6" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M42 6 L54 6 L54 18" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M54 42 L54 54 L42 54" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 54 L6 54 L6 42" fill="none" stroke="#0B2E5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Crosshair -->
+                <circle cx="30" cy="30" r="10" fill="none" stroke="#2ECC9A" stroke-width="2.5"/>
+                <circle cx="30" cy="30" r="4" fill="#1B4FD8"/>
+              </svg>
+              <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:#0B2E5F;">PCI</span>
+            </div>
+            <div class="lockup-cell dark">
+              <svg viewBox="0 0 60 60" style="height:56px;width:56px;">
+                <path d="M6 18 L6 6 L18 6" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+                <path d="M42 6 L54 6 L54 18" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+                <path d="M54 42 L54 54 L42 54" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+                <path d="M18 54 L6 54 L6 42" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+                <circle cx="30" cy="30" r="10" fill="none" stroke="#2ECC9A" stroke-width="2.5"/>
+                <circle cx="30" cy="30" r="4" fill="#2ECC9A"/>
+              </svg>
               <span class="wm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;">PCI</span>
             </div>
           </div>
@@ -265,11 +316,11 @@
   <!-- BUSINESS CARDS -->
   <section id="cards">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">03</span><h2>Business cards</h2></div>
+      <div class="sec-head"><span class="sec-num">02</span><h2>Business cards</h2></div>
       <p class="sec-sub">3.5″ × 2″ preview. A fading hexagonal pattern anchors the right edge on both variants.</p>
 
       <div class="biz-family">
-        <h3>Mine — Aperture ring + Zilla Slab</h3>
+        <h3>Current website — logo.svg + Zilla Slab</h3>
         <div class="sub">Forest / Emerald palette</div>
         <div class="cards-row">
           <div class="biz mine-dark">
@@ -302,13 +353,19 @@
       </div>
 
       <div class="biz-family" style="margin-top:28px;">
-        <h3>Org — Aperture + IBM Plex Sans</h3>
+        <h3>Available — Aperture + IBM Plex Sans</h3>
         <div class="sub">Navy / Action blue / AI teal palette</div>
         <div class="cards-row">
           <div class="biz org-dark">
             <span class="accent-bar"></span>
             <div class="biz-top">
-              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#2ECC9A" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#2ECC9A"/></svg>
+              <svg viewBox="0 0 60 60" style="height:40px;width:40px;">
+                <circle cx="30" cy="30" r="26" fill="none" stroke="#fff" stroke-width="3.5" stroke-opacity="0.3"/>
+                <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="30" cy="30" r="7" fill="#2ECC9A"/>
+              </svg>
               <span class="wm-org">PCI</span>
             </div>
             <div>
@@ -324,7 +381,13 @@
           <div class="biz org-light">
             <span class="accent-bar"></span>
             <div class="biz-top">
-              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#0B2E5F" stroke-width="5"/><circle cx="30" cy="30" r="7" fill="#1B4FD8"/></svg>
+              <svg viewBox="0 0 60 60" style="height:40px;width:40px;">
+                <circle cx="30" cy="30" r="26" fill="none" stroke="#0B2E5F" stroke-width="3.5"/>
+                <path d="M30 4 A26 26 0 0 1 52.5 17" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M52.5 43 A26 26 0 0 1 30 56" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M7.5 17 A26 26 0 0 1 7.5 43" fill="none" stroke="#2ECC9A" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="30" cy="30" r="7" fill="#1B4FD8"/>
+              </svg>
               <span class="wm-org">PCI</span>
             </div>
             <div>
@@ -345,12 +408,12 @@
   <!-- PALETTES -->
   <section id="palettes">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">04</span><h2>Brand palettes · side by side</h2></div>
-      <p class="sec-sub">Left: what the live website uses. Right: what the org design file specifies.</p>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Brand palettes · side by side</h2></div>
+      <p class="sec-sub">Left: what the live website uses. Right: the available alternative palette.</p>
 
       <div class="palette-grid">
         <div class="card palette">
-          <h3>Mine (website)</h3>
+          <h3>Current website</h3>
           <div class="sub">Emerald · Forest</div>
           <div class="swatches">
             <div class="swatch"><div class="chip" style="background:#012b1a;"></div><div class="meta"><div class="name">Forest</div><div class="hex">#012B1A</div><div class="role">Dark sections</div></div></div>
@@ -360,7 +423,7 @@
           </div>
         </div>
         <div class="card palette">
-          <h3>Org (design file)</h3>
+          <h3>Available</h3>
           <div class="sub">Navy · Action blue · AI teal</div>
           <div class="swatches">
             <div class="swatch"><div class="chip" style="background:#0B2E5F;"></div><div class="meta"><div class="name">Navy</div><div class="hex">#0B2E5F</div><div class="role">Primary / chrome</div></div></div>
