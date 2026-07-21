@@ -446,28 +446,48 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
   color: #f8fafc;
 }
 
-/* CTA — black -> kelly-lime green gradient, top to bottom (opaque, no hex) */
-.cta-dna {
+/* CTA — black -> kelly-lime vertical gradient with softly drifting aurora orbs */
+.cta-aurora {
   background: linear-gradient(180deg,
     #030905 0%,
-    #062418 22%,
-    #0d4a2b 48%,
-    #1d8842 72%,
-    #4CBB17 92%,
+    #062418 24%,
+    #0d4a2b 52%,
+    #1d8842 78%,
+    #4CBB17 94%,
     #6CD531 100%);
 }
-.dna-swirl {
+.cta-orbs { overflow: hidden; }
+.cta-orbs .orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(50px);
   opacity: 0.55;
   mix-blend-mode: screen;
+  will-change: transform;
 }
-.dna-track {
-  animation: dna-flow 22s linear infinite;
-  transform-origin: 0 0;
+.orb-1 { width: 420px; height: 420px; left: -60px;  top: -120px;
+  background: radial-gradient(circle, rgba(108,213,49,0.9), transparent 70%);
+  animation: orb-float-a 18s ease-in-out infinite; }
+.orb-2 { width: 340px; height: 340px; right: -40px; top: -80px;
+  background: radial-gradient(circle, rgba(52,211,153,0.9), transparent 70%);
+  animation: orb-float-b 22s ease-in-out infinite; }
+.orb-3 { width: 300px; height: 300px; left: 30%;   bottom: -140px;
+  background: radial-gradient(circle, rgba(76,187,23,0.85), transparent 70%);
+  animation: orb-float-a 26s ease-in-out infinite reverse; }
+.orb-4 { width: 240px; height: 240px; left: 60%;   top: 10%;
+  background: radial-gradient(circle, rgba(163,230,53,0.7), transparent 70%);
+  animation: orb-float-b 20s ease-in-out infinite; }
+.orb-5 { width: 200px; height: 200px; right: 22%;  bottom: -60px;
+  background: radial-gradient(circle, rgba(16,185,129,0.7), transparent 70%);
+  animation: orb-float-a 30s ease-in-out infinite; }
+@keyframes orb-float-a {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  50%     { transform: translate(60px, 40px) scale(1.12); }
 }
-@keyframes dna-flow {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-200px); }
+@keyframes orb-float-b {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  50%     { transform: translate(-50px, 30px) scale(1.08); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .dna-track { animation: none; }
+  .cta-orbs .orb { animation: none; }
 }

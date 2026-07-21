@@ -472,9 +472,9 @@
   </section>
 
   <!-- SECTION 7: TRUST / CREDIBILITY BAR -->
-  <section class="py-12 bg-gray-950 border-t border-white/5 relative z-10" id="credibility-footer-bar">
+  <section class="py-12 bg-blue-600 border-y border-blue-500 relative z-10" id="credibility-footer-bar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-12 text-center text-xs tracking-widest text-blue-300 font-mono uppercase">
+      <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-12 text-center text-xs tracking-widest text-white font-mono uppercase">
         <span>Patent Pending Technology</span>
         <span class="hidden sm:inline">|</span>
         <span>Texas Medical Center Ecosystem</span>
@@ -486,55 +486,15 @@
     </div>
   </section>
 
-  <!-- SECTION 8: CTA BANNER — black->kelly-lime gradient with animated DNA swirls -->
-  <section class="py-24 relative overflow-hidden border-y border-white/25 cta-dna" id="bottom-banner-cta">
-    <svg class="dna-swirl absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="dnaA" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="rgba(255,255,255,0)"/>
-          <stop offset="0.15" stop-color="rgba(255,255,255,0.55)"/>
-          <stop offset="0.85" stop-color="rgba(255,255,255,0.55)"/>
-          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
-        </linearGradient>
-        <linearGradient id="dnaB" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="rgba(52,211,153,0)"/>
-          <stop offset="0.15" stop-color="rgba(52,211,153,0.65)"/>
-          <stop offset="0.85" stop-color="rgba(52,211,153,0.65)"/>
-          <stop offset="1" stop-color="rgba(52,211,153,0)"/>
-        </linearGradient>
-      </defs>
-      <g class="dna-track">
-        <path d="M-400,200 C-300,60 -200,340 -100,200 C0,60 100,340 200,200 C300,60 400,340 500,200 C600,60 700,340 800,200 C900,60 1000,340 1100,200 C1200,60 1300,340 1400,200 C1500,60 1600,340 1700,200 C1800,60 1900,340 2000,200" stroke="url(#dnaA)" stroke-width="2.5" fill="none"/>
-        <path d="M-400,200 C-300,340 -200,60 -100,200 C0,340 100,60 200,200 C300,340 400,60 500,200 C600,340 700,60 800,200 C900,340 1000,60 1100,200 C1200,340 1300,60 1400,200 C1500,340 1600,60 1700,200 C1800,340 1900,60 2000,200" stroke="url(#dnaB)" stroke-width="2.5" fill="none"/>
-        <g stroke="rgba(255,255,255,0.20)" stroke-width="1.5" stroke-linecap="round">
-          <line x1="-400" y1="200" x2="-400" y2="200"/>
-          <line x1="-350" y1="140" x2="-350" y2="260"/>
-          <line x1="-250" y1="140" x2="-250" y2="260"/>
-          <line x1="-150" y1="140" x2="-150" y2="260"/>
-          <line x1="-50" y1="140" x2="-50" y2="260"/>
-          <line x1="50" y1="140" x2="50" y2="260"/>
-          <line x1="150" y1="140" x2="150" y2="260"/>
-          <line x1="250" y1="140" x2="250" y2="260"/>
-          <line x1="350" y1="140" x2="350" y2="260"/>
-          <line x1="450" y1="140" x2="450" y2="260"/>
-          <line x1="550" y1="140" x2="550" y2="260"/>
-          <line x1="650" y1="140" x2="650" y2="260"/>
-          <line x1="750" y1="140" x2="750" y2="260"/>
-          <line x1="850" y1="140" x2="850" y2="260"/>
-          <line x1="950" y1="140" x2="950" y2="260"/>
-          <line x1="1050" y1="140" x2="1050" y2="260"/>
-          <line x1="1150" y1="140" x2="1150" y2="260"/>
-          <line x1="1250" y1="140" x2="1250" y2="260"/>
-          <line x1="1350" y1="140" x2="1350" y2="260"/>
-          <line x1="1450" y1="140" x2="1450" y2="260"/>
-          <line x1="1550" y1="140" x2="1550" y2="260"/>
-          <line x1="1650" y1="140" x2="1650" y2="260"/>
-          <line x1="1750" y1="140" x2="1750" y2="260"/>
-          <line x1="1850" y1="140" x2="1850" y2="260"/>
-          <line x1="1950" y1="140" x2="1950" y2="260"/>
-        </g>
-      </g>
-    </svg>
+  <!-- SECTION 8: CTA BANNER — black->kelly-lime gradient with floating aurora orbs -->
+  <section class="py-24 relative overflow-hidden border-y border-white/15 cta-aurora" id="bottom-banner-cta">
+    <div class="cta-orbs absolute inset-0 pointer-events-none" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+      <span class="orb orb-4"></span>
+      <span class="orb orb-5"></span>
+    </div>
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6 reveal">
       <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white tracking-tight">
         Ready to Improve Your IHC Assessment Staining?
