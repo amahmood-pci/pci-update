@@ -466,19 +466,19 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
   will-change: transform;
 }
 .orb-1 { width: 420px; height: 420px; left: -60px;  top: -120px;
-  background: radial-gradient(circle, rgba(132,240,64,1), transparent 68%);
+  background: radial-gradient(circle, rgba(5,120,80,1), transparent 68%);
   animation: orb-float-a 12s ease-in-out infinite; }
 .orb-2 { width: 340px; height: 340px; right: -40px; top: -80px;
-  background: radial-gradient(circle, rgba(52,230,168,1), transparent 68%);
+  background: radial-gradient(circle, rgba(6,95,70,1), transparent 68%);
   animation: orb-float-b 15s ease-in-out infinite; }
 .orb-3 { width: 320px; height: 320px; left: 28%;   bottom: -150px;
-  background: radial-gradient(circle, rgba(108,213,49,1), transparent 68%);
+  background: radial-gradient(circle, rgba(4,120,87,1), transparent 68%);
   animation: orb-float-c 17s ease-in-out infinite; }
 .orb-4 { width: 260px; height: 260px; left: 58%;   top: 6%;
-  background: radial-gradient(circle, rgba(190,242,80,0.95), transparent 68%);
+  background: radial-gradient(circle, rgba(16,120,90,0.95), transparent 68%);
   animation: orb-float-b 13s ease-in-out infinite reverse; }
 .orb-5 { width: 240px; height: 240px; right: 20%;  bottom: -70px;
-  background: radial-gradient(circle, rgba(32,220,150,0.95), transparent 68%);
+  background: radial-gradient(circle, rgba(6,78,59,0.95), transparent 68%);
   animation: orb-float-c 19s ease-in-out infinite reverse; }
 @keyframes orb-float-a {
   0%,100% { transform: translate(0, 0) scale(1); }
