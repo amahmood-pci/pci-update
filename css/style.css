@@ -499,31 +499,3 @@ input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focu
 @media (prefers-reduced-motion: reduce) {
   .cta-orbs .orb { animation: none; }
 }
-
-/* Overscroll footer reveal — big Zilla wordmark behind the page bottom */
-#main-global-footer { margin-bottom: 46vh; }
-.footer-reveal {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  height: 46vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000000;
-  overflow: hidden;
-}
-.footer-reveal span {
-  font-family: 'Zilla Slab', serif;
-  font-weight: 400;
-  text-transform: uppercase;
-  color: #ffffff;
-  text-align: center;
-  letter-spacing: 0.005em;
-  line-height: 0.92;
-  white-space: nowrap;          /* never wrap — always one line */
-  font-size: 4.5vw;             /* scales with viewport width so it fits any device */
-  padding: 0;
-}
