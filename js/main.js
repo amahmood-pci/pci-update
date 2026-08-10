@@ -1,3 +1,7 @@
+// Account login widget + cart sync (site-wide). No-ops if Supabase keys unset.
+import './auth.js';
+import './cart-sync.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. STICKY NAV AND SCROLL EFFECT
   const navbar = document.getElementById('main-navbar');

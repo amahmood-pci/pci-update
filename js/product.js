@@ -1,3 +1,7 @@
+// Account login widget + cart sync. No-ops if Supabase keys unset.
+import './auth.js';
+import './cart-sync.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. STICKY NAV AND SCROLL EFFECT
   const navbar = document.getElementById('main-navbar');
@@ -236,6 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const saveCart = (cart) => {
     localStorage.setItem('pci_cart', JSON.stringify(cart));
     updateCartBadges();
+    // Sync to the logged-in user's saved cart (no-op if not signed in / no Supabase).
+    if (window.__pciPushCart) window.__pciPushCart(cart);
   };
 
   const updateCartBadges = () => {
@@ -501,4 +507,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Init badging on load
   updateCartBadges();
+
+  // Refresh UI after the logged-in user's saved cart syncs in from Supabase.
+  window.addEventListener('pci-cart-synced', () => {
+    updateCartBadges();
+    updateCartDrawerItems();
+  });
 });
