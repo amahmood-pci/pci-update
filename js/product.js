@@ -130,6 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const extLink = document.getElementById('spec-external-url');
   if (extLink) extLink.href = product.url;
 
+  // Primary purchase action → hand off to the Squarespace official store.
+  const buyBtn = document.getElementById('buy-official-btn');
+  if (buyBtn) buyBtn.href = product.url;
+
   // Set real QR code via Google Charts / QR Server API pointing to their actual Squarespace page
   const qrImg = document.getElementById('product-qr-code');
   if (qrImg) {
@@ -431,26 +435,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
   });
 
-  // 7. CHECKOUT ACTION
+  // 7. CHECKOUT ACTION → hand off to the Squarespace official store.
+  // The cart is a browsing/wishlist tool; secure payment happens on Squarespace.
+  const SHOP_BASE = 'https://shop.pcibio.com';
   document.getElementById('cart-checkout-btn').addEventListener('click', () => {
     const cart = getCart();
     if (cart.length === 0) return;
 
-    // Toggle drawer closed
-    toggleCartDrawer();
+    const all = window.pciProducts || [];
+    const urlFor = (code) => {
+      const p = all.find(x => x.code === code);
+      return p && p.url ? p.url : null;
+    };
 
-    // Trigger Success Checkout Modal
-    const modalOverlay = document.getElementById('checkout-modal-overlay');
-    const modal = document.getElementById('checkout-modal');
-    
-    if (modalOverlay && modal) {
-      modalOverlay.classList.remove('pointer-events-none');
-      modalOverlay.classList.replace('opacity-0', 'opacity-100');
-      modal.classList.replace('scale-95', 'scale-100');
-    }
+    // Single line item → go straight to its product page. Otherwise send them
+    // to the store home (Squarespace can't accept an external multi-item cart).
+    const target = cart.length === 1 && urlFor(cart[0].code)
+      ? urlFor(cart[0].code)
+      : SHOP_BASE;
 
-    // Empty local storage cart
-    saveCart([]);
+    window.open(target, '_blank', 'noopener');
   });
 
   // Close checkout modal

@@ -379,23 +379,22 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCartCont.addEventListener('click', () => toggleCartDrawer());
   }
 
-  // Checkout Success triggers
+  // Checkout → hand off to the Squarespace official store (cart is a wishlist).
+  const SHOP_BASE = 'https://shop.pcibio.com';
   document.getElementById('cart-checkout-btn').addEventListener('click', () => {
     const cart = getCart();
     if (cart.length === 0) return;
 
-    toggleCartDrawer();
+    const all = window.pciProducts || [];
+    const urlFor = (code) => {
+      const p = all.find(x => x.code === code);
+      return p && p.url ? p.url : null;
+    };
+    const target = cart.length === 1 && urlFor(cart[0].code)
+      ? urlFor(cart[0].code)
+      : SHOP_BASE;
 
-    const modalOverlay = document.getElementById('checkout-modal-overlay');
-    const modal = document.getElementById('checkout-modal');
-    
-    if (modalOverlay && modal) {
-      modalOverlay.classList.remove('pointer-events-none');
-      modalOverlay.classList.replace('opacity-0', 'opacity-100');
-      modal.classList.replace('scale-95', 'scale-100');
-    }
-
-    saveCart([]);
+    window.open(target, '_blank', 'noopener');
   });
 
   document.getElementById('checkout-modal-close-btn').addEventListener('click', () => {
