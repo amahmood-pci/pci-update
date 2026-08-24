@@ -5,7 +5,7 @@
 // subdomain is connected:
 //   • While Squarespace is on its default domain:  https://shop-pcibio.squarespace.com
 //   • Once shop.pcibio.com is connected in Squarespace: https://shop.pcibio.com
-export const SHOP_BASE = 'https://shop.pcibio.com';
+export const SHOP_BASE = 'https://shop-pcibio.squarespace.com';
 
 // Also expose globally for any non-module usage.
 window.PCI_SHOP_BASE = SHOP_BASE;

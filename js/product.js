@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('spec-code').textContent = product.code;
   
   const extLink = document.getElementById('spec-external-url');
-  if (extLink) extLink.href = product.url;
+  if (extLink) extLink.href = shopUrl(product);
 
   // Primary purchase action → hand off to the Squarespace official store.
   const buyBtn = document.getElementById('buy-official-btn');
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set real QR code via Google Charts / QR Server API pointing to their actual Squarespace page
   const qrImg = document.getElementById('product-qr-code');
   if (qrImg) {
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=022c22&data=${encodeURIComponent(product.url)}`;
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=022c22&data=${encodeURIComponent(shopUrl(product))}`;
   }
   const qrCap = document.getElementById('qr-caption-code');
   if (qrCap) qrCap.textContent = product.code;
