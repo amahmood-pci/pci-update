@@ -25,6 +25,9 @@ function initAuthWidget() {
   injectStyles();
   const modal = buildModal();
 
+  // Let other pages (e.g. checkout) open the sign-in modal.
+  window.pciOpenAuth = () => openModal(modal);
+
   const render = (user) => {
     if (user) {
       btn.textContent = accountLabel(user.email);
@@ -146,7 +149,7 @@ function buildModal() {
         else show('Account created. Check your email to confirm, then sign in.', true);
       }
     } catch (err) {
-      show('Network error — please try again.', false);
+      show("Can't reach the login service right now. Please try again shortly.", false);
     }
     submit.disabled = false;
     submit.textContent = mode === 'signin' ? 'Sign in' : 'Create account';

@@ -386,18 +386,10 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCartCont.addEventListener('click', () => toggleCartDrawer());
   }
 
-  // Checkout → hand off to the Squarespace official store (cart is a wishlist).
+  // Checkout → go to the checkout review page.
   document.getElementById('cart-checkout-btn').addEventListener('click', () => {
-    const cart = getCart();
-    if (cart.length === 0) return;
-
-    const all = window.pciProducts || [];
-    const prodFor = (code) => all.find(x => x.code === code);
-    const target = cart.length === 1
-      ? shopUrl(prodFor(cart[0].code))
-      : SHOP_BASE;
-
-    window.open(target, '_blank', 'noopener');
+    if (getCart().length === 0) return;
+    window.location.href = 'checkout.html';
   });
 
   document.getElementById('checkout-modal-close-btn').addEventListener('click', () => {

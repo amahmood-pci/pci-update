@@ -442,22 +442,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
   });
 
-  // 7. CHECKOUT ACTION → hand off to the Squarespace official store.
-  // The cart is a browsing/wishlist tool; secure payment happens on Squarespace.
+  // 7. CHECKOUT ACTION → go to the checkout review page.
   document.getElementById('cart-checkout-btn').addEventListener('click', () => {
-    const cart = getCart();
-    if (cart.length === 0) return;
-
-    const all = window.pciProducts || [];
-    const prodFor = (code) => all.find(x => x.code === code);
-
-    // Single line item → go straight to its product page. Otherwise send them
-    // to the store home (Squarespace can't accept an external multi-item cart).
-    const target = cart.length === 1
-      ? shopUrl(prodFor(cart[0].code))
-      : SHOP_BASE;
-
-    window.open(target, '_blank', 'noopener');
+    if (getCart().length === 0) return;
+    window.location.href = 'checkout.html';
   });
 
   // Close checkout modal
