@@ -67,13 +67,15 @@ function buildModal() {
   overlay.innerHTML = `
     <div class="pci-auth-modal" role="dialog" aria-modal="true">
       <button class="pci-auth-close" aria-label="Close">&times;</button>
-      <h3>Sign in to PCI</h3>
-      <p class="pci-auth-sub">Enter your email and we'll send a one-tap sign-in link. No password needed.</p>
+      <h3 class="pci-auth-title">Sign in to PCI</h3>
+      <p class="pci-auth-sub">Access your account, saved carts, and order history.</p>
       <form class="pci-auth-form">
-        <input type="email" required placeholder="you@lab.org" class="pci-auth-input" autocomplete="email" />
-        <button type="submit" class="pci-auth-submit">Send link</button>
+        <input type="email" required placeholder="you@lab.org" class="pci-auth-input pci-auth-email" autocomplete="email" />
+        <input type="password" required placeholder="Password" class="pci-auth-input pci-auth-pass" autocomplete="current-password" minlength="6" />
+        <button type="submit" class="pci-auth-submit">Sign in</button>
       </form>
       <p class="pci-auth-msg" hidden></p>
+      <p class="pci-auth-toggle">New to PCI? <a href="#" class="pci-auth-switch">Create an account</a></p>
     </div>`;
   document.body.appendChild(overlay);
 
@@ -85,28 +87,69 @@ function buildModal() {
 
   const form = overlay.querySelector('.pci-auth-form');
   const msg = overlay.querySelector('.pci-auth-msg');
+  const title = overlay.querySelector('.pci-auth-title');
+  const sub = overlay.querySelector('.pci-auth-sub');
+  const submit = form.querySelector('.pci-auth-submit');
+  const passInput = form.querySelector('.pci-auth-pass');
+  const toggle = overlay.querySelector('.pci-auth-toggle');
+
+  let mode = 'signin'; // or 'signup'
+  const applyMode = () => {
+    if (mode === 'signin') {
+      title.textContent = 'Sign in to PCI';
+      sub.textContent = 'Access your account, saved carts, and order history.';
+      submit.textContent = 'Sign in';
+      passInput.setAttribute('autocomplete', 'current-password');
+      toggle.innerHTML = 'New to PCI? <a href="#" class="pci-auth-switch">Create an account</a>';
+    } else {
+      title.textContent = 'Create your PCI account';
+      sub.textContent = 'Sign up to save carts and track orders across devices.';
+      submit.textContent = 'Create account';
+      passInput.setAttribute('autocomplete', 'new-password');
+      toggle.innerHTML = 'Already have an account? <a href="#" class="pci-auth-switch">Sign in</a>';
+    }
+    wireSwitch();
+    msg.hidden = true;
+  };
+  const wireSwitch = () => {
+    overlay.querySelector('.pci-auth-switch').onclick = (e) => {
+      e.preventDefault();
+      mode = mode === 'signin' ? 'signup' : 'signin';
+      applyMode();
+    };
+  };
+  wireSwitch();
+
+  const show = (text, ok) => {
+    msg.hidden = false;
+    msg.textContent = text;
+    msg.className = 'pci-auth-msg ' + (ok ? 'pci-auth-ok' : 'pci-auth-err');
+  };
+
   form.onsubmit = async (e) => {
     e.preventDefault();
-    const email = form.querySelector('.pci-auth-input').value.trim();
-    if (!email) return;
-    const submit = form.querySelector('.pci-auth-submit');
+    const email = form.querySelector('.pci-auth-email').value.trim();
+    const password = passInput.value;
+    if (!email || !password) return;
     submit.disabled = true;
-    submit.textContent = 'Sending…';
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: window.location.href },
-    });
-    msg.hidden = false;
-    if (error) {
-      msg.textContent = error.message;
-      msg.className = 'pci-auth-msg pci-auth-err';
-    } else {
-      msg.textContent = 'Check your inbox for the sign-in link.';
-      msg.className = 'pci-auth-msg pci-auth-ok';
-      form.reset();
+    const busy = mode === 'signin' ? 'Signing in…' : 'Creating…';
+    submit.textContent = busy;
+    try {
+      if (mode === 'signin') {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) show(error.message, false);
+        else { show('Signed in.', true); setTimeout(close, 600); }
+      } else {
+        const { data, error } = await supabase.auth.signUp({ email, password });
+        if (error) show(error.message, false);
+        else if (data.session) { show('Account created — you\'re in.', true); setTimeout(close, 700); }
+        else show('Account created. Check your email to confirm, then sign in.', true);
+      }
+    } catch (err) {
+      show('Network error — please try again.', false);
     }
     submit.disabled = false;
-    submit.textContent = 'Send link';
+    submit.textContent = mode === 'signin' ? 'Sign in' : 'Create account';
   };
 
   return overlay;
@@ -143,6 +186,9 @@ function injectStyles() {
       line-height:1;color:#94a3b8;cursor:pointer}
     .pci-auth-msg{font-size:13px;margin:14px 0 0}
     .pci-auth-ok{color:#059669}
-    .pci-auth-err{color:#e11d48}`;
+    .pci-auth-err{color:#e11d48}
+    .pci-auth-toggle{font-size:13px;color:#475569;margin:16px 0 0;text-align:center}
+    .pci-auth-switch{color:#059669;font-weight:600;text-decoration:none}
+    .pci-auth-switch:hover{text-decoration:underline}`;
   document.head.appendChild(s);
 }
