@@ -1,3 +1,8 @@
+// Account login widget + cart sync. No-ops if Supabase keys unset.
+import './auth.js';
+import './cart-sync.js';
+import { SHOP_BASE, shopUrl } from './config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. STICKY NAV AND SCROLL EFFECT
   const navbar = document.getElementById('main-navbar');
@@ -200,6 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const saveCart = (cart) => {
     localStorage.setItem('pci_cart', JSON.stringify(cart));
     updateCartBadges();
+    // Sync to the logged-in user's saved cart (no-op if not signed in / no Supabase).
+    if (window.__pciPushCart) window.__pciPushCart(cart);
   };
 
   const updateCartBadges = () => {
@@ -247,6 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
       itemEl.className = "flex items-start gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 relative animate-fade-in";
       
       const thumbSrc = item.image ? item.image : (item.imageType === 'block' ? blockImgUrl : slideImgUrl);
+      const prod = (window.pciProducts || []).find(p => p.code === item.code);
+      const buyHref = window.pciShopUrl ? window.pciShopUrl(prod) : (prod && prod.url) || '#';
 
       itemEl.innerHTML = `
         <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer">
@@ -262,6 +271,10 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <span class="font-mono text-xs font-bold text-slate-800">$${itemCost.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
           </div>
+          <a href="${buyHref}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 hover:text-emerald-600">
+            Buy on store
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
         </div>
         <!-- Remove -->
         <button class="cart-remove-btn absolute top-3 right-3 text-slate-300 hover:text-rose-500 transition-colors focus:outline-none" data-idx="${index}">
@@ -373,23 +386,18 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCartCont.addEventListener('click', () => toggleCartDrawer());
   }
 
-  // Checkout Success triggers
+  // Checkout → hand off to the Squarespace official store (cart is a wishlist).
   document.getElementById('cart-checkout-btn').addEventListener('click', () => {
     const cart = getCart();
     if (cart.length === 0) return;
 
-    toggleCartDrawer();
+    const all = window.pciProducts || [];
+    const prodFor = (code) => all.find(x => x.code === code);
+    const target = cart.length === 1
+      ? shopUrl(prodFor(cart[0].code))
+      : SHOP_BASE;
 
-    const modalOverlay = document.getElementById('checkout-modal-overlay');
-    const modal = document.getElementById('checkout-modal');
-    
-    if (modalOverlay && modal) {
-      modalOverlay.classList.remove('pointer-events-none');
-      modalOverlay.classList.replace('opacity-0', 'opacity-100');
-      modal.classList.replace('scale-95', 'scale-100');
-    }
-
-    saveCart([]);
+    window.open(target, '_blank', 'noopener');
   });
 
   document.getElementById('checkout-modal-close-btn').addEventListener('click', () => {
@@ -404,4 +412,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   updateCartBadges();
+
+  // Refresh UI after the logged-in user's saved cart syncs in from Supabase.
+  window.addEventListener('pci-cart-synced', () => {
+    updateCartBadges();
+    updateCartDrawerItems();
+  });
 });

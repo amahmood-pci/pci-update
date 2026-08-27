@@ -1,3 +1,8 @@
+// Account login widget + cart sync. No-ops if Supabase keys unset.
+import './auth.js';
+import './cart-sync.js';
+import { SHOP_BASE, shopUrl } from './config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. STICKY NAV AND SCROLL EFFECT
   const navbar = document.getElementById('main-navbar');
@@ -124,12 +129,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('spec-code').textContent = product.code;
   
   const extLink = document.getElementById('spec-external-url');
-  if (extLink) extLink.href = product.url;
+  if (extLink) extLink.href = shopUrl(product);
+
+  // Primary purchase action → hand off to the Squarespace official store.
+  const buyBtn = document.getElementById('buy-official-btn');
+  if (buyBtn) buyBtn.href = shopUrl(product);
 
   // Set real QR code via Google Charts / QR Server API pointing to their actual Squarespace page
   const qrImg = document.getElementById('product-qr-code');
   if (qrImg) {
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=022c22&data=${encodeURIComponent(product.url)}`;
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=022c22&data=${encodeURIComponent(shopUrl(product))}`;
   }
   const qrCap = document.getElementById('qr-caption-code');
   if (qrCap) qrCap.textContent = product.code;
@@ -236,6 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const saveCart = (cart) => {
     localStorage.setItem('pci_cart', JSON.stringify(cart));
     updateCartBadges();
+    // Sync to the logged-in user's saved cart (no-op if not signed in / no Supabase).
+    if (window.__pciPushCart) window.__pciPushCart(cart);
   };
 
   const updateCartBadges = () => {
@@ -283,6 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
       itemEl.className = "flex items-start gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 relative animate-fade-in";
       
       const thumbSrc = item.image ? item.image : (item.imageType === 'block' ? blockImgUrl : slideImgUrl);
+      const prod = (window.pciProducts || []).find(p => p.code === item.code);
+      const buyHref = window.pciShopUrl ? window.pciShopUrl(prod) : (prod && prod.url) || '#';
 
       itemEl.innerHTML = `
         <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer">
@@ -298,6 +311,10 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <span class="font-mono text-xs font-bold text-slate-800">$${itemCost.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
           </div>
+          <a href="${buyHref}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 hover:text-emerald-600">
+            Buy on store
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
         </div>
         <!-- Remove -->
         <button class="cart-remove-btn absolute top-3 right-3 text-slate-300 hover:text-rose-500 transition-colors focus:outline-none" data-idx="${index}">
@@ -425,26 +442,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
   });
 
-  // 7. CHECKOUT ACTION
+  // 7. CHECKOUT ACTION → hand off to the Squarespace official store.
+  // The cart is a browsing/wishlist tool; secure payment happens on Squarespace.
   document.getElementById('cart-checkout-btn').addEventListener('click', () => {
     const cart = getCart();
     if (cart.length === 0) return;
 
-    // Toggle drawer closed
-    toggleCartDrawer();
+    const all = window.pciProducts || [];
+    const prodFor = (code) => all.find(x => x.code === code);
 
-    // Trigger Success Checkout Modal
-    const modalOverlay = document.getElementById('checkout-modal-overlay');
-    const modal = document.getElementById('checkout-modal');
-    
-    if (modalOverlay && modal) {
-      modalOverlay.classList.remove('pointer-events-none');
-      modalOverlay.classList.replace('opacity-0', 'opacity-100');
-      modal.classList.replace('scale-95', 'scale-100');
-    }
+    // Single line item → go straight to its product page. Otherwise send them
+    // to the store home (Squarespace can't accept an external multi-item cart).
+    const target = cart.length === 1
+      ? shopUrl(prodFor(cart[0].code))
+      : SHOP_BASE;
 
-    // Empty local storage cart
-    saveCart([]);
+    window.open(target, '_blank', 'noopener');
   });
 
   // Close checkout modal
@@ -501,4 +514,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Init badging on load
   updateCartBadges();
+
+  // Refresh UI after the logged-in user's saved cart syncs in from Supabase.
+  window.addEventListener('pci-cart-synced', () => {
+    updateCartBadges();
+    updateCartDrawerItems();
+  });
 });
