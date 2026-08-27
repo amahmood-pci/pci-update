@@ -12,8 +12,10 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-const url = import.meta.env.VITE_SUPABASE_URL;
-const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+// Env vars take precedence; the public publishable key is a safe fallback so the
+// site works on deploy without dashboard config (RLS protects the data).
+const url = import.meta.env.VITE_SUPABASE_URL || 'https://guvkjtemmhzfxkssdyat.supabase.co';
+const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_NwaIvh482SXJbaOGw0ayuA_q0-olvHN';
 
 // If keys are missing we export null so the rest of the app degrades gracefully
 // (cart falls back to localStorage-only, login button hides).
