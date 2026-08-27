@@ -29,7 +29,6 @@ export default defineConfig(() => {
           viewer: resolve(__dirname, 'viewer.html'),
           about: resolve(__dirname, 'about.html'),
           contact: resolve(__dirname, 'contact.html'),
-          checkout: resolve(__dirname, 'checkout.html'),
         },
       },
     },
