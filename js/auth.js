@@ -15,7 +15,7 @@ if (isSupabaseEnabled()) {
 }
 
 function initAuthWidget() {
-  const mount = document.getElementById('pci-account-slot') || floatingMount();
+  const mount = document.getElementById('pci-account-slot') || navMount() || floatingMount();
 
   const btn = document.createElement('button');
   btn.type = 'button';
@@ -55,11 +55,23 @@ function accountLabel(email) {
   return name.length > 12 ? name.slice(0, 12) + '…' : name;
 }
 
+// Prefer mounting inside the site navbar so the button sits inline with the
+// nav links instead of floating over the header.
+function navMount() {
+  const nav = document.querySelector('#main-navbar nav');
+  if (!nav) return null;
+  const slot = document.createElement('div');
+  slot.id = 'pci-account-slot';
+  slot.className = 'flex items-center';
+  nav.appendChild(slot);
+  return slot;
+}
+
 function floatingMount() {
   const el = document.createElement('div');
   el.id = 'pci-account-slot';
   el.style.cssText =
-    'position:fixed;top:14px;right:16px;z-index:200;';
+    'position:fixed;top:92px;right:16px;z-index:40;';
   document.body.appendChild(el);
   return el;
 }
@@ -139,7 +151,7 @@ function buildModal() {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: window.location.href },
+        options: { redirectTo: window.location.origin },
       });
       if (error) show(error.message, false);
     } catch (err) {
