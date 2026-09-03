@@ -386,10 +386,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCartCont.addEventListener('click', () => toggleCartDrawer());
   }
 
-  // Checkout → hand off to the Squarespace store (payment happens there).
-  document.getElementById('cart-checkout-btn').addEventListener('click', () => {
+  // Checkout → require signed-in + email-verified user, then hand off to Squarespace.
+  document.getElementById('cart-checkout-btn').addEventListener('click', async () => {
     const cart = getCart();
     if (cart.length === 0) return;
+    if (window.pciRequireVerifiedUser) {
+      const ok = await window.pciRequireVerifiedUser();
+      if (!ok) return;
+    }
     const all = window.pciProducts || [];
     const prodFor = (code) => all.find(x => x.code === code);
     const target = cart.length === 1 ? shopUrl(prodFor(cart[0].code)) : SHOP_BASE;

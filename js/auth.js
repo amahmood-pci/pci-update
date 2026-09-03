@@ -28,6 +28,22 @@ function initAuthWidget() {
   // Let other pages (e.g. checkout) open the sign-in modal.
   window.pciOpenAuth = () => openModal(modal);
 
+  // Gate checkout on signed-in + email verified. Returns a Promise<boolean>.
+  window.pciRequireVerifiedUser = async () => {
+    const { data } = await supabase.auth.getUser();
+    const user = data.user;
+    if (!user) {
+      openModal(modal);
+      toast('Sign in to continue to checkout');
+      return false;
+    }
+    if (!user.email_confirmed_at && !user.confirmed_at) {
+      openVerifyModal(user.email);
+      return false;
+    }
+    return true;
+  };
+
   const render = (user) => {
     if (user) {
       btn.textContent = accountLabel(user.email);
@@ -51,6 +67,45 @@ function initAuthWidget() {
   function openMenu(user) {
     openAccountPopover(btn, user);
   }
+}
+
+function openVerifyModal(email) {
+  document.querySelectorAll('.pci-verify-overlay').forEach((n) => n.remove());
+  const overlay = document.createElement('div');
+  overlay.className = 'pci-auth-overlay pci-verify-overlay';
+  overlay.style.display = 'flex';
+  overlay.innerHTML = `
+    <div class="pci-auth-modal" role="dialog" aria-modal="true" style="max-width:420px">
+      <button class="pci-auth-close" aria-label="Close">&times;</button>
+      <div class="pci-verify-icon">✉</div>
+      <h3 class="pci-auth-title">Verify your email to check out</h3>
+      <p class="pci-auth-sub">We sent a confirmation link to <b>${escapeHtml(email)}</b>. Open it, then come back here to complete your order.</p>
+      <button type="button" class="pci-auth-submit pci-verify-resend">Resend verification email</button>
+      <button type="button" class="pci-verify-check">I've verified — continue</button>
+      <p class="pci-auth-msg" hidden></p>
+    </div>`;
+  document.body.appendChild(overlay);
+  const close = () => overlay.remove();
+  overlay.querySelector('.pci-auth-close').onclick = close;
+  overlay.onclick = (e) => { if (e.target === overlay) close(); };
+  const msg = overlay.querySelector('.pci-auth-msg');
+  const show = (t, ok) => { msg.hidden = false; msg.textContent = t; msg.className = 'pci-auth-msg ' + (ok ? 'pci-auth-ok' : 'pci-auth-err'); };
+  overlay.querySelector('.pci-verify-resend').onclick = async () => {
+    try {
+      const { error } = await supabase.auth.resend({ type: 'signup', email, options: { emailRedirectTo: window.location.origin } });
+      if (error) show(error.message, false);
+      else show('Verification email sent. Check your inbox.', true);
+    } catch { show("Can't reach the login service right now.", false); }
+  };
+  overlay.querySelector('.pci-verify-check').onclick = async () => {
+    const { data } = await supabase.auth.getUser();
+    if (data.user?.email_confirmed_at || data.user?.confirmed_at) {
+      close();
+      toast('Email verified — you can check out now');
+    } else {
+      show('Not verified yet. Please click the link in the email first.', false);
+    }
+  };
 }
 
 function openAccountPopover(anchor, user) {
@@ -140,6 +195,16 @@ function buildModal() {
       </button>
       <div class="pci-auth-divider"><span>or</span></div>
       <form class="pci-auth-form">
+        <div class="pci-auth-signup-fields" hidden>
+          <input type="text" placeholder="Full name" class="pci-auth-input pci-auth-name" autocomplete="name" />
+          <input type="tel" placeholder="Phone (e.g. +1 713 555 0100)" class="pci-auth-input pci-auth-phone" autocomplete="tel" />
+          <input type="text" placeholder="Street address" class="pci-auth-input pci-auth-addr1" autocomplete="address-line1" />
+          <div class="pci-auth-row">
+            <input type="text" placeholder="City" class="pci-auth-input pci-auth-city" autocomplete="address-level2" />
+            <input type="text" placeholder="State" class="pci-auth-input pci-auth-state" autocomplete="address-level1" style="max-width:80px" />
+            <input type="text" placeholder="ZIP" class="pci-auth-input pci-auth-zip" autocomplete="postal-code" style="max-width:90px" />
+          </div>
+        </div>
         <input type="email" required placeholder="you@lab.org" class="pci-auth-input pci-auth-email" autocomplete="email" />
         <input type="password" required placeholder="Password" class="pci-auth-input pci-auth-pass" autocomplete="current-password" minlength="6" />
         <button type="submit" class="pci-auth-submit">Sign in</button>
@@ -163,6 +228,7 @@ function buildModal() {
   const passInput = form.querySelector('.pci-auth-pass');
   const toggle = overlay.querySelector('.pci-auth-toggle');
 
+  const signupFields = overlay.querySelector('.pci-auth-signup-fields');
   let mode = 'signin'; // or 'signup'
   const applyMode = () => {
     if (mode === 'signin') {
@@ -171,12 +237,14 @@ function buildModal() {
       submit.textContent = 'Sign in';
       passInput.setAttribute('autocomplete', 'current-password');
       toggle.innerHTML = 'New to PCI? <a href="#" class="pci-auth-switch">Create an account</a>';
+      signupFields.hidden = true;
     } else {
       title.textContent = 'Create your PCI account';
       sub.textContent = 'Sign up to save carts and track orders across devices.';
       submit.textContent = 'Create account';
       passInput.setAttribute('autocomplete', 'new-password');
       toggle.innerHTML = 'Already have an account? <a href="#" class="pci-auth-switch">Sign in</a>';
+      signupFields.hidden = false;
     }
     wireSwitch();
     msg.hidden = true;
@@ -223,7 +291,22 @@ function buildModal() {
         if (error) show(error.message, false);
         else { show('Signed in.', true); setTimeout(close, 600); }
       } else {
-        const { data, error } = await supabase.auth.signUp({ email, password });
+        const name = form.querySelector('.pci-auth-name').value.trim();
+        const phone = form.querySelector('.pci-auth-phone').value.trim();
+        const addr1 = form.querySelector('.pci-auth-addr1').value.trim();
+        const city = form.querySelector('.pci-auth-city').value.trim();
+        const state = form.querySelector('.pci-auth-state').value.trim();
+        const zip = form.querySelector('.pci-auth-zip').value.trim();
+        if (!name || !phone || !addr1 || !city || !state || !zip) {
+          show('Please fill in your name, phone, and full address.', false);
+          submit.disabled = false;
+          submit.textContent = 'Create account';
+          return;
+        }
+        const { data, error } = await supabase.auth.signUp({
+          email, password,
+          options: { data: { name, phone, address: { line1: addr1, city, state, zip } } },
+        });
         if (error) show(error.message, false);
         else if (data.session) { show('Account created — you\'re in.', true); setTimeout(close, 700); }
         else show('Account created. Check your email to confirm, then sign in.', true);
@@ -259,6 +342,9 @@ function injectStyles() {
     .pci-auth-modal h3{font:700 22px/1.2 "Sora","Inter",sans-serif;color:#012b1a;margin:0 0 8px}
     .pci-auth-sub{font-size:13px;color:#475569;margin:0 0 20px}
     .pci-auth-form{display:flex;flex-direction:column;gap:10px}
+    .pci-auth-signup-fields{display:flex;flex-direction:column;gap:10px}
+    .pci-auth-row{display:flex;gap:8px}
+    .pci-auth-row .pci-auth-input{flex:1;min-width:0}
     .pci-auth-input{border:1px solid #cbd5e1;border-radius:12px;padding:12px 14px;font-size:14px;outline:none}
     .pci-auth-input:focus{border-color:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.15)}
     .pci-auth-submit{background:#012b1a;color:#fff;border:none;border-radius:12px;padding:12px;
@@ -295,6 +381,14 @@ function injectStyles() {
     .pci-toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);z-index:400;
       background:#012b1a;color:#fff;padding:12px 20px;border-radius:12px;font:500 13px "Inter",sans-serif;
       box-shadow:0 12px 32px rgba(1,43,26,.35);opacity:0;transition:opacity .24s,transform .24s;max-width:90vw}
-    .pci-toast.pci-toast-in{opacity:1;transform:translate(-50%,0)}`;
+    .pci-toast.pci-toast-in{opacity:1;transform:translate(-50%,0)}
+    .pci-verify-overlay .pci-verify-icon{width:56px;height:56px;border-radius:50%;
+      background:linear-gradient(135deg,#10b981,#012b1a);color:#fff;display:flex;
+      align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px}
+    .pci-verify-overlay .pci-auth-title,.pci-verify-overlay .pci-auth-sub{text-align:center}
+    .pci-verify-resend{margin-top:6px}
+    .pci-verify-check{width:100%;margin-top:8px;background:#fff;color:#012b1a;
+      border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:600 14px "Inter",sans-serif;cursor:pointer}
+    .pci-verify-check:hover{background:#f8fafc;border-color:#012b1a}`;
   document.head.appendChild(s);
 }
