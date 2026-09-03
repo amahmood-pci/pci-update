@@ -96,6 +96,13 @@ window.__pciPushCart = (cart) => {
   pushCart(cart).catch(() => {});
 };
 
+// Clear the cart everywhere (local + Supabase) — called after a successful checkout.
+window.pciClearCart = () => {
+  writeLocal([]);
+  pushCart([]).catch(() => {});
+  window.dispatchEvent(new CustomEvent('pci-cart-synced'));
+};
+
 // Run an initial sync on load, and again whenever auth state changes
 // (login / logout / token refresh).
 if (isSupabaseEnabled()) {

@@ -46,7 +46,7 @@ function renderHeader(user) {
   const name = user.user_metadata?.name || user.email.split('@')[0];
   document.getElementById('acct-greeting').textContent = `Hello, ${name.split(' ')[0]}`;
   document.getElementById('acct-email').textContent = user.email;
-  const verified = !!(user.email_confirmed_at || user.confirmed_at || user.app_metadata?.provider === 'google');
+  const verified = !!user.email_confirmed_at;
   const badge = document.getElementById('acct-verified-badge');
   if (verified) {
     badge.textContent = '✓ Verified';
@@ -100,7 +100,7 @@ function fillAddress(user) {
 }
 
 function fillSecurity(user) {
-  const verified = !!(user.email_confirmed_at || user.confirmed_at || user.app_metadata?.provider === 'google');
+  const verified = !!user.email_confirmed_at;
   if (!verified) document.getElementById('acct-verify-block').classList.remove('hidden');
 }
 
@@ -225,8 +225,8 @@ function orderCard(o) {
       <div class="px-5 py-4 space-y-2">
         ${items.map((i) => `
           <div class="flex items-center justify-between text-sm">
-            <div class="text-gray-800">${escapeHtml(i.name || i.code)} <span class="text-gray-400">× ${i.qty}</span></div>
-            <div class="text-gray-500 font-mono">${i.price != null ? '$' + Number(i.price * i.qty).toFixed(2) : ''}</div>
+            <div class="text-gray-800">${escapeHtml(i.name || i.code)} <span class="text-gray-400">× ${i.quantity}</span></div>
+            <div class="text-gray-500 font-mono">${i.price != null ? '$' + Number(i.price * i.quantity).toFixed(2) : ''}</div>
           </div>`).join('')}
       </div>
     </div>`;

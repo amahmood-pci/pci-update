@@ -1,6 +1,7 @@
 // Account login widget + cart sync. No-ops if Supabase keys unset.
 import './auth.js';
 import './cart-sync.js';
+import './checkout.js';
 import { SHOP_BASE, shopUrl } from './config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -131,14 +132,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const extLink = document.getElementById('spec-external-url');
   if (extLink) extLink.href = shopUrl(product);
 
-  // Primary purchase action → hand off to the Squarespace official store.
+  // Primary purchase action → verify user, log the order, open Helcim payment for this item.
   const buyBtn = document.getElementById('buy-official-btn');
-  if (buyBtn) buyBtn.href = shopUrl(product);
+  if (buyBtn) {
+    buyBtn.href = '#';
+    buyBtn.setAttribute('role', 'button');
+    buyBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (window.pciRequireVerifiedUser) {
+        const ok = await window.pciRequireVerifiedUser();
+        if (!ok) return;
+      }
+      const items = [{ code: product.code, name: product.name, price: product.price, quantity: 1 }];
+      const subtotal = product.price;
+      let orderId = null;
+      if (window.pciLogOrder) {
+        const row = await window.pciLogOrder({ items, subtotal }).catch(() => null);
+        orderId = row?.id || null;
+      }
+      if (window.pciStartCheckout) window.pciStartCheckout({ items, subtotal, orderId });
+    });
+  }
 
-  // Set real QR code via Google Charts / QR Server API pointing to their actual Squarespace page
+  // Product QR points to this product page on pcibio.com (not an external store).
   const qrImg = document.getElementById('product-qr-code');
   if (qrImg) {
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=022c22&data=${encodeURIComponent(shopUrl(product))}`;
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=022c22&data=${encodeURIComponent(window.location.href)}`;
   }
   const qrCap = document.getElementById('qr-caption-code');
   if (qrCap) qrCap.textContent = product.code;
@@ -442,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
   });
 
-  // 7. CHECKOUT ACTION → require signed-in + verified user, log order, then hand off to Squarespace.
+  // 7. CHECKOUT ACTION → require signed-in + verified user, log the order, then open Helcim payment.
   document.getElementById('cart-checkout-btn').addEventListener('click', async () => {
     const cart = getCart();
     if (cart.length === 0) return;
@@ -452,13 +471,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const all = window.pciProducts || [];
     const prodFor = (code) => all.find(x => x.code === code);
+    const enriched = cart.map(i => ({
+      code: i.code,
+      name: prodFor(i.code)?.name || i.code,
+      price: prodFor(i.code)?.price ?? i.price ?? 0,
+      quantity: i.quantity || 1,
+    }));
+    const subtotal = enriched.reduce((s, i) => s + (i.price || 0) * i.quantity, 0);
+    let orderId = null;
     if (window.pciLogOrder) {
-      const enriched = cart.map(i => ({ ...i, name: prodFor(i.code)?.name || i.code, price: prodFor(i.code)?.priceValue }));
-      const subtotal = enriched.reduce((s, i) => s + (i.price || 0) * i.qty, 0);
-      window.pciLogOrder({ items: enriched, subtotal }).catch(() => {});
+      const row = await window.pciLogOrder({ items: enriched, subtotal }).catch(() => null);
+      orderId = row?.id || null;
     }
-    const target = cart.length === 1 ? shopUrl(prodFor(cart[0].code)) : SHOP_BASE;
-    window.open(target, '_blank', 'noopener');
+    if (window.pciStartCheckout) {
+      window.pciStartCheckout({ items: enriched, subtotal, orderId });
+    }
   });
 
   // Close checkout modal

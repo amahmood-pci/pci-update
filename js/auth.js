@@ -40,6 +40,18 @@ function initAuthWidget() {
     return row;
   };
 
+  // Mark an order paid after a successful Helcim transaction.
+  window.pciMarkOrderPaid = async (orderId, reference) => {
+    if (!orderId) return;
+    const patch = { status: 'paid' };
+    if (reference) patch.reference = typeof reference === 'string' ? reference : JSON.stringify(reference);
+    const { error } = await supabase.from('orders').update(patch).eq('id', orderId);
+    if (error) console.warn('mark paid failed', error);
+  };
+
+  // Reusable toast for other modules (e.g. checkout.js).
+  window.pciToast = (message, kind) => toast(message, kind);
+
   // Gate checkout on signed-in + email verified. Returns a Promise<boolean>.
   window.pciRequireVerifiedUser = async () => {
     const { data } = await supabase.auth.getUser();
@@ -49,7 +61,7 @@ function initAuthWidget() {
       toast('Sign in to continue to checkout');
       return false;
     }
-    if (!user.email_confirmed_at && !user.confirmed_at) {
+    if (!user.email_confirmed_at) {
       openVerifyModal(user.email);
       return false;
     }
@@ -89,7 +101,7 @@ function openVerifyModal(email) {
   overlay.innerHTML = `
     <div class="pci-auth-modal" role="dialog" aria-modal="true" style="max-width:420px">
       <button class="pci-auth-close" aria-label="Close">&times;</button>
-      <div class="pci-verify-icon">✉</div>
+      <div class="pci-verify-icon"><svg viewBox="0 0 512 512" fill="currentColor" width="24" height="24"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg></div>
       <h3 class="pci-auth-title">Verify your email to check out</h3>
       <p class="pci-auth-sub">We sent a confirmation link to <b>${escapeHtml(email)}</b>. Open it, then come back here to complete your order.</p>
       <button type="button" class="pci-auth-submit pci-verify-resend">Resend verification email</button>
@@ -111,7 +123,7 @@ function openVerifyModal(email) {
   };
   overlay.querySelector('.pci-verify-check').onclick = async () => {
     const { data } = await supabase.auth.getUser();
-    if (data.user?.email_confirmed_at || data.user?.confirmed_at) {
+    if (data.user?.email_confirmed_at) {
       close();
       toast('Email verified — you can check out now');
     } else {
@@ -127,7 +139,7 @@ function openAccountPopover(anchor, user) {
   pop.className = 'pci-acct-pop';
   pop.style.top = (rect.bottom + 8) + 'px';
   pop.style.right = Math.max(16, window.innerWidth - rect.right) + 'px';
-  const verified = !!(user.email_confirmed_at || user.confirmed_at || user.app_metadata?.provider === 'google');
+  const verified = !!user.email_confirmed_at;
   pop.innerHTML = `
     <div class="pci-acct-hd">
       <div class="pci-acct-avatar">${(user.email || '?')[0].toUpperCase()}</div>
@@ -171,9 +183,9 @@ function openAccountPopover(anchor, user) {
   };
 }
 
-function toast(message) {
+function toast(message, kind) {
   const el = document.createElement('div');
-  el.className = 'pci-toast';
+  el.className = 'pci-toast' + (kind === 'error' ? ' pci-toast-error' : '');
   el.textContent = message;
   document.body.appendChild(el);
   requestAnimationFrame(() => el.classList.add('pci-toast-in'));
@@ -427,6 +439,7 @@ function injectStyles() {
       background:#012b1a;color:#fff;padding:12px 20px;border-radius:12px;font:500 13px "Inter",sans-serif;
       box-shadow:0 12px 32px rgba(1,43,26,.35);opacity:0;transition:opacity .24s,transform .24s;max-width:90vw}
     .pci-toast.pci-toast-in{opacity:1;transform:translate(-50%,0)}
+    .pci-toast.pci-toast-error{background:#b91c1c}
     .pci-verify-overlay .pci-verify-icon{width:56px;height:56px;border-radius:50%;
       background:linear-gradient(135deg,#10b981,#012b1a);color:#fff;display:flex;
       align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px}
