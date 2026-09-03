@@ -134,23 +134,23 @@ function openAccountPopover(anchor, user) {
       <div class="pci-acct-info">
         <div class="pci-acct-name">Hello, ${escapeHtml((user.user_metadata?.name || user.email.split('@')[0]).split(' ')[0])}</div>
         <div class="pci-acct-email">${escapeHtml(user.email)}</div>
-        <div class="pci-acct-status ${verified ? 'ok' : 'warn'}">${verified ? '✓ Verified account' : '⚠ Email not verified'}</div>
+        <div class="pci-acct-status ${verified ? 'ok' : 'warn'}">${verified ? 'Verified account' : 'Email not verified'}</div>
       </div>
     </div>
     <a class="pci-acct-item" href="account.html">
-      <span class="pci-acct-icon">👤</span>
+      <span class="pci-acct-icon"><svg viewBox="0 0 448 512" fill="currentColor"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg></span>
       <div><div class="pci-acct-label">Your Account</div><div class="pci-acct-desc">Profile and settings</div></div>
     </a>
     <a class="pci-acct-item" href="account.html#orders">
-      <span class="pci-acct-icon">📦</span>
+      <span class="pci-acct-icon"><svg viewBox="0 0 448 512" fill="currentColor"><path d="M50.7 58.5L0 160l208 0 0-128L93.7 32C75.5 32 58.9 42.3 50.7 58.5zM240 160l208 0L397.3 58.5C389.1 42.3 372.5 32 354.3 32L240 32l0 128zm208 32L0 192 0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-224z"/></svg></span>
       <div><div class="pci-acct-label">Your Orders</div><div class="pci-acct-desc">Track, return, or reorder</div></div>
     </a>
     <a class="pci-acct-item" href="account.html#address">
-      <span class="pci-acct-icon">📍</span>
+      <span class="pci-acct-icon"><svg viewBox="0 0 384 512" fill="currentColor"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg></span>
       <div><div class="pci-acct-label">Your Addresses</div><div class="pci-acct-desc">Shipping details</div></div>
     </a>
     <a class="pci-acct-item" href="account.html#security">
-      <span class="pci-acct-icon">🔒</span>
+      <span class="pci-acct-icon"><svg viewBox="0 0 448 512" fill="currentColor"><path d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z"/></svg></span>
       <div><div class="pci-acct-label">Security</div><div class="pci-acct-desc">Password and verification</div></div>
     </a>
     <div class="pci-acct-sep"></div>
@@ -413,8 +413,9 @@ function injectStyles() {
     .pci-acct-item{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:8px;
       color:#012b1a;text-decoration:none;transition:background .12s}
     .pci-acct-item:hover{background:#f0fdf4}
-    .pci-acct-icon{width:26px;height:26px;display:flex;align-items:center;justify-content:center;
-      background:#f1f5f9;border-radius:8px;font-size:14px;flex-shrink:0}
+    .pci-acct-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+      background:#f1f5f9;border-radius:8px;flex-shrink:0;color:#475569}
+    .pci-acct-icon svg{width:14px;height:14px}
     .pci-acct-item:hover .pci-acct-icon{background:#10b981;color:#fff}
     .pci-acct-label{font-size:13px;font-weight:600;color:#012b1a;line-height:1.2}
     .pci-acct-desc{font-size:11px;color:#64748b;line-height:1.3;margin-top:1px}

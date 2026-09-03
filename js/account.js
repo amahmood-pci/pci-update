@@ -55,6 +55,14 @@ function renderHeader(user) {
     badge.textContent = '⚠ Unverified';
     badge.classList.add('bg-amber-50', 'text-amber-700');
   }
+
+  // Snapshot cards
+  const statStatus = document.getElementById('stat-status');
+  const statSince = document.getElementById('stat-since');
+  if (statStatus) statStatus.textContent = verified ? 'Verified' : 'Needs verification';
+  if (statSince && user.created_at) {
+    statSince.textContent = new Date(user.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
 }
 
 function setupTabs() {
@@ -162,26 +170,41 @@ function wireResendVerify(user) {
 
 async function loadOrders(user) {
   const list = document.getElementById('acct-orders-list');
-  const { data, error } = await supabase
-    .from('orders')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(50);
-  if (error) {
-    list.innerHTML = `<div class="text-sm text-red-600 py-6 text-center">Couldn't load orders (${escapeHtml(error.message)}).</div>`;
-    return;
+  const statOrders = document.getElementById('stat-orders');
+  const emptyState = `
+    <div class="text-center py-10 border-2 border-dashed border-gray-200 rounded-xl">
+      <div class="w-12 h-12 mx-auto rounded-full bg-gray-100 text-gray-400 flex items-center justify-center mb-3">
+        <svg class="w-6 h-6" viewBox="0 0 448 512" fill="currentColor"><path d="M50.7 58.5L0 160l208 0 0-128L93.7 32C75.5 32 58.9 42.3 50.7 58.5zM240 160l208 0L397.3 58.5C389.1 42.3 372.5 32 354.3 32L240 32l0 128zm208 32L0 192 0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-224z"/></svg>
+      </div>
+      <p class="font-semibold text-gray-700 text-sm">No orders yet</p>
+      <p class="text-xs text-gray-400 mt-1">Orders appear here as soon as you check out.</p>
+      <a href="products.html" class="inline-block mt-4 bg-forest hover:bg-forest-light text-white text-xs font-semibold px-4 py-2 rounded-lg">Browse the catalog</a>
+    </div>`;
+  try {
+    const { data, error } = await supabase
+      .from('orders')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(50);
+    if (error) {
+      // Missing table / schema not yet applied → treat as empty, keep UI clean
+      console.warn('orders load:', error.message);
+      list.innerHTML = emptyState;
+      if (statOrders) statOrders.textContent = '0';
+      return;
+    }
+    if (!data || data.length === 0) {
+      list.innerHTML = emptyState;
+      if (statOrders) statOrders.textContent = '0';
+      return;
+    }
+    list.innerHTML = data.map((o) => orderCard(o)).join('');
+    if (statOrders) statOrders.textContent = String(data.length);
+  } catch (err) {
+    console.warn('orders load exception:', err);
+    list.innerHTML = emptyState;
+    if (statOrders) statOrders.textContent = '0';
   }
-  if (!data || data.length === 0) {
-    list.innerHTML = `
-      <div class="text-center py-10 border-2 border-dashed border-gray-200 rounded-xl">
-        <div class="text-4xl mb-3">📦</div>
-        <p class="font-semibold text-gray-700 text-sm">No orders yet</p>
-        <p class="text-xs text-gray-400 mt-1">Orders appear here as soon as you check out.</p>
-        <a href="products.html" class="inline-block mt-4 bg-forest hover:bg-forest-light text-white text-xs font-semibold px-4 py-2 rounded-lg">Browse the catalog</a>
-      </div>`;
-    return;
-  }
-  list.innerHTML = data.map((o) => orderCard(o)).join('');
 }
 
 function orderCard(o) {
