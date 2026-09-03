@@ -41,13 +41,63 @@ function initAuthWidget() {
 
   // Initial state + live updates.
   supabase.auth.getUser().then(({ data }) => render(data.user));
-  supabase.auth.onAuthStateChange((_e, session) => render(session?.user || null));
+  supabase.auth.onAuthStateChange((event, session) => {
+    render(session?.user || null);
+    if (event === 'SIGNED_IN' && session?.user) {
+      toast(`Signed in as ${session.user.email}`);
+    }
+  });
 
   function openMenu(user) {
-    if (confirm(`Signed in as ${user.email}\n\nSign out?`)) {
-      supabase.auth.signOut();
-    }
+    openAccountPopover(btn, user);
   }
+}
+
+function openAccountPopover(anchor, user) {
+  document.querySelectorAll('.pci-acct-pop').forEach((n) => n.remove());
+  const rect = anchor.getBoundingClientRect();
+  const pop = document.createElement('div');
+  pop.className = 'pci-acct-pop';
+  pop.style.top = (rect.bottom + 8) + 'px';
+  pop.style.right = Math.max(16, window.innerWidth - rect.right) + 'px';
+  pop.innerHTML = `
+    <div class="pci-acct-hd">
+      <div class="pci-acct-avatar">${(user.email || '?')[0].toUpperCase()}</div>
+      <div class="pci-acct-info">
+        <div class="pci-acct-name">${escapeHtml(user.user_metadata?.name || user.email.split('@')[0])}</div>
+        <div class="pci-acct-email">${escapeHtml(user.email)}</div>
+      </div>
+    </div>
+    <button type="button" class="pci-acct-signout">Sign out</button>`;
+  document.body.appendChild(pop);
+  const off = (e) => {
+    if (!pop.contains(e.target) && e.target !== anchor) {
+      pop.remove();
+      document.removeEventListener('mousedown', off);
+    }
+  };
+  setTimeout(() => document.addEventListener('mousedown', off), 0);
+  pop.querySelector('.pci-acct-signout').onclick = async () => {
+    pop.remove();
+    await supabase.auth.signOut();
+    toast('Signed out');
+  };
+}
+
+function toast(message) {
+  const el = document.createElement('div');
+  el.className = 'pci-toast';
+  el.textContent = message;
+  document.body.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('pci-toast-in'));
+  setTimeout(() => {
+    el.classList.remove('pci-toast-in');
+    setTimeout(() => el.remove(), 240);
+  }, 2600);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
 function accountLabel(email) {
@@ -228,6 +278,23 @@ function injectStyles() {
       color:#334155;cursor:pointer;transition:background .15s,border-color .15s}
     .pci-auth-google:hover{background:#f8fafc;border-color:#94a3b8}
     .pci-auth-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:#94a3b8;font-size:12px}
-    .pci-auth-divider::before,.pci-auth-divider::after{content:"";flex:1;height:1px;background:#e2e8f0}`;
+    .pci-auth-divider::before,.pci-auth-divider::after{content:"";flex:1;height:1px;background:#e2e8f0}
+    .pci-acct-pop{position:fixed;z-index:310;background:#fff;border:1px solid #e2e8f0;border-radius:14px;
+      box-shadow:0 12px 32px rgba(1,43,26,.18);min-width:240px;padding:12px;font-family:"Inter",sans-serif;
+      animation:pciPopIn .16s ease-out both}
+    @keyframes pciPopIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+    .pci-acct-hd{display:flex;align-items:center;gap:10px;padding:6px 6px 12px;border-bottom:1px solid #f1f5f9;margin-bottom:8px}
+    .pci-acct-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#10b981,#012b1a);
+      color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+    .pci-acct-info{min-width:0;flex:1}
+    .pci-acct-name{font-weight:600;font-size:13px;color:#012b1a;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .pci-acct-email{font-size:11px;color:#64748b;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
+    .pci-acct-signout{width:100%;background:#fff;color:#012b1a;border:1px solid #cbd5e1;border-radius:10px;
+      padding:9px;font:600 13px "Inter",sans-serif;cursor:pointer;transition:all .15s}
+    .pci-acct-signout:hover{background:#012b1a;color:#fff;border-color:#012b1a}
+    .pci-toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);z-index:400;
+      background:#012b1a;color:#fff;padding:12px 20px;border-radius:12px;font:500 13px "Inter",sans-serif;
+      box-shadow:0 12px 32px rgba(1,43,26,.35);opacity:0;transition:opacity .24s,transform .24s;max-width:90vw}
+    .pci-toast.pci-toast-in{opacity:1;transform:translate(-50%,0)}`;
   document.head.appendChild(s);
 }
