@@ -58,8 +58,9 @@ create policy "own orders - insert"
   on public.orders for insert
   with check (auth.uid() = user_id);
 
+-- NOTE: there is deliberately NO client UPDATE policy on orders. Customers may
+-- create ('submitted') and read their orders, but they must NOT be able to mark
+-- their own order 'paid' from the browser. The Helcim webhook updates the status
+-- using the service-role key, which bypasses RLS. This is what keeps "paid"
+-- honest — payment is confirmed server-side by Helcim, never claimed by the client.
 drop policy if exists "own orders - update" on public.orders;
-create policy "own orders - update"
-  on public.orders for update
-  using (auth.uid() = user_id)
-  with check (auth.uid() = user_id);

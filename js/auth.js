@@ -40,15 +40,6 @@ function initAuthWidget() {
     return row;
   };
 
-  // Mark an order paid after a successful Helcim transaction.
-  window.pciMarkOrderPaid = async (orderId, reference) => {
-    if (!orderId) return;
-    const patch = { status: 'paid' };
-    if (reference) patch.reference = typeof reference === 'string' ? reference : JSON.stringify(reference);
-    const { error } = await supabase.from('orders').update(patch).eq('id', orderId);
-    if (error) console.warn('mark paid failed', error);
-  };
-
   // Reusable toast for other modules (e.g. checkout.js).
   window.pciToast = (message, kind) => toast(message, kind);
 
@@ -250,7 +241,7 @@ function buildModal() {
           </div>
         </div>
         <input type="email" required placeholder="you@lab.org" class="pci-auth-input pci-auth-email" autocomplete="email" />
-        <input type="password" required placeholder="Password" class="pci-auth-input pci-auth-pass" autocomplete="current-password" minlength="6" />
+        <input type="password" required placeholder="Password" class="pci-auth-input pci-auth-pass" autocomplete="current-password" minlength="8" />
         <button type="submit" class="pci-auth-submit">Sign in</button>
       </form>
       <p class="pci-auth-msg" hidden></p>

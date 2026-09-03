@@ -147,7 +147,7 @@ function wirePassword() {
   f.addEventListener('submit', async (e) => {
     e.preventDefault();
     const password = f.password.value;
-    if (!password || password.length < 6) return;
+    if (!password || password.length < 8) { showMsg(f, "Password must be at least 8 characters.", false); return; }
     const { error } = await supabase.auth.updateUser({ password });
     if (error) showMsg(f, error.message, false);
     else { showMsg(f, 'Password updated', true); f.reset(); }

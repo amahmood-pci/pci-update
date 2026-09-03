@@ -37,9 +37,8 @@ function toast(msg, kind) {
 }
 
 async function startCheckout({ items, subtotal, orderId } = {}) {
-  const amount = Number(subtotal);
-  if (!amount || amount <= 0) {
-    toast('Your cart total is unavailable. Please refresh and try again.', 'error');
+  if (!Array.isArray(items) || items.length === 0) {
+    toast('Your cart is empty.', 'error');
     return;
   }
 
@@ -47,10 +46,14 @@ async function startCheckout({ items, subtotal, orderId } = {}) {
 
   let session;
   try {
+    // Send only codes + quantities; the SERVER computes the authoritative amount.
     const res = await fetch('/api/helcim-initialize', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ amount, currency: 'USD' }),
+      body: JSON.stringify({
+        items: items.map((i) => ({ code: i.code, quantity: i.quantity || 1 })),
+        orderId,
+      }),
     });
     session = await res.json();
     if (!res.ok || !session.checkoutToken) {
@@ -82,9 +85,8 @@ async function startCheckout({ items, subtotal, orderId } = {}) {
     if (event.data.eventStatus === 'SUCCESS') {
       window.removeEventListener('message', handler);
       if (window.removeHelcimPayIframe) window.removeHelcimPayIframe();
-      if (orderId && window.pciMarkOrderPaid) {
-        try { await window.pciMarkOrderPaid(orderId, event.data.eventMessage); } catch (_) {}
-      }
+      // Note: the order is marked "paid" server-side by the Helcim webhook, not
+      // here — the browser is never trusted to confirm payment.
       if (window.pciClearCart) window.pciClearCart();
       toast('Payment successful — thank you! A receipt is on its way.');
       window.dispatchEvent(new CustomEvent('pci-checkout-success', { detail: { orderId } }));
