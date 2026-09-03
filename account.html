@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Account · Precision Cellular Immunology</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-600 antialiased font-sans">
+
+  <!-- HEADER NAVIGATION -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-2 focus:outline-none select-none group" id="nav-logo">
+          <img src="logo.svg" alt="Precision Cellular Immunology Logo" class="h-11 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-105" />
+          <span aria-label="PCI" class="select-none font-bold leading-none text-[38px] md:text-[44px] tracking-tight text-white transition-all duration-300 group-hover:scale-105" style="font-family:'Zilla Slab',serif;">PCI</span>
+        </a>
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="index.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white">Home</a>
+          <a href="products.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white">Products</a>
+          <a href="controls.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white">IHC Controls</a>
+          <a href="ai.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white">AI &amp; Viewer</a>
+          <a href="education.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white">Education</a>
+          <a href="about.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white">About</a>
+          <a href="contact.html" class="nav-link text-white/85 text-sm font-medium transition-colors hover:text-white">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACCOUNT PAGE -->
+  <main class="pt-32 pb-24 bg-gray-50 min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Signed-out state -->
+      <div id="acct-signed-out" class="hidden max-w-md mx-auto text-center bg-white border border-gray-150 rounded-2xl p-10 shadow-sm">
+        <div class="w-16 h-16 mx-auto rounded-full bg-forest text-white flex items-center justify-center text-2xl mb-4">🔒</div>
+        <h1 class="font-heading font-bold text-2xl text-gray-900 mb-2">Sign in to view your account</h1>
+        <p class="text-sm text-gray-500 mb-6">Manage your orders, addresses, and profile in one place.</p>
+        <button id="acct-signin-btn" class="bg-forest hover:bg-forest-light text-white font-semibold px-6 py-3 rounded-lg transition-all">Sign in</button>
+      </div>
+
+      <!-- Signed-in state -->
+      <div id="acct-signed-in" class="hidden">
+        <div class="mb-8">
+          <div class="text-xs text-emerald-600 font-mono uppercase tracking-widest mb-2">Your Account</div>
+          <h1 class="font-heading font-bold text-3xl text-gray-900" id="acct-greeting">Hello,</h1>
+          <p class="text-sm text-gray-500 mt-1" id="acct-email"></p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <!-- Sidebar tabs -->
+          <aside class="lg:col-span-1">
+            <nav class="bg-white border border-gray-150 rounded-xl p-2 sticky top-24">
+              <a href="#profile" class="acct-tab flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50" data-tab="profile">
+                <span class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-lg">👤</span> Profile
+              </a>
+              <a href="#orders" class="acct-tab flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50" data-tab="orders">
+                <span class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-lg">📦</span> Orders
+              </a>
+              <a href="#address" class="acct-tab flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50" data-tab="address">
+                <span class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-lg">📍</span> Addresses
+              </a>
+              <a href="#security" class="acct-tab flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50" data-tab="security">
+                <span class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-lg">🔒</span> Security
+              </a>
+              <div class="border-t border-gray-100 my-2"></div>
+              <button id="acct-signout-btn" class="w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-red-600 hover:bg-red-50">
+                <span class="w-8 h-8 flex items-center justify-center bg-red-50 rounded-lg">↩</span> Sign out
+              </button>
+            </nav>
+          </aside>
+
+          <!-- Panels -->
+          <section class="lg:col-span-3 space-y-6">
+
+            <!-- PROFILE -->
+            <div class="acct-panel" data-panel="profile">
+              <div class="bg-white border border-gray-150 rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 class="font-heading font-bold text-xl text-gray-900">Profile</h2>
+                    <p class="text-xs text-gray-500 mt-1">Manage your personal information.</p>
+                  </div>
+                  <span id="acct-verified-badge" class="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded-full"></span>
+                </div>
+                <form id="acct-profile-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <label class="block">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Full name</span>
+                    <input type="text" name="name" class="acct-input mt-1" autocomplete="name" />
+                  </label>
+                  <label class="block">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Phone</span>
+                    <input type="tel" name="phone" class="acct-input mt-1" autocomplete="tel" />
+                  </label>
+                  <label class="block md:col-span-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Email</span>
+                    <input type="email" name="email" class="acct-input mt-1 bg-gray-50" readonly />
+                    <span class="text-[11px] text-gray-400 mt-1 block">Contact support to change your account email.</span>
+                  </label>
+                  <div class="md:col-span-2 flex items-center gap-3">
+                    <button type="submit" class="bg-forest hover:bg-forest-light text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-all">Save changes</button>
+                    <span class="acct-msg text-sm hidden"></span>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- ORDERS -->
+            <div class="acct-panel" data-panel="orders">
+              <div class="bg-white border border-gray-150 rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 class="font-heading font-bold text-xl text-gray-900">Your orders</h2>
+                    <p class="text-xs text-gray-500 mt-1">Every checkout you've submitted, most recent first.</p>
+                  </div>
+                </div>
+                <div id="acct-orders-list" class="space-y-3">
+                  <div class="text-sm text-gray-400 py-8 text-center">Loading orders…</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ADDRESS -->
+            <div class="acct-panel" data-panel="address">
+              <div class="bg-white border border-gray-150 rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 class="font-heading font-bold text-xl text-gray-900">Shipping address</h2>
+                    <p class="text-xs text-gray-500 mt-1">Used for order deliveries and invoices.</p>
+                  </div>
+                </div>
+                <form id="acct-address-form" class="grid grid-cols-1 md:grid-cols-6 gap-4">
+                  <label class="block md:col-span-6">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Street address</span>
+                    <input type="text" name="line1" class="acct-input mt-1" autocomplete="address-line1" />
+                  </label>
+                  <label class="block md:col-span-3">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">City</span>
+                    <input type="text" name="city" class="acct-input mt-1" autocomplete="address-level2" />
+                  </label>
+                  <label class="block md:col-span-1">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">State</span>
+                    <input type="text" name="state" class="acct-input mt-1" autocomplete="address-level1" />
+                  </label>
+                  <label class="block md:col-span-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">ZIP</span>
+                    <input type="text" name="zip" class="acct-input mt-1" autocomplete="postal-code" />
+                  </label>
+                  <div class="md:col-span-6 flex items-center gap-3">
+                    <button type="submit" class="bg-forest hover:bg-forest-light text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-all">Save address</button>
+                    <span class="acct-msg text-sm hidden"></span>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- SECURITY -->
+            <div class="acct-panel" data-panel="security">
+              <div class="bg-white border border-gray-150 rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 class="font-heading font-bold text-xl text-gray-900">Security</h2>
+                    <p class="text-xs text-gray-500 mt-1">Update your password and verification status.</p>
+                  </div>
+                </div>
+                <div id="acct-verify-block" class="hidden mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                  <div class="font-semibold text-sm text-amber-900">Email not verified</div>
+                  <p class="text-xs text-amber-800 mt-1">Verify your email to complete checkouts. We sent a link when you signed up.</p>
+                  <button id="acct-resend-verify" class="mt-3 bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Resend verification email</button>
+                </div>
+                <form id="acct-password-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <label class="block md:col-span-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">New password</span>
+                    <input type="password" name="password" class="acct-input mt-1" autocomplete="new-password" minlength="6" required />
+                  </label>
+                  <div class="md:col-span-2 flex items-center gap-3">
+                    <button type="submit" class="bg-forest hover:bg-forest-light text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-all">Update password</button>
+                    <span class="acct-msg text-sm hidden"></span>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </section>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <style>
+    .acct-input{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;font-size:14px;outline:none;background:#fff;color:#012b1a}
+    .acct-input:focus{border-color:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.15)}
+    .acct-tab.active{background:#f0fdf4;color:#012b1a}
+    .acct-tab.active > span:first-child{background:#10b981;color:#fff}
+    .acct-panel{display:none}
+    .acct-panel.active{display:block}
+    .bg-forest{background:#012b1a}
+    .bg-forest-light{background:#044e35}
+    .hover\:bg-forest-light:hover{background:#044e35}
+  </style>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/account.js"></script>
+</body>
+</html>

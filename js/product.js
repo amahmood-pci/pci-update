@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
   });
 
-  // 7. CHECKOUT ACTION → require signed-in + verified user, then hand off to Squarespace.
+  // 7. CHECKOUT ACTION → require signed-in + verified user, log order, then hand off to Squarespace.
   document.getElementById('cart-checkout-btn').addEventListener('click', async () => {
     const cart = getCart();
     if (cart.length === 0) return;
@@ -452,6 +452,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const all = window.pciProducts || [];
     const prodFor = (code) => all.find(x => x.code === code);
+    if (window.pciLogOrder) {
+      const enriched = cart.map(i => ({ ...i, name: prodFor(i.code)?.name || i.code, price: prodFor(i.code)?.priceValue }));
+      const subtotal = enriched.reduce((s, i) => s + (i.price || 0) * i.qty, 0);
+      window.pciLogOrder({ items: enriched, subtotal }).catch(() => {});
+    }
     const target = cart.length === 1 ? shopUrl(prodFor(cart[0].code)) : SHOP_BASE;
     window.open(target, '_blank', 'noopener');
   });

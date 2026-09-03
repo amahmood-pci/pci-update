@@ -28,6 +28,18 @@ function initAuthWidget() {
   // Let other pages (e.g. checkout) open the sign-in modal.
   window.pciOpenAuth = () => openModal(modal);
 
+  // Insert a submitted-order row for the signed-in user (surfaced on Your Orders).
+  window.pciLogOrder = async ({ items, subtotal, currency = 'USD', reference = null }) => {
+    const { data } = await supabase.auth.getUser();
+    if (!data.user) return null;
+    const { data: row, error } = await supabase
+      .from('orders')
+      .insert({ user_id: data.user.id, items, subtotal, currency, reference, status: 'submitted' })
+      .select().single();
+    if (error) console.warn('order log failed', error);
+    return row;
+  };
+
   // Gate checkout on signed-in + email verified. Returns a Promise<boolean>.
   window.pciRequireVerifiedUser = async () => {
     const { data } = await supabase.auth.getUser();
@@ -115,14 +127,33 @@ function openAccountPopover(anchor, user) {
   pop.className = 'pci-acct-pop';
   pop.style.top = (rect.bottom + 8) + 'px';
   pop.style.right = Math.max(16, window.innerWidth - rect.right) + 'px';
+  const verified = !!(user.email_confirmed_at || user.confirmed_at || user.app_metadata?.provider === 'google');
   pop.innerHTML = `
     <div class="pci-acct-hd">
       <div class="pci-acct-avatar">${(user.email || '?')[0].toUpperCase()}</div>
       <div class="pci-acct-info">
-        <div class="pci-acct-name">${escapeHtml(user.user_metadata?.name || user.email.split('@')[0])}</div>
+        <div class="pci-acct-name">Hello, ${escapeHtml((user.user_metadata?.name || user.email.split('@')[0]).split(' ')[0])}</div>
         <div class="pci-acct-email">${escapeHtml(user.email)}</div>
+        <div class="pci-acct-status ${verified ? 'ok' : 'warn'}">${verified ? '✓ Verified account' : '⚠ Email not verified'}</div>
       </div>
     </div>
+    <a class="pci-acct-item" href="account.html">
+      <span class="pci-acct-icon">👤</span>
+      <div><div class="pci-acct-label">Your Account</div><div class="pci-acct-desc">Profile and settings</div></div>
+    </a>
+    <a class="pci-acct-item" href="account.html#orders">
+      <span class="pci-acct-icon">📦</span>
+      <div><div class="pci-acct-label">Your Orders</div><div class="pci-acct-desc">Track, return, or reorder</div></div>
+    </a>
+    <a class="pci-acct-item" href="account.html#address">
+      <span class="pci-acct-icon">📍</span>
+      <div><div class="pci-acct-label">Your Addresses</div><div class="pci-acct-desc">Shipping details</div></div>
+    </a>
+    <a class="pci-acct-item" href="account.html#security">
+      <span class="pci-acct-icon">🔒</span>
+      <div><div class="pci-acct-label">Security</div><div class="pci-acct-desc">Password and verification</div></div>
+    </a>
+    <div class="pci-acct-sep"></div>
     <button type="button" class="pci-acct-signout">Sign out</button>`;
   document.body.appendChild(pop);
   const off = (e) => {
@@ -136,6 +167,7 @@ function openAccountPopover(anchor, user) {
     pop.remove();
     await supabase.auth.signOut();
     toast('Signed out');
+    if (window.location.pathname.includes('account.html')) window.location.href = 'index.html';
   };
 }
 
@@ -366,15 +398,27 @@ function injectStyles() {
     .pci-auth-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:#94a3b8;font-size:12px}
     .pci-auth-divider::before,.pci-auth-divider::after{content:"";flex:1;height:1px;background:#e2e8f0}
     .pci-acct-pop{position:fixed;z-index:310;background:#fff;border:1px solid #e2e8f0;border-radius:14px;
-      box-shadow:0 12px 32px rgba(1,43,26,.18);min-width:240px;padding:12px;font-family:"Inter",sans-serif;
+      box-shadow:0 20px 48px rgba(1,43,26,.20);min-width:280px;padding:10px;font-family:"Inter",sans-serif;
       animation:pciPopIn .16s ease-out both}
     @keyframes pciPopIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-    .pci-acct-hd{display:flex;align-items:center;gap:10px;padding:6px 6px 12px;border-bottom:1px solid #f1f5f9;margin-bottom:8px}
-    .pci-acct-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#10b981,#012b1a);
-      color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+    .pci-acct-hd{display:flex;align-items:center;gap:12px;padding:10px 10px 14px;border-bottom:1px solid #f1f5f9;margin-bottom:6px}
+    .pci-acct-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#10b981,#012b1a);
+      color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0}
     .pci-acct-info{min-width:0;flex:1}
-    .pci-acct-name{font-weight:600;font-size:13px;color:#012b1a;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .pci-acct-name{font-weight:700;font-size:14px;color:#012b1a;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .pci-acct-email{font-size:11px;color:#64748b;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
+    .pci-acct-status{font-size:10px;line-height:1.3;margin-top:3px;font-weight:600}
+    .pci-acct-status.ok{color:#059669}
+    .pci-acct-status.warn{color:#d97706}
+    .pci-acct-item{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:8px;
+      color:#012b1a;text-decoration:none;transition:background .12s}
+    .pci-acct-item:hover{background:#f0fdf4}
+    .pci-acct-icon{width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+      background:#f1f5f9;border-radius:8px;font-size:14px;flex-shrink:0}
+    .pci-acct-item:hover .pci-acct-icon{background:#10b981;color:#fff}
+    .pci-acct-label{font-size:13px;font-weight:600;color:#012b1a;line-height:1.2}
+    .pci-acct-desc{font-size:11px;color:#64748b;line-height:1.3;margin-top:1px}
+    .pci-acct-sep{height:1px;background:#f1f5f9;margin:6px 4px}
     .pci-acct-signout{width:100%;background:#fff;color:#012b1a;border:1px solid #cbd5e1;border-radius:10px;
       padding:9px;font:600 13px "Inter",sans-serif;cursor:pointer;transition:all .15s}
     .pci-acct-signout:hover{background:#012b1a;color:#fff;border-color:#012b1a}
