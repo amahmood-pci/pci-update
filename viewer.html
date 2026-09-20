@@ -71,7 +71,7 @@
   </section>
 
   <!-- FEATURES ROW (3 columns) -->
-  <section class="py-12 bg-gray-50 border-y border-gray-150" id="viewer-features">
+  <section class="py-12 bg-gray-50 border-y border-gray-200" id="viewer-features">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         <div class="space-y-2">
@@ -182,7 +182,7 @@
           </div>
 
           <!-- COMPASS HUD COORDINATES ON BACKGROUND -->
-          <div class="absolute top-4 left-4 bg-gray-950/85 backdrop-blur-md px-3.5 py-2.5 rounded-lg border border-white/10 text-[10px] font-mono text-gray-400 space-y-1 select-none z-45">
+          <div class="absolute top-4 left-4 bg-gray-950/85 backdrop-blur-md px-3.5 py-2.5 rounded-lg border border-white/10 text-[10px] font-mono text-gray-500 space-y-1 select-none z-45">
             <div class="text-pci-blue-light font-semibold uppercase">OpenSlide Live-Telemetry</div>
             <div>STATUS: <span class="text-emerald-400">SERVER ONLINE</span></div>
             <div>COORDINATES: X: [<span id="coord-x" class="text-white">52140</span>] | Y: [<span id="coord-y" class="text-white">28400</span>]</div>
@@ -215,7 +215,7 @@
             <div id="dropzone-area" class="flex-1 md:flex-none border border-dashed border-white/20 hover:border-pci-blue hover:bg-white/5 rounded-xl px-4 py-2 text-center cursor-pointer transition-all duration-150 flex items-center justify-center gap-2">
               <input type="file" id="slide-file-selector" class="hidden" accept=".svs,.ndpi,.mrxs,.scn,.tiff,.png,.jpg">
               <span id="uploader-status-text" class="text-xs text-gray-450 font-mono flex items-center gap-2">
-                <svg class="h-4.5 w-4.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                <svg class="h-4.5 w-4.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
                 Drop whole-slide file to simulate parsing
               </span>
             </div>
@@ -234,7 +234,7 @@
   </section>
 
   <!-- SECTION 4: HOW TO USE SECTION -->
-  <section class="py-24 bg-gray-50 border-y border-gray-150" id="viewer-execution-steps">
+  <section class="py-24 bg-gray-50 border-y border-gray-200" id="viewer-execution-steps">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16 reveal">
         <span class="badge-pci badge-blue mb-3">Operator Guide</span>
@@ -290,7 +290,7 @@
         </p>
       </div>
 
-      <div class="overflow-x-auto border border-gray-150 rounded-xl shadow-sm reveal">
+      <div class="overflow-x-auto border border-gray-200 rounded-xl shadow-sm reveal">
         <table class="w-full text-left border-collapse bg-white text-sm font-light text-gray-650">
           <thead>
             <tr class="bg-gray-50 border-b border-gray-100 font-mono text-[10px] text-gray-500 uppercase tracking-widest">
@@ -332,7 +332,7 @@
   </section>
 
   <!-- SECTION 6: FAQ ACCORDION -->
-  <section class="py-24 bg-gray-50 border-t border-gray-150" id="faq-accordions-catalog">
+  <section class="py-24 bg-gray-50 border-t border-gray-200" id="faq-accordions-catalog">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16 reveal">
         <span class="badge-pci badge-blue mb-3">FAQ</span>
@@ -351,7 +351,7 @@
         <div class="faq-item bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300">
           <button class="faq-header w-full px-6 py-5 text-left font-serif font-bold text-gray-900 flex justify-between items-center focus:outline-none select-none">
             <span class="font-heading text-sm sm:text-base font-semibold">What file sizes are supported?</span>
-            <svg class="faq-icon h-5 w-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            <svg class="faq-icon h-5 w-5 text-gray-500 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </button>
           <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
             <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed font-light">
@@ -364,7 +364,7 @@
         <div class="faq-item bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300">
           <button class="faq-header w-full px-6 py-5 text-left font-serif font-bold text-gray-900 flex justify-between items-center focus:outline-none select-none">
             <span class="font-heading text-sm sm:text-base font-semibold">Is my clinical patient data secure?</span>
-            <svg class="faq-icon h-5 w-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            <svg class="faq-icon h-5 w-5 text-gray-500 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </button>
           <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
             <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed font-light">
@@ -377,7 +377,7 @@
         <div class="faq-item bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300">
           <button class="faq-header w-full px-6 py-5 text-left font-serif font-bold text-gray-900 flex justify-between items-center focus:outline-none select-none">
             <span class="font-heading text-sm sm:text-base font-semibold">What browsers are compatible?</span>
-            <svg class="faq-icon h-5 w-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            <svg class="faq-icon h-5 w-5 text-gray-500 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </button>
           <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
             <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed font-light">
@@ -390,7 +390,7 @@
         <div class="faq-item bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300">
           <button class="faq-header w-full px-6 py-5 text-left font-serif font-bold text-gray-900 flex justify-between items-center focus:outline-none select-none">
             <span class="font-heading text-sm sm:text-base font-semibold">How does the AI scoring work?</span>
-            <svg class="faq-icon h-5 w-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            <svg class="faq-icon h-5 w-5 text-gray-500 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </button>
           <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
             <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed font-light">
@@ -404,7 +404,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-navy border-t border-white/5 text-gray-400 py-16 relative z-10" id="main-global-footer">
+  <footer class="bg-navy border-t border-white/5 text-gray-500 py-16 relative z-10" id="main-global-footer">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
         <!-- Col 1: Brand details -->
@@ -457,9 +457,9 @@
       <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
         <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
         <div class="flex gap-4 mt-4 sm:mt-0">
-          <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+          <a href="#" class="hover:text-gray-500">Privacy Policy</a>
           <span>|</span>
-          <a href="#" class="hover:text-gray-400">Terms of Use</a>
+          <a href="#" class="hover:text-gray-500">Terms of Use</a>
         </div>
       </div>
     </div>
