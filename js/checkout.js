@@ -1,5 +1,4 @@
-// Stripe Checkout — replaces the previous Helcim integration (which itself
-// replaced the old Squarespace hand-off).
+// Stripe Checkout — the only payment path on pcibio.com.
 //
 // Flow:
 //   1. POST the cart to /api/stripe-checkout (server holds the secret key and
