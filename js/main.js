@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Update button
+      // Update button — Slide Viewer stays the primary emerald CTA in both states.
       if (launchBtn) {
-        launchBtn.className = "bg-pci-blue hover:bg-pci-blue-light text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition-all duration-150 flex items-center gap-1.5";
+        launchBtn.className = "bg-emerald-500 hover:bg-emerald-400 text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition-all duration-150 flex items-center gap-1.5";
       }
 
       // Update hamburger button
@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Update button
+      // Update button — Slide Viewer stays the primary emerald CTA in both states.
       if (launchBtn) {
-        launchBtn.className = "bg-transparent hover:bg-white hover:text-black text-white text-xs font-semibold px-4 py-2 rounded-lg border border-white/40 transition-all duration-150 flex items-center gap-1.5";
+        launchBtn.className = "bg-emerald-500 hover:bg-emerald-400 text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition-all duration-150 flex items-center gap-1.5";
       }
 
       // Update hamburger button

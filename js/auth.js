@@ -366,10 +366,18 @@ function injectStyles() {
   const s = document.createElement('style');
   s.id = 'pci-auth-styles';
   s.textContent = `
-    .pci-account-btn{font:600 13px/1 "Inter",sans-serif;color:#012b1a;background:rgba(255,255,255,.9);
-      border:1px solid #10b981;border-radius:9999px;padding:8px 16px;cursor:pointer;
-      box-shadow:0 2px 8px rgba(1,43,26,.12);transition:all .15s}
-    .pci-account-btn:hover{background:#10b981;color:#fff}
+    /* Sign-in is a secondary CTA — a ghost text link, not a filled pill.
+       Slide Viewer (emerald) is the primary. Colour keys off the sticky
+       header's background class so it stays readable in both nav states. */
+    .pci-account-btn{font:600 13px/1 "Inter",sans-serif;background:transparent;
+      border:none;padding:8px 4px;cursor:pointer;color:rgba(255,255,255,.9);
+      transition:color .15s ease,text-decoration-color .15s ease;
+      text-decoration:underline transparent 2px;text-underline-offset:6px}
+    .pci-account-btn:hover{text-decoration-color:currentColor}
+    /* When the nav flips to its scrolled/white state, use a dark ink colour so
+       the link stays legible on white. */
+    #main-navbar[class*="bg-white"] .pci-account-btn{color:#0f172a}
+    #main-navbar[class*="bg-white"] .pci-account-btn:hover{color:#059669}
     .pci-auth-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(1,43,26,.45);
       backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:16px}
     .pci-auth-modal{position:relative;background:#fff;border-radius:24px;max-width:400px;width:100%;
