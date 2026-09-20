@@ -47,6 +47,8 @@ const mergeCarts = (a, b) => {
 };
 
 // Push the current cart to Supabase for the logged-in user. Fire-and-forget.
+// An empty cart deletes the row instead of storing '[]' — keeps the table clean.
+// `updated_at` is set server-side by the carts_touch_updated_at trigger.
 async function pushCart(cart) {
   if (!isSupabaseEnabled()) return;
   const {
@@ -54,10 +56,15 @@ async function pushCart(cart) {
   } = await supabase.auth.getUser();
   if (!user) return; // anonymous → localStorage only, nothing to push
 
+  if (!Array.isArray(cart) || cart.length === 0) {
+    await supabase.from('carts').delete().eq('user_id', user.id);
+    return;
+  }
+
   await supabase
     .from('carts')
     .upsert(
-      { user_id: user.id, items: cart, updated_at: new Date().toISOString() },
+      { user_id: user.id, items: cart },
       { onConflict: 'user_id' }
     );
 }
