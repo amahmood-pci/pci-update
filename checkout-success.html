@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment received · Precision Cellular Immunology</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="robots" content="noindex">
+</head>
+<body class="bg-white text-gray-700 antialiased font-sans">
+  <main class="min-h-screen flex items-center justify-center px-4 py-16">
+    <div class="w-full max-w-lg bg-white border border-slate-200 rounded-3xl shadow-sm p-10 text-center">
+      <div class="mx-auto mb-6 w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <h1 class="text-2xl font-bold text-slate-900 mb-2">Payment received</h1>
+      <p class="text-slate-600 leading-relaxed mb-2">Thank you. Your order has been recorded and a receipt is on its way.</p>
+      <p class="text-xs text-slate-500 mb-8">You can safely close this tab. Order status will update in your account once the payment is confirmed.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/products.html" class="inline-flex items-center justify-center bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-semibold py-3 px-6 rounded-xl transition-colors">Continue shopping</a>
+        <a href="/account.html" class="inline-flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-semibold py-3 px-6 rounded-xl transition-colors">View my orders</a>
+      </div>
+      <p id="session-line" class="mt-6 text-[11px] font-mono text-slate-400"></p>
+    </div>
+  </main>
+  <script>
+    // Clear the local cart. The order was already marked paid server-side by
+    // the Stripe webhook — the browser is never trusted to confirm payment.
+    try {
+      if (window.pciClearCart) window.pciClearCart();
+      localStorage.removeItem('pci_cart');
+      window.dispatchEvent(new CustomEvent('pci-checkout-success'));
+    } catch (_) {}
+
+    // Surface the session id for support/audit (Stripe's official reference).
+    try {
+      const url = new URL(window.location.href);
+      const sid = url.searchParams.get('session_id');
+      if (sid) document.getElementById('session-line').textContent = 'Reference: ' + sid;
+    } catch (_) {}
+  </script>
+</body>
+</html>
