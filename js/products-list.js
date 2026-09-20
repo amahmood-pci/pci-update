@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
           <!-- Image Box -->
           <a href="product.html?code=${item.code}" class="block aspect-[4/3] w-full rounded-2xl border border-slate-200 bg-slate-100 mb-4 group overflow-hidden">
-            <img src="${thumbSrc}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerPolicy="no-referrer">
+            <img src="${thumbSrc}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerPolicy="no-referrer" loading="lazy" decoding="async">
           </a>
 
           <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight hover:text-emerald-700 transition-colors">
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const buyHref = window.pciShopUrl ? window.pciShopUrl(prod) : (prod && prod.url) || '#';
 
       itemEl.innerHTML = `
-        <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer">
+        <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer" loading="lazy" decoding="async">
         <div class="flex-1 space-y-1">
           <h4 class="text-xs font-bold text-slate-800 leading-tight pr-6">${item.name}</h4>
           <p class="text-[10px] font-mono text-slate-400 uppercase">${item.code}</p>

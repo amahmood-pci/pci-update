@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
   galleryImages.forEach((imgUrl, idx) => {
     const btn = document.createElement('div');
     btn.className = `thumb-item w-14 h-14 md:w-full aspect-square bg-white rounded-xl border p-1 cursor-pointer transition-all shrink-0 flex items-center justify-center ${idx === 0 ? 'border-2 border-emerald-600' : 'border-slate-200 hover:border-slate-400'}`;
-    btn.innerHTML = `<img src="${imgUrl}" alt="Gallery Thumbnail ${idx+1}" class="max-w-full max-h-full object-contain rounded-lg" referrerPolicy="no-referrer">`;
+    btn.innerHTML = `<img src="${imgUrl}" alt="Gallery Thumbnail ${idx+1}" class="max-w-full max-h-full object-contain rounded-lg" referrerPolicy="no-referrer" loading="lazy" decoding="async">`;
     btn.addEventListener('click', () => updateMainImage(idx));
     thumbContainer.appendChild(btn);
   });
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const buyHref = window.pciShopUrl ? window.pciShopUrl(prod) : (prod && prod.url) || '#';
 
       itemEl.innerHTML = `
-        <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer">
+        <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer" loading="lazy" decoding="async">
         <div class="flex-1 space-y-1">
           <h4 class="text-xs font-bold text-slate-800 leading-tight pr-6">${item.name}</h4>
           <p class="text-[10px] font-mono text-slate-400 uppercase">${item.code}</p>
@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="badge-pci bg-slate-50 text-slate-600 font-mono text-[9px] uppercase">${item.media}</span>
           </div>
           <div class="aspect-[4/3] w-full rounded-2xl border border-slate-200 bg-slate-100 mb-4 overflow-hidden group">
-            <img src="${thumbSrc}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerPolicy="no-referrer">
+            <img src="${thumbSrc}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerPolicy="no-referrer" loading="lazy" decoding="async">
           </div>
           <h3 class="text-sm font-bold text-gray-900 mb-1 leading-snug">${item.name}</h3>
           <p class="text-[10px] text-gray-400 mb-2 font-mono">${item.code}</p>
