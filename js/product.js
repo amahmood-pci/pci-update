@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer" loading="lazy" decoding="async">
         <div class="flex-1 space-y-1">
           <h4 class="text-xs font-bold text-slate-800 leading-tight pr-6">${item.name}</h4>
-          <p class="text-[10px] font-mono text-slate-400 uppercase">${item.code}</p>
+          <p class="text-[11px] font-mono text-slate-500 uppercase">${item.code}</p>
           <div class="flex items-center justify-between pt-2">
             <!-- Mini Selector -->
             <div class="flex items-center gap-2.5 border border-slate-200 bg-white rounded-lg px-2 py-1 text-xs font-bold">
@@ -500,12 +500,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="${thumbSrc}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerPolicy="no-referrer" loading="lazy" decoding="async">
           </div>
           <h3 class="text-sm font-bold text-gray-900 mb-1 leading-snug">${item.name}</h3>
-          <p class="text-[10px] text-gray-400 mb-2 font-mono">${item.code}</p>
+          <p class="text-[11px] text-gray-500 mb-2 font-mono">${item.code}</p>
           <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-4">${item.shortDesc}</p>
         </div>
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
           <span class="text-sm font-bold text-gray-900 font-mono">$${item.price.toLocaleString('en-US')}</span>
-          <a href="product.html?code=${item.code}" class="bg-emerald-700 hover:bg-emerald-600 text-white text-[10px] font-bold px-3.5 py-1.5 rounded-lg transition-colors">Details →</a>
+          <a href="product.html?code=${item.code}" class="bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] font-bold px-3.5 py-1.5 rounded-lg transition-colors">Details →</a>
         </div>
       `;
 

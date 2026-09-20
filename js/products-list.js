@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight hover:text-emerald-700 transition-colors">
             <a href="product.html?code=${item.code}">${item.name}</a>
           </h3>
-          <p class="text-[10px] text-gray-400 mb-3 font-mono">${item.code}</p>
+          <p class="text-[11px] text-gray-500 mb-3 font-mono">${item.code}</p>
           <p class="text-xs text-gray-500 leading-relaxed mb-6 line-clamp-2">${item.shortDesc}</p>
         </div>
         
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </a>
           <div class="pt-5 border-t border-slate-100 flex items-center justify-between">
             <span class="text-base font-bold text-slate-900 font-mono">$${item.price.toLocaleString('en-US')}</span>
-            <button class="add-to-cart-quick-btn bg-slate-800 hover:bg-slate-950 text-white text-[10px] font-bold px-4 py-2 rounded-lg transition-all active:scale-[0.97]" data-code="${item.code}">Add to Cart</button>
+            <button class="add-to-cart-quick-btn bg-slate-800 hover:bg-slate-950 text-white text-[11px] font-bold px-4 py-2 rounded-lg transition-all active:scale-[0.97]" data-code="${item.code}">Add to Cart</button>
           </div>
         </div>
       `;
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="${thumbSrc}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-white border p-1" referrerPolicy="no-referrer" loading="lazy" decoding="async">
         <div class="flex-1 space-y-1">
           <h4 class="text-xs font-bold text-slate-800 leading-tight pr-6">${item.name}</h4>
-          <p class="text-[10px] font-mono text-slate-400 uppercase">${item.code}</p>
+          <p class="text-[11px] font-mono text-slate-500 uppercase">${item.code}</p>
           <div class="flex items-center justify-between pt-2">
             <!-- Mini Selector -->
             <div class="flex items-center gap-2.5 border border-slate-200 bg-white rounded-lg px-2 py-1 text-xs font-bold">
