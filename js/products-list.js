@@ -100,20 +100,23 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const slideImgUrl = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><rect width='600' height='600' rx='24' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='4'/><rect x='80' y='180' width='440' height='180' rx='10' fill='%23ffffff' stroke='%2394a3b8' stroke-width='4'/><rect x='80' y='180' width='120' height='180' rx='6' fill='%23e2e8f0'/><rect x='100' y='220' width='80' height='10' fill='%2394a3b8' rx='2'/><rect x='100' y='245' width='80' height='10' fill='%2394a3b8' rx='2'/><rect x='100' y='270' width='60' height='10' fill='%2394a3b8' rx='2'/><circle cx='260' cy='270' r='22' fill='%2310b981' fill-opacity='0.15' stroke='%23059669' stroke-width='2'/><circle cx='340' cy='270' r='22' fill='%2310b981' fill-opacity='0.5' stroke='%23059669' stroke-width='2'/><circle cx='420' cy='270' r='22' fill='%2310b981' fill-opacity='0.85' stroke='%23059669' stroke-width='2'/><text x='300' y='470' font-family='sans-serif' font-size='20' font-weight='bold' fill='%231e293b' text-anchor='middle'>PCI IHC CONTROL SLIDE</text><text x='300' y='505' font-family='monospace' font-size='14' fill='%2364748b' text-anchor='middle'>LINEAR REPLICATED CELL PLUGS</text></svg>";
 
-  const renderProducts = (filter = 'all') => {
+  // Filter state — two independent groups, multi-select within each.
+  const activeMedia = new Set();
+  const activeType  = new Set();
+
+  const matchMedia = (p, key) => p.media.toLowerCase().includes(key);
+  const matchType  = (p, key) => p.type.toLowerCase().includes(key);
+
+  const filterProducts = () => products.filter(p => {
+    const okMedia = activeMedia.size === 0 || [...activeMedia].some(k => matchMedia(p, k));
+    const okType  = activeType.size  === 0 || [...activeType].some(k => matchType(p, k));
+    return okMedia && okType;
+  });
+
+  const renderProducts = () => {
     if (!grid) return;
     grid.innerHTML = '';
-
-    const filtered = products.filter(p => {
-      if (filter === 'all') return true;
-      if (filter === 'block') return p.media.toLowerCase().includes('block');
-      if (filter === 'slide') return p.media.toLowerCase().includes('slide');
-      if (filter === 'single') return p.type.toLowerCase().includes('single');
-      if (filter === 'dual') return p.type.toLowerCase().includes('dual');
-      if (filter === 'tri') return p.type.toLowerCase().includes('tri');
-      if (filter === 'quad') return p.type.toLowerCase().includes('quad');
-      return true;
-    });
+    const filtered = filterProducts();
 
     filtered.forEach(item => {
       const card = document.createElement('div');
@@ -175,23 +178,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // 3. FILTER BUTTONS HANDLING
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active', 'bg-emerald-600', 'text-white'));
-      filterBtns.forEach(b => b.classList.add('bg-white', 'text-gray-600'));
-      
-      btn.classList.add('active', 'bg-emerald-600', 'text-white');
-      btn.classList.remove('bg-white', 'text-gray-600');
+  // 3. FILTER CHIPS — multi-select across two groups (Media + Type)
+  const chips        = document.querySelectorAll('.pci-filter-chip');
+  const clearBtn     = document.getElementById('pci-filter-clear');
+  const countLabel   = document.getElementById('pci-filter-count');
 
-      const filter = btn.getAttribute('data-filter');
-      renderProducts(filter);
+  // One-time count per chip based on the FULL catalog.
+  chips.forEach(chip => {
+    const group = chip.dataset.group;
+    const value = chip.dataset.value;
+    const n = products.filter(p => group === 'media' ? matchMedia(p, value) : matchType(p, value)).length;
+    const badge = chip.querySelector('.chip-count');
+    if (badge) badge.textContent = `(${n})`;
+  });
+
+  const syncChipStyles = () => {
+    chips.forEach(chip => {
+      const set = chip.dataset.group === 'media' ? activeMedia : activeType;
+      chip.classList.toggle('is-active', set.has(chip.dataset.value));
+    });
+  };
+
+  const syncCounter = () => {
+    const shown = filterProducts().length;
+    const total = products.length;
+    if (countLabel) {
+      countLabel.textContent = shown === total
+        ? `${total} shown`
+        : `${shown} of ${total} shown`;
+    }
+    if (clearBtn) {
+      clearBtn.classList.toggle('hidden', activeMedia.size === 0 && activeType.size === 0);
+    }
+  };
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const set = chip.dataset.group === 'media' ? activeMedia : activeType;
+      const value = chip.dataset.value;
+      if (set.has(value)) set.delete(value); else set.add(value);
+      syncChipStyles();
+      renderProducts();
+      syncCounter();
     });
   });
 
-  // Render initial products list
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      activeMedia.clear();
+      activeType.clear();
+      syncChipStyles();
+      renderProducts();
+      syncCounter();
+    });
+  }
+
+  // Render initial products list + populate counter.
   renderProducts();
+  syncCounter();
 
   // 4. SHOPPING CART ENGINE
   const getCart = () => {
