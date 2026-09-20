@@ -178,7 +178,7 @@ async function loadOrders(user) {
       </div>
       <p class="font-semibold text-gray-700 text-sm">No orders yet</p>
       <p class="text-xs text-gray-400 mt-1">Orders appear here as soon as you check out.</p>
-      <a href="products.html" class="inline-block mt-4 bg-forest hover:bg-forest-light text-white text-xs font-semibold px-4 py-2 rounded-lg">Browse the catalog</a>
+      <a href="products.html" class="inline-block mt-4 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2 rounded-lg">Browse the catalog</a>
     </div>`;
   try {
     const { data, error } = await supabase
