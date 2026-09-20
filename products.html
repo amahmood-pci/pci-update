@@ -37,7 +37,7 @@
             <span id="cart-badge" class="hidden absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full min-w-[16px] text-center border border-emerald-600 shadow-sm animate-pulse">0</span>
           </button>
 
-          <a href="viewer.html" class="bg-emerald-500 hover:bg-emerald-400 text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition-all duration-150 flex items-center gap-1.5" id="btn-viewer-launch">
+          <a href="viewer.html" class="bg-transparent hover:bg-white hover:text-black text-white text-xs font-semibold px-4 py-2 rounded-lg border border-white/40 transition-all duration-150 flex items-center gap-1.5" id="btn-viewer-launch">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
             Slide Viewer
           </a>
@@ -91,19 +91,49 @@
   <section class="py-16 bg-white/40 backdrop-blur-sm relative z-10" id="product-listing">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Filter Bar -->
-      <div class="sticky top-20 z-20 bg-white/90 backdrop-blur-md border-b border-gray-200/60 pt-4 pb-8 mb-12 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-        <p class="text-xs text-slate-500 font-mono uppercase tracking-wider mb-3 block text-center md:text-left">Filter by specification:</p>
-        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
-          <button class="filter-btn active bg-emerald-600 text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-sm hover:scale-[1.02] transition-all duration-150 focus:outline-none" data-filter="all">All</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2.5 rounded-full text-xs font-semibold border border-gray-200/80 shadow-sm hover:bg-slate-50 transition-all duration-150 focus:outline-none" data-filter="block">FFPE Block</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2.5 rounded-full text-xs font-semibold border border-gray-200/80 shadow-sm hover:bg-slate-50 transition-all duration-150 focus:outline-none" data-filter="slide">Slide</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2.5 rounded-full text-xs font-semibold border border-gray-200/80 shadow-sm hover:bg-slate-50 transition-all duration-150 focus:outline-none" data-filter="single">Single</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2.5 rounded-full text-xs font-semibold border border-gray-200/80 shadow-sm hover:bg-slate-50 transition-all duration-150 focus:outline-none" data-filter="dual">Dual</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2.5 rounded-full text-xs font-semibold border border-gray-200/80 shadow-sm hover:bg-slate-50 transition-all duration-150 focus:outline-none" data-filter="tri">Tri</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2.5 rounded-full text-xs font-semibold border border-gray-200/80 shadow-sm hover:bg-slate-50 transition-all duration-150 focus:outline-none" data-filter="quad">Quad</button>
+      <!-- Filter Bar — two independent chip groups (Media + Type), multi-select
+           within each. Counts populated by js/products-list.js on load. -->
+      <div class="sticky top-20 z-20 bg-white/90 backdrop-blur-md border-b border-gray-200/60 pt-4 pb-5 mb-12 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-[11px] font-mono uppercase tracking-widest text-slate-600 mr-1">Media</span>
+            <button class="pci-filter-chip" data-group="media" data-value="block">FFPE Block <span class="chip-count"></span></button>
+            <button class="pci-filter-chip" data-group="media" data-value="slide">Slide <span class="chip-count"></span></button>
+          </div>
+          <div class="hidden sm:block w-px h-6 bg-slate-200"></div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-[11px] font-mono uppercase tracking-widest text-slate-600 mr-1">Type</span>
+            <button class="pci-filter-chip" data-group="type" data-value="single">Single <span class="chip-count"></span></button>
+            <button class="pci-filter-chip" data-group="type" data-value="dual">Dual <span class="chip-count"></span></button>
+            <button class="pci-filter-chip" data-group="type" data-value="tri">Tri <span class="chip-count"></span></button>
+            <button class="pci-filter-chip" data-group="type" data-value="quad">Quad <span class="chip-count"></span></button>
+          </div>
+          <div class="flex items-center gap-3 ml-auto">
+            <span id="pci-filter-count" class="text-xs text-slate-600 font-mono"></span>
+            <button id="pci-filter-clear" class="hidden text-xs font-semibold text-emerald-700 hover:text-emerald-800 underline underline-offset-2">Clear filters</button>
+          </div>
         </div>
       </div>
+
+      <style>
+        .pci-filter-chip {
+          display: inline-flex; align-items: baseline; gap: 6px;
+          padding: 8px 14px; border-radius: 9999px;
+          font: 600 12px/1 "Inter", "Segoe UI", Arial, sans-serif;
+          background: #fff; color: #374151;
+          border: 1px solid rgba(148, 163, 184, .5);
+          cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+        }
+        .pci-filter-chip:hover { background: #f8fafc; border-color: #64748b; }
+        .pci-filter-chip.is-active {
+          background: #10b981; color: #fff; border-color: #059669;
+        }
+        .pci-filter-chip .chip-count {
+          font-family: "JetBrains Mono", ui-monospace, monospace;
+          font-size: 10px; opacity: .7;
+        }
+        .pci-filter-chip.is-active .chip-count { opacity: .9; }
+      </style>
 
       <!-- Catalog Layout Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="products-catalog-grid">
@@ -137,7 +167,7 @@
         <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
         Your Laboratory Order Cart
       </h3>
-      <button id="cart-close-btn" class="text-slate-500 hover:text-slate-800 p-2 rounded-lg hover:bg-slate-50 transition-all focus:outline-none">
+      <button id="cart-close-btn" class="text-slate-400 hover:text-slate-800 p-2 rounded-lg hover:bg-slate-50 transition-all focus:outline-none">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
     </div>
@@ -149,7 +179,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
         <p class="text-sm font-semibold text-slate-700">Your cart is currently empty</p>
-        <p class="text-xs text-slate-500 max-w-xs mx-auto">Select histological controls and slides from our catalog to build your laboratory validation kit.</p>
+        <p class="text-xs text-slate-400 max-w-xs mx-auto">Select histological controls and slides from our catalog to build your laboratory validation kit.</p>
         <div class="pt-4">
           <button id="btn-cart-continue" class="bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-colors">Browse Catalog</button>
         </div>
@@ -162,13 +192,13 @@
         <span class="font-semibold text-slate-500">Subtotal</span>
         <span id="cart-subtotal" class="font-mono font-bold text-slate-800 text-lg">$0.00</span>
       </div>
-      <p class="text-[10px] text-slate-500 leading-relaxed">Tax and institutional clinical shipping are calculated at secure checkout.</p>
+      <p class="text-[10px] text-slate-400 leading-relaxed">Tax and institutional clinical shipping are calculated at secure checkout.</p>
 
       <button id="cart-checkout-btn" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
         Checkout on Secure Store
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
       </button>
-      <p class="text-[10px] text-slate-500 text-center flex items-center justify-center gap-1">
+      <p class="text-[10px] text-slate-400 text-center flex items-center justify-center gap-1">
         <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
         Secure SSL checkout, powered by Stripe
       </p>
@@ -183,7 +213,7 @@
       </div>
       <div class="space-y-2">
         <h3 class="text-xl font-heading font-bold text-slate-900">Laboratory Order Proposed</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Your cart is ready. Continue to secure checkout to pay by card and place your order — controls ship from our Houston lab.</p>
+        <p class="text-sm text-slate-500 leading-relaxed">Your order proposal has been compiled. Our clinical coordination team in Houston, Texas will contact you shortly at your institutional address to resolve purchasing terms.</p>
       </div>
       <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl text-left text-xs font-mono text-slate-600 space-y-1">
         <div>📍 CUBiO Innovation Hub, Houston, TX</div>
@@ -194,7 +224,7 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="bg-navy border-t border-white/5 text-gray-500 py-16 relative z-10" id="main-global-footer">
+  <footer class="bg-navy border-t border-white/5 text-gray-400 py-16 relative z-10" id="main-global-footer">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
         
@@ -248,9 +278,9 @@
       <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
         <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
         <div class="flex gap-4 mt-4 sm:mt-0">
-          <a href="#" class="hover:text-gray-500">Privacy Policy</a>
+          <a href="#" class="hover:text-gray-400">Privacy Policy</a>
           <span>|</span>
-          <a href="#" class="hover:text-gray-500">Terms of Use</a>
+          <a href="#" class="hover:text-gray-400">Terms of Use</a>
         </div>
       </div>
     </div>
