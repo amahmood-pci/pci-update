@@ -530,54 +530,6 @@
 }
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Grandview';
-  src: url('../Grandview.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Grandview';
-  src: url('../GrandviewBold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Grandview';
-  src: url('../GrandviewItalic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Grandview';
-  src: url('../GrandviewBoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Grandview';
-  src: url('../GrandviewLight.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Grandview';
-  src: url('../GrandviewLightItalic.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
 @theme {
   --color-navy: #012b1a; /* Lush deep forest/emerald green */
   --color-navy-light: #044e35; /* Rich forest green */
@@ -588,7 +540,6 @@
   --font-heading: "Sora", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  --font-grandview: "Grandview", "Sora", "Inter", sans-serif;
   
   --animate-fade-in: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
