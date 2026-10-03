@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Precision Cellular Immunology</title>
+  <title>Contact · Precision Cellular Immunology</title>
+  <meta name="description" content="Contact Precision Cellular Immunology about IHC control products, AI image analysis, or partnerships.">
+  <link rel="canonical" href="https://pcibio.com/contact.html">
+  <meta name="theme-color" content="#012b1a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Precision Cellular Immunology">
+  <meta property="og:title" content="Contact · Precision Cellular Immunology">
+  <meta property="og:description" content="Contact Precision Cellular Immunology about IHC control products, AI image analysis, or partnerships.">
+  <meta property="og:url" content="https://pcibio.com/contact.html">
+  <meta property="og:image" content="https://pcibio.com/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-white text-gray-600 antialiased font-sans">
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- HEADER NAVIGATION -->
   <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
@@ -36,7 +47,7 @@
 
         <!-- Mobile Menu Hamburger Button -->
         <div class="lg:hidden">
-          <button id="mobile-menu-btn" class="text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10">
+          <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-pci-blue-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 p-2 rounded-lg hover:bg-white/10">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
         </div>
@@ -57,6 +68,7 @@
   </header>
 
   <!-- CONTACT HERO -->
+  <span id="main" tabindex="-1"></span>
   <section class="bg-navy pt-32 pb-20 relative overflow-hidden" id="contact-hero">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(37,99,235,0.06),transparent_50%)]"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -82,25 +94,26 @@
           <h2 class="text-xl font-heading font-bold text-gray-900 mb-6">Send a Clinical Inquiry</h2>
           
           <form id="contact-us-form" class="space-y-6">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Your Name</label>
-                <input type="text" required placeholder="John Doe" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pci-blue">
+                <label for="cf-name" class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Your Name</label>
+                <input id="cf-name" name="name" autocomplete="name" type="text" required placeholder="John Doe" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pci-blue">
               </div>
               <div>
-                <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Hospital / Organization</label>
-                <input type="text" required placeholder="Texas Medical Center" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pci-blue">
+                <label for="cf-org" class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Hospital / Organization</label>
+                <input id="cf-org" name="organization" autocomplete="organization" type="text" required placeholder="Texas Medical Center" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pci-blue">
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Email Address</label>
-              <input type="email" required placeholder="pathologist@institution.org" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pci-blue">
+              <label for="cf-email" class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Email Address</label>
+              <input id="cf-email" name="email" autocomplete="email" type="email" required placeholder="pathologist@institution.org" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pci-blue">
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Inquiry Intent</label>
-              <select required class="w-full bg-white border border-gray-200 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-pci-blue">
+              <label for="cf-subject" class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Inquiry Intent</label>
+              <select id="cf-subject" name="subject" required class="w-full bg-white border border-gray-200 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-pci-blue">
                 <option value="" disabled selected>Select priority subject...</option>
                 <option value="Controls Inquiry">Product Orders (TriControl, DualControl, Blocks, slides)</option>
                 <option value="AI licensing">AI Image Analysis / Slide Viewer Beta trial</option>
@@ -111,8 +124,8 @@
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Inquiry Details</label>
-              <textarea placeholder="Describe validation goals or specify the custom biomarkers you require standard blocks for..." rows="5" required class="w-full bg-white border border-gray-200 rounded-lg p-4 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pci-blue"></textarea>
+              <label for="cf-message" class="block text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono mb-2">Inquiry Details</label>
+              <textarea id="cf-message" name="message" placeholder="Describe validation goals or specify the custom biomarkers you require standard blocks for..." rows="5" required class="w-full bg-white border border-gray-200 rounded-lg p-4 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pci-blue"></textarea>
             </div>
 
             <div class="pt-2">
@@ -121,6 +134,7 @@
               </button>
             </div>
           </form>
+          <p id="cf-status" class="text-sm mt-3" role="status" hidden></p>
         </div>
 
         <!-- Right: Contact info + Map -->
@@ -192,7 +206,7 @@
         Are you piloting software pipelines, looking to integrate with hospital LIMS databases, or publishing clinical studies? Consult with our Founder / CEO Dr. John Andersen directly.
       </p>
       <p class="text-xs font-mono text-gray-500">
-        Direct Email: <strong class="text-gray-900 font-normal">Jandersen@pcibio.com</strong>
+        Direct Email: <a href="mailto:jandersen@pcibio.com" class="text-gray-900 font-normal hover:underline">jandersen@pcibio.com</a>
       </p>
     </div>
   </section>
@@ -247,9 +261,11 @@
         </div>
       </div>
 
+      <p class="text-[11px] text-gray-500 mt-6 text-center sm:text-left">For Research Use Only. Not for use in diagnostic procedures.</p>
+
       <!-- Bottom Bar -->
       <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
-        <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
+        <div>&#169; 2026 Precision Cellular Immunology, LLC. All rights reserved.</div>
         <div class="flex gap-4 mt-4 sm:mt-0">
           <a href="/privacy.html" class="hover:text-gray-400">Privacy Policy</a>
           <span>|</span>

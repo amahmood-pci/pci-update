@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Precision Cellular Immunology</title>
+  <title>Digital Pathology Education · Precision Cellular Immunology</title>
+  <meta name="description" content="Free digital pathology learning: p53 and MMR interpretation, antibody optimization, and AI-assisted IHC scoring.">
+  <link rel="canonical" href="https://pcibio.com/education.html">
+  <meta name="theme-color" content="#012b1a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Precision Cellular Immunology">
+  <meta property="og:title" content="Digital Pathology Education · Precision Cellular Immunology">
+  <meta property="og:description" content="Free digital pathology learning: p53 and MMR interpretation, antibody optimization, and AI-assisted IHC scoring.">
+  <meta property="og:url" content="https://pcibio.com/education.html">
+  <meta property="og:image" content="https://pcibio.com/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-white text-gray-600 antialiased font-sans">
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- HEADER NAVIGATION -->
   <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
@@ -36,7 +47,7 @@
 
         <!-- Mobile Menu Hamburger Button -->
         <div class="lg:hidden">
-          <button id="mobile-menu-btn" class="text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10">
+          <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-pci-blue-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 p-2 rounded-lg hover:bg-white/10">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
         </div>
@@ -57,6 +68,7 @@
   </header>
 
   <!-- EDUCATION HERO -->
+  <span id="main" tabindex="-1"></span>
   <section class="bg-navy pt-32 pb-20 relative overflow-hidden" id="education-hero">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(37,99,235,0.06),transparent_50%)]"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
@@ -79,7 +91,7 @@
           Practical Slide Interpretation Class
         </h2>
         <p class="text-gray-600 mt-2">
-          Train your ocular tracking over molecularly verified digital whole slides.
+          Practice reading IHC patterns on characterized, molecularly verified cases.
         </p>
       </div>
 
@@ -97,7 +109,7 @@
             </p>
           </div>
           <div class="pt-6 border-t border-gray-200 mt-6 flex justify-end">
-            <span class="text-xs text-slate-500 font-bold cursor-not-allowed">Case Study Coming Soon</span>
+            <a href="https://site-phi-six-61.vercel.app/education/p53-classification" target="_blank" rel="noopener" class="text-xs font-bold text-pci-blue hover:underline">Open module &#8594;</a>
           </div>
         </div>
 
@@ -114,7 +126,7 @@
             </p>
           </div>
           <div class="pt-6 border-t border-gray-200 mt-6 flex justify-end">
-            <span class="text-xs text-slate-500 font-bold cursor-not-allowed">Case Study Coming Soon</span>
+            <span class="text-xs text-slate-500 font-bold">Case study coming soon</span>
           </div>
         </div>
 
@@ -127,11 +139,11 @@
             </div>
             <h3 class="text-base font-bold text-gray-900 mb-2">MMR Deficiency Detection</h3>
             <p class="text-xs text-gray-500 leading-relaxed">
-              Locate subtle nucleolar PMS2 and MSH6 expression loss signatures within complex endometrial lesions.
+              Spot subtle loss of nuclear PMS2 and MSH6 expression in complex endometrial lesions.
             </p>
           </div>
           <div class="pt-6 border-t border-gray-200 mt-6 flex justify-end">
-            <span class="text-xs text-slate-500 font-bold cursor-not-allowed">Case Study Coming Soon</span>
+            <a href="https://site-phi-six-61.vercel.app/education/mmr-assessment" target="_blank" rel="noopener" class="text-xs font-bold text-pci-blue hover:underline">Open module &#8594;</a>
           </div>
         </div>
 
@@ -148,7 +160,7 @@
             </p>
           </div>
           <div class="pt-6 border-t border-gray-200 mt-6 flex justify-end">
-            <span class="text-xs text-slate-500 font-bold cursor-not-allowed">Case Study Coming Soon</span>
+            <span class="text-xs text-slate-500 font-bold">Case study coming soon</span>
           </div>
         </div>
       </div>
@@ -164,7 +176,7 @@
           Protocols, Videos, & Publications
         </h2>
         <p class="text-gray-600 mt-2">
-          Clinical instruction materials structured for direct download.
+          Guides and references for IHC interpretation and assay development.
         </p>
       </div>
 
@@ -178,7 +190,7 @@
           <p class="text-sm text-gray-500 leading-relaxed">
             Short, recorded tutorials demonstrating OpenSeadragon navigation and cell scoring setups inside the QuPath desktop application.
           </p>
-          <span class="text-xs font-semibold text-slate-500 block pt-2 cursor-not-allowed">Coming Soon</span>
+          <span class="text-xs font-semibold text-slate-500 block pt-2">Coming soon</span>
         </div>
 
         <!-- Resource papers -->
@@ -188,9 +200,9 @@
           </div>
           <h3 class="text-lg font-bold text-gray-900">Scientific Publications</h3>
           <p class="text-sm text-gray-500 leading-relaxed">
-            Peer-reviewed research and validation reviews certifying our sequenced reference cell cell-line methodology.
+            Peer-reviewed research validating our characterized reference cell line methodology.
           </p>
-          <span class="text-xs font-semibold text-slate-500 block pt-2 cursor-not-allowed">Coming Soon</span>
+          <div class="pt-2"><a href="https://site-phi-six-61.vercel.app/research/p53-cell-line-panel" target="_blank" rel="noopener" class="text-xs font-bold text-pci-blue hover:underline">Read the 2019 p53 panel study &#8594;</a></div>
         </div>
 
         <!-- Resource protocols -->
@@ -202,7 +214,7 @@
           <p class="text-sm text-gray-500 leading-relaxed">
             Detailed chemical lists, baking parameters, and dilution protocols optimized for Ventana and Leica bond platforms.
           </p>
-          <span class="text-xs font-semibold text-slate-500 block pt-2 cursor-not-allowed">Coming Soon</span>
+          <div class="pt-2"><a href="https://site-phi-six-61.vercel.app/education/antibody-optimization" target="_blank" rel="noopener" class="text-xs font-bold text-pci-blue hover:underline">Antibody optimization guide &#8594;</a></div>
         </div>
       </div>
     </div>
@@ -223,7 +235,8 @@
       <!-- Managed form with interactive thank you on submission -->
       <div id="newsletter-form-container" class="max-w-md mx-auto pt-4">
         <form id="newsletter-signup-form" class="flex flex-col sm:flex-row gap-3">
-          <input type="email" placeholder="Enter clinical email..." required class="flex-1 bg-white/5 border border-white/20 rounded-lg px-4 py-3 placeholder-gray-500 text-white text-sm focus:outline-none focus:ring-2 focus:ring-pci-blue">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
+          <input type="email" name="email" aria-label="Email address" autocomplete="email" placeholder="Enter your work email" required class="flex-1 bg-white/5 border border-white/20 rounded-lg px-4 py-3 placeholder-gray-500 text-white text-sm focus:outline-none focus:ring-2 focus:ring-pci-blue">
           <button type="submit" class="bg-pci-blue hover:bg-pci-blue-light text-white font-semibold text-sm px-6 py-3 rounded-lg transition-all shadow-md focus:outline-none">
             Join Sandbox
           </button>
@@ -299,9 +312,11 @@
         </div>
       </div>
 
+      <p class="text-[11px] text-gray-500 mt-6 text-center sm:text-left">For Research Use Only. Not for use in diagnostic procedures.</p>
+
       <!-- Bottom Bar -->
       <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
-        <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
+        <div>&#169; 2026 Precision Cellular Immunology, LLC. All rights reserved.</div>
         <div class="flex gap-4 mt-4 sm:mt-0">
           <a href="/privacy.html" class="hover:text-gray-400">Privacy Policy</a>
           <span>|</span>

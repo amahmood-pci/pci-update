@@ -1,4 +1,5 @@
 // Account login widget + cart sync (site-wide). No-ops if Supabase keys unset.
+import { supabase } from './supabase.js';
 import './auth.js';
 import './cart-sync.js';
 import './checkout.js';
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Update hamburger button
       if (mobileMenuBtn) {
-        mobileMenuBtn.className = "text-gray-600 hover:text-pci-blue focus:outline-none p-2 rounded-lg hover:bg-gray-100";
+        mobileMenuBtn.className = "text-gray-600 hover:text-pci-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 p-2 rounded-lg hover:bg-gray-100";
       }
     } else {
       // Dark transparent state (matches attached image)
@@ -70,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Update hamburger button
       if (mobileMenuBtn) {
-        mobileMenuBtn.className = "text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10";
+        mobileMenuBtn.className = "text-white hover:text-pci-blue-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 p-2 rounded-lg hover:bg-white/10";
       }
     }
   };
@@ -103,6 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
       }
+      mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
     });
 
     // Close menu when clicking nav link
@@ -111,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
         document.body.classList.remove('overflow-hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Open menu');
       });
     });
   }
@@ -509,45 +514,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Contact page interactive thank you submit simulation
-  const contactFormSubmit = document.getElementById('pci-contact-form') || document.getElementById('contact-us-form');
-  if (contactFormSubmit) {
-    contactFormSubmit.addEventListener('submit', (e) => {
+  // Contact + newsletter forms save to the Supabase `inquiries` table (insert-only RLS).
+  const saveInquiry = async (row) => {
+    if (!supabase) throw new Error('no backend');
+    const { error } = await supabase.from('inquiries').insert(row);
+    if (error) throw error;
+  };
+
+  const contactForm = document.getElementById('contact-us-form');
+  if (contactForm) {
+    const status = document.getElementById('cf-status');
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const formContainer = contactFormSubmit.parentElement;
-      if (formContainer) {
-        formContainer.innerHTML = `
-          <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-md text-center reveal active animate-fade-in">
-            <div class="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg class="h-8 w-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0y" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Message Received</h3>
-            <p class="text-gray-600 mb-6 max-w-sm mx-auto">Thank you for contacting Precision Cellular Immunology. Our technical assessment team in Houston will review your request and reach out within 24 hours.</p>
-            <a href="index.html" class="inline-flex items-center justify-center bg-pci-blue hover:bg-pci-blue-light text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-200">
-              Return Home
-            </a>
+      const fd = new FormData(contactForm);
+      if (fd.get('website')) return;
+      submitBtn.disabled = true;
+      const label = submitBtn.textContent;
+      submitBtn.textContent = 'Sending…';
+      try {
+        await saveInquiry({
+          kind: 'contact',
+          name: fd.get('name'),
+          organization: fd.get('organization'),
+          email: fd.get('email'),
+          subject: fd.get('subject'),
+          message: fd.get('message'),
+          page: window.location.pathname,
+        });
+        const box = document.createElement('div');
+        box.className = 'bg-white p-8 rounded-2xl border border-gray-100 shadow-md text-center animate-fade-in';
+        box.innerHTML = `
+          <div class="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="h-8 w-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
-        `;
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Message received</h3>
+          <p class="text-gray-600 mb-6 max-w-sm mx-auto">Thanks for contacting Precision Cellular Immunology. Our team will reply to <b class="cf-echo"></b> within one business day.</p>
+          <a href="index.html" class="inline-flex items-center justify-center bg-pci-blue hover:bg-pci-blue-light text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-200">Return Home</a>`;
+        box.querySelector('.cf-echo').textContent = fd.get('email');
+        contactForm.replaceWith(box);
+        if (status) status.hidden = true;
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.textContent = label;
+        if (status) {
+          status.hidden = false;
+          status.className = 'text-sm mt-3 text-rose-600';
+          status.innerHTML = 'We couldn\u2019t send your message. Please email <a class="underline" href="mailto:support@pcibio.com">support@pcibio.com</a> instead.';
+        }
       }
     });
   }
 
-  // Interactive Newsletter popup thank you simulation
   const emailSignupForm = document.getElementById('newsletter-signup-form');
   if (emailSignupForm) {
-    emailSignupForm.addEventListener('submit', (e) => {
+    emailSignupForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const signupContainer = emailSignupForm.parentElement;
-      const emailInput = emailSignupForm.querySelector('input[type="email"]');
-      if (signupContainer && emailInput) {
-        signupContainer.innerHTML = `
-          <div class="p-6 bg-emerald-50/20 border border-emerald-500/20 rounded-xl text-center reveal active animate-fade-in">
-            <p class="text-sm font-semibold text-emerald-400 mb-1">✓ Check your inbox</p>
-            <p class="text-xs text-gray-300">We've sent an invite link to ${emailInput.value} for our beta testing cohort.</p>
-          </div>
-        `;
+      const fd = new FormData(emailSignupForm);
+      if (fd.get('website')) return;
+      const email = fd.get('email');
+      const btn = emailSignupForm.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      const box = document.createElement('div');
+      box.className = 'p-6 bg-emerald-50/20 border border-emerald-500/20 rounded-xl text-center animate-fade-in';
+      box.setAttribute('role', 'status');
+      const title = document.createElement('p');
+      const body = document.createElement('p');
+      title.className = 'text-sm font-semibold mb-1';
+      body.className = 'text-xs text-gray-300';
+      try {
+        await saveInquiry({ kind: 'newsletter', email, page: window.location.pathname });
+        title.classList.add('text-emerald-400');
+        title.textContent = '\u2713 You\u2019re on the list';
+        body.textContent = `We'll email ${email} when early cohort access opens.`;
+        box.append(title, body);
+        emailSignupForm.replaceWith(box);
+      } catch {
+        btn.disabled = false;
+        title.classList.add('text-rose-300');
+        title.textContent = 'Signup failed. Please try again, or email support@pcibio.com.';
+        emailSignupForm.after(title);
       }
     });
   }
