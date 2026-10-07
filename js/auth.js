@@ -245,7 +245,18 @@ function buildModal() {
         <button type="submit" class="pci-auth-submit">Sign in</button>
       </form>
       <p class="pci-auth-msg" hidden></p>
+      <button type="button" class="pci-auth-resend-inline" hidden>Resend confirmation email</button>
       <p class="pci-auth-toggle">New to PCI? <a href="#" class="pci-auth-switch">Create an account</a></p>
+      <div class="pci-auth-pending" hidden>
+        <div class="pci-verify-icon"><svg viewBox="0 0 512 512" fill="currentColor" width="24" height="24"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg></div>
+        <h3 class="pci-auth-title">Check your inbox</h3>
+        <p class="pci-auth-sub">We sent a confirmation link to <b class="pci-pending-email"></b>. Click it to activate your account. You'll land back here, signed in.</p>
+        <p class="pci-auth-hint">Don't see it? Check spam or promotions. It can take a minute.</p>
+        <button type="button" class="pci-auth-submit pci-pending-resend">Resend confirmation email</button>
+        <button type="button" class="pci-verify-check pci-pending-signin">I've confirmed. Sign in</button>
+        <p class="pci-auth-msg pci-pending-msg" hidden></p>
+        <p class="pci-auth-toggle">Wrong email? <a href="#" class="pci-pending-back">Go back</a></p>
+      </div>
     </div>`;
   document.body.appendChild(overlay);
 
@@ -283,6 +294,7 @@ function buildModal() {
     }
     wireSwitch();
     msg.hidden = true;
+    overlay.querySelector('.pci-auth-resend-inline').hidden = true;
   };
   const wireSwitch = () => {
     overlay.querySelector('.pci-auth-switch').onclick = (e) => {
@@ -298,6 +310,68 @@ function buildModal() {
     msg.textContent = text;
     msg.className = 'pci-auth-msg ' + (ok ? 'pci-auth-ok' : 'pci-auth-err');
   };
+
+  const emailInput = form.querySelector('.pci-auth-email');
+  const resendInline = overlay.querySelector('.pci-auth-resend-inline');
+  const pending = overlay.querySelector('.pci-auth-pending');
+  const pendingMsg = pending.querySelector('.pci-pending-msg');
+  const pendingResend = pending.querySelector('.pci-pending-resend');
+  const mainParts = [...overlay.querySelector('.pci-auth-modal').children]
+    .filter((el) => el !== pending && !el.classList.contains('pci-auth-close'));
+  const redirectTo = window.location.origin + window.location.pathname;
+
+  let cooldownTimer = null;
+  const resendConfirmation = async (email, btn, report) => {
+    btn.disabled = true;
+    try {
+      const { error } = await supabase.auth.resend({ type: 'signup', email, options: { emailRedirectTo: redirectTo } });
+      if (error) { report(error.message, false); btn.disabled = false; return; }
+      report('Sent. Check your inbox (and spam).', true);
+      let left = 60;
+      const label = btn.dataset.label || (btn.dataset.label = btn.textContent);
+      clearInterval(cooldownTimer);
+      cooldownTimer = setInterval(() => {
+        left -= 1;
+        btn.textContent = left > 0 ? `Resend available in ${left}s` : label;
+        if (left <= 0) { clearInterval(cooldownTimer); btn.disabled = false; }
+      }, 1000);
+      btn.textContent = `Resend available in ${left}s`;
+    } catch {
+      report("Can't reach the login service right now.", false);
+      btn.disabled = false;
+    }
+  };
+
+  const showPending = (email) => {
+    mainParts.forEach((el) => (el.dataset.wasHidden = el.hidden, el.hidden = true));
+    pending.querySelector('.pci-pending-email').textContent = email;
+    pendingMsg.hidden = true;
+    pending.hidden = false;
+  };
+  const hidePending = () => {
+    pending.hidden = true;
+    mainParts.forEach((el) => (el.hidden = el.dataset.wasHidden === 'true'));
+  };
+  const showPendingMsg = (t, ok) => {
+    pendingMsg.hidden = false;
+    pendingMsg.textContent = t;
+    pendingMsg.className = 'pci-auth-msg pci-pending-msg ' + (ok ? 'pci-auth-ok' : 'pci-auth-err');
+  };
+
+  pendingResend.onclick = () => resendConfirmation(pending.querySelector('.pci-pending-email').textContent, pendingResend, showPendingMsg);
+  pending.querySelector('.pci-pending-signin').onclick = () => {
+    hidePending();
+    mode = 'signin';
+    applyMode();
+    passInput.value = '';
+    passInput.focus();
+  };
+  pending.querySelector('.pci-pending-back').onclick = (e) => {
+    e.preventDefault();
+    hidePending();
+    emailInput.focus();
+  };
+  resendInline.onclick = () => resendConfirmation(emailInput.value.trim(), resendInline, show);
 
   // Google OAuth
   overlay.querySelector('.pci-auth-google').onclick = async () => {
@@ -320,10 +394,15 @@ function buildModal() {
     submit.disabled = true;
     const busy = mode === 'signin' ? 'Signing in…' : 'Creating…';
     submit.textContent = busy;
+    resendInline.hidden = true;
     try {
       if (mode === 'signin') {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) show(error.message, false);
+        if (error && /not confirmed/i.test(error.message)) {
+          show('Please confirm your email first. We can send the link again.', false);
+          resendInline.hidden = false;
+        }
+        else if (error) show(error.message, false);
         else { show('Signed in.', true); setTimeout(close, 600); }
       } else {
         const name = form.querySelector('.pci-auth-name').value.trim();
@@ -340,11 +419,21 @@ function buildModal() {
         }
         const { data, error } = await supabase.auth.signUp({
           email, password,
-          options: { data: { name, phone, address: { line1: addr1, city, state, zip } } },
+          options: {
+            emailRedirectTo: redirectTo,
+            data: { name, phone, address: { line1: addr1, city, state, zip } },
+          },
         });
         if (error) show(error.message, false);
         else if (data.session) { show('Account created — you\'re in.', true); setTimeout(close, 700); }
-        else show('Account created. Check your email to confirm, then sign in.', true);
+        // Supabase hides "email taken" from signUp; an existing account comes back with no identities.
+        else if (data.user && data.user.identities?.length === 0) {
+          mode = 'signin';
+          applyMode();
+          show('An account with this email already exists. Sign in, or resend the confirmation link if you never confirmed it.', false);
+          resendInline.hidden = false;
+        }
+        else showPending(email);
       }
     } catch (err) {
       show("Can't reach the login service right now. Please try again shortly.", false);
@@ -444,6 +533,16 @@ function injectStyles() {
       align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px}
     .pci-verify-overlay .pci-auth-title,.pci-verify-overlay .pci-auth-sub{text-align:center}
     .pci-verify-resend{margin-top:6px}
+    .pci-auth-pending{display:flex;flex-direction:column;text-align:center}
+    .pci-auth-pending[hidden]{display:none}
+    .pci-auth-pending .pci-verify-icon{width:56px;height:56px;border-radius:50%;
+      background:linear-gradient(135deg,#10b981,#012b1a);color:#fff;display:flex;
+      align-items:center;justify-content:center;margin:0 auto 16px}
+    .pci-auth-hint{font-size:12px;color:#64748b;margin:-8px 0 16px}
+    .pci-auth-resend-inline{margin-top:8px;background:none;border:none;padding:0;color:#059669;
+      font:600 13px "Inter",sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+    .pci-auth-resend-inline:disabled{color:#94a3b8;cursor:default;text-decoration:none}
+    .pci-auth-submit:disabled.pci-pending-resend{background:#64748b}
     .pci-verify-check{width:100%;margin-top:8px;background:#fff;color:#012b1a;
       border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:600 14px "Inter",sans-serif;cursor:pointer}
     .pci-verify-check:hover{background:#f8fafc;border-color:#012b1a}`;
