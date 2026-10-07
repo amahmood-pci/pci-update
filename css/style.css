@@ -1010,3 +1010,16 @@ header *:focus-visible {
   font-weight: 600; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,.2);
 }
 .skip-link:focus { top: 0.75rem; }
+
+/* Typography polish: balanced headings, no orphaned last words */
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+/* Press feedback on buttons and button-styled links */
+button:not(:disabled), a[class*="rounded"][class*="bg-"] {
+  transition: transform 150ms ease, background-color 200ms ease, box-shadow 200ms ease, color 200ms ease;
+}
+button:not(:disabled):active, a[class*="rounded"][class*="bg-"]:active { transform: translateY(1px) scale(0.98); }
+@media (prefers-reduced-motion: reduce) {
+  button:not(:disabled):active, a[class*="rounded"][class*="bg-"]:active { transform: none; }
+}
