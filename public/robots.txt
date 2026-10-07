@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /account.html
+Disallow: /checkout-success.html
+Disallow: /checkout-cancel.html
+Disallow: /design.html
+
+Sitemap: https://pcibio.com/sitemap.xml

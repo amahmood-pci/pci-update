@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Precision Cellular Immunology</title>
+  <title>About Us · Precision Cellular Immunology</title>
+  <meta name="description" content="Meet the Precision Cellular Immunology team, based at the CUBiO Innovation Hub in the Texas Medical Center, Houston.">
+  <link rel="canonical" href="https://pcibio.com/about.html">
+  <meta name="theme-color" content="#012b1a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Precision Cellular Immunology">
+  <meta property="og:title" content="About Us · Precision Cellular Immunology">
+  <meta property="og:description" content="Meet the Precision Cellular Immunology team, based at the CUBiO Innovation Hub in the Texas Medical Center, Houston.">
+  <meta property="og:url" content="https://pcibio.com/about.html">
+  <meta property="og:image" content="https://pcibio.com/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-white text-gray-600 antialiased font-sans">
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- HEADER NAVIGATION -->
   <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
@@ -36,7 +47,7 @@
 
         <!-- Mobile Menu Hamburger Button -->
         <div class="lg:hidden">
-          <button id="mobile-menu-btn" class="text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10">
+          <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-pci-blue-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 p-2 rounded-lg hover:bg-white/10">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
         </div>
@@ -52,11 +63,12 @@
       <a href="education.html" class="text-gray-700 text-sm font-semibold border-b border-gray-100 py-2.5 hover:text-pci-blue">Education</a>
       <a href="about.html" class="text-pci-blue text-sm font-bold border-b border-gray-100 py-2.5">About</a>
       <a href="contact.html" class="text-gray-700 text-sm font-semibold border-b border-gray-100 py-2.5 hover:text-pci-blue">Contact</a>
-      <a href="viewer.html" class="bg-pci-blue text-white text-center py-2.5 mt-2 rounded-lg font-bold text-sm" id="btn-mobile-viewer-launch">Launch Digital Viewer</a>
+      <a href="viewer.html" class="bg-pci-blue text-white text-center py-2.5 mt-2 rounded-lg font-bold text-sm" id="btn-mobile-viewer-launch">Open Slide Viewer</a>
     </div>
   </header>
 
   <!-- ABOUT HERO -->
+  <span id="main" tabindex="-1"></span>
   <section class="bg-navy pt-32 pb-20 relative overflow-hidden" id="about-hero">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.06),transparent_50%)]"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -66,7 +78,7 @@
           About Precision Cellular Immunology
         </h1>
         <p class="text-gray-300 text-base sm:text-lg lg:text-xl font-light">
-          We are a clinical MedTech startup redefining quality calibration standards inside pathology classrooms and routine cancer diagnostics runs.
+          We are a MedTech startup redefining quality calibration standards for pathology labs, research, and education.
         </p>
       </div>
     </div>
@@ -78,7 +90,7 @@
       <div class="max-w-4xl mx-auto text-center space-y-6 reveal">
         <span class="text-xs text-pci-blue font-bold uppercase tracking-widest font-mono">Our Mission</span>
         <blockquote class="text-xl sm:text-2xl font-serif font-semibold text-gray-950 leading-relaxed italic">
-          "To improve patient care by ensuring that diagnostic oncology markers are scored with absolute precision, mitigating clinical failure rates through sequence-characterized cellular reference platforms."
+          "To improve patient care by ensuring that diagnostic oncology markers are scored consistently, reducing staining and interpretation errors through sequence-characterized cellular reference platforms."
         </blockquote>
         <p class="text-sm text-gray-500 max-w-xl mx-auto font-light leading-relaxed">
           Through unified hardware (FFPE cellular controls) and scalable software (AI cloud-hosted WSIs deconvolution), we bridge the gap between histology runs and objective therapeutic decisions.
@@ -285,7 +297,7 @@
           <span class="badge-pci badge-blue">Houston Headquarters</span>
           <h2 class="text-3xl font-heading font-bold text-gray-900 tracking-tight">Located at the CUBiO Innovation Hub</h2>
           <p class="text-sm text-gray-650 leading-relaxed font-light">
-            Our diagnostic development laboratories operate inside the CUBiO Innovation Hub at 7505 Fannin Street, Suite 640b, part of the world-famous Texas Medical Center (TMC) ecosystem in Houston, Texas 77054.
+            Our development laboratories operate inside the CUBiO Innovation Hub at 7505 Fannin Street, Suite 640b, part of the Texas Medical Center (TMC) ecosystem in Houston, Texas 77054.
           </p>
           <p class="text-sm text-gray-650 leading-relaxed font-light">
             TMC is the single largest clinical oncology ecosystem on earth. Operating within this environment gives our pathology team real-time visibility into the dynamic validation challenges facing major cancer research institutions.
@@ -314,7 +326,7 @@
       <span class="badge-pci badge-green">Intellectual Property</span>
       <h2 class="text-3xl font-heading font-bold text-gray-900">Sequence-Characterized Patents Pending</h2>
       <p class="text-gray-600 text-sm leading-relaxed max-w-2xl mx-auto font-light">
-        PCI's unique modular cellular composition algorithm, clonal sequence integration methods, and micro-pellet block cutting workflows are registered under active worldwide patent-pending portfolios (PCT filings). We are dedicated to providing unique, robust physical property standards for pathology laboratories globally.
+        PCI's unique modular cellular composition algorithm, clonal sequence integration methods, and micro-pellet block cutting workflows are registered under active worldwide patent-pending portfolios (PCT filings). We are dedicated to providing reproducible physical reference standards for pathology laboratories globally.
       </p>
     </div>
   </section>
@@ -379,7 +391,7 @@
       </p>
       <div class="pt-4">
         <a href="contact.html" class="bg-pci-blue hover:bg-pci-blue-light hover-lift text-white font-semibold px-8 py-3.5 rounded-lg shadow-md transition-all inline-flex items-center gap-2">
-          Contact Business Development
+          Talk to Our Team
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
         </a>
       </div>
@@ -430,16 +442,18 @@
           </p>
           <div class="pt-2">
             <a href="viewer.html" class="inline-flex items-center gap-1.5 bg-pci-blue hover:bg-pci-blue-light text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all" id="btn-footer-launch">
-              <span>Launch Slider Demo</span>
+              <span>Open Slide Viewer</span>
               <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </a>
           </div>
         </div>
       </div>
 
+      <p class="text-[11px] text-gray-500 mt-6 text-center sm:text-left">For Research Use Only. Not for use in diagnostic procedures.</p>
+
       <!-- Bottom Bar -->
       <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
-        <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
+        <div>&#169; 2026 Precision Cellular Immunology, LLC. All rights reserved.</div>
         <div class="flex gap-4 mt-4 sm:mt-0">
           <a href="/privacy.html" class="hover:text-gray-400">Privacy Policy</a>
           <span>|</span>

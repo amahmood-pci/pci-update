@@ -155,3 +155,25 @@ create policy "own orders - insert"
 -- keeps "paid" honest — payment is confirmed server-side by Stripe, never
 -- claimed by the client.
 drop policy if exists "own orders - update" on public.orders;
+
+-- ── Contact form + newsletter signups ──────────────────────────────────────
+-- Public can INSERT only (no select/update/delete); read them in the dashboard.
+create table if not exists public.inquiries (
+  id           bigint generated always as identity primary key,
+  created_at   timestamptz not null default now(),
+  kind         text not null check (kind in ('contact', 'newsletter')),
+  email        text not null check (char_length(email) between 3 and 254 and email like '%_@_%'),
+  name         text check (char_length(name) <= 200),
+  organization text check (char_length(organization) <= 200),
+  subject      text check (char_length(subject) <= 100),
+  message      text check (char_length(message) <= 5000),
+  page         text check (char_length(page) <= 200)
+);
+
+alter table public.inquiries enable row level security;
+
+drop policy if exists "anyone can submit an inquiry" on public.inquiries;
+create policy "anyone can submit an inquiry"
+  on public.inquiries for insert
+  to anon, authenticated
+  with check (true);

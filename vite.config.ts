@@ -1,11 +1,10 @@
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
 import {resolve} from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@': resolve(__dirname, '.'),
@@ -30,6 +29,11 @@ export default defineConfig(() => {
           about: resolve(__dirname, 'about.html'),
           contact: resolve(__dirname, 'contact.html'),
           account: resolve(__dirname, 'account.html'),
+          privacy: resolve(__dirname, 'privacy.html'),
+          terms: resolve(__dirname, 'terms.html'),
+          checkoutSuccess: resolve(__dirname, 'checkout-success.html'),
+          checkoutCancel: resolve(__dirname, 'checkout-cancel.html'),
+          notFound: resolve(__dirname, '404.html'),
         },
       },
     },

@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Precision Cellular Immunology</title>
+  <title>AI Biomarker Assessment · Precision Cellular Immunology</title>
+  <meta name="description" content="AI-assisted IHC biomarker quantification calibrated against characterized reference cell line controls.">
+  <link rel="canonical" href="https://pcibio.com/ai.html">
+  <meta name="theme-color" content="#012b1a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Precision Cellular Immunology">
+  <meta property="og:title" content="AI Biomarker Assessment · Precision Cellular Immunology">
+  <meta property="og:description" content="AI-assisted IHC biomarker quantification calibrated against characterized reference cell line controls.">
+  <meta property="og:url" content="https://pcibio.com/ai.html">
+  <meta property="og:image" content="https://pcibio.com/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-white text-gray-600 antialiased font-sans">
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- HEADER NAVIGATION -->
   <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20">
@@ -36,7 +47,7 @@
 
         <!-- Mobile Menu Hamburger Button -->
         <div class="lg:hidden">
-          <button id="mobile-menu-btn" class="text-white hover:text-pci-blue-light focus:outline-none p-2 rounded-lg hover:bg-white/10">
+          <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-pci-blue-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 p-2 rounded-lg hover:bg-white/10">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
         </div>
@@ -52,11 +63,12 @@
       <a href="education.html" class="text-gray-700 text-sm font-semibold border-b border-gray-100 py-2.5 hover:text-pci-blue">Education</a>
       <a href="about.html" class="text-gray-700 text-sm font-semibold border-b border-gray-100 py-2.5 hover:text-pci-blue">About</a>
       <a href="contact.html" class="text-gray-700 text-sm font-semibold border-b border-gray-100 py-2.5 hover:text-pci-blue">Contact</a>
-      <a href="viewer.html" class="bg-pci-blue text-white text-center py-2.5 mt-2 rounded-lg font-bold text-sm" id="btn-mobile-viewer-launch">Launch Digital Viewer</a>
+      <a href="viewer.html" class="bg-pci-blue text-white text-center py-2.5 mt-2 rounded-lg font-bold text-sm" id="btn-mobile-viewer-launch">Open Slide Viewer</a>
     </div>
   </header>
 
   <!-- AI HERO -->
+  <span id="main" tabindex="-1"></span>
   <section class="bg-navy pt-32 pb-20 relative overflow-hidden" id="ai-hero-section">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(37,99,235,0.08),transparent_50%)]"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -107,7 +119,7 @@
             Automated Quantitative Precision
           </h2>
           <p class="text-gray-600 leading-relaxed text-sm">
-            PCI's digital pathology assessment suite utilizes machine learning algorithms to complete stain deconvolution and count nucleolar segments. It returns objective biomarker scores instantly.
+            PCI's digital pathology assessment suite utilizes machine learning algorithms for stain deconvolution and nuclear segmentation. It returns quantitative biomarker scores in minutes.
           </p>
           <div class="bg-emerald-50/50 p-6 rounded-2xl border border-emerald-100 flex gap-6">
             <div class="text-center shrink-0">
@@ -244,11 +256,11 @@
             See the AI Overlays in Action
           </h2>
           <p class="text-gray-600 leading-relaxed text-sm">
-            Our viewer allows pathologists to toggle raw WSI images with AI scoring masks dynamically, isolating tumor regions of interest from normal tissue compartments instantly.
+            Our viewer allows pathologists to toggle raw WSI images with AI scoring masks dynamically, isolating tumor regions of interest from normal tissue compartments.
           </p>
           <div class="pt-4">
             <a href="viewer.html" class="bg-pci-blue hover:bg-pci-blue-light text-white font-semibold px-6 py-3.5 rounded-lg shadow-md inline-flex items-center gap-2 hover-lift transition-all">
-              <span>Try Live Slide Demo</span>
+              <span>Open Slide Viewer</span>
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </a>
           </div>
@@ -364,16 +376,18 @@
           </p>
           <div class="pt-2">
             <a href="viewer.html" class="inline-flex items-center gap-1.5 bg-pci-blue hover:bg-pci-blue-light text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all" id="btn-footer-launch">
-              <span>Launch Slider Demo</span>
+              <span>Open Slide Viewer</span>
               <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </a>
           </div>
         </div>
       </div>
 
+      <p class="text-[11px] text-gray-500 mt-6 text-center sm:text-left">For Research Use Only. Not for use in diagnostic procedures.</p>
+
       <!-- Bottom Bar -->
       <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono">
-        <div>Copyright 2025 PCI LLC | All Rights Reserved</div>
+        <div>&#169; 2026 Precision Cellular Immunology, LLC. All rights reserved.</div>
         <div class="flex gap-4 mt-4 sm:mt-0">
           <a href="/privacy.html" class="hover:text-gray-400">Privacy Policy</a>
           <span>|</span>

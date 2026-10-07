@@ -35,8 +35,8 @@ This application is engineered for high performance, frame-rate responsive inter
 
 *   **Build Tooling & Bundling**: [Vite 6](https://vite.dev/) & [TypeScript](https://www.typescriptlang.org/) for modern, safe, rapid bundling cycle times.
 *   **Core UI Elements**: High-contrast, accessibility-vetted web architecture constructed with **HTML5** and **Tailwind CSS v4** utilizing an elegant custom clinical theme (**Space Grotesk** headings paired with **JetBrains Mono** data readout tables).
-*   **Interactive Components**: [React 19](https://react.dev/) manages dynamic view states, diagnostics, and patient slide assets inside the digital viewport.
-*   **Fluid Animations**: [Framer Motion](https://www.framer.com/motion/) powering the micro-interactions, tissue slide loading crosshairs, and educational visualizers.
+*   **Interactivity**: Vanilla JavaScript modules in `js/` (no framework).
+*   **Backend**: Supabase (accounts, carts, orders, inquiries) and Vercel serverless functions in `api/` for Stripe Checkout.
 
 ---
 
@@ -54,12 +54,9 @@ This application is engineered for high performance, frame-rate responsive inter
 ├── package.json                # Project dependencies, script configurations, and build tasks
 ├── tsconfig.json               # Modular TypeScript configurations
 ├── vite.config.ts              # Custom multipage entry-point configurations for Vite
-├── src/
-│   ├── App.tsx                 # Base entry component for custom React instances
-│   ├── main.tsx                # React DOM tree mounter
-│   ├── index.css               # Tailwind CSS v4 directives and system typography declarations
-│   └── assets/
-│       └── images/             # Visual case records and clinical adviser portraits
+├── js/                         # Page scripts: auth, cart sync, checkout, product catalog
+├── api/                        # Vercel functions: Stripe checkout + webhook
+├── public/                     # Static assets served as-is (logos, products, robots, sitemap)
 └── css/
     └── style.css               # Custom global CSS definitions (microscopy simulated filters, keyframes)
 ```
