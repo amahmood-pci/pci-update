@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update cart toggler colors
       const cartToggle = document.getElementById('cart-toggle-btn');
       if (cartToggle) cartToggle.classList.replace('text-white/85', 'text-gray-600');
+      const cartToggleMobile = document.getElementById('cart-toggle-btn-mobile');
+      if (cartToggleMobile) cartToggleMobile.classList.replace('text-white', 'text-gray-600');
     } else {
       navbar.className = "fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/15 backdrop-blur-md border-b border-white/10 h-20";
       
@@ -65,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       const cartToggle = document.getElementById('cart-toggle-btn');
       if (cartToggle) cartToggle.classList.replace('text-gray-600', 'text-white/85');
+      const cartToggleMobile = document.getElementById('cart-toggle-btn-mobile');
+      if (cartToggleMobile) cartToggleMobile.classList.replace('text-gray-600', 'text-white');
     }
   };
 
