@@ -51,7 +51,17 @@ async function startCheckout({ items, orderId } = {}) {
         orderId,
       }),
     });
-    session = await res.json();
+    // An empty or non-JSON body (e.g. a platform error page) must not surface
+    // as a raw "Unexpected end of JSON input" to the customer.
+    const body = await res.text();
+    try {
+      session = body ? JSON.parse(body) : {};
+    } catch {
+      session = {};
+    }
+    if (!res.ok && !session.error) {
+      session.error = 'Checkout is temporarily unavailable. Please try again or contact us.';
+    }
     if (!res.ok || !session.url) {
       throw new Error(session?.error || 'Could not start checkout.');
     }
