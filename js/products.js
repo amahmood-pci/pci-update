@@ -13,7 +13,7 @@ window.pciProducts = [
     longDesc: "The MMR QuadControl™ FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for MMR immunohistochemistry, configured as a QuadControl™ panel comprising four characterized cell-line population(s). It delivers reproducible, pre-characterized MMR expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Four characterized cell-line population(s) in a QuadControl™ layout.",
     imageType: "block",
-    image: "products/02_MMR_QuadControl_FFPE_block.webp",
+    image: "products/02_MMR_QuadControl_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-05",
@@ -27,7 +27,7 @@ window.pciProducts = [
     longDesc: "The MLH1/MSH6 DualControl™ Single Slide is a pre-sectioned cell-line control slide for MLH1, MSH6 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized MLH1, MSH6 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "slide",
-    image: "products/05_MLH1_MSH6_DualControl_Single_Slide.webp",
+    image: "products/05_MLH1_MSH6_DualControl_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-12",
@@ -41,7 +41,7 @@ window.pciProducts = [
     longDesc: "The PTEN NULL DualControl™ FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for PTEN immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized PTEN expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/12_PTEN_NULL_DualControl_FFPE_block.webp",
+    image: "products/12_PTEN_NULL_DualControl_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-13",
@@ -55,7 +55,7 @@ window.pciProducts = [
     longDesc: "The BRAFV600E Single control FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for BRAFV600E immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized BRAFV600E expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/13_BRAFV600E_Single_control_FFPE_block.webp",
+    image: "products/13_BRAFV600E_Single_control_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-15",
@@ -69,7 +69,7 @@ window.pciProducts = [
     longDesc: "The p16 TriControl™ FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p16 immunohistochemistry, configured as a TriControl™ panel comprising three characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Three characterized cell-line population(s) in a TriControl™ layout.",
     imageType: "block",
-    image: "products/15_p16_TriControl_FFPE_block.webp",
+    image: "products/15_p16_TriControl_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-16",
@@ -83,7 +83,7 @@ window.pciProducts = [
     longDesc: "The BRAFV600E DualControl™ FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for BRAFV600E immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized BRAFV600E expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/16_BRAFV600E_DualControl_FFPE_block.webp",
+    image: "products/16_BRAFV600E_DualControl_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-17",
@@ -97,7 +97,7 @@ window.pciProducts = [
     longDesc: "The MLH1 DualControl™ FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for MLH1 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized MLH1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/17_MLH1_DualControl_FFPE_BLOCK.webp",
+    image: "products/17_MLH1_DualControl_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-18",
@@ -111,7 +111,7 @@ window.pciProducts = [
     longDesc: "The p16 Diffuse DualControl™ FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p16 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/18_p16_Diffuse_DualControl_FFPE_BLOCK.webp",
+    image: "products/18_p16_Diffuse_DualControl_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-19",
@@ -125,7 +125,7 @@ window.pciProducts = [
     longDesc: "The p53 NULL DualControl™ FFPE BLOCK is a pre-sectioned cell-line control slide for p53 Null immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized p53 Null expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "slide",
-    image: "products/19_p53_NULL_DualControl_FFPE_BLOCK.webp",
+    image: "products/19_p53_NULL_DualControl_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-20",
@@ -139,7 +139,7 @@ window.pciProducts = [
     longDesc: "The RB NULL DualControl™ FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for RB immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized RB expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/20_RB_NULL_DualControl_FFPE_block.webp",
+    image: "products/20_RB_NULL_DualControl_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-21",
@@ -153,7 +153,7 @@ window.pciProducts = [
     longDesc: "The MSH2 DualControl™ FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for MSH2 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized MSH2 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/21_MSH2_DualControl_FFPE_BLOCK.webp",
+    image: "products/21_MSH2_DualControl_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-22",
@@ -167,7 +167,7 @@ window.pciProducts = [
     longDesc: "The p53 (R248Q) DualControl™ FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p53 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/22_p53_R248Q_DualControl_FFPE_BLOCK.webp",
+    image: "products/22_p53_R248Q_DualControl_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-23",
@@ -181,7 +181,7 @@ window.pciProducts = [
     longDesc: "The PMS2 DualControl™ FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for PMS2 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized PMS2 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/23_PMS2_DualControl_FFPE_BLOCK.webp",
+    image: "products/23_PMS2_DualControl_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-24",
@@ -195,7 +195,7 @@ window.pciProducts = [
     longDesc: "The p16 Heterogenous SINGLE CONTROL FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p16 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/24_p16_Heterogenous_SINGLE_CONTROL_FFPE_BLOCK.webp",
+    image: "products/24_p16_Heterogenous_SINGLE_CONTROL_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-25",
@@ -209,7 +209,7 @@ window.pciProducts = [
     longDesc: "The PTEN-NULL Single control FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for PTEN immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized PTEN expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/25_PTEN_NULL_Single_control_FFPE_block.webp",
+    image: "products/25_PTEN_NULL_Single_control_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-26",
@@ -223,7 +223,7 @@ window.pciProducts = [
     longDesc: "The PMS2 Deficient Single control FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for PMS2 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized PMS2 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/26_PMS2_Deficient_Single_control_FFPE_block.webp",
+    image: "products/26_PMS2_Deficient_Single_control_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-27",
@@ -237,7 +237,7 @@ window.pciProducts = [
     longDesc: "The p53 (R248Q) Single control FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p53 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/27_p53_R248Q_Single_control_FFPE_block.webp",
+    image: "products/27_p53_R248Q_Single_control_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-28",
@@ -251,7 +251,7 @@ window.pciProducts = [
     longDesc: "The MSH6 Deficient Single control FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for MSH6 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized MSH6 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/28_MSH6_Deficient_Single_control_FFPE_block.webp",
+    image: "products/28_MSH6_Deficient_Single_control_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-29",
@@ -265,7 +265,7 @@ window.pciProducts = [
     longDesc: "The MMR Intact Single Control Single Slide is a pre-sectioned cell-line control slide for MMR immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized MMR expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/29_MMR_Intact_Single_Control_Single_Slide.webp",
+    image: "products/29_MMR_Intact_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-30",
@@ -279,7 +279,7 @@ window.pciProducts = [
     longDesc: "The p53 NULL Single Control Single Slide is a pre-sectioned cell-line control slide for p53 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/30_p53_NULL_Single_Control_Single_Slide.webp",
+    image: "products/30_p53_NULL_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-31",
@@ -293,7 +293,7 @@ window.pciProducts = [
     longDesc: "The p53 wild type Single Control Single Slide is a pre-sectioned cell-line control slide for p53 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/31_p53_wild_type_Single_Control_Single_Slide.webp",
+    image: "products/31_p53_wild_type_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-32",
@@ -307,7 +307,7 @@ window.pciProducts = [
     longDesc: "The PR negative Single Control Single Slide is a pre-sectioned cell-line control slide for PR immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized PR expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/32_PR_negative_Single_Control_Single_Slide.webp",
+    image: "products/32_PR_negative_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-33",
@@ -321,7 +321,7 @@ window.pciProducts = [
     longDesc: "The HER2 Negative Single Control Single Slide is a pre-sectioned cell-line control slide for HER2 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized HER2 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/33_HER2_Negative_Single_Control_Single_Slide.webp",
+    image: "products/33_HER2_Negative_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-34",
@@ -335,7 +335,7 @@ window.pciProducts = [
     longDesc: "The HER2 AMP Single Control Single Slide is a pre-sectioned cell-line control slide for HER2 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized HER2 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/34_HER2_AMP_Single_Control_Single_Slide.webp",
+    image: "products/34_HER2_AMP_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-35",
@@ -349,7 +349,7 @@ window.pciProducts = [
     longDesc: "The p16 OE Single Control Single Slide is a pre-sectioned cell-line control slide for p16 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/35_p16_OE_Single_Control_Single_Slide.webp",
+    image: "products/35_p16_OE_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-36",
@@ -363,7 +363,7 @@ window.pciProducts = [
     longDesc: "The p16 heterogenous Single Control Single Slide is a pre-sectioned cell-line control slide for p16 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/36_p16_heterogenous_Single_Control_Single_Slide.webp",
+    image: "products/36_p16_heterogenous_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-37",
@@ -377,7 +377,7 @@ window.pciProducts = [
     longDesc: "The PTEN Wild type Single Control Single Slide is a pre-sectioned cell-line control slide for PTEN immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized PTEN expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/37_PTEN_Wild_type_Single_Control_Single_Slide.webp",
+    image: "products/37_PTEN_Wild_type_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-38",
@@ -391,7 +391,7 @@ window.pciProducts = [
     longDesc: "The FOLR1 OE Single Control Single Slide is a pre-sectioned cell-line control slide for FOLR1 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized FOLR1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/38_FOLR1_OE_Single_Control_Single_Slide.webp",
+    image: "products/38_FOLR1_OE_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-39",
@@ -405,7 +405,7 @@ window.pciProducts = [
     longDesc: "The FOLR1 Negative single control single slide is a pre-sectioned cell-line control slide for FOLR1 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized FOLR1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/39_FOLR1_Negative_single_control_single_slide.webp",
+    image: "products/39_FOLR1_Negative_single_control_single_slide.webp?v=20261026",
   },
   {
     code: "PCI-40",
@@ -419,7 +419,7 @@ window.pciProducts = [
     longDesc: "The PDL1 HIGH Single Control Single Slide is a pre-sectioned cell-line control slide for PDL-1 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized PDL-1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/40_PDL1_HIGH_Single_Control_Single_Slide.webp",
+    image: "products/40_PDL1_HIGH_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-41",
@@ -433,7 +433,7 @@ window.pciProducts = [
     longDesc: "The Wild type control SINGLE CONTROL FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for — immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized — expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/41_Wild_type_control_SINGLE_CONTROL_FFPE_BLOCK.webp",
+    image: "products/41_Wild_type_control_SINGLE_CONTROL_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-42",
@@ -447,7 +447,7 @@ window.pciProducts = [
     longDesc: "The p16 NULL SINGLE CONTROL FFPE BLOCK is a pre-sectioned cell-line control slide for p16 NULL immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p16 NULL expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/42_p16_NULL_SINGLE_CONTROL_FFPE_BLOCK.webp",
+    image: "products/42_p16_NULL_SINGLE_CONTROL_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-43",
@@ -461,7 +461,7 @@ window.pciProducts = [
     longDesc: "The MSH2 DualControl™ Single Slide is a pre-sectioned cell-line control slide for MSH2 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized MSH2 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "slide",
-    image: "products/43_MSH2_DualControl_Single_Slide.webp",
+    image: "products/43_MSH2_DualControl_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-44",
@@ -475,7 +475,7 @@ window.pciProducts = [
     longDesc: "The PMS2 DualControl™ Single Slide is a pre-sectioned cell-line control slide for PMS2 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized PMS2 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "slide",
-    image: "products/44_PMS2_DualControl_Single_Slide.webp",
+    image: "products/44_PMS2_DualControl_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-45",
@@ -489,7 +489,7 @@ window.pciProducts = [
     longDesc: "The MYC AMP Single Control Single Slide is a pre-sectioned cell-line control slide for MYC immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized MYC expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/45_MYC_AMP_Single_Control_Single_Slide.webp",
+    image: "products/45_MYC_AMP_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-46",
@@ -503,7 +503,7 @@ window.pciProducts = [
     longDesc: "The PTEN deficient Single Control Single Slide is a pre-sectioned cell-line control slide for PTEN immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized PTEN expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/46_PTEN_deficient_Single_Control_Single_Slide.webp",
+    image: "products/46_PTEN_deficient_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-47",
@@ -517,7 +517,7 @@ window.pciProducts = [
     longDesc: "The Beta-catenin Single Control Single Slide is a pre-sectioned cell-line control slide for Beta-catenin immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized Beta-catenin expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/47_Beta_catenin_Single_Control_Single_Slide.webp",
+    image: "products/47_Beta_catenin_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-48",
@@ -531,7 +531,7 @@ window.pciProducts = [
     longDesc: "The BRAFV600E Single Control Single Slide is a pre-sectioned cell-line control slide for BRAFV600E immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized BRAFV600E expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/48_BRAFV600E_Single_Control_Single_Slide.webp",
+    image: "products/48_BRAFV600E_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-49",
@@ -545,7 +545,7 @@ window.pciProducts = [
     longDesc: "The p16 Null Single Control Single Slide is a pre-sectioned cell-line control slide for p16 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/49_p16_Null_Single_Control_Single_Slide.webp",
+    image: "products/49_p16_Null_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-50",
@@ -559,7 +559,7 @@ window.pciProducts = [
     longDesc: "The RB Null Single Control Single Slide is a pre-sectioned cell-line control slide for RB immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized RB expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/50_RB_Null_Single_Control_Single_Slide.webp",
+    image: "products/50_RB_Null_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-51",
@@ -573,7 +573,7 @@ window.pciProducts = [
     longDesc: "The MSH6 Single Control Single Slide is a pre-sectioned cell-line control slide for MSH6 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized MSH6 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/51_MSH6_Single_Control_Single_Slide.webp",
+    image: "products/51_MSH6_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-52",
@@ -587,7 +587,7 @@ window.pciProducts = [
     longDesc: "The MLH1 Single Control Single Slide is a pre-sectioned cell-line control slide for MLH1 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized MLH1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/52_MLH1_Single_Control_Single_Slide.webp",
+    image: "products/52_MLH1_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-53",
@@ -601,7 +601,7 @@ window.pciProducts = [
     longDesc: "The PMS2 Single Control Single Slide is a pre-sectioned cell-line control slide for PMS2 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized PMS2 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/53_PMS2_Single_Control_Single_Slide.webp",
+    image: "products/53_PMS2_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-54",
@@ -615,7 +615,7 @@ window.pciProducts = [
     longDesc: "The p53 DualControl™ Single Slide (OE and WT) is a pre-sectioned cell-line control slide for p53 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "slide",
-    image: "products/54_p53_DualControl_Single_Slide_OE_and_WT.webp",
+    image: "products/54_p53_DualControl_Single_Slide_OE_and_WT.webp?v=20261026",
   },
   {
     code: "PCI-55",
@@ -629,7 +629,7 @@ window.pciProducts = [
     longDesc: "The p53 TriControl™ Single Slide is a pre-sectioned cell-line control slide for p53 immunohistochemistry, configured as a TriControl™ panel comprising three characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Three characterized cell-line population(s) in a TriControl™ layout.",
     imageType: "slide",
-    image: "products/55_p53_TriControl_Single_Slide.webp",
+    image: "products/55_p53_TriControl_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-56",
@@ -643,7 +643,7 @@ window.pciProducts = [
     longDesc: "The PDL1 HIGH DualControl™ Single Slide is a pre-sectioned cell-line control slide for PDL-1 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized PDL-1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "slide",
-    image: "products/56_PDL1_HIGH_DualControl_Single_Slide.webp",
+    image: "products/56_PDL1_HIGH_DualControl_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-57",
@@ -657,7 +657,7 @@ window.pciProducts = [
     longDesc: "The PDL1 HIGH DualControl™ FFPE Block is a pre-sectioned cell-line control slide for PDL-1 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized PDL-1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "slide",
-    image: "products/57_PDL1_HIGH_DualControl_FFPE_Block.webp",
+    image: "products/57_PDL1_HIGH_DualControl_FFPE_Block.webp?v=20261026",
   },
   {
     code: "PCI-58",
@@ -671,7 +671,7 @@ window.pciProducts = [
     longDesc: "The p53 TriControl™ FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p53 immunohistochemistry, configured as a TriControl™ panel comprising three characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Three characterized cell-line population(s) in a TriControl™ layout.",
     imageType: "block",
-    image: "products/58_p53_TriControl_FFPE_block.webp",
+    image: "products/58_p53_TriControl_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-59",
@@ -685,7 +685,7 @@ window.pciProducts = [
     longDesc: "The PDL1 HIGH SINGLE CONTROL FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for PDL-1 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized PDL-1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/59_PDL1_HIGH_SINGLE_CONTROL_FFPE_BLOCK.webp",
+    image: "products/59_PDL1_HIGH_SINGLE_CONTROL_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-60",
@@ -699,7 +699,7 @@ window.pciProducts = [
     longDesc: "The MSH6 DualControl™ FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for MSH6 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized MSH6 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/60_MSH6_DualControl_FFPE_BLOCK.webp",
+    image: "products/60_MSH6_DualControl_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-61",
@@ -713,7 +713,7 @@ window.pciProducts = [
     longDesc: "The p53 DualControl™ - Dualcontrol™ FFPE block (OE and WT) is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p53 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/61_p53_DualControl_Dualcontrol_FFPE_block_OE_and_WT.webp",
+    image: "products/61_p53_DualControl_Dualcontrol_FFPE_block_OE_and_WT.webp?v=20261026",
   },
   {
     code: "PCI-62",
@@ -727,7 +727,7 @@ window.pciProducts = [
     longDesc: "The MLH1 Deficient Single control FFPE block is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for MLH1 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized MLH1 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/62_MLH1_Deficient_Single_control_FFPE_block.webp",
+    image: "products/62_MLH1_Deficient_Single_control_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-00",
@@ -741,7 +741,7 @@ window.pciProducts = [
     longDesc: "The p16 TriControl™ Single Slide is a pre-sectioned cell-line control slide for p16 immunohistochemistry, configured as a TriControl™ panel comprising three characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Three characterized cell-line population(s) in a TriControl™ layout.",
     imageType: "slide",
-    image: "products/00_p16_TriControl_Single_Slide.webp",
+    image: "products/00_p16_TriControl_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-01",
@@ -755,7 +755,7 @@ window.pciProducts = [
     longDesc: "The MMR QuadControl™ Single Slide is a pre-sectioned cell-line control slide for MMR immunohistochemistry, configured as a QuadControl™ panel comprising four characterized cell-line population(s). It delivers reproducible, pre-characterized MMR expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Four characterized cell-line population(s) in a QuadControl™ layout.",
     imageType: "slide",
-    image: "products/01_MMR_QuadControl_Single_Slide.webp",
+    image: "products/01_MMR_QuadControl_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-03",
@@ -769,7 +769,7 @@ window.pciProducts = [
     longDesc: "The p53 OE Single Control Single Slide is a pre-sectioned cell-line control slide for p53 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/03_p53_OE_Single_Control_Single_Slide.webp",
+    image: "products/03_p53_OE_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-04",
@@ -797,7 +797,7 @@ window.pciProducts = [
     longDesc: "The PTEN NULL DualControl™ Single Slide is a pre-sectioned cell-line control slide for PTEN immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized PTEN expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "slide",
-    image: "products/06_PTEN_NULL_DualControl_Single_Slide.webp",
+    image: "products/06_PTEN_NULL_DualControl_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-07",
@@ -811,7 +811,7 @@ window.pciProducts = [
     longDesc: "The p16 NULL/OE DualControl™ FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p16 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/07_p16_NULL_OE_DualControl_FFPE_block.webp",
+    image: "products/07_p16_NULL_OE_DualControl_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-08",
@@ -825,7 +825,7 @@ window.pciProducts = [
     longDesc: "The MLH1/MSH6 DualControl™ FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for MLH1, MSH6 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized MLH1, MSH6 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/08_MLH1_MSH6_DualControl_FFPE_block.webp",
+    image: "products/08_MLH1_MSH6_DualControl_FFPE_block.webp?v=20261026",
   },
   {
     code: "PCI-09",
@@ -839,7 +839,7 @@ window.pciProducts = [
     longDesc: "The p53 P248Q Single Control Single Slide is a pre-sectioned cell-line control slide for p53 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/09_p53_P248Q_Single_Control_Single_Slide.webp",
+    image: "products/09_p53_P248Q_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-10",
@@ -853,7 +853,7 @@ window.pciProducts = [
     longDesc: "The Wild type Single Control Single Slide is a pre-sectioned cell-line control slide for — immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized — expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "slide",
-    image: "products/10_Wild_type_Single_Control_Single_Slide.webp",
+    image: "products/10_Wild_type_Single_Control_Single_Slide.webp?v=20261026",
   },
   {
     code: "PCI-11",
@@ -867,7 +867,7 @@ window.pciProducts = [
     longDesc: "The p16 Diffuse SINGLE CONTROL FFPE BLOCK is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p16 immunohistochemistry, configured as a Single Control panel comprising a single characterized cell-line population(s). It delivers reproducible, pre-characterized p16 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "A single characterized cell-line population(s) in a Single Control layout.",
     imageType: "block",
-    image: "products/11_p16_Diffuse_SINGLE_CONTROL_FFPE_BLOCK.webp",
+    image: "products/11_p16_Diffuse_SINGLE_CONTROL_FFPE_BLOCK.webp?v=20261026",
   },
   {
     code: "PCI-14",
@@ -895,6 +895,6 @@ window.pciProducts = [
     longDesc: "The p53 DualControl™ - Dual control FFPE block (OE and N) is a formalin-fixed paraffin-embedded (FFPE) cell-line control block for p53 immunohistochemistry, configured as a DualControl™ panel comprising two characterized cell-line population(s). It delivers reproducible, pre-characterized p53 expression levels for calibrating, validating, and monitoring IHC staining runs.",
     composition: "Two characterized cell-line population(s) in a DualControl™ layout.",
     imageType: "block",
-    image: "products/63_p53_DualControl_FFPE_block_OE_and_N.webp",
+    image: "products/63_p53_DualControl_FFPE_block_OE_and_N.webp?v=20261026",
   },
 ];
